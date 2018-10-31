@@ -1,0 +1,63 @@
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+<tagLib name="html" />
+<include file="Public:xyHead" />
+<div class="sub_bav">
+<!-- 列表显示区域  -->
+<table width="100%" cellpadding=0 cellspacing=1 border=1  >
+<tr  class="tabletd">
+  <td colspan="16">
+  
+		<form method='post' action="__URL__/adminsingle">
+		<div class="fLeft"><span id="key">会员编号：<input type="text" name="UserID" title="帐号查询"></span>
+		  <input type="submit" name="Submit" value="查询"  class="btn1"/>
+		</div>
+		<!-- 高级查询区域 -->
+		<div  id="searchM" class=" none search cBoth" >
+		</div>
+		</form>
+  
+  </td>
+</tr>
+<form name="form3" method="post" action="__URL__/adminsingleAC">
+
+<tr class="content_td" align="center">
+	<td ><div align="center"><input type="checkbox" name="chkall" value="checkbox" onClick="CheckAll(this.form)"  class="btn2" id="chkall"></div></td>
+	<td nowrap >会员编号</td>
+	<td nowrap >申请数量</td>
+	<td nowrap >申请金额</td>
+	<td nowrap >申请时间</td>
+	<td nowrap >确认时间</td>
+	<td nowrap >状态</td>
+</tr>
+<volist name="list" id="vo">
+<tr class="content_td" align="center"> 
+	<td><div align="center">
+	  <input type="checkbox" name=tabledb[] value="{$vo['id']}" class="btn2">
+	  </div></td>
+	<td><a href="__URL__/adminuserData/PT_id/{$vo['uid']}">{$vo['user_id']}</a></td>
+	<td><span class="STYLE1">{$vo['danshu']}</span></td>
+	<td><span class="STYLE1">{$vo['money']}</span></td>
+	<td>{$vo.adt|date='Y-m-d',###}</td>
+	<td>{$vo.pdt|date='Y-m-d',###}</td>
+	<td><eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq>
+	<eq name="vo['is_pay']" value="1">已确认</eq></td>
+</tr>
+</volist>
+<tr class="content_td">
+	<td  colspan=16 ><input name="全选" type="button" class="btn1" id="全选" onClick="CheckAll(this.form)" value="全选">
+    &nbsp;&nbsp;
+	  <input type="submit" name="action" value="确认" onclick="{if(confirm('确定吗?')){return true;}return false;}" class="btn1">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="删除" onclick="{if(confirm('确定删除吗?')){return true;}return false;}" class="btn1"></td>
+</tr>
+<tr class="content_td" align="center">
+	<td  colspan=16 >{$page}</td>
+</tr>
+</form>
+</table>
+</div>
+</body>
+</html>

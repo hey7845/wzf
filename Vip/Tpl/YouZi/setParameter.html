@@ -1,0 +1,271 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>参数设置 </h1></div>
+<form method='post' id="myform" action="__URL__/setParameterSave" >
+<table width="100%" cellpadding=3 cellspacing=0 border=0 id="tb1" class="tab4">
+<tr class="content_td">
+                <td width="15%" >&nbsp;</td>
+                <td width="85%">&nbsp;</td>
+</tr>
+<tr>
+				<td align="right">级别：</td>
+				<td class="left"><input name="s10" type="text" id="s10" value="{$fee_s10}" size="50" maxlength="80" />
+                用|分割</td>
+</tr>
+<tr>
+				<td align="right">注册投资：</td>
+				<td class="left"><input name="s9" type="text" id="s9" value="{$fee_s9}" size="50" maxlength="80" />
+                用|分割</td>
+</tr>
+<tr>
+        <td align="right">静态奖：</td>
+        <td class="left">
+           每单 <input name="str1" type="text" id="str1" value="{$fee_str1}" size="5" maxlength="50" />元<br> 
+           倍数  <input name="s5" type="text" id="s5" value="{$fee_s5}" size="5" maxlength="50" />倍
+              </td>
+
+</tr> 
+
+
+<tr>
+        <td align="right">直推奖：</td>
+        <td class="left">
+        <!--     直推人数：<input name="s4" type="text" id="s4" value="{$fee_s4}" size="20" maxlength="50" />用|分割
+           <br>  -->
+       <input name="s11" type="text" id="s11" value="{$fee_s11}" size="20" maxlength="50" />百分比 用|分割
+          
+                </td>
+</tr>
+
+
+
+<tr>
+        <td align="right">管理奖：</td>
+        <td class="left">
+   <input name="str5" type="text" id="str5" value="{$fee_str5}" size="20" maxlength="80" />元
+     <br><input name="s13" type="text" id="s13" value="{$fee_s13}" size="20" maxlength="80" />层数
+            </td>
+</tr>
+
+
+<!-- <tr>
+        <td align="right">爱心基金：</td>
+        <td class="left"><input name="s13" type="text" id="s13" value="{$fee_s13}" size="8" maxlength="80" />百分比 </td>
+</tr> -->
+
+<tr>
+        <td align="right">报单中心：</td>
+        <td class="left">
+          <input name="s1" type="text" id="s1" value="{$fee_s1}" size="8" maxlength="80" />元
+            </td>
+</tr>
+<tr>
+				<td align="right">报单费：</td>
+				<td class="left"><input name="str9" type="text" id="str9" value="{$fee_str9}" size="8" maxlength="80" />百分比
+                </td>
+</tr>
+<tr>
+        <td align="right">报单推报单：</td>
+        <td class="left"><input name="s7" type="text" id="s7" value="{$fee_s7}" size="8" maxlength="80" />百分比
+                </td>
+</tr>
+<!-- <tr>
+        <td align="right">平衡奖：</td>
+        <td class="left"><input name="s14" type="text" id="s14" value="{$fee_s14}" size="20" maxlength="80" />层
+        <br><input name="s12" type="text" id="s12" value="{$fee_s12}" size="20" maxlength="50" />元
+
+        </td>
+</tr> -->
+<tr>
+        <td align="right">领导奖：</td>
+        <td class="left">
+           <input name="s4" type="text" id="s4" value="{$fee_s4}" size="20" maxlength="50" /> 百分比 用|分割
+                </td>
+</tr>
+<tr>
+        <td align="right">董事分红：</td>
+        <td class="left">
+           <input name="s6" type="text" id="s6" value="{$fee_s6}" size="20" maxlength="50" /> 百分比
+                </td>
+</tr>
+<tr>
+				<td align="right">奖名称：</td>
+				<td class="left"><input name="s18" type="text" id="s18" value="{$fee_s18}" size="100" maxlength="100" />用| 分割 </td>
+</tr>
+<!-- <tr>
+        <td align="right">扣做重销：</td>
+        <td class="left"><input name="s3" type="text" id="s3" value="{$fee_s3}" size="8" maxlength="80" />百分比 </td>
+</tr> -->
+
+
+<!-- <tr style="display:none">
+				<td align="right">客服QQ号：</td>
+				<td class="left"><input name="str7" type="text" id="str7" value="{$fee_str7}" size="80" maxlength="80" /> 用| 分割</td>
+</tr> -->
+
+<tr>
+				<td align="right">充值账户：</td>
+				<td class="left"><input name="str6" type="text" id="str6" value="{$fee_str6}" size="40" maxlength="80" />
+                </td>
+</tr>
+<tr>
+        <td align="right">消费积分：</td>
+        <td class="left"><input name="s15" type="text" id="s15" value="{$fee_s15}" size="8" maxlength="80" /> 百分比</td>
+</tr>
+ <tr>
+        <td align="right">复投积分：</td>
+        <td class="left"><input name="str10" type="text" id="str10" value="{$fee_str10}" size="8" maxlength="80" />百分比
+                </td>
+</tr>
+
+<tr>
+        <td align="right">公益基金：</td>
+        <td class="left"><input name="str11" type="text" id="str11" value="{$fee_str11}" size="8" maxlength="80" />百分比
+                </td>
+</tr>
+
+<tr>
+        <td align="right">平台管理费：</td>
+        <td class="left"><input name="str7" type="text" id="str7" value="{$fee_str7}" size="8" maxlength="80" />元
+                </td>
+</tr> 
+ <tr>
+				<td align="right">最低提现额度：</td>
+				<td class="left"><input name="s16" type="text" id="s16" value="{$fee_s16}" size="8" maxlength="12" />
+                </td>
+</tr>
+<tr>
+				<td align="right">提现手续费：</td>
+				<td class="left"><input name="s8" type="text" id="s8" value="{$fee_s8}" size="8" maxlength="12" />
+                百分比</td>
+</tr>
+<!-- <tr>
+				<td align="right">最低转帐额度：</td>
+				<td class="left"><input name="str3" type="text" id="str3" value="{$fee_str3}" size="8" maxlength="12" />
+                </td>
+</tr>  -->
+<!-- <tr>
+            <td colspan="3" style="height:5px;"><hr></td>
+</tr> -->
+
+<!-- <tr>
+				<td align="right" class="tabr">报单比例：</td>
+				<td class="left">
+         现金积分:<input name="str18" type="text" id="str18" value="{$fee_str18}" size="8" maxlength="200" />百分比
+          <br>
+         注册积分:<input name="str19" type="text" id="str19" value="{$fee_str19}" size="8" maxlength="200" />百分比
+                </td>
+</tr> -->
+<!--<tr>
+				<td align="right" class="tabr">第三方商户名：</td>
+				<td class="left">
+                </td>
+</tr>-->
+<tr>
+            <td colspan="3" style="height:5px;"><hr></td>
+</tr>
+<tr style="display:none">
+    <td align="right">注册语言：</td>
+    <td><span class="tLeft"><textarea name="str24" cols="60" rows="5" id="str29">{$fee_str24}</textarea>
+    每个语言用|分割</span></td>
+</tr>
+<tr style="display:none">
+    <td align="right">注册国家：</td>
+    <td><span class="tLeft"><textarea name="str25" cols="60" rows="5" id="str29">{$fee_str25}</textarea>
+    每个国家用|分割</span></td>
+</tr>
+<tr>
+    <td align="right">关闭网站提示：</td>
+    <td><textarea name="str27" cols="60" rows="5" id="str27">{$fee_str27}</textarea>
+    （200字内）
+    </td>
+</tr>
+<!-- <tr>
+    <td align="right">油卡类别：</td>
+    <td><span class="tLeft"><textarea name="str17" cols="60" rows="5" id="str17">{$fee_str17}</textarea>
+    用|分割</span></td>
+</tr> -->
+
+<tr>
+    <td align="right">开户银行：</td>
+    <td><span class="tLeft"><textarea name="str29" cols="60" rows="5" id="str29">{$fee_str29}</textarea>
+    每家银行间用|分割</span></td>
+</tr>
+
+<tr>
+    <td align="right">汇款信息：</td>
+    <td><span class="tLeft">
+      <textarea name="s17" cols="60" rows="5" id="s17">{$fee_s17}</textarea>
+    </span></td>
+</tr>
+<tr>
+    <td align="right">会员注册成功信息：</td>
+    <td><span class="tLeft">
+      <textarea name="str28" cols="60" rows="5" id="str28">{$fee_str28}</textarea>
+    </span></td>
+</tr>
+<tr style="display:none">
+    <td align="right">密保问题：</td>
+    <td><span class="tLeft">
+      <textarea name="str99" cols="60" rows="6" id="str99">{$fee_str99}</textarea>
+    每个问题用|分割</span></td>
+</tr>
+<tr>
+            <td colspan="3" style="height:5px;"><hr></td>
+</tr>
+<tr>
+  <td align="right">登录设置：</td>
+  <td class="left">
+  <input type="radio" name="i1" id="i1" value="0" <eq name="fee_i1" value="0">checked</eq>  class="ipt_radi" />
+  允许
+  <input type="radio" name="i1" id="i1" value="1" <eq name="fee_i1" value="1">checked</eq>  class="ipt_radi" />
+  不允许 <span class="stytle1">(是否允许一个用户同时多人在线！)</span>
+  </td>
+</tr>
+<tr style="display:none">
+  <td align="right">手动匹配：</td>
+  <td class="left">
+  <input type="radio" name="i2" id="i2" value="1" <eq name="fee_i2" value="1">checked</eq> class="ipt_radi"/>
+    开启
+  <input type="radio" name="i2" id="i2" value="0" <eq name="fee_i2" value="0">checked</eq> class="ipt_radi"/>
+    关闭
+	</td>
+</tr>
+<tr>
+  <td align="right">前台设置：</td>
+  <td class="left"><input name="i3" type="radio" id="i3" value="0" <eq name="fee_i3" value="0">checked</eq> class="ipt_radi"/>
+    开启
+      <input type="radio" name="i3" id="i3" value="1" <eq name="fee_i3" value="1">checked</eq> class="ipt_radi"/>
+      关闭 <span class="stytle1">(关闭前台会员登录！)</span></td>
+</tr>
+<tr  style="display:none">
+  <td align="right">游客注册设置：</td>
+  <td class="left"><input name="i9" type="radio" id="i9" value="0" <eq name="fee_i9" value="0">checked</eq> class="ipt_radi"/>
+    开启
+      <input type="radio" name="i9" id="i9" value="1" <eq name="fee_i9" value="1">checked</eq> class="ipt_radi"/>
+      关闭 <span class="stytle1">(关闭/关闭游客注册！)</span></td>
+</tr>
+
+<tr  style="display:none">
+  <td align="right">注册金额设置：</td>
+  <td class="left">
+      <input type="radio" name="i4" id="i4" value="1" <eq name="fee_i4" value="1">checked</eq> class="ipt_radi"/>
+      开启
+      <input name="i4" type="radio" id="i4" value="0" <eq name="fee_i4" value="0">checked</eq> class="ipt_radi"/>
+      关闭 <span class="stytle1">(开启/关闭注册金额！)</span></td>
+</tr>
+<tr>
+				<td align="right">&nbsp;</td>
+				<td class="left">&nbsp;</td>
+</tr>
+<tr>
+  <td></td>
+  <td class="left">
+    <input type="submit" value="修改" class="button_text">
+    <input type="reset" value="还原" class="button_text"></td>
+</tr>
+</table>
+</form>
+</div>
+</body>
+</html>

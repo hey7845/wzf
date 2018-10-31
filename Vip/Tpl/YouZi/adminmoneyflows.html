@@ -1,0 +1,127 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<style type="text/css">
+.us_btn{height:27px; line-height:27px; font-size:12px; font-weight:bold; padding:0 10px; text-decoration:underline;}
+.STYLE1 {color: #FF0000}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>货币流向统计 </h1></div>
+<table width="100%" border="0" cellpadding="0" cellspacing="3">
+    <tr>
+    <td>
+    <form id="form1" name="form1" method="post" action="__URL__/adminmoneyflows">
+    开始日期：<input name="S_Date" type="text" id="S_Date" onFocus="showCalendar(this)" readonly value="{$S_Date}" />
+    &nbsp;&nbsp;
+    结算日期：<input name="E_Date" type="text" id="E_Date" onFocus="showCalendar(this)" readonly value="{$E_Date}" />
+    &nbsp;&nbsp;
+    搜索会员：<input name="UserID" type="text" id="UserID" value="{$UserID}"/>
+    &nbsp;&nbsp;
+    <input type="submit" name="Submit" value="查询" class="button_text" /></form></td>
+    </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="3">
+    <tr>
+    <td>
+    <eq name="ry" value="0">
+    <span class="us_btn">查看全部</span>
+    <else/>
+    <input type="button" name="action" value="查看全部" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/0/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'"/>
+    </eq>
+    <volist name="fee_s7" id="tt" key="ti">
+    <lt name="ti" value="10">
+    <eq name="ry" value="$ti">
+    <span class="us_btn">{$tt}</span>
+    <else/>
+    <input type="button" name="action" value="{$tt}" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/{$ti}/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'">
+    </eq>
+    </lt>
+    </volist>
+    <eq name="ry" value="18">
+    <span class="us_btn">奖金提现</span>
+    <else/>
+    <input type="button" name="action" value="奖金提现" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/18/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'">
+    </eq>
+    <eq name="ry" value="19">
+    <span class="us_btn">开通会员</span>
+    <else/>
+    <input type="button" name="action" value="开通会员" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/26/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'">
+    </eq>
+<!--     <eq name="ry" value="20"> -->
+<!--     <span class="us_btn">货币转账</span> -->
+<!--     <else/> -->
+<!--     <input type="button" name="action" value="货币转账" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/27/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'"> -->
+<!--     </eq> -->
+<!--     <eq name="ry" value="21"> -->
+<!--     <span class="us_btn">充值电子积分</span> -->
+<!--     <else/> -->
+<!--     <input type="button" name="action" value="充值电子积分" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/21/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'"> -->
+<!--     </eq> -->
+    <eq name="ry" value="23">
+    <span class="us_btn">充值消费积分</span>
+    <else/>
+    <input type="button" name="action" value="充值消费积分" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/23/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'">
+    </eq>
+    <eq name="ry" value="25">
+    <span class="us_btn">消费积分复投</span>
+    <else/>
+    <input type="button" name="action" value="消费积分复投" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/25/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'">
+    </eq>
+      <!--<eq name="ry" value="22">
+    <span class="us_btn">商城购物</span>
+    <else/>
+    <input type="button" name="action" value="商城购物" class="button_text" onclick="window.location='__URL__/adminmoneyflows/tp/22/S_Date/{$S_Date}/E_Date/{$E_Date}/UserID/{$UserID}/'">
+    </eq>-->
+    </td>
+    </tr>
+</table>
+<table width="100%" cellpadding=3 cellspacing="1" id="tb1" bgcolor="#b9c8d0" class="tab3">
+  <tr align="center" class="content_td">
+    <th nowrap >操作会员（一）</th>
+    <th nowrap >操作会员（二）</th>
+    <th nowrap ><span>金额</span></th>
+    <th nowrap ><span>时间</span></th>
+    <th nowrap ><span>备注</span></th>
+  </tr>
+  <volist name="list" id="vo">
+  <tr align="center" class="content_td">
+    <td >{$vo['uid']|user_id}</td>
+    <td >{$vo['user_id']}</td>
+    <td ><span class="STYLE1">{$vo['epoints']}</span></td>
+    <td >{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+    <td>
+        &nbsp;
+         <eq name="vo['action_type']" value="$vo.bz">
+         <eq name="vo['action_type']" value="1">{$fee_s7[0]}</eq>
+         <eq name="vo['action_type']" value="2">{$fee_s7[1]}</eq>
+         <eq name="vo['action_type']" value="3">{$fee_s7[2]}</eq>
+         <eq name="vo['action_type']" value="4">{$fee_s7[3]}</eq>
+         <eq name="vo['action_type']" value="5">{$fee_s7[4]}</eq>
+         <eq name="vo['action_type']" value="6">{$fee_s7[5]}</eq>
+         <eq name="vo['action_type']" value="7">{$fee_s7[6]}</eq>
+         <eq name="vo['action_type']" value="8">{$fee_s7[7]}</eq>
+         <eq name="vo['action_type']" value="9">{$fee_s7[8]}</eq>
+         <!--<eq name="vo['action_type']" value="8">税收</eq>-->
+         <eq name="vo['action_type']" value="18">奖金提现</eq>
+         <eq name="vo['action_type']" value="19">开通会员</eq>
+         <eq name="vo['action_type']" value="20">货币转账</eq>
+         <eq name="vo['action_type']" value="21">充值电子积分</eq>
+         <eq name="vo['action_type']" value="22">商城购物</eq>
+          <eq name="vo['action_type']" value="23">充值现金积分</eq>
+          <eq name="vo['action_type']" value="24">复投积分复投</eq>
+           <eq name="vo['action_type']" value="25">消费积分复投</eq>
+           <eq name="vo['action_type']" value="29">电子积分复投</eq>
+         <!-- <eq name="vo['action_type']" value="31">CQ币交易收入</eq> -->
+         <else/>{$vo.bz}</eq>
+        </td>
+  </tr>
+</volist>
+</table>
+<table width="600" align="center">
+  <tr class="content_td">
+    <td colspan="5" ><div align="center">{$page}</div></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

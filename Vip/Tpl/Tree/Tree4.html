@@ -1,0 +1,67 @@
+<include file="Public:header" />
+<style>
+.tu_box{width:80px;background-color:#aaa;color:#000;}
+.tu_box td{text-align:center;line-height:16px;height:16px;}
+.tu_ko{ height:40px;line-height:40px !important;background-color:#FFF; }
+.tu_l{ width:35%;}
+.tu_z{ width:30%;}
+.tu_r{ width:35%;}
+</style>
+<div id="main_top"><font>您现在的位置是： </font>推荐关系图</div>
+<div class="bar m10">
+  <div class="bar_header">推荐关系图</div>
+  <div class="bar_cont">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tab3">
+      <form method='post' action="__URL__/Tree4">
+      <tr>
+        <td>{$User_namex}：
+            <input type="text" name="UserID" title="帐号查询"  >
+            <input type="submit" name="Submit" value="查询" class="btn1"/>
+            　　<a href="__URL__/Tree4/uLev/{$uLev}">顶层</a>　　<a href="__URL__/Tree4/ID/{$FatherID}/uLev/{$uLev}">上一层</a></td>
+      </tr>
+      </form>
+      <tr>
+        <td>{$wop}</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+        
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="50%" align="center">
+            
+              <table width="90%" border="0" cellspacing="1" cellpadding="0" bgcolor="#66CC99">
+              <tr align="center" style="color:#000;">
+                <td bgcolor="#FFFFFF">上层</td>
+                <volist name='Level' id='vo'>
+                <td style="background:{$ColorUA[$key+1]};">{$Level[$key]}</td>
+                </volist>
+              </tr>
+            </table>
+            
+            </td>
+            <td width="50%" align="center">
+            
+            <table width="90%" border="0" cellspacing="1" cellpadding="0" bgcolor="#66CC99">
+             <tr align="center" style="color:#000;">
+                <td bgcolor="#FFFFFF">上层</td>
+                <volist name='TU_MiCheng' id='vo'>
+                <td style="background:{$TU_Color[$key]};">{$TU_MiCheng[$key]}</td>
+                </volist>
+              </tr>
+            </table></td>
+          </tr>
+        </table>
+        
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+</body>
+</html>

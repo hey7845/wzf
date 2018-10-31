@@ -1,0 +1,65 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>晋级申请 </h1></div>
+
+<table width="100%" class="tab3" border="0" cellpadding="3" id="tb1" cellspacing="1" bgcolor="#b9c8d0">
+    <tr align="center">   
+        <td colspan="2"><strong> <p>您目前的级别是： <span style="color:#F00">{$HYJJ[$f['u_level']]}</span></p></strong></td>
+    </tr>
+    <form name = "from1" action="__URL__/user_levelAC" method="post">
+    <tr>
+      <td width="30%" align="right"> 选择您的申请级别：</td>
+       <td >
+		<eq name="f['u_level']" value="4"> 您已经是最高级别，无需升级！<else/>
+		<volist name='s9' id='voo'>
+        <if condition="($key+1) gt $f['u_level']">
+        &nbsp; &nbsp;<input name="uLevel" type="radio" id="uLevel" value="{$s10[$key]}"/>{$s10[$key]}
+             (<strong><span class="STYLE3">{$s9[$key]}元</span></strong>)
+              </if>
+		</volist>
+      </eq>
+      </td>
+      </tr>
+      <tr>
+      <td height="30" align="right">升级说明：</td>
+       <td>申请后由后台确认方能生效。</td>
+      </tr>
+      <tr align="center">
+      <td colspan="2">
+      <eq name="f['u_level']" value="4">&nbsp;<else/>
+      <input type="submit" name="button" id="button" value="申请升级" onClick="{if(confirm('确定升级吗?')){return true;}return false;}" class="btn1"/>
+      </eq>
+      </td>
+      </tr>
+    </form>
+    <tr>
+    <td colspan="2" height="28"></td>
+    </tr>
+  
+    <tr>
+    <td colspan="2">
+ 		<table width="100%" class="tab3" border="0" cellpadding="3" id="tb1" cellspacing="1" bgcolor="#b9c8d0">
+         <tr align="center">
+           <th width="15%">升级前</th>
+           <th width="15%">升级后</th>
+           <th width="20%">升级差额</th>
+           <th width="20%">申请时间</th>
+           <th width="15%">状态</th>
+         </tr>
+        <volist name='list' id='voo'>
+         <tr align="center">
+            <td>{$HYJJ[$voo['u_level']]}</td>
+            <td>{$HYJJ[$voo['up_level']]}</td>
+           <td >{$voo['money']}</td>
+           <td>{$voo['create_time']|date='Y-m-d H:i:s',###}</td>
+           <td><eq name="voo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq>
+                <eq name="voo['is_pay']" value="1">已确认</eq></td>
+         </tr>
+        </volist>
+       </table>
+    </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

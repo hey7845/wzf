@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type=text/javascript src="__PUBLIC__/Js/nav.js"></script>
+<link href="__PUBLIC__/Css/css.css" type="text/css" rel="stylesheet" />
+<style type="text/css">
+<!--
+.STYLE1 {font-size: 12px; }
+.STYLE2 {font-size: 12px; color:#F00; }
+-->
+</style>
+</head>
+<body onload="new Accordian('basic-accordian',5,'header_highlight');">
+<style>
+/*菜单分类行*/
+*{margin:0;padding:0;border:0;}
+body,html { background:#E0E0E0; }
+html { overflow-x: hidden; overflow-y: auto; }
+.accordion_child ul{ width:160px; margin-bottom:10px;}
+.accordion_child li{ border-bottom:1px dashed #83ae77; padding-left:25px; line-height:24px; background:url(__PUBLIC__/Images/left_li.gif) 12px 8px no-repeat; }
+.accordion_child li a { color:#000; font-size:12px;}
+.accordion_child li a:hover { color:#f05805; font-size:12px;}
+.accordion_child li a:active { color:#f70300; font-size:12px;}
+.accordion_headings { margin-bottom:4px; height:31px; width:156px;}
+.accordion_headings{ padding:1px; color:#C00; font-size:12px; font-weight:bold; cursor:pointer; height:32px; line-height:38px; letter-spacing: 1px; background:url(__PUBLIC__/Images/bav.png) no-repeat; padding-left:0px; *padding-left:20px; _padding-left:20px;}
+.accordion_headings:hover{color:#9F6; background:url(__PUBLIC__/Images/bav2.png) no-repeat;}
+.header_highlight{background:url(__PUBLIC__/Images/bav.png) no-repeat; color:#9F6;}/*当前显示菜单分类样式*/
+</style>
+	<div class="left_bav">
+    <div class="left_top STYLE1">
+    &nbsp;会员编号：{$fck_rs['user_id']} <br />
+	&nbsp;会员级别：{$voo[$fck_rs['u_level']]} <br />
+	&nbsp;剩余货币：{$fck_rs['agent_cash']} <br />
+	&nbsp;<span class="STYLE2">剩余奖金：{$fck_rs['agent_use']}</span> <br />
+	&nbsp;累计奖金：{$fck_rs['zjj']} <br />
+	<neq name="fck_rs.pdt" value="0">
+    &nbsp;开通时间:{$fck_rs.pdt|date='Y年m月d日',###}
+    </neq>
+    </div>
+    
+<div id="basic-accordian" ><!--菜单开始-->
+	<a href="__APP__" target="_top"><div class="accordion_headings">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:#FF0">系统首页</b></div></a>
+    
+    <div id="test1-header" class="accordion_headings" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资料管理</div>
+	<div id="test1-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/News/News" target="main">新闻公告</a></li>
+    <li><a href="__APP__/Change/cody/c_id/1" target="main">修改资料</a></li>
+    <li><a href="__APP__/Change/cody/c_id/2" target="main">修改密码</a></li>
+    <li><a href="__APP__/Uplevel/cody/c_id/1" target="main">晋级申请</a></li>
+    </ul>
+    </div>
+    </div>
+
+    <div id="test2-header" class="accordion_headings" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;团队管理</div>
+    <div id="test2-content">
+    <div class="accordion_child">
+	<ul>
+    <li><a href="__APP__/Reg/users" target="main">注册会员</a></li>
+    <li><a href="__APP__/Tree/cody/c_id/5" target="main">系统架构图</a></li>
+    <li><a href="__APP__/Tree/cody/c_id/6" target="main">推荐关系图</a></li>
+    <li><a href="__APP__/User/cody/c_id/1" target="main">查看推荐关系</a></li>
+    <!--<li><a href="__APP__/User/cody/c_id/2" target="main">查看互助会员</a></li>-->
+    <li><a href="__APP__/User/cody/c_id/3" target="main">查看一线排网</a></li>
+	</ul>
+    </div>
+	</div>
+	
+    <div id="test3-header" class="accordion_headings" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;财务查询</div>
+    <div id="test3-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/Change/cody/c_id/3" target="main">账户查询</a></li>
+    <li><a href="__APP__/Bonus/cody/c_id/1" target="main">奖金明细</a></li>
+    <li><a href="__APP__/Transfer/cody/c_id/1" target="main">账户转账</a></li>
+    <li><a href="__APP__/Currency/cody/c_id/1" target="main">货币提现</a></li>
+    <li><a href="__APP__/Recharge/cody/c_id/1" target="main">充值申请</a></li>
+    <li><a href="__APP__/Recharge/cody/c_id/3" target="main">在线充值</a></li>
+    </ul>
+    </div>
+    </div>
+
+    <div id="test4-header" class="accordion_headings" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;报单中心</div>
+    <div id="test4-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/Agent/cody/c_id/1" target="main">申请报单中心</a></li>
+    <li><a href="__APP__/Agent/cody/c_id/2" target="main">未开通会员</a></li>
+    <li><a href="__APP__/Agent/cody/c_id/3" target="main">已开通会员</a></li>
+    </ul>
+    </div>
+    </div>
+
+	<div id="test5-header" class="accordion_headings" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留言管理</div>
+	<div id="test5-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/Msg/inmsg/" target="main">收件箱</a></li>
+    <li><a href="__APP__/Msg/outmsg/" target="main">发件箱</a></li>
+    <li><a href="__APP__/Msg/writemsg/" target="main">写邮件</a></li>
+    </ul>
+    </div>
+	</div>
+
+<eq name="fck_rs['id']" value="1">
+	<div id="test6-header" class="accordion_headings" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后台管理</div>
+	<div id="test6-content">
+    <div class="accordion_child">
+	<ul>
+    <li><a href="__APP__/YouZi/cody/c_id/5" target="main">当期出纳</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/8" target="main">奖金查询</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/1" target="main">会员审核</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/2" target="main">会员管理</a></li>
+    <li><a href="__APP__/Uplevel/cody/c_id/2" target="main">晋级管理</a></li>
+    <!--<li><a href="__APP__/Gouwu/cody/c_id/1/" target="main">产品管理</a></li>-->
+    <!--<li><a href="__APP__/Gouwu/cody/c_id/2/" target="main">物流管理</a></li>-->
+    <li><a href="__APP__/Agent/cody/c_id/4" target="main">报单中心管理</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/11" target="main">结算分红</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/18" target="main">货币流向</a></li>
+    <li><a href="__APP__/Currency/cody/c_id/2" target="main">提现管理</a></li>
+    <li><a href="__APP__/Recharge/cody/c_id/2" target="main">充值管理</a></li>
+    <li><a href="__APP__/Recharge/cody/c_id/4" target="main">在线充值管理</a></li>
+    <!--<li><a href="__APP__/YouZi/cody/c_id/28" target="main">重复消费清单</a></li>-->
+    <li><a href="__APP__/News/cody/c_id/1/" target="main">新闻公告管理</a></li>
+    <li><a href="__APP__/Plan/cody/c_id/1/" target="main">市场计划设置</a></li>
+    <!--<li><a href="__APP__/Plan/cody/c_id/2/" target="main">公司简介设置</a></li>-->
+    <li><a href="__APP__/YouZi/cody/c_id/22" target="main">视频上传</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/7" target="main">数据库备份</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/3" target="main">参数设置</a></li>
+    <li><a href="__APP__/YouZi/cody/c_id/9" target="main">清空数据</a></li>
+	</ul>
+    </div>
+    </div>
+</eq>
+
+	<a href="__APP__/Public/LogOut/" target="_top"><div class="accordion_headings" onclick="{if(confirm('确定退出吗?')){return true;}return false;}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="color:#FF0">安全退出</b></div></a>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,116 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>联盟商家 </h1></div>
+<style>
+.pri_a{ font-size:14px; font-family:Verdana, Geneva, sans-serif; color:red; font-weight:bold;}
+.pri_b{ font-size:14px; font-family:Verdana, Geneva, sans-serif; font-weight:bold; text-decoration: line-through;}
+.us_btn{height:27px; line-height:27px; font-size:12px; font-weight:bold; padding:0 10px; text-decoration:underline;}
+</style>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+    <eq name="tp" value="0">
+    <span class="us_btn">查看全部</span>
+    <else/>
+    <input type="button" name="action" value="查看全部" class="button_text" onclick="window.location='__URL__/Buycp/tp/0/'"/>
+    </eq>
+    <volist name="tplist" id="tt" key="ti">
+    <eq name="tp" value="$tt.id">
+    <span class="us_btn">{$tt.tpname}</span>
+    <else/>
+    <input type="button" name="action" value="{$tt.tpname}" class="button_text" onclick="window.location='__URL__/Buycp/tp/{$tt.id}/'">
+    </eq>
+    </volist></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+<table border="0" cellspacing="0" cellpadding="0" align="left">
+  <tr>
+    <volist name="list" id="vo" key="kk">
+    <?php if($kk%5==1&&$kk!=1) echo "</tr><tr>";?>
+    <td>
+    <table align="left" cellpadding="0" cellspacing="0" width="150" class="ss">
+        <tbody><tr>
+          <td align="center" style="font-weight: bold">
+          <a href="__URL__/Cpcontent/id/{$vo.id}" style="cursor:hand;">
+          <img src="{$vo.img}" style="width:220px; height:150px; border:solid 2px #f8f8f8">
+          </a>
+          </td>
+        </tr>
+       <tr>
+          <td height="20" align="center"><span class="STYLE2 STYLE2">
+           <a href="__URL__/Cpcontent/id/{$vo.id}" style="cursor:hand;">{$vo.name}</a></span></td>
+       </tr>
+       <tr>
+          <td height="20" align="center">
+          会员价：<span class="pri_a">{$cc[$vo['id']]}</span>  &nbsp; <!--<br/>结算账号：<span class="pri_a">{$vo['countid']}--></span>
+          </td>
+       </tr>
+         <tr>
+          <td height="20" align="center">
+         市场价：<span class="pri_a">{$cc[$vo['cid']]}</span>  &nbsp; <!--<br/>结算账号：<span class="pri_a">{$vo['countid']}--></span>
+          </td>
+       </tr>
+       <!--<tr>
+          <td height="20" align="center">数量：<input name="b_num{$vo.id}" type="text" id="b_num{$vo.id}" value="1" size="2" maxlength="5" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+          &nbsp;
+          <input name="" type="button" value="放入购物车" class="btn1" onclick="ajaxfunction('{$vo.id}')"/></td>
+       </tr>-->
+    </tbody></table>
+    </td>
+    </volist>
+  </tr>
+  
+</table>
+	</td>
+  </tr>
+</table>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" height="30">{$page}</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+<script language="javascript">
+    function ajaxfunction(oid){
+		var bid = "b_num"+oid;
+		var bnum = document.getElementById(bid).value;
+		parseInt(bnum);
+		if(bnum<1){
+			alert("请填写正确数字！");
+			return false;
+		}
+        var xmlHttp;
+        try{
+            //FF Opear 8.0+ Safair
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch(e){
+            try{
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch(e){
+                alert("您的浏览器不支持AJAX");
+                return false;    
+            }
+        }
+        xmlHttp.onreadystatechange=function(){
+            if(xmlHttp.readyState==4){
+				alert('添加成功');
+				//document.location.reload();
+				
+//                document.getElementById("memberNoLabel").innerHTML=xmlHttp.responseText;
+            }
+        }
+        var url="__APP__/Fck/gTotle/GID/"+oid+"/bnum/"+bnum;
+		url+="/sid/"+Math.random();
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+            
+    }
+   
+</script>

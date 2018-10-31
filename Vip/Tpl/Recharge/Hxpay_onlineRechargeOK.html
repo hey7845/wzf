@@ -1,0 +1,12 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body onLoad="document.form1.submit();">
+<!--<body>-->
+正在跳转 ...
+<form name="form1" id="form1" method="post" action="<?php if(Mode=="1") echo $payWayurl; else echo $paytestWayurl; ?>" target="_self">
+<input type="hidden" name="pGateWayReq" value="<?php echo $strsubmitxml ?>" />
+</form>
+</body>
+</html>

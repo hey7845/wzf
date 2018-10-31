@@ -1,0 +1,81 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>产品编辑&nbsp;[ <a href="javascript:history.go(-1);">返回列表</a> ] </h1></div>
+<table cellpadding=3 cellspacing=0 width=100% >
+<form method='post' id="form1" name="form1" action="__URL__/pro_edit_save"  enctype="multipart/form-data">
+<tr>
+	<td width="15%" align="right">产品名称：</td>
+	<td><input type="text" class="huge bLeftRequire" name="title" value="{$rs.name}"></td>
+</tr>
+<tr>
+	<td height="22" align="right">商品编号：</td>
+	<td><input type="text"  name="cid" size="40" maxlength="40" value="{$rs.cid}"></td>
+</tr>
+
+<tr>
+	<td height="22" align="right">是否显示在注册页面：</td>
+	<td><input name="isreg" type="radio" value="1" <eq name="rs.is_reg" value="1">checked="checked"</eq> />是  
+	 <input name="isreg" type="radio" value="0" <eq name="rs.is_reg" value="0">checked="checked"</eq>>否</td>
+</tr>
+
+<tr>
+	<td height="22" align="right">产品分类：</td>
+	<td>
+    <select name="cptype">
+    <volist name='list' id='voo'>
+    <option value="{$voo['id']}" <eq name="rs.cptype" value="$voo['id']">selected</eq>>{$voo['tpname']}</option>
+    </volist>
+    </select></td>
+</tr>
+<tr style="display:none">
+	<td height="22" align="right">尺寸：</td>
+	<td><input type="text"  name="ccname" size="40" maxlength="100" value="{$rs.ccname}"></td>
+</tr>
+<tr style="display:none">
+	<td height="22" align="right">型号：</td>
+	<td><input type="text"  name="xhname" size="40" maxlength="100" value="{$rs.xhname}"></td>
+</tr>
+<tr  style="display:none">
+	<td height="22" align="right">会员价：</td>
+	<td><input type="text" name="money" id="money" value="{$rs.money}" size="10" maxlength="10"></td>
+</tr>
+<tr>
+	<td height="22" align="right">会员价：</td>
+	<td><input type="text" name="a_money" id="a_money" value="{$rs.a_money}" size="10" maxlength="10"></td>
+</tr>
+<tr>
+	<td height="22" align="right">市场价：</td>
+	<td><input type="text" name="b_money" id="b_money" value="{$rs.b_money}" size="10" maxlength="10"></td>
+</tr>
+<tr>
+	<td align="right">图片：</td>
+	<td class="center"><input name="image" type="text" id="image" value="{$rs.img}" size="50" maxlength="500" />
+外部地址请填写“http://”为开头的地址</td>
+</tr>
+<tr>
+	<td align="right">本地上传：</td>
+	<td class="center"><iframe src="__URL__/upload_add" width="350" height="30" scrolling="no" frameborder="0"></iframe>上传格式：jpg, gif, png, jpeg</td>
+</tr>
+<tr> 
+  <td align="right">内容：</td>
+  <td>
+  {$html}
+  </td>
+</tr>
+
+<tr>
+  <td align="right">发布时间：</td>
+  <td><input name="ctime" id="ctime" type="text" value="{$rs.create_time|date='Y-m-d H:i:s',###}" /></td>
+</tr>
+<tr>
+	<td></td>
+	<td class="center">
+	<input type="hidden" class="huge bLeftRequire" name="ID" value="{$rs['id']}">
+	<input type="submit" value="更新" class="btn1">
+    </td>
+</tr>
+</form>
+</table>
+</div>
+</body>
+</html>

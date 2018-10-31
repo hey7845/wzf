@@ -1,0 +1,95 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>详细奖金&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<table width="100%" cellpadding=3 cellspacing=0 border=0 class="tab3">
+  <tr>
+    <td align="center" class="content_td">结算时间：{$confirm|date='Y-m-d H:i:s',###}</td>
+    </tr>
+</table>
+<table width="100%" cellpadding=3 border=0 cellspacing="1" id="tb1" bgcolor="#b9c8d0" class="tab3">
+<thead>
+  <tr align="center" class="content_td">
+    <th nowrap ><span>会员编号</span></th>
+    <th {$c_b[1]}><span>{$fee_s7[0]}</span></th>
+			<th {$c_b[2]}><span>{$fee_s7[1]}</span></th>
+			<th {$c_b[3]}><span>{$fee_s7[2]}</span></th>
+			<th {$c_b[4]}><span>{$fee_s7[3]}</span></th>
+			<th {$c_b[5]}><span>{$fee_s7[4]}</span></th>
+			<th {$c_b[6]}><span>{$fee_s7[5]}</span></th>
+			<th {$c_b[7]}><span>{$fee_s7[6]}</span></th>
+			<th {$c_b[8]}><span>{$fee_s7[7]}</span></th>
+			<th {$c_b[9]}><span>{$fee_s7[8]}</span></th>
+			<th {$c_b[10]}><span>{$fee_s7[9]}</span></th>
+			<th {$c_b[11]}><span>{$b_b[11]}</span></th>
+			<th {$c_b[13]}><span>{$b_b[13]}</span></th>
+			<th {$c_b[0]}><span>{$b_b[0]}</span></th>
+			<th {$c_b[12]}><span>{$b_b[12]}</span></th>
+    </tr>
+</thead>
+  <volist name='list' id='vo'>
+  <tr align="center" class="content_td">
+    <td>{$vo['uid']|user_id}</td>
+    <td {$c_b[1]}>{$vo['b1']}</td>
+		<td {$c_b[2]}>{$vo['b2']}</td>
+		<td {$c_b[3]}>{$vo['b3']}</td>
+		<td {$c_b[4]}>{$vo['b4']}</td>
+		<td {$c_b[5]}>{$vo['b5']}</td>
+		<td {$c_b[6]}>{$vo['b6']}</td>
+		<td {$c_b[7]}>{$vo['b7']}</td>
+		<td {$c_b[8]}>{$vo['b8']}</td>
+		<td {$c_b[9]}>{$vo['b9']}</td>
+		<td {$c_b[10]}>{$vo['b10']}</td>
+		<td {$c_b[11]}>{$vo['b1']+$vo['b2']+$vo['b3']+$vo['b4']+$vo['b5']+$vo['b6']+$vo['b7']+$vo['b8']}</td>
+		<td {$c_b[13]}>{$vo['b1']+$vo['b2']+$vo['b3']+$vo['b4']+$vo['b5']+$vo['b6']+$vo['b7']+$vo['b8']-$vo['b0']}</td>
+		<td {$c_b[0]}>{$vo['b0']}</td>
+	<td><a href="__URL__/adminFinanceTableList/did/{$vo['did']}/uid/{$vo['uid']}" title="查看会员得奖明细">明细</a></td>
+    </tr>
+  </volist>
+   <tr align="center">
+		<td>总计：</td>
+		<td {$c_b[1]}>{$count[1]}</td>
+		<td {$c_b[2]}>{$count[2]}</td>
+		<td {$c_b[3]}>{$count[3]}</td>
+		<td {$c_b[4]}>{$count[4]}</td>
+		<td {$c_b[5]}>{$count[5]}</td>
+		<td {$c_b[6]}>{$count[6]}</td>
+		<td {$c_b[7]}>{$count[7]}</td>
+		<td {$c_b[8]}>{$count[8]}</td>
+		<td {$c_b[9]}>{$count[9]}</td>
+		<td {$c_b[10]}>{$count[10]}</td>
+		<td {$c_b[11]}>{$count[1]+$count[2]+$count[3]+$count[4]+$count[5]+$count[6]+$count[7]+$count[8]}</td>
+		<td {$c_b[13]}>{$count[1]+$count[2]+$count[3]+$count[4]+$count[5]+$count[6]+$count[7]+$count[8]-$count[0]}</td>
+		<td {$c_b[0]}>{$count[0]}</td>
+		<td {$c_b[12]}>&nbsp;</td>
+	</tr>
+</table>
+<tr align="center">
+    <td colspan="26" align="left">
+    <input name="button3" type="button" onclick="window.location.href='__URL__/financeDaoChu/did/{$did}'" value="导出Excel" class="button_text" />
+    &nbsp;&nbsp;&nbsp;
+    <input name="button4" type="button" onclick="window.location.href='__URL__/financeDaoChuTwo/did/{$did}'" value="导出WPS" class="button_text" />
+    &nbsp;&nbsp;&nbsp;
+    <input name="button4" type="button" onclick="window.location.href='__URL__/financeDaoChuTXT/did/{$did}'" value="导出TXT" class="button_text" />
+    </td>
+</tr>
+<table width="100%" cellpadding=0 cellspacing=1 border=0>
+   <tr align="center" class="content_td">
+     <td colspan="10">{$page}</td>
+    </tr>
+</table>
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminFinanceTableShow/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="button_text"/>
+    <input name="did" type="hidden" id="did" value="{$did}" />
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

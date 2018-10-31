@@ -1,0 +1,84 @@
+<include file="Public:header" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div id="main_top"><font>您现在的位置是：</font> 晋级申请</div>
+<script language='javascript'>
+function CheckForm(){
+	if(confirm('您确定要使用电子积分支付晋级吗？')){
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>
+<div class="sub_bav">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+
+	<form name="form1" method="post" action="__URL__/jinjiConfirm" onSubmit="return CheckForm();">
+	<tr>
+    <td align="right">会员编号：</td>
+    <td><input name="UserID" type="text"  value="{$frs['user_id']}"  style="background-color:#ddd;" readonly="readonly"/></td>
+    </tr>
+    <tr>
+    <td align="right">当前等级：</td>
+    <td>{$level[$frs['u_level']]}
+    </tr>
+  <tr>
+    <td align="right">晋级为：</td>
+    <td>
+    <lt name="frs['u_level']" value="4" >
+        <select name="uLevel" id="uLevel">
+        <volist name="sx1" id="vo">
+        <egt name="key" value="$frs['u_level']" >
+        <option value="{$key+1}">{$level[$key+1]} - {$sx1[$key]}</option>
+        </egt>
+        </volist>   
+        </select>                            
+   <else /><span class="hong"> 您已是最高等级，无法晋级。</span>
+   </lt>
+      
+      </td>
+  </tr>
+  <lt name="frs['u_level']" value="4" >
+    <tr>
+            <td align="right">备注：</td>
+            <td><textarea name="content" id="content" cols="40" rows="8"></textarea></td>
+    </tr>
+    <td align="right">&nbsp;</td>
+    <td><input type="submit" name="Submit" value="确定晋级" class="btn1"/></td>
+  </tr>
+  </lt>
+  </form>
+  <tr>
+    <td colspan="2" class="tabletd"><strong>晋 级 记 录</strong></td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb2">
+      <tr>
+        <th><span>会员编号</span></th>
+        <th><span>晋级前</span></th>
+        <th><span>晋级后</span></th>
+        <th><span>投资金额</span></th>
+        <th><span>申请时间</span></th>
+        <th><span>确认时间</span></th>
+        <th><span>备注</span></th>
+        <th><span>状态</span></th>
+      </tr>
+	<volist name="list" id="vo">
+      <tr>
+        <td><div align="center">{$vo['user_id']}</div></td>
+        <td><div align="center"><span  class="STYLE1">{$level[$vo['u_level']]}</span></div></td>
+        <td><div align="center"><span  class="STYLE1">{$level[$vo['up_level']]}</span></div></td>
+        <td><div align="center"><span  class="STYLE1">{$vo['money']+$vo['money_two']}</span></div></td>
+        <td><div align="center">{$vo.create_time|date='Y-m-d H:i:s',###}</div></td>
+        <td><div align="center"><gt name="vo.pdt" value="0" >{$vo.pdt|date='Y-m-d H:i:s',###}<else />&nbsp;</gt></div></td>
+        <td><div align="center"><a href="__URL__/jinjishow/Sid/{$vo['id']}/">点击查看</a></div></td>
+        <td><div align="center"><eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq>
+        				<eq name="vo['is_pay']" value="1">已确认</eq></div></td>
+      </tr>
+	</volist>
+    </table></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

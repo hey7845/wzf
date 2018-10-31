@@ -1,0 +1,76 @@
+<include file="Public:xyHead" />
+<script language='javascript'>
+function CheckForm(){
+	if(confirm('您确定要申请新网络吗？')){
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h4>新网络申请 </h4></div>
+<div class="c_p5"><div class="tips">申请新网络，需要向公司打款4万元。 </div></div>
+<br>
+<form name="form1" method="post" action="__URL__/netAorBApplyConfirm" onSubmit="return CheckForm();">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+  <tr>
+    <td align="right">会员编号：</td>
+    <td>{$frs['user_id']}<input name="UserID" type="hidden"  value="{$frs['user_id']}"/></td>
+  </tr>
+  <tr>
+    <td align="right">注册金额：</td>
+    <td>40000元</td>
+  </tr>
+  <tr>
+    <td align="right">分红包：</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td align="right">当前网络：</td>
+    <eq name="frs['net_status']" value='b'>
+    <td>B网</td>
+    <else />
+    <td>A网</td>
+    </eq>
+  </tr>
+  <tr>
+  	<td>&nbsp;</td>
+    <td><input type="submit" name="Submit" value="新网络申请" class="btn1" width = "100px"/></td>
+  </tr>
+</table>
+</form>
+<br><br><br>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+  <tr>
+    <td colspan="2" class="tabletd"><strong>网络申请记录</strong></td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb2">
+      <tr>
+        <th><span>会员编号</span></th>
+        <th><span>申请时间</span></th>
+        <th><span>开通金额</span></th>
+        <th><span>单数</span></th>
+        <th><span>状态</span></th>
+      </tr>
+	<volist name="list" id="vo">
+      <tr>
+        <td align="center">{$vo['user_id']}</td>
+        <td align="center">{$vo.adt|date='Y-m-d H:i:s',###}</td>
+		<td align="center">{$vo['money']}</td>
+        <td align="center">{$vo['danshu']}</td>
+        <td align="center">
+        	<eq name="vo['is_pay']" value='0'>
+        		<span style="color: #FF0000;">未确认</span>
+        	<else />已确认
+        	</eq>
+        </td>
+      </tr>
+	</volist>
+    </table></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

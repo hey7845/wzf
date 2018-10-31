@@ -1,0 +1,75 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/Ajax/ThinkAjax-1.js" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+function CheckForm(){
+	if(confirm('您确定要投资吗？'))
+	{
+		return true;
+	}else{
+		return false;
+    }
+}
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>投资理财 </h1></div>
+  <table width="100%" border="0" cellpadding="5" cellspacing="10" class="">
+    <form name="form1" method="post" action="__URL__/frontxiaofeiAC" onSubmit="{return CheckForm();}">
+      <tr>
+        <td width="25%">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">报单账户余额：</td>
+        <td><span class="hong">{$rs['agent_cash']}</span></td>
+      </tr>
+      <tr>
+        <td align="right">种子账户余额：</td>
+        <td><span class="hong">{$rs['agent_cf']}</span></td>
+      </tr>
+      <tr>
+        <td align="right">{$User_namex}：</td>
+        <td><input name="UserID" type="text" id="UserID" style="background-color:#ddd;" value="{$rs['user_id']}" size="20" maxlength="20" readonly="readonly"/></td>
+      </tr>
+      <tr>
+        <td align="right"> 投资额度：</td>
+        <td><input name="ePoints" type="text" value="0" size="20" maxlength="20" /> <span class="hong">{$fee_rs['s11']}</span> 元/份 分红资格</td>
+      </tr>
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td><input type="submit" name="Submit" value="确定" class="button_text" /></td>
+        </tr>
+    </form>
+  </table><br />
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>投资金额</span></th>
+			<th><span>分红份额</span></th>
+			<th><span>投资时间</span></th>
+			<th><span>已分红额度</span></th>
+            <th><span>分红状态</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$rs['user_id']}</td>
+        <td>{$vo['money']}</td>
+        <td>{$vo['money_two']} 份</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo['fh_money']}</td>
+        <td>
+        <eq name="vo['is_pay']" value="0">正常分红</eq>
+        <eq name="vo['is_pay']" value="1"><span style="color: #FF3300;">分红封顶</span></eq></td>
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

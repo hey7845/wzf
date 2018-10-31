@@ -1,0 +1,59 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<style>
+.us img{border:1px solid #999; width:100px; height:100px;}
+.us_btn{height:27px; line-height:27px; font-size:12px; font-weight:bold; padding:0 10px; text-decoration:underline;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>查看凭证</h1></div>
+        <table width="100%" border="0" cellpadding="3" cellspacing="0">
+          <form method='post' id="form1" action="__URL__/changepingzhengSave" > 
+          <tr>
+              <td align="right">凭证预览：</td>
+              <td class="center"><img style="height:225px;width:330px;" id="imageShow" alt="商品图像" src="{$crs['sellbz']}"></td>
+          </tr>
+<!--          <tr>
+            <td height="25" colspan="3" align="center">
+            <input type="hidden" name="PPID" value="{$crs['id']}" >
+            <input type="submit" value="修改" class="button_text">&nbsp;&nbsp;
+            <input name="重置" type="reset" class="button_text" value="重置"></td>
+          </tr>-->
+          </form>
+        </table>
+</div>
+</body>
+</html>
+<script>
+var i=document.getElementById("BankName").selectedIndex;
+function setDefault() {
+    document.getElementById("BankName").selectedIndex=i;
+}
+</script>
+<script>
+function addNetImg(){
+	var str = document.getElementById('image2').value;
+	document.getElementById('image').value = str;
+	document.getElementById('imageShow').src = str;
+	window.frames["frmPic"].document.getElementById('crop-preview-100').src=str;
+}
+function changeType(type){
+	
+	switch(type){
+		case 1:
+			document.getElementById('addImageURL').style.display='none';
+			document.getElementById('uploadImg').style.display='block';
+			window.frames["frmPic"].document.getElementById('selectImg').style.display='block';
+			window.frames["frmPic"].document.getElementById('saveImg').style.display='block';
+			window.frames["frmPic"].document.getElementById('cancelImg').style.display='block';
+			break;
+		case 2:
+			document.getElementById('addImageURL').style.display='block';
+			window.frames["frmPic"].document.getElementById('selectImg').style.display='none';
+			window.frames["frmPic"].document.getElementById('saveImg').style.display='none';
+			window.frames["frmPic"].document.getElementById('cancelImg').style.display='none';
+			break;
+		default:
+	}
+}
+
+</script>

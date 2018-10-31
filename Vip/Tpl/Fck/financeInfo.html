@@ -1,0 +1,54 @@
+<style type="text/css"></style>
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<tagLib name="html" />
+<include file="Public:header" />
+<div class="sub_bav" id="sub_bav_id">
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <td class="tabletd">&nbsp;</td>
+  </tr>
+  
+  <tr align="center">
+    <td bgcolor="#FaFFFF">
+            <br />
+            <br />
+            <br />
+        <table width="420" height="88" border="0" cellspacing="1" cellspacing="0">
+          <tr class="content_td">
+            <td width="50%" height="45" colspan="2"class='content_td'><strong>会员编号：{$rs['user_id']}</strong></td>
+            <td class='content_td'><strong>级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：{$rs['u_level']|level_name}</strong></td>
+            </tr>
+          <tr class="content_td">
+            <td width="50%" colspan="2"class='content_td'><strong>总 奖 金：{$rs['zjj']}</strong></td>
+            <td class='content_td'><strong>剩余奖金：{$rs['agent_use']}</strong></td>
+            </tr>
+		</table>
+        <table width="420" height="100" border="0" cellspacing="1" cellspacing="0">
+          <tr class="content_td">
+            <td width="34%" align="center"><strong>总 单 数</strong></td>
+            <td width="33%">{$rs['l']}&nbsp;</td>
+            <td width="33%">{$rs['r']}&nbsp;</td>
+          </tr>
+          <tr class="content_td">
+            <td align="center"><strong>结余单数</strong></td>
+            <td>{$rs['shangqi_l']}&nbsp;</td>
+            <td>{$rs['shangqi_r']}&nbsp;</td>
+          </tr>
+          <tr class="content_td">
+            <td align="center"><strong>新增单数</strong></td>
+            <td>{$rs['benqi_l']}&nbsp;</td>
+            <td>{$rs['benqi_r']}&nbsp;</td>
+          </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+        <br />
+
+    </td>
+    
+  </tr>
+</table>
+</div>
+</body>
+</html>

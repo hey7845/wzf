@@ -1,0 +1,52 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>股指手明细 </h1></div>
+<table width="600" align="center">
+    
+    <tr>
+    <td align="center"> <span style="color:#FF0000; font-weight:bold">注：您目前股指（手）共有：{$t_totle}，回购账户{$rs['agent_gp']}，您已出局股指（手）：{$cj_totle}。</span></td>
+    </tr>
+</table>
+
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+    <tr align="center"> 
+        <th nowrap><span>编号</span></th>
+        <th nowrap><span>时间</span></th>
+        <th nowrap><span>数量</span></th>
+        <th nowrap><span>类型</span></th>
+        <th nowrap><span>已出局数量</span></th>
+        <th nowrap><span>是否出局</span></th>
+        <th nowrap><span>出局时间</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr align="center"> 
+        <td>{$vo['id']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo['nums']}</td>
+		 <td><eq name="vo['type']" value='0'>回购账户购买<else /><span style="color: #FF0000;">注册赠送</span></eq></td>
+        <td>{$vo['cj_nums']}</td>
+        <td><eq name="vo['is_cj']" value='0'>未出局<else /><span style="color: #FF0000;">已出局</span></eq></td>
+       <!-- <td>{$vo['user_address']}</td>-->
+        <td><eq name="vo['is_cj']" value='0'>-<else />{$vo.cj_time|date='Y-m-d H:i:s',###}</eq></td>
+       
+      
+    </tr>
+    </volist>
+	<tr><td colspan="7">{$page}</td></tr>
+</table>
+<!--<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/frontMenber/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="btn1"/></span>
+    </form></td>
+    </tr>
+</table>-->
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

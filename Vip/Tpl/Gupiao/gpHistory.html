@@ -1,0 +1,77 @@
+<tagLib name="html" />
+<include file="Public:header" />
+<div class="bav">
+ 	<div class="sub_bav">
+<div class="sub_bav_bt"><h1>股票交易记录</div>
+    <div class="bav_cont">
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="tab" >
+
+        <tr>
+          <td height="28" colspan="7" align="center"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="tab" >
+            <tr class="td2">
+              <td height="24" colspan="2" align="center" class="td2"><span style="color:#0000FF; font-size:14px">股票交易记录</span></td>
+            </tr>
+            <tr>
+              <td height="24" align="right">&nbsp;</td>
+               <td align="left">您现在剩余<span style="color:#F00;">{$live_gp}</span>，
+			  	 正在求购<span style="color:#F00;">{$gping_num0}</span>，
+				 正在出售<span style="color:#F00;">{$gping_num1}</span></td>
+            </tr>
+            <tr>
+              <td width="33%" height="24" align="right">成功总出售数量：</td>
+              <td width="67%" align="left"><input name="sNun" type="text" id="sNun"  maxlength="20"  value="{$all_out_gp}" readonly="readonly"></td>
+            </tr>
+            <tr>
+              <td height="24" align="right" style="border-right:none;">成功总买进数量：</td>
+           	  <td align="left"><input name="one_price" type="text" id="one_price"  maxlength="20" value="{$all_in_gp}" readonly="readonly"></td>
+            </tr>
+            <tr>
+              <td height="24" align="center" colspan="2"><span style="color:#FF0000">当前股票价格：{$one_price}</span></td>
+              <td>
+             </td>
+            </tr>
+            <tr>
+              <td height="24" colspan="2" align="center"><span style="color:#F00; font-weight:bold;"><!--记录只能发布三天--></span></td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td height="28" align="center">时间</td>
+          <td align="center">数量</td>
+		  <td align="center">单价</td>
+          <td align="center">总金额 </td>
+		   <td align="center">K币账户部分</td>
+		    <td align="center">游戏币部分</td>
+		   <td align="center">说明</td>
+         <!-- <td width="16%" align="center">功能 </td>-->
+        </tr>
+<volist name="list" id="vo">
+        <tr>
+          <td height="25" align="center">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+          <td align="center">{$vo.sNun}</td>
+		   <td align="center">{$vo.one_price}</td>
+		   <td align="center">{$vo.price}</td>
+          <td align="center">{$vo['pmp']*$vo['gprice']}({$vo['pmp']*100}%)</td>
+		   <td align="center">{$vo['gmp']*$vo['gprice']}({$vo['gmp']*100}%)</td>
+		  <td align="center">
+		  	<empty name="vo.type">成功求购的股票<else />成功售出的股票</empty></td>
+          <!--<td align="center"><a href="__URL__/dell/uid/{$vo.id}">删除</a></td>-->
+        </tr>
+</volist>
+
+        <tr>
+          <td height="25" colspan="7" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<!--            <tr>
+                <td><div align="left"></div></td>
+              <td><div align="right"></div></td>
+            </tr>-->
+          </table></td>
+        </tr>
+		<tr><td align="center" height="25" colspan="7">{$page}</td></tr>
+      </table>
+      <div class="h_5"></div>
+   </div>
+    <div class="bav_fot"></div>
+ </div>
+</body>
+</html>

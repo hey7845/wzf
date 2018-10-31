@@ -1,0 +1,49 @@
+<include file="Public:header" />
+<div id="main_top"><font>您现在的位置是：</font>金币中心管理</div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+    <tr class="content_td" align="center">
+        <th nowrap><span>会员编号</span></th>
+        <th nowrap><span>会员名</span></th>
+        <th nowrap><span>申请时间</span></th>
+        <th nowrap><span>确认时间</span></th>
+        <th nowrap><span>剩余注册币</span></th>
+        <th nowrap><span>申请金额</span></th>
+        <th nowrap><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo" key='k'>
+	<form name="form3" method="post" action="__URL__/adminJBAC">
+    <tr align="center">
+        <td><a href="../fck/menber/bj_id/{$vo['id']}/eth/2">{$vo['user_id']}</a>&nbsp;</td>
+        <td><span class="STYLE1">{$vo['nickname']}</span>&nbsp;</td>
+        <td><eq name="vo['sq_jb']" value="1">{$vo.jb_sdate|date='Y-m-d H:i:s',###}</eq>&nbsp;</td>
+        <td><eq name="vo['is_jb']" value="1">{$vo.jb_idate|date='Y-m-d H:i:s',###}</eq>&nbsp;</td>
+        <td>{$vo['agent_cash']}</td>
+        <td><input name="agentmax" type="text" id="agentmax" size="20" maxlength="20" value="{$vo['agent_max']}" style="text-align:center"/><input type="hidden" name="tabledb" value="{$vo['id']}" /></td>
+        <td><input type="submit" name="action" value="确认" class="btn1" onclick="{if(confirm('确定吗?')){return true;}return false;}">&nbsp;&nbsp;
+          <input type="submit" name="action" value="删除" class="btn1" onclick="{if(confirm('确定删除吗?')){return true;}return false;}"></td>
+    </tr>
+	</form>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+    <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminJB/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="btn1"/>
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

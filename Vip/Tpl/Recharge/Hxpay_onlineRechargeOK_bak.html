@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body onLoad="document.dinpayForm.submit();">
+<!--<body>-->
+正在跳转 ...
+<form name="dinpayForm" method="post" action="<?php echo $Zhuan_url?>">
+	<input type="hidden" name="Mer_code" value="<?php echo $Mer_code?>" />
+	<input type="hidden" name="Billno" value="<?php echo $Billno?>"/>
+	<input type="hidden" name="Amount" value="<?php echo $Amount?>"/>
+	<input type="hidden" name="Date" value="<?php echo $Date?>"/>
+	<input type="hidden" name="Currency_Type" value="<?php echo $Currency_Type?>"/>
+	<input type="hidden" name="Gateway_Type" value="<?php echo $Gateway_Type?>"/>
+	<input type="hidden" name="Lang" value="<?php echo $Lang?>">
+    <input Type="hidden" Name="Merchanturl" value="<?php echo $Merchanturl?>"/>
+	<input type="hidden" name="FailUrl" value="<?php echo $FailUrl?>"/>
+	<input type="hidden" name="ErrorUrl" value="<?php echo $ErrorUrl?>"/>
+	<input type="hidden" name="Attach" value="<?php echo $Attach?>"/>
+	<input type="hidden" name="DispAmount" value="<?php echo $DispAmount?>"/>
+	<input Type="hidden" Name="OrderEncodeType" value="<?php echo $OrderEncodeType?>"/>
+	<input Type="hidden" Name="RetEncodeType" value="<?php echo $RetEncodeType?>"/>
+	<input Type="hidden" Name="Rettype" value="<?php echo $Rettype?>"/>
+	<input Type="hidden" Name="ServerUrl" value="<?php echo $ServerUrl?>"/>
+    <input type="hidden" name="SignMD5" value="<?php echo $SignMD5?>" />
+    <input type="hidden" name="Mer_key" value="<?php echo $Mer_key?>" />
+    <!--<input name="bbb" type="submit" value="提交" id="bbb">-->
+	</form>
+</body>
+</html>

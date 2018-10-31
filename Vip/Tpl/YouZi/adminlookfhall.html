@@ -1,0 +1,33 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>分红查看 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th nowrap>序号</th>
+       <!-- <th nowrap><span>分红次数</span></th>-->
+        <th nowrap><span>分红单位</span></th>
+		<th nowrap><span>出局单位</span></th>
+        <th nowrap><span>发放时间</span></th>
+        </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center">
+        <td nowrap>{$key+1}</td>
+       <!-- <td nowrap>第 {$vo['f_num']} 次</td>-->
+        <td nowrap>{$vo['f_money']}</td>
+	    <td nowrap>{$vo['f_num']}/（手）</td>
+        <td nowrap>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        </tr>
+    </volist>
+
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

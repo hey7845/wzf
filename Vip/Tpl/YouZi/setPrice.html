@@ -1,0 +1,39 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>汉语币走势</h1></div>
+<form method='post' id="myform" action="__URL__/setPriceSave" >
+<table width="100%" cellpadding=3 cellspacing=0 border=0 id="tb1" class="tab4">
+<tr class="content_td">
+                <td width="15%" >&nbsp;</td>
+                <td width="85%">&nbsp;</td>
+</tr>
+<tr>
+				<td align="right">价格：</td>
+				<td class="left"><input name="price" type="text" id="s10" value="" size="50" maxlength="80" />
+                </td>
+</tr>
+<tr>
+  <td></td>
+  <td class="left">
+    <input type="submit" value="保存" class="button_text">
+</tr>
+</table>
+<br />
+<br />
+<br />
+<table width="100%" cellpadding=3 cellspacing=0 border=0 class="tab4">
+	<tr class="content_td">
+		<td width="15%" >价格</td>
+		<td>日期</td>
+	</tr>
+	<volist name="rs" id="vo">
+		<tr>
+			<td>{$vo['price']}</td>
+			<td>{$vo['priceDate']}</td>
+		</tr>
+	</volist>
+</table>
+</form>
+</div>
+</body>
+</html>

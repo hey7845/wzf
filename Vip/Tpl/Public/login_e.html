@@ -1,0 +1,150 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Member management platform</title>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/ie6png.js\"></sc"+"ript>")</script> 
+<script src="__PUBLIC__/js/iepng.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="__PUBLIC__/js/iepng.js"></script>
+<script type="text/javascript">
+   EvPNG.fix('div, ul, img, li, input,a,img,p');
+</script> 
+<![endif]-->
+<script language="JavaScript">
+<!--
+var PUBLIC	 =	 '__PUBLIC__';
+ThinkAjax.image = [	 '__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif','__PUBLIC__/Images/update.gif' ]
+ThinkAjax.updateTip	=	'登录中～';
+function loginHandle(data,status){
+if (status==1)
+{
+$('result').innerHTML	=	'<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+$('form1').reset();
+window.location = '__URL__';
+}else{
+	fleshVerify();
+}
+}
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+	ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+function fleshVerify(type){
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	background-image: url(__PUBLIC__/Images/bg.jpg);
+	margin-left: 0px;
+	margin-right: 0px;
+}
+td {
+    FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; 
+	font-size: 10px;
+	line-height: 22px;
+}
+form{ margin:0px; padding:0px;}
+.title1 {
+	font-size: 14px;
+	line-height: 22px;
+	color: #000000;
+	font-weight: bold;
+}
+.STYLE1 {line-height: 22px; color: #000000; font-size: 14px;}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="1000" height="544" border="0" align="center" cellpadding="0" cellspacing="0" background="__PUBLIC__/Images/bg2.jpg">
+  <tbody><tr>
+    <td>
+    <table width="100%" height="544" border="0" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <td width="52%">&nbsp;</td>
+        <td width="20%">&nbsp;</td>
+        <td width="28%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="300">&nbsp;</td>
+        <td valign="bottom">
+        <form method='post' name="login" id="form1"  >
+        <table width="98%" height="140" border="0" align="right" cellpadding="0" cellspacing="0" style="FONT-SIZE: 11px;font: normal 10px Arial;; LINE-HEIGHT: 15px;">
+          <tbody>
+		  <tr>
+              <td height="25" align="right">COUNTRY:</td>
+              <td height="25">&nbsp;<input type="hidden" name="Country" id="Country" value="c2" maxlength="20">
+      <img src="__PUBLIC__/Images/c2.png" name="Countryimg" width="48" height="48" border="0" align="absmiddle" id="Countryimg" style="padding-left:10px"></td>
+              <td height="25"></td>
+            </tr>
+            <tr>
+              <td width="45%" height="25"><div align="right">USERNAME:</div></td>
+              <td width="53%" height="25">&nbsp;<input name="account" id="account" style="BORDER-RIGHT: #7dbad7 1px solid; BORDER-TOP: #7dbad7 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #7dbad7 1px solid; WIDTH: 95px; COLOR: #000; BORDER-BOTTOM: #7dbad7 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #fff" maxlength="20">
+              </td>
+              <td width="2%" height="25"><input type="hidden" name="ajax" value="1"></td>
+            </tr>
+            
+            <tr>
+              <td height="25"><div align="right">PASSWORD:</div></td>
+              <td height="25">&nbsp;<input name="password" type="password" id="password" style="BORDER-RIGHT: #7dbad7 1px solid; BORDER-TOP: #7dbad7 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #7dbad7 1px solid; WIDTH: 95px; COLOR: #000; BORDER-BOTTOM: #7dbad7 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #fff" maxlength="20">
+              </td>
+              <td height="25"></td>
+            </tr>
+			<tr>
+              <td height="25" align="right">VERIFYCODE:</td>
+              <td height="25">&nbsp;<input name="verify" style="BORDER-RIGHT: #7dbad7 1px solid; BORDER-TOP: #7dbad7 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #7dbad7 1px solid; WIDTH: 40px; COLOR: #000; BORDER-BOTTOM: #7dbad7 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #fff" maxlength="6">&nbsp;<img id="verifyImg" src="__URL__/verify/" onclick="fleshVerify()" name="verifyImg" align="absmiddle" alt="点击刷新验证码" style="cursor:pointer"></td>
+              <td height="25"></td>
+            </tr>
+            <tr>
+              <td colspan="3"><div class="error"><span id="result" style="margin-left:40px; color:#FFD074"></span></div></td>
+            </tr>
+          </tbody>
+        </table>
+        </form>
+        </td>
+        <td style="padding-bottom:25px" valign="bottom">
+        <input name="image" type="image" src="__PUBLIC__/Images/login.gif" width="30" height="37" border="0"  onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody></table>
+    </td>
+  </tr>
+</tbody></table>
+</body></html>

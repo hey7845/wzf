@@ -1,0 +1,74 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>会员续费 </h1></div>
+<script language='javascript'>
+function CheckForm(){
+	if(confirm('您确定要使用电子货币续费吗？')){
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>
+<form name="form1" method="post" action="__URL__/validAC" onsubmit="return CheckForm();">
+  <table width="100%" border="0" cellpadding="5" cellspacing="5" class="">
+      <tr>
+        <td width="25%" align="right">会员账号：</td>
+        <td><span class="hong">{$rs['user_id']}</span></td>
+      </tr>
+      <tr>
+        <td align="right">总奖金：</td>
+        <td><span class="hong">{$rs['zjj']}</span></td>
+      </tr>
+      <tr>
+        <td align="right">报单账户：</td>
+        <td><span class="hong">{$rs['agent_cash']}</span></td>
+      </tr>
+      <gt name="rs.id" value="1">
+      <tr>
+        <td align="right">续费金额：</td>
+        <td><span class="hong">{$s11} 元/月</span></td>
+      </tr>
+      <tr>
+        <td align="right">续费期限：</td>
+        <td><input name="uplevel" type="text" id="uplevel" value="1" size="10" maxlength="10" /> <span class="hong">个月</span></td>
+      </tr>
+      <tr>
+        <td align="right"></td>
+        <td><input type="submit" name="Submit" value="确定" class="button_text" /></td>
+      </tr>
+	  </gt>
+  </table>
+</form>
+<br />
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>续费金额</span></th>
+			<th><span>续费时间</span></th>
+			<th><span>确认时间</span></th>
+            <th><span>状态</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$rs['user_id']}</td>
+        <td>{$vo['money']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td><gt name="vo.pdt" value="0">{$vo.pdt|date='Y-m-d H:i:s',###}</gt></td>
+        <td>
+        <eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq>
+        <eq name="vo['is_pay']" value="1">已确认</eq></td>
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+<br />
+</div>
+</body>
+</html>

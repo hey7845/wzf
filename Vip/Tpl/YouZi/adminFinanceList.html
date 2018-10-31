@@ -1,0 +1,51 @@
+<include file="Public:xyHead" />
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+.STYLE2 {color: #00CC99}
+-->
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>收入列表&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+<td colspan="7" class="tabletd">
+<form method="post" action="__URL__/adminFinanceList">
+<div class="fLeft">
+	<span id="key">查询：
+	<input type="text" name="UserID" title="帐号查询">
+      <input type="hidden" name="eDate" value="{$eDate}" />
+      <input type="hidden" name="sDate" value="{$sDate}" />
+	<input type="submit" name="Submit" value="查 询" class="button_text" />
+	</span></div>
+<div  id="searchM" class=" none search cBoth" ></div>
+</form></td>
+</tr>
+<tr align="center">
+    <th nowrap><span>会员编号</span></th>
+    <th nowrap><span>姓名</span></th>
+	<th nowrap><span>消费金额</span></th>
+	<th nowrap><span>联系电话</span></th>
+	<th nowrap><span>开通会员</span></th>
+	<th nowrap><span>注册时间</span></th>
+	<th nowrap><span>开通时间</span></th>
+	<!--<th nowrap><span>商户级别</span></th>-->
+</tr>
+<volist name="list" id="vo">
+<tr align="center">
+	<td nowrap="nowrap">{$vo['user_id']}</td>
+	<td nowrap="nowrap">{$vo['user_name']}</td>
+	<td nowrap="nowrap">{$vo['cpzj']}</td>
+	<td nowrap="nowrap">{$vo['user_tel']}</td>
+	<td nowrap="nowrap"><eq name="vo.open" value="1">公司开通<else/>{$vo['shop_name']}</eq></td>
+	<td nowrap="nowrap">{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+	<td nowrap="nowrap">{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+	<!--<td nowrap="nowrap">{$voo[$vo['u_level']]}</td>-->
+</tr>
+</volist>
+<tr align="center">
+	<td colspan="7">{$page}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

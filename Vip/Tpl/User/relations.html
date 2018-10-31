@@ -1,0 +1,39 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>直推体系表 </h1></div>
+<!-- 功能操作区域结束 -->
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+  <tr>
+    <td colspan="7" class="tabletd">
+    <form method='post' action="__URL__/relations">
+会员编号：<input type="text" name="UserID" title="帐号查询" class="medium" >
+  <input type="submit" name="Submit" value="查 询" class="button_text"/ >
+</form></td>
+    </tr>
+  <tr>
+    <th><div align="center">会员编号</div></th>
+    <th><div align="center">联系电话</div></th>
+    <th><div align="center">QQ号码</div></th>
+    <th><div align="center">注册时间</div></th>
+    <th><div align="center">开通时间</div></th>
+    <th><div align="center">注册金额</div></th>
+    <th><div align="center">会员级别</div></th>
+  </tr>
+<volist name="list" id="vo">
+    <tr>
+      <td><div align="center">{$vo['user_id']}</div></td>
+      <td><div align="center">{$vo['user_tel']}</div></td>
+      <td><div align="center">{$vo['qq']}</div></td>
+      <td><div align="center">{$vo.rdt|date='Y-m-d',###}</div></td>
+    <td><div align="center">{$vo.pdt|date='Y-m-d',###}</div></td>
+    <td><div align="center"><span class="STYLE1">{$vo['cpzj']}</span></div></td>
+    <td><div align="center">{$voo[$vo['u_level']]}</div></td>
+  </tr>
+  </volist>
+<tr>
+<td colspan="7"><div align="center">{$page}</div></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

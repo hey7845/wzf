@@ -1,0 +1,170 @@
+<include file="Public:xyHead" />
+<link href="__PUBLIC__/Css/goumaisd.css" rel="stylesheet" media="all" type="text/css" />
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" />
+<DIV>
+<UL class="Payment-step clearfix">
+  <LI><SPAN>STEP 1.</SPAN>查看购物车 </LI>
+  <LI class=on><SPAN>STEP 2.</SPAN>确认订单信息 </LI>
+  <LI><SPAN>STEP 3.</SPAN>付款 </LI>
+  <LI><SPAN>STEP 4.</SPAN>确认收货 </LI></UL></DIV>
+<div class="ncenter_box">
+<div class="accounttitle">
+	<h1><span class="tCenter space">确认购物&nbsp;&nbsp;&nbsp;</span></h1>
+</div>
+<form name="form3" method="post" action="__URL__/ShopingSave">
+<table width="100%" class="tab3" border="0" cellpadding="0" cellspacing="0">
+  <tr><td colspan="6">
+      <div class="centent_warp">
+      <h4>确认收货地址：</h4>
+      </div>
+	  <div class="bg-info">
+	        <fieldset>     
+				<volist name="aList" id="vo" key="i">  
+				   <div class="fi" style="margin:5px;">
+					   <eq name="vo['moren']" value="1" >
+					   <span id="bb{$key}" style="color:#F00;font-size:14px; font-weight:bold;"><img src="__PUBLIC__/Images/22.gif" />寄送至 </span>
+					   <else/>
+					   <span id="bb{$key}" style="color:#F00;font-size:14px; font-weight:bold; display:none;"><img src="__PUBLIC__/Images/22.gif" />寄送至 </span>
+					   </eq>
+					   <span id="a{$key}" class="a">
+					   <input name="adid" id="adid{$key}" type="radio" value="{$vo['id']}" onclick="checklength();" <eq name="vo['moren']" value="1" > checked="checked"</eq>/>
+					   {$vo['address']} （{$vo['name']} 收）</span> &nbsp;&nbsp;{$vo['tel']} &nbsp;&nbsp;
+						<eq name="vo['moren']" value="1" >默认地址
+						<else/>
+							<a href="#" onclick="ajaxRID({$vo['id']});">设为默认地址</a>
+						</eq> &nbsp;&nbsp;
+						<span name="dzxxx" id="mr{$vo['id']}">  </span>      &nbsp;&nbsp; 
+						<a href="__URL__/addadr/ID/{$vo['id']}">修改本地址</a>   &nbsp;&nbsp;  
+						<a href="__URL__/delAdr/ID/{$vo['id']}">删除本地址</a> 
+					</div>
+				</volist>
+	         	<input type="button" class="btn btn-info btn-sm" name="" value="添加新地址" id="" onclick="window.location='__URL__/addadr'" style="float:left"/>
+	        </fieldset>
+    	</div>
+    <br/>
+     <fieldset style="display:none"> 
+       <div class="product_cart">
+        <div class="product_cart" id="PaySet">
+        <h4>
+            支付信息： <label class="lb">
+                    支付类型</label>
+                <span id="ctl00_ContentPlaceHolder1_Order1_WalletType"><input id="ctl00_ContentPlaceHolder1_Order1_WalletType_0" type="radio" name="ctl00$ContentPlaceHolder1$Order1$WalletType" value="1" checked="checked" /><label for="ctl00_ContentPlaceHolder1_Order1_WalletType_0">报单账户</label><br /></span></h4>
+        <div class="form-regsiter"></div>
+    </div></div>
+</fieldset>
+<br/>
+<h4>产品信息：</h4>
+</td>
+</tr>
+<tr class="trtit">
+        <th width="15%">产品编号</th>
+        <th width="20%">产品名称</th>
+        <th width="10%">库存状态</th>
+        <th width="15%">单价</th>
+        <th width="15%">数量</th>
+        <th width="15%">总金额</th>
+        </tr>
+    <volist name="list" id="vo">  
+        <tr bgcolor="#FFFFFF" id="tr12" align="center">
+        <td> <span id="">{$vo['cid']}</span></td>            
+        <td><span id="">{$vo['name']}</span></td>
+        <td align="center"><span id="">有货</span></td>
+        <td align="center"><span id="">{$cc[$vo['id']]}</span></td>
+       
+        <td align="center"><span id="">{$ids[$vo['id']]}</span></td>
+        <td align="center"><span id="">{$ep[$vo['id']]}</span></td>
+        </tr>
+    </volist>
+   <input name="prices" type="hidden" id="prices" value="{$eps}" />
+  <input name="nums" type="hidden" id="nums" value="{$sum}" />
+  <input name="path" type="hidden" id="path" value="{$path}" />   
+<tr id="tr_PVamount" style="border-top: 3px solid display:block;">
+</tr>
+<tr>
+	<td align="right" colspan = "3">消费积分余额：<span style="color:#F00;">{$fck_rs['agent_use']}</span></td>
+	<td align="left" colspan = "3">电子积分余额：<span style="color:#F00;">{$fck_rs['agent_cash']}</span></td></tr>
+<tr>
+	<td align="center" colspan = "6">
+		<span style="color:#F00;">*支付方式：</span>
+		<input type="radio" name="sel" value="1">消费积分<input type="radio" name="sel" value="2">电子积分</td>
+</tr>
+</table>
+<TABLE class=cart_tab border=0 cellSpacing=5 cellPadding=5 width="100%"> 
+<tr bgcolor="#FFFFFF" style="border-top: 3px solid #C1DAD7;">
+<th align="center" bgcolor="#F0FFFF" class="spec" colspan = "6" style="text-align:center;">
+	<span style="color:#F00;">*二级密码:</span>
+	<input class="inptuaa" type="password" name="Password">
+</th>
+</tr>
+<tr>
+	<td align="center" style="border-width:1px 1px 1px 1px" colspan = "6">
+		<input type="button" class="btn btn-success" value="返回购物车" onclick="location='__URL__/shopCar'">
+		<input type="submit" class="btn btn-warning" name="" value="确认无误，立即购买" id="" />
+	</td>
+</tr>
+</table>
+    <div style="position: relative; margin-top:10px;">
+    </div>
+</form>
+</div>
+</body>
+</html>
+<script type="text/javascript"> 
+  function checklength(){
+	var arr = document.getElementsByName("adid");
+
+	for(var i=0;i<arr.length;i++){	
+		t='a'+i;
+		t2='bb'+i;
+		if(arr[i].checked){
+			document.getElementById(t).className = "b"
+			document.getElementById(t2).style.display = '';
+		}else{
+			document.getElementById(t).className = "a"
+			document.getElementById(t2).style.display = 'none';
+			}
+		
+	}
+}
+
+</script>
+<script type="text/javascript">
+	var xmlobj;
+	function create_xmlhttp(){
+		if(window.ActiveXObject){
+			xmlobj = new ActiveXObject('Microsoft.XMLHTTP');
+		}else if(window.XMLHttpRequest){
+			xmlobj = new XMLHttpRequest();	
+		}else{
+			alert('未知原因:ajax不能提交！');	
+		}
+	}
+	function ajaxRID(id){
+
+		create_xmlhttp();
+		xmlobj.onreadystatechange = ready_RID;
+		url = "__URL__/moren/ID/"+id;
+	
+		xmlobj.open('GET',url,true);
+		xmlobj.send(null);
+	
+	}
+
+	function ready_RID(){
+		if(xmlobj.readyState==4 && xmlobj.status==200){
+			var ID = xmlobj.responseText;
+			if(ID > 0){
+				
+					aa = 'mr'+ID;
+					document.getElementById(aa).innerHTML = '<span style="color:red;">设置成功</span>';
+					document.location.reload();
+			}
+		}
+	
+  }
+		
+		
+	
+</script>
+
+

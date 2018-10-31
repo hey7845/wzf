@@ -1,0 +1,64 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>封顶申请管理 </h1></div>
+<form name="form3" method="post" action="__URL__/adminconsumeAC">
+<table width="100%" cellpadding=3 border=0 cellspacing="1" id="tb1" bgcolor="#b9c8d0" class="tab3">
+<thead>
+    <tr class="content_td" align="center">
+        <th ><input type="checkbox" name="chkall" value="checkbox" onclick="CheckAll(this.form)"  class="btn2" id="chkall" /></th>
+        <th nowrap ><span>会员编号</span></th>
+        <th nowrap ><span>申请封顶</span></th>
+        <th nowrap ><span>申请时间</span></th>
+        <th nowrap ><span>确认时间</span></th>
+        <th nowrap ><span>状态</span></th>
+
+    </tr>
+</thead>
+<volist name="list" id="vo">
+<tr class="content_td" align="center">
+	<td><div align="center">
+	  <input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" />
+	</div></td>
+	<td>{$vo['user_id']}</td>
+	<td><span style="color: #F00;">{$vo['money']}</span></td>
+	<td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+	<td><gt name="vo.pdt" value="0">{$vo.pdt|date='Y-m-d H:i:s',###}</gt></td>
+	<td>
+    <eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq>
+    <eq name="vo['is_pay']" value="1">已确认</eq>
+    </td>
+</tr>
+</volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+    	<td width="50%">
+        <input name="全选" type="button" class="button_text" id="全选" onclick="CheckAll(this.form)" value="全选" />
+        &nbsp;&nbsp;
+        <input type="submit" name="action" value="确认" class="button_text" onclick="{if(confirm('确定吗?')){return true;}return false;}">
+        &nbsp;&nbsp;
+        <input type="submit" name="action" value="删除" class="button_text" onclick="{if(confirm('确定删除吗?')){return true;}return false;}">
+	  </td>
+    </tr>
+</table>
+</form>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+    	<td>{$page}</td>
+    </tr>
+</table>
+<table width="600" align="center">
+    <tr>
+    <td align="center">
+    <form method='post' action="__URL__/adminconsume">
+		会员编号：
+		    <input name="UserID" type="text"id="UserID" title="帐号查询" maxlength="200" >
+		  <input type="submit" name="Submit" value="搜索"  class="button_text"/>
+		</form>
+    </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

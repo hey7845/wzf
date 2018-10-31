@@ -1,0 +1,145 @@
+<include file="Public:header" />
+<div id="mainbox">
+ <div id="main">
+   <div id="main1"><strong>位置 >>游戏大厅</strong> &gt;&gt; <a href="javascript:history.back();">后退</a></div>
+   
+<table width="100%" border="0" cellspacing="1" cellpadding="0" bgcolor="#666666">
+
+<tr>
+	<td colspan="6">
+      <table cellpadding=0 cellspacing=1 border=0 width="100%" bgcolor="#666666">
+      	<tr>
+        	<td width="16%" height="31" align="center" bgcolor="#FFFFFF">发行量</td>
+        	<td width="15%" align="center" bgcolor="#FFFFFF">最高价</td>
+        	<td width="17%" align="center" bgcolor="#FFFFFF">最低价</td>
+        	<td width="16%" align="center" bgcolor="#FFFFFF">现价</td>
+        	<td width="16%" align="center" bgcolor="#FFFFFF">交易范围</td>
+        	<td width="20%" align="center" bgcolor="#FFFFFF">成交量</td>
+        </tr>
+      	<tr>
+      	  <td height="31" align="center" bgcolor="#FFFFFF">{$rs['opening']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['most_g']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['most_d']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['closing']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$zd}%</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['gp_quantity']}</td>
+    	  </tr>
+      </table>
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2">
+		
+			<table cellpadding=0 cellspacing=1 border=0 width="100%" bgcolor="#666666">
+			<tr>
+				<td width="16%" height="31" align="center" bgcolor="#FFFFFF">发行量</td>
+				<td width="15%" align="center" bgcolor="#FFFFFF">最高价</td>
+				<td width="17%" align="center" bgcolor="#FFFFFF">最低价</td>
+				<td width="16%" align="center" bgcolor="#FFFFFF">现价</td>
+				<td width="16%" align="center" bgcolor="#FFFFFF">交易范围</td>
+				<td width="20%" align="center" bgcolor="#FFFFFF">成交量</td>
+			</tr>
+			<tr>
+			  <td height="31" align="center" bgcolor="#FFFFFF">{$rs['opening']}</td>
+			  <td align="center" bgcolor="#FFFFFF">{$rs['most_g']}</td>
+			  <td align="center" bgcolor="#FFFFFF">{$rs['most_d']}</td>
+			  <td align="center" bgcolor="#FFFFFF">{$rs['closing']}</td>
+			  <td align="center" bgcolor="#FFFFFF">{$zd}%</td>
+			  <td align="center" bgcolor="#FFFFFF">{$rs['gp_quantity']}</td>
+			  </tr>
+		  </table>
+			
+	<td>
+      <table cellpadding=0 cellspacing=1 border=0 width="100%" bgcolor="#666666">
+      	<tr>
+        	<td width="16%" height="31" align="center" bgcolor="#FFFFFF">发行量</td>
+        	<td width="15%" align="center" bgcolor="#FFFFFF">最高价</td>
+        	<td width="17%" align="center" bgcolor="#FFFFFF">最低价</td>
+        	<td width="16%" align="center" bgcolor="#FFFFFF">现价</td>
+        	<td width="16%" align="center" bgcolor="#FFFFFF">交易范围</td>
+        	<td width="20%" align="center" bgcolor="#FFFFFF">成交量</td>
+        </tr>
+      	<tr>
+      	  <td height="31" align="center" bgcolor="#FFFFFF">{$rs['opening']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['most_g']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['most_d']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['closing']}</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$zd}%</td>
+      	  <td align="center" bgcolor="#FFFFFF">{$rs['gp_quantity']}</td>
+    	  </tr>
+      </table>
+	</td>
+</tr>
+    
+<tr>
+	<td colspan="2"></td>
+	<td width="40%" align="center" valign="top">
+    	<SCRIPT language=javascript type=text/javascript src="__PUBLIC__/Images/FusionCharts.js"></SCRIPT>
+		<table border=0 cellSpacing=0 cellPadding=0 width="100%" height=497>
+		  <tr>
+			<td bgcolor="#FFFFFF">
+			  <div id=chart5Div></div>
+			</td>
+			<td bgcolor="#FFFFFF"><DIV id=chart6Div></DIV></td>
+		  </tr>
+		 <tr>
+		  <td colspan="2">
+		 <SCRIPT type=text/javascript>
+				var chart2 = new FusionCharts
+		
+		 ("__PUBLIC__/Images/FCF_MSLine.swf", "ChId1", "400", "400");
+				chart2.setDataURL("__PUBLIC__/Images/ChartsPrice.xml");
+				chart2.render("chart5Div");
+		 
+					//var chart2 = new FusionCharts
+			//
+			//("__PUBLIC__/Images/FCF_MSLine.swf", "ChId2", "500", "400");
+			//        chart2.setDataURL("__PUBLIC__/Images/ChartsVolume.xml");
+			//        chart2.render("chart6Div");
+			</SCRIPT>
+			</td>
+		  </tr>
+		</table>       
+   </td>
+   <td colspan="2"></td>
+   <td>
+   		<table cellpadding=0 cellspacing=1 border=0 width="287" bgcolor="#666666">
+		 <tr>
+			<td width="50%" height="30" align="center" bgcolor="#FFFFFF">购买价</td>    
+			
+			 <td width="50%" height="30" align="center" bgcolor="#FFFFFF">交易量</td>
+		 </tr>
+			  <volist name="rs1" id="vo1">
+			  <tr>
+				<td height="30" align="center" bgcolor="#FFFFFF" 
+	
+	style="color:red; font-size:18px"  width="150"><strong>{$vo1['enter_out']}</strong></td>
+				<td height="30" align="center" bgcolor="#FFFFFF" 
+	
+	style="font-size:18px"  width="150"><strong>{$vo1['quantity']}</strong></td>
+			   </tr>
+			  </volist>
+		   </table>
+		<table cellpadding=0 cellspacing=1 border=0 width="287" bgcolor="#666666">
+			<tr>
+				<td width="50%" height="30" align="center" bgcolor="#FFFFFF">出售价</td>    
+				<td width="50%" height="30" align="center" bgcolor="#FFFFFF">交易量</td>
+			</tr>
+			<volist name="rs2" id="vo2">
+				<tr>
+				    <td height="30" align="center" bgcolor="#FFFFFF" style="color:#0F3; font-size:18px;" width="150"><strong>{$vo2['enter_out']}</strong></td>
+				<td height="30" align="center" bgcolor="#FFFFFF" style="font-size:18px"  width="150"><strong>{$vo2['quantity']}</strong></td>
+				</tr>
+		  </volist>
+	  </table>
+   </td>
+</tr>
+
+</table>
+
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/Ajax/ThinkAjax-1.js" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+function CheckForm(){
+	if(document.form1.ePoints.value==""){
+		alert("金额不能为空！");
+		return false;
+	}
+	if(document.form1.select.value==1){
+		if(confirm('您确定把 '+document.form1.ePoints.value+' 进行自我消费吗？'))
+		{
+			return true;
+		}else{
+			alert('您取消了本次操作');
+			return false;
+		}
+	}
+}
+
+function yhServer(Ful){
+	str = $F(Ful).replace(/^\s+|\s+$/g,"");
+	ThinkAjax.send('__APP__/Fck/check_CCuser/','ajax=1&userid='+str,'',Ful+'1');
+}
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>自我消费 </h1></div>
+    <form name="form1" method="post" action="__URL__/NetworktoBAC" onSubmit="{return CheckForm();}">
+      <table width="100%" border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td height="30" align="right" width="30%">K币账户： </td>
+            <td colspan="2"><span class="hong">￥ {$rs.agent_cash}</span></td>
+          </tr>
+<!--		  <tr>
+            <td height="30" align="right">注册币： </td>
+            <td colspan="2"><span class="hong">￥ {$rs.agent_cash}</span></td>
+          </tr>
+          <tr>
+            <td height="30" align="right">重消账户： </td>
+            <td colspan="2"><span class="hong">$ {$rs.agent_xf}</span></td>
+          </tr>-->
+          <tr>
+            <td height="30" align="right">货币类型：</td>
+            <td colspan="2">
+            <select name="select" id="select" onchange="Selev(this.value)" onpropertychange="Selev(this.value)">
+              <option value="1"> 注册币账户 </option>
+            </select>
+            </td>
+          </tr>
+          <tr id="Selev">
+            <td height="30" align="right" width="30%">{$User_namex}：</td>
+            <td width="15%"><input name="UserID" type="text" id="UserID" class="ipt" onblur="javascript:yhServer(this.name);getUserName(this.value)" onfocus="notice('0','')" /></td>
+            <td width="55%"><div id="UserID1" class="info"><div id="0" class="focus_r" style="display:none;"><div class="msg_tip">请输入你的会员编号。</div></div></div></td>
+          </tr>		  
+          <tr>
+            <td height="30" align="right">金额：</td>
+            <td><input name="ePoints" type="text" id="ePoints" class="ipt" onkeyup="javascript:Null_Int(this.name);" onfocus="notice('1','')"  onblur="notice('1','none')"/></td>
+            <td><div id="ePoints1" class="info"><div id="1" class="focus_r" style="display:none;"><div class="msg_tip">请输入你要转入的金额。</div></div></div></td>
+          </tr>
+          <tr>
+            <td height="30">&nbsp;</td>
+            <td colspan="2"><input type="submit" name="Submit" value="确定自我消费" class="button_text" /></td>
+          </tr>
+         
+      </table>
+      </form>
+<br>
+
+</div>
+</body>
+</html>
+<script language="javascript">
+function Selev(o){
+	if(o==1){document.getElementById('Selev').style.display = '';}
+	if(o==2||o==3||o==4||o==5||o==6){document.getElementById('Selev').style.display = 'none';}
+}
+new TableSorter("tb1");
+
+function getUserName(vv){
+    var xmlHttp;
+		try{
+			//FF Opear 8.0+ Safair
+			xmlHttp=new XMLHttpRequest();
+		}
+		catch(e){
+			try{
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch(e){
+				alert("您的浏览器不支持AJAX");
+				return false;    
+			}
+		}
+		xmlHttp.onreadystatechange=function(){
+			if(xmlHttp.readyState==4){
+				var valuet = xmlHttp.responseText;
+				
+				document.getElementById("UserName").value=valuet;
+				
+			}
+		}
+		var url="__URL__/getUserName";
+		url+="/userid/"+vv+"/"+Math.random();
+		
+		xmlHttp.open("GET",url,true);
+		xmlHttp.send(null);
+	
+
+}
+
+</script>

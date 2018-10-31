@@ -1,0 +1,16 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>下载中心 </h1></div>
+        <table width="100%" border="0" cellspacing="3" cellpadding="0" class="tab5">
+          <volist name='list' id='vo'>
+          <tr>
+            <td height="28">&nbsp;&nbsp;<img src="__PUBLIC__/Images/news_li.gif">&nbsp;&nbsp;<a href="__URL__/Downfile/id/{$vo.id}" title="查看详细">{$vo['title']}</a>&nbsp;&nbsp;<span style="color:red">大小：{$vo['fsize']|zh_filesize}</span>&nbsp;&nbsp;<a href="__URL__/down_file_url/cid/{$vo['id']}/" target="_blank"><img src="__PUBLIC__/Images/down.gif" alt="" border="0" align="absmiddle"/> 下载文件</a></td>
+          </tr>
+          </volist>
+          <tr>
+            <td height="28" align="center">{$page}</td>
+          </tr>
+        </table>
+</div>
+</body>
+</html>

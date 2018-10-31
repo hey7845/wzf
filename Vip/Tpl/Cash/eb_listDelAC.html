@@ -1,0 +1,61 @@
+<include file="Public:header" />
+<style>
+h4{ margin-left:18%;}
+.Agreement{width:90%; height:100px; overflow:auto; border:1px solid #7F9DB9; padding:2px; font-size:12px; line-height:24px; margin:10px 0px;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>撤销交易 </h1></div>
+<form action="__URL__/eb_list_del/" method="post" name="form1" id="form1">
+<table width="100%" class="list" border="0" cellpadding="3" cellspacing="0">
+	<tr>
+	  <td width="20%" height="30" align="right" class="tabr">委托交易金额：</td>
+	  <td width="80%">{$rs['money']}</td>
+	</tr>
+    <tr>
+	  <td width="20%" height="30" align="right" class="tabr">交易状态：</td>
+	  <td width="80%">
+      <eq name="rs.is_buy" value="0">
+      等待交易
+      </eq>
+      <eq name="rs.is_buy" value="1">
+      等待买家汇款
+      </eq>
+      <eq name="rs.is_buy" value="2">
+      等待卖家确认
+      </eq>
+      </td>
+	</tr>
+    <tr>
+      <td height="30" align="right" class="tabr">撤销原因：</td>
+      <td><textarea name="cbz" cols="60" rows="4" id="cbz"></textarea></td>
+    </tr>
+    <tr>
+      <td height="30" align="right" class="tabr">验证码：</td>
+      <td><input name="verify" id="verify" type="text" size="8" maxlength="4" />
+        <img src="__APP__/Public/verify/" border="0" alt="点击刷新验证码" id="verifyImg" onclick="fleshVerify()" style="cursor:pointer" align="absmiddle" />&nbsp;</td>
+    </tr>
+	<tr>
+	  <td height="30" align="right" class="tabr">二级密码：</td>
+	  <td><input name="uspass" type="password" class="ipt" id="uspass" value="" maxlength="20"/></td>
+	</tr>
+    <tr>
+	  <td height="30"><input name="cid" type="hidden" id="cid" value="{$rs['id']}" /></td>
+	  <td>
+      <input type="submit" name="Submit1" value="撤销" class="button" id="Submit1" />
+      <input name="backb" type="button" class="button3" value="返回" id="backb" onclick="history.back();"/>
+      </td>
+	</tr>
+</table>
+</form>
+</div>
+</body>
+</html>
+<script language="JavaScript">
+<!--
+function fleshVerify(){
+//重载验证码
+var timenow = new Date().getTime();
+$('verifyImg').src= '__APP__/Public/verify/'+timenow;
+}	
+//-->
+</script>

@@ -1,0 +1,51 @@
+<include file="Public:header" />
+<SCRIPT language=JavaScript>
+function checklogin() {
+	if (document.myform.Msg.value=="") {
+		alert("请输入回复内容!");
+		myform.Msg.focus();
+		return false;
+	}
+	return true;
+}
+</SCRIPT>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>查看邮件内容&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+
+<form name="myform" method="post" action="__URL__/messagesShowAC" onSubmit="return checklogin()">
+  <table width="100%" border="0" cellpadding="3" cellspacing="0" class="tab4">
+      <tr>
+        <td width="22%" align="right">发件人编号：</td>
+        <td width="78%">{$vo['r_user_id']|conname}</td>
+      </tr>
+      <tr>
+        <td align="right">收件时间：</td>
+        <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+      </tr>
+      <tr>
+        <td align="right">邮件标题：</td>
+        <td>{$vo['title']}</td>
+      </tr>
+      <tr>
+        <td align="right">邮件内容：</td>
+        <td valign="top">{$vo['msg']}</td>
+      </tr>
+            <tr>
+        <td>&nbsp;</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td align="right">回复内容：</td>
+        <td><textarea name="Msg" cols="60" rows="6" id="Msg"></textarea></td>
+      </tr>
+      <tr>
+        <td width="21%">&nbsp;</td>
+        <td width="79%"><input type="submit" name="Submit" value="回 复" class="button_text" />
+          <input type="hidden" name="Pid" value="{$vo['id']}" /></td>
+      </tr>
+  </table>
+</form>
+</div>
+</body>
+</html>
+

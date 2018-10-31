@@ -1,0 +1,39 @@
+<tagLib name="html" />
+<include file="Public:header" />
+<style>
+
+table td{ border:0!important;}
+</style>
+
+<div class="bav">
+ 	<div class="sub_bav">
+<div class="sub_bav_bt"><h1>推荐关系图</div>
+		 <table width="100%" border="0"  cellpadding="0" cellspacing="1" class="tab">
+        <tr  bgcolor="#99CC66">
+          <td width="20%" rowspan="2" align="center" bgcolor="#F0FEF9">层数</td>
+          <td height="25" colspan="2" align="center" bgcolor="#F0FEF9">左边</td>
+          <td colspan="2" align="center" bgcolor="#F0FEF9">右边</td>
+          </tr>
+        <tr  bgcolor="#99CC66">
+          <td width="20%" height="25" align="center" bgcolor="#F0FEF9">总单数</td>
+          <td width="20%" align="center" bgcolor="#F0FEF9">已经碰</td>
+          <td width="20%" align="center" bgcolor="#F0FEF9">总单数</td>
+          <td width="20%" align="center" bgcolor="#F0FEF9">已经碰</td>
+          </tr>
+          <volist name="clist" id="vo">
+        <tr  bgcolor="#99CC66">
+          <td height="25" align="center" bgcolor="#F0FEF9">{$vo.ceng}</td>
+          <td align="center" bgcolor="#F0FEF9">{$vo.l}</td>
+          <td align="center" bgcolor="#F0FEF9"><span style="color:#F00">{$vo.l1}</span></td>
+          <td align="center" bgcolor="#F0FEF9">{$vo.r}</td>
+          <td align="center" bgcolor="#F0FEF9"><span style="color:#F00">{$vo.r1}</span></td>
+          </tr>
+          </volist>
+		   <tr  bgcolor="#99CC66">
+          <td height="25" align="center" bgcolor="#F0FEF9" colspan="5">{$page}</td>
+          </tr>
+    </table>
+ </div>
+
+</body>
+</html>

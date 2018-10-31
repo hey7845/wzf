@@ -1,0 +1,152 @@
+<settings>
+  <margins>0</margins>
+  <equal_spacing>false</equal_spacing>
+  <redraw>true</redraw>
+  <number_format>  
+    <letters>
+       <letter number="1000">K</letter>
+       <letter number="1000000">M</letter>
+       <letter number="1000000000">B</letter>
+    </letters>      
+  </number_format>
+  <add_time_stamp>true</add_time_stamp>
+  <data_sets> 
+    <data_set>
+       <title>交易中心</title>
+       <short>交易中心</short>
+       <color>0175B0</color>
+       <file_name>data2.csv</file_name>
+       <csv>
+         <reverse>true</reverse>
+         <separator>,</separator>
+         <date_format>YYYY-MM-DD</date_format>
+         <decimal_separator>.</decimal_separator>
+         <columns>
+           <column>date</column>
+           <column>volume</column>
+           <column>close</column>
+         </columns>
+       </csv>
+    </data_set>
+  </data_sets>
+
+  <charts>
+  	<chart>
+  		<height>60</height>
+  		<title>每天成交单价</title>
+      <border_color>#DDDDDD</border_color>
+      <border_alpha>100</border_alpha>
+     
+      <values>
+        <x>
+          <bg_color>DDDDDD</bg_color>
+        </x>        
+      </values>
+      <legend>
+        <show_date>true</show_date>
+      </legend>
+
+      <column_width>100</column_width>
+
+  		<graphs>
+  			<graph>
+  				<data_sources>
+  				  <close>close</close>
+          </data_sources>
+
+  				<bullet>round_outline</bullet>
+
+  		    <legend>
+            <date key="false" title="false"><![CDATA[{close}]]></date>
+            <period key="false" title="false"><![CDATA[开始:<b>{open}</b> 最低:<b>{low}</b> 最高:<b>{high}</b> 结束:<b>{close}</b>]]></period>
+          </legend>         
+  			</graph>  			
+  		</graphs>
+  	</chart>  
+
+  	<chart>
+  		<height>30</height>
+  		<title>每天成交总量</title>  		
+      <border_color>#cccccc</border_color>
+      <border_alpha>100</border_alpha>
+      <grid>
+        <y_left>
+          <approx_count>3</approx_count>
+        </y_left>
+      </grid>	
+
+      <values>
+        <x>
+          <enabled>false</enabled>
+        </x>
+      </values>
+
+      <legend>
+        <show_date>true</show_date>
+      </legend>
+       	
+      <column_width>100</column_width>
+  		<graphs>
+  			<graph>
+  				<type>column</type>
+  				<data_sources>
+  				  <close>volume</close>
+          </data_sources>
+          <period_value>average</period_value>
+  				<alpha>0</alpha>
+  				<fill_alpha>50</fill_alpha>
+  		    <legend>
+            <date key="false" title="false"><![CDATA[{close}]]></date>
+            <period key="false" title="false"><![CDATA[开始:<b>{open}</b> 最低:<b>{low}</b> 最高:<b>{high}</b> 结束:<b>{close}</b>]]></period>
+          </legend>         
+  			</graph>  			
+  		</graphs>
+  	</chart>    
+ 
+  </charts>
+
+  <data_set_selector>
+    <enabled>false</enabled>
+  </data_set_selector>
+  
+  <period_selector>
+		<periods>		
+      <period type="DD" count="10">10天</period>
+    	<period  selected="true" type="MM" count="1">1月</period>
+    	<period type="MM" count="3">3月</period>
+    	<period type="YYYY" count="1">1年</period>
+    	<period type="YYYY" count="3">3年</period>
+    	<period type="YTD" count="0">整年</period>
+    	<period type="MAX">全部</period>
+		</periods>
+		
+		<periods_title>缩放:</periods_title>
+		<custom_period_title>自定义区间:</custom_period_title> 
+  </period_selector>
+
+  <header>
+    <enabled>false</enabled>
+  </header>
+
+  <scroller>
+    <graph_data_source>close</graph_data_source>
+    <resize_button_style>dragger</resize_button_style>   
+    <playback>
+      <enabled>true</enabled>
+      <speed>3</speed>
+    </playback>
+  </scroller>
+  
+  <date_formats>
+    <x_axis>
+        <days>MM月DD日</days>
+      <months>MM月</months>
+      <years>YYYY年</years>
+    </x_axis>
+    <legend>
+      <days>YYYY年MM月DD日</days>
+      <months>MM月</months>
+      <weeks>YYYY年MM月DD日</weeks>
+    </legend>
+  </date_formats>
+</settings>

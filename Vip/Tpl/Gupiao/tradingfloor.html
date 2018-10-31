@@ -1,0 +1,85 @@
+<include file="Public:header" />
+<div class="column">
+<div class="title"><div class="map"></div><p>GP交易大厅</p></div>
+<div class="p10 cont" style="padding:20px">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%" valign="top">
+    
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td align="center"><span style="font-size:14px; line-height:30px; font-weight:bold">出售GP</span></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="list">
+      <tr align="center">
+        <th width="30%" height="24" class="tabr">时间</th>
+        <th width="15%" class="tabr">卖家编号</th>
+        <th width="15%" class="tabr">挂入总量</th>
+        <th width="15%" class="tabr">单价</th>
+        <th class="tabr">挂入剩余</th>
+        </tr>
+      <volist name="list" id="vo"  key="i">
+        <tr align="center">
+          <td nowrap="nowrap" height="24">{$vo.eDate|date="Y-m-d H:i:s",###}</td>
+          <td nowrap="nowrap">{$vo.user_id|conname2}</td>
+          <td nowrap="nowrap">{$vo.sNun}</td>
+          <td nowrap="nowrap">{$one_price}</td>
+          <td nowrap="nowrap">{$vo.lnum}</td>
+          </tr>
+      </volist>
+      <tr align="center">
+          <td height="2" colspan="5"></td>
+          </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+  <td>{$page}</td>
+  </tr>
+</table>
+
+</td>
+<td width="50%" valign="top">
+
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td align="center"><span style="font-size:14px; line-height:30px; font-weight:bold">求购GP</span></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="list">
+      <tr align="center">
+        <th width="30%" height="24" class="tabr">时间</th>
+        <th width="15%" class="tabr">买家编号</th>
+        <th width="15%" class="tabr">求购额度</th>
+        <th width="15%" class="tabr">当前单价</th>
+        <th width="15%" class="tabr">购买GP数</th>
+        </tr>
+      <volist name="list1" id="vo1" key="i">
+        <tr align="center">
+          <td height="24" nowrap="nowrap">{$vo1.eDate|date="Y-m-d H:i:s",###}</td>
+          <td nowrap="nowrap">{$vo1.user_id|conname2}</td>
+          <td nowrap="nowrap">{$vo1.buy_s}</td>
+          <td nowrap="nowrap">{$one_price}</td>
+          <td nowrap="nowrap">{$can_b[$vo1['id']]}</td>
+          </tr>
+      </volist>
+      <tr align="center">
+          <td height="2" colspan="6"></td>
+          </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+  <td>{$page1}</td>
+  </tr>
+</table>
+
+</td>
+  </tr>
+</table>
+</div></div>
+</body>
+</html>

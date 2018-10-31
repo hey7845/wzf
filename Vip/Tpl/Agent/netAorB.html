@@ -1,0 +1,66 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>开通新网络 </h1></div>
+<form name="form3" method="post" action="__URL__/agentNetAorBConfirm">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th></th>
+        <th><span>会员编号</span></th>
+        <th><span>申请时间</span></th>
+        <th><span>开通金额</span></th>
+        <th><span>单数</span></th>
+        <th><span>确认人</span></th>
+        <th><span>确认时间</span></th>
+        <th><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr align="center">
+    	<td>
+	    	<eq name="vo['is_pay']" value='0'>
+	       		<input type="checkbox" name="tabledb[]" value="{$vo['user_id']}" class="btn2" />
+	       	<else />
+	       		<input type="checkbox" disabled = "true" name="tabledb[]" value="{$vo['user_id']}" class="btn2" />
+	       	</eq>
+       	</td>
+        <td>{$vo['user_id']}</td>
+        <td>{$vo.adt|date='Y-m-d H:i:s',###}</td>
+		<td>{$vo['money']}</td>
+        <td>{$vo['danshu']}</td>
+        <td>{$vo['confirm_userid']}</td>
+        <td>
+        	<eq name="vo['pdt']" value='0'>
+        		&nbsp;
+        	<else />
+        		{$vo.pdt|date='Y-m-d H:i:s',###}
+        	</eq>
+        </td>
+        <td>
+        	<eq name="vo['is_pay']" value='0'>
+        		<span style="color: #FF0000;">未确认</span>
+        	<else />已确认
+        	</eq>
+        </td>
+    </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+    	<td>
+        <input name="全选" type="button" class="bt_tj" id="全选" onclick="CheckAll(this.form)" value="全选" />
+        &nbsp;&nbsp;
+        <input type="submit" name="action" value="确认开通" onclick="{if(confirm('您确定要开通新网络吗?')){return true;}return false;}" class="bt_tj">
+        </td>
+    </tr>
+</table>
+</form>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

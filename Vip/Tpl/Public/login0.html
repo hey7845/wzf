@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$System_namex}</title>
+<link href="__PUBLIC__/Css/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/jquery-1.7.2.min.js\"></sc"+"ript>")</script>
+
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script>
+
+<script type="text/JavaScript" language="JavaScript" src="__PUBLIC__/Js/jquery.SuperSlide.2.1.1.source.js"> </script> 
+
+  
+<!--[if IE 6]>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/DD_belatedPNG_0.0.8a-min.js\"></sc"+"ript>")</script>
+<script>
+  DD_belatedPNG.fix('#login_box,.l-logo');  // IE6，PNG透明
+</script>
+<![endif]-->
+<script type="text/javascript"> 
+jQuery.noConflict();
+jQuery(document).ready(function(){ 
+	jQuery(".input_0").focus(function(e){
+		jQuery(this).siblings(".input_hint").hide();
+	});
+	jQuery(".input_0").blur(function(e){
+		jQuery(this).val(jQuery.trim(jQuery(this).val()));
+		if((jQuery(this).val()).length == 0)
+			jQuery(this).siblings(".input_hint").show();
+	});
+	jQuery(".input_hint").click(function(e){
+		e.stopPropagation();
+		jQuery(this).siblings(".input_0").focus();
+	});
+});
+</script> 
+</head>  
+
+<body>
+<div class="login main_container" style="height:800px;">
+  <div class="header clearfix">
+    <div class="header-img">
+      <div class="logo">
+        <h1><img src="__PUBLIC__/Images/logo.png" /></h1>
+      </div>
+      <!--end of logo--> 
+      
+    </div>
+  </div>
+  <div class="right_content">
+    <h2><img src="__PUBLIC__/Images/ico_lock.png" width="35"/>会员登录<small class="pull-right" style="font-size:12px;"></small></h2>
+    <div class="panel">
+      <form class="stdform" name="login" id="form1" onsubmit="return false" method="post">
+        <div class="row-fluid">
+        <div class="span8">
+          <div class="control-group">
+            <label for="catcha">&nbsp;</label>
+            <div class="field"></div>
+          </div>
+          <!--end of control group-->
+          <div class="control-group">
+            <label for="email">用户名</label>
+            <div class="field">
+              <input id="account" name="account" class="required" type="text"/>
+            </div>
+          </div>
+          <!--end of control group-->
+          
+          <div class="control-group">
+            <label for="password">密码</label>
+            <div class="field">
+              <input id="password" name="password" class="required" type="password"/>
+            </div>
+          </div>
+          <!--end of control group-->
+          
+          <div class="control-group">
+            <label for="catcha">验代码</label>
+            <div class="field">
+              <input id="verify" name="verify" class="required" type="text" autocomplete="off" size="7"/>
+            </div>
+          </div>
+          <!--end of control group-->
+          
+          <div class="control-group">
+            <label for="catcha">&nbsp;</label>
+            <div class="field"><img id="verifyImg" src="__URL__/verify/" width="55" onClick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer" align="absmiddle" /></div>
+          </div>
+          <!--end of control group-->
+          <div class="control-group action">
+            <input type="submit" name="login" value="提交" onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')"/><input type="hidden" name="ajax" value="1">
+          </div>
+          	<div style="clear:both; height:40px"></div>
+  			<div id="result"  style="width:250px;"></div>
+        </div>
+        <div class="span4">
+          <p>NPO是一个国际非盈利组织。NPO经过多年时间的精心筹备创建此互帮互助公益平台，平台不收款、不发行电子币，资金在会员之间流动。NPO不是银行,NPO不是公司，NPO不收您的钱,NPO不是高收益投资项目，NPO不是传销计划。NPO是颠覆、 创新的循环创富模式，旨在为大家提供一个安全、稳定、长久的互助理财平台。为失业就业贡献一份力量。让我们互帮互助、共同努力、开拓未来，共创美好明天！
+</p>
+          <p>致NPO所有玩家的郑重声明：所有互助玩家都应当是在知情、自愿、了解 真诚，规则的前提下注册NPO账户。请您在拥有自我管理帐户的能力下进行操作。交给他人代管帐户是公司明令禁止的行为，请大家谨记和遵守规则。如有做不到以上几点的玩家，请不要注册NPO账户或在有收益之后退出本网站系统。请各位玩家认真阅读本公司的规则，在此谢谢所有玩家一贯的理解和支持。</p>
+        </div>
+        <!--end of span6-->
+        
+        <div class="action"> </div>
+      </form>
+      <!--end of stdform-->
+      
+      <div class="footer">
+        <p>Copyright &copy; 2015 NpoClub.  All rights reserved.</p>
+      </div>
+    </div>
+    <!--end of login area--> 
+    
+  </div>
+  <!--end of right content-->
+  
+  <div class="foot_container"><img src="__PUBLIC__/Images/login_shadow.png" class="foot_shadow"/></div>
+</div>
+<!--end of main container-->
+
+</body>
+</html>
+<script type="text/javascript">				
+jQuery(".focusBox").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",0.2) },function(){ jQuery(this).find(".prev,.next").fadeOut() });				
+jQuery(".focusBox").slide({ mainCell:".pic",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});	
+</script> 
+
+</body>
+</html>
+
+
+<script language="JavaScript">
+<!--
+var PUBLIC	 =	 '__PUBLIC__';
+ThinkAjax.image = [	 '__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif','__PUBLIC__/Images/update.gif' ]
+ThinkAjax.updateTip	=	'登录中～';
+function loginHandle(data,status){
+if (status==1)
+{
+$('result').innerHTML	=	'<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+$('form1').reset();
+window.location = '__URL__';
+}
+}
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+	ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+function fleshVerify(type){
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+
+}
+function checkRadio(){
+	alert("您不是该地区的ID");
+	window.location = '__URL__/login';
+}
+
+//-->
+</script>

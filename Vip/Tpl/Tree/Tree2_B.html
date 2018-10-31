@@ -1,0 +1,45 @@
+<include file="Public:header" />
+<style>
+.tu_box{width:80px;background-color:#aaa;color:#000;}
+.tu_box td{text-align:center;line-height:40px; height:40px;}
+.tu_ko{ height:40px;line-height:40px !important;background-color:#FFF; }
+.tu_l{ width:35%;}
+.tu_z{ width:30%;}
+.tu_r{ width:35%;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>网络架构图 </h1></div>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <form method='post' action="__URL__/Tree2_B">
+      <tr>
+        <td>{$User_namex}：
+            <input type="text" name="UserID" title="帐号查询"  >
+            <input type="submit" name="Submit" value="查询" class="btn1"/>
+
+            <select name='level' onChange="window.location.href='__URL__/Tree2_B/ID/{$FatherID}/uLev/'+this.value;">
+            <option value="{$uLev}">第 {$uLev+1} 层</option>
+            <option value="1">第 2 层</option>
+            <option value="2">第 3 层</option>
+            <option value="3">第 4 层</option>
+            <option value="4">第 5 层</option>
+            <option value="5">第 6 层</option>
+            <option value="6">第 7 层</option>
+            <option value="7">第 8 层</option>
+            <option value="8">第 9 层</option>
+            <option value="9">第 10 层</option>
+            </select>
+            　　<a href="__URL__/Tree2_B/uLev/{$uLev}">顶层</a>　　<a href="__URL__/Tree2_B/ID/{$FatherID}/uLev/{$uLev}">上一层</a></td>
+      </tr>
+      </form>
+      <tr>
+        <td>{$wop}</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+<div class="bottom"></div>
+</div>
+</body>
+</html>

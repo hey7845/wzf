@@ -1,0 +1,38 @@
+<style type="text/css">
+.STYLE1 {color: #FF0000}
+</style>
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<tagLib name="html" />
+<include file="Public:header" />
+<div class="sub_bav">
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <td colspan="5" class="tabletd"><form id="form1" name="form1" method="post" action="__URL__/finance">
+      日期：
+      <input name="PDT" type="text" id="PDT" onFocus="showCalendar(this)" readonly />
+      <input type="submit" name="Submit" value="查询" class="btn1" />
+    </form>    </td>
+    </tr>
+  <tr align="center" class="content_td">
+    <td >编号</td>
+    <td >收支明细</td>
+    <td >金额</td>
+    <td >时间</td>
+    <td >备注</td>
+  </tr>
+  <volist name="list" id="vo">
+  <tr align="center" class="content_td">
+    <td >{$vo['user_id']}</td>
+    <td >{$vo['action_type']}</td>
+    <td ><span class="STYLE1">{$vo['epoints']}</span></td>
+    <td >{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+    <td >{$vo['bz']}</td>
+  </tr>
+</volist>
+  <tr class="content_td">
+    <td colspan="5" ><div align="center">{$page}</div></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

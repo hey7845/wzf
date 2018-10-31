@@ -1,0 +1,92 @@
+<include file="Public:xyHead" />
+<link href="__PUBLIC__/Css/goumaisd.css" rel="stylesheet" media="all"
+	type="text/css" />
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" />
+<div class="ncenter_box">
+	<div class="accounttitle"><h1>地址管理: </h1></div>
+	<form name="form3" method="post" action="__URL__/ShopingSave" role="form">
+		<table width="100%" class="tab3" border="0" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td colspan="6">
+					<div class="form-regsiter">
+						<fieldset>
+							<volist name="aList" id="vo" key="i">
+								<div class="fi" style="margin: 5px;">
+									<span id="a{$key}" class="a"> <input name="adid"
+										id="adid{$key}" type="radio" value="{$vo['id']}"
+										onclick="checklength();"
+									<eq name="vo['moren']" value="1"> checked="checked"</eq>/>
+										{$vo['address']} （{$vo['name']} 收）
+									</span> &nbsp;&nbsp;{$vo['tel']} &nbsp;&nbsp;
+									<eq name="vo['moren']" value="1">默认地址<else />
+									<a href="#" onclick="ajaxRID({$vo['id']});">设为默认地址</a></eq>
+									&nbsp;&nbsp;<span name="dzxxx" id="mr{$vo['id']}"> </span>
+									&nbsp;&nbsp; <a href="__URL__/addadr/ID/{$vo['id']}">修改本地址</a>
+									&nbsp;&nbsp; <a href="__URL__/delAdr/ID/{$vo['id']}">删除本地址</a>
+	
+								</div>
+							</volist>
+						</fieldset>
+					</div>
+		</table>
+		<div style="position: relative; margin-top: 10px;"></div>
+	</form>
+	<input type="button" class="btn btn-info btn-sm" name=""
+								value="添加新地址" id="" onclick="window.location='__URL__/addadr'"
+								style="float: left" />
+</div>
+</body>
+</html>
+
+<script type="text/javascript"> 
+  function checklength(){
+	var arr = document.getElementsByName("adid");
+
+	for(var i=0;i<arr.length;i++){	
+		t='a'+i;
+		t2='bb'+i;
+		if(arr[i].checked){
+			document.getElementById(t).className = "b"
+			document.getElementById(t2).style.display = '';
+		}else{
+			document.getElementById(t).className = "a"
+			document.getElementById(t2).style.display = 'none';
+			}
+	}
+}
+
+</script>
+<script type="text/javascript">
+	var xmlobj;
+	function create_xmlhttp(){
+		if(window.ActiveXObject){
+			xmlobj = new ActiveXObject('Microsoft.XMLHTTP');
+		}else if(window.XMLHttpRequest){
+			xmlobj = new XMLHttpRequest();	
+		}else{
+			alert('未知原因:ajax不能提交！');	
+		}
+	}
+	function ajaxRID(id){
+
+		create_xmlhttp();
+		xmlobj.onreadystatechange = ready_RID;
+		url = "__URL__/moren/ID/"+id;
+	
+		xmlobj.open('GET',url,true);
+		xmlobj.send(null);
+	
+	}
+	function ready_RID(){
+		if(xmlobj.readyState==4 && xmlobj.status==200){
+			var ID = xmlobj.responseText;
+			if(ID > 0){
+				
+					aa = 'mr'+ID;
+					document.getElementById(aa).innerHTML = '<span style="color:red;">设置成功</span>';
+					document.location.reload();
+			}
+		}
+  }
+</script>

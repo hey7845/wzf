@@ -1,0 +1,160 @@
+<include file="Public:xyHead" />
+<link href="__PUBLIC__/Css/goumaisd.css" rel="stylesheet" media="all" type="text/css" />
+<DIV>
+<UL class="Payment-step">
+  <LI class=on><SPAN>STEP 1.</SPAN>查看购物车 </LI>
+  <LI><SPAN>STEP 2.</SPAN>确认订单信息</LI>
+  <LI><SPAN>STEP 3.</SPAN>付款</LI>
+  <LI><SPAN>STEP 4.</SPAN>确认收货</LI></UL></DIV>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>购物车 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="0" cellspacing="0">
+    <TBODY>
+      <TR class=trtit>
+        <TD width="20%" align=center>商品编号</TD>
+        <TD align=center>商品名称</TD>
+        <TD width="10%" align=center>价格</TD>
+        <TD width="15%" align=center>商品数量</TD>
+        <TD width="10%" align=center>总金额</TD>
+        <TD width="10%" align=center>删除商品</TD></TR>
+     <volist name="list" id="voo">   
+      <TR align="center">
+        <TD>{$voo['cid']}</TD>
+        <TD>{$voo['name']}</TD>
+        <TD><SPAN class=f2><input name="price" id="price" type="hidden" value="{$cc[$voo['id']]}"/>{$cc[$voo['id']]}</SPAN></TD>
+        <TD align=center><div class="Numinput">
+        <A  title="减一" style="MARGIN-RIGHT: 2px" onclick="addcartnum({$voo.id},0,{$cc[$voo['id']]});" href="javascript:void(0);">
+        <IMG style="DISPLAY: inline" border=none src="__PUBLIC__/Images/img-2.gif">
+        </A>
+        <input name='qty_17' style="text-align:center;" type="text" value="{$ids[$voo['id']]}" size="4"  maxlength="4" id="cartItemCount{$voo.id}" onblur="checklength(this)" onchange="ajaxfunction('{$voo.id}',this.value)"/>
+        <A title="加一" style="MARGIN-RIGHT: 2px" onclick="addcartnum({$voo.id},1,{$cc[$voo['id']]});" href="javascript:void(0);">
+        <IMG style="DISPLAY: inline" border=none src="__PUBLIC__/Images/img-3.gif">
+        </A>
+        <span class="numadjust increase"></span><span class="numadjust decrease"></span></div></TD>
+      
+        <TD align=center><span class="CurrentTotalMoney" id="CurrentTotalMoney{$key}"> {$ep[$voo['id']]}</span></TD>
+        <TD align=center><a href="__URL__/delBuyList/id/{$voo['id']}/">删除</a></TD>
+        </TR>
+      </volist>
+      <TR class=trtit>
+        <TD colSpan=7 align=right>消费积分：<SPAN class=f1><span>{$f_rs['agent_use']}</span></SPAN>
+        &nbsp;&nbsp;&nbsp;&nbsp;电子积分：<SPAN class=f1><span>{$f_rs['agent_cash']}</span></SPAN>
+        &nbsp;&nbsp;&nbsp;&nbsp;商品总数：<SPAN class=f1><span id="LitTotalQTY">{$sum}</span></SPAN> 
+        &nbsp;&nbsp;&nbsp;&nbsp;商品总金额：<SPAN class=f1>￥<span id="LitTotalTotalMoney">{$eps}</span></SPAN> 元 &nbsp;&nbsp; 
+          </TD>
+      </TR>
+      <TR class=trtit>
+		   <td>
+		   		<A href="#" onclick="{if(confirm('您确认是否删除购物车当中的所有产品？')){window.location='__APP__/Gouwu/reset';return true;} return false;} ">
+		   		<IMG style="MARGIN: 0px 2px -3px 0px" src="__PUBLIC__/Images/cart_52.jpg">清空购物车</A>
+		   </td>
+		   <td colspan = "5">
+		    	<img onclick="javascript:window.location.href='__APP__/Gouwu/Buycp/';" style="CURSOR: pointer" src="__PUBLIC__/Images/cart_44.jpg">
+		    	<img onclick="javascript:window.location.href='__APP__/Gouwu/ShoppingListAdd/';" style="CURSOR: pointer" src="__PUBLIC__/Images/cart_46.jpg">
+		   </td>
+	   </TR>
+	</TBODY>
+</TABLE>
+</div>
+</body>
+</html>
+
+<script type="text/javascript"> 
+  function addcartnum(nid,o,p){
+  //alert('aa');
+   var  mva,va;
+   var lname;
+   lname='cartItemCount'+nid;
+   va=document.getElementById(lname).value;
+   va=parseInt(va);
+  	if(o==0){
+		 mva=va-1;
+		if(mva<=0){
+			mva=1;
+		}
+		document.getElementById(lname).value=mva;
+	}
+	if(o==1){
+	//alert(va);
+	  		 mva=va+1;
+		//if(mva<=0){
+//			mva=1;
+//		}
+ 		
+		document.getElementById(lname).value=mva;
+		
+	}
+	ajaxfunction(nid,mva);
+	checklength();
+  }
+  function checklength(){
+	var arr = document.getElementsByName("qty_17");
+	var price = document.getElementsByName('price');
+	//var c = document.getElementById('CurrentTotalMoney');
+	//alert(c.innerHTML);
+    var  sum=0;
+    var  tmp=0;
+	var  ep=0;
+	var  eps=0;
+	var  sums=0;
+	for(var i=0;i<arr.length;i++){	
+		 tmp=parseInt(arr[i].value);
+		 sum+=tmp;	
+		 
+		 ep = parseFloat(price[i].value);
+		 eps += ep;
+
+		 tot = tmp*ep;
+		 
+		  sums += tot;
+		  
+		 t='CurrentTotalMoney'+i;
+		 
+		document.getElementById(t).innerHTML=tot;
+	}
+	
+	document.getElementById('LitTotalQTY').innerHTML=sum;
+	document.getElementById('LitTotalTotalMoney').innerHTML= formatNumberUnitsDivd(sums);
+}
+
+function formatNumberUnitsDivd(num) {
+	return num.toFixed(2);
+}
+
+</script>
+<script language="javascript">
+    function ajaxfunction(ID,nums){
+        var xmlHttp;
+        try{
+            //FF Opear 8.0+ Safair
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch(e){
+            try{
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch(e){
+                alert("您的浏览器不支持AJAX");
+                return false;    
+            }
+        }
+        xmlHttp.onreadystatechange=function(){
+            if(xmlHttp.readyState==4){
+                //document.getElementById("CurrentTotalMoney").innerHTML=xmlHttp.responseText;
+				//document.getElementById("LitTotalTotalMoney").innerHTML=xmlHttp.responseText;
+            }
+        }
+        var url="__URL__/chang/DID/"+ID+"/nums/"+nums;
+		
+      
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+            
+    }
+   
+</script>
+</div></div>
+</body>
+</html>
+
+

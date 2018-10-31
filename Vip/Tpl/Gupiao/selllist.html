@@ -1,0 +1,61 @@
+<include file="Public:header" />
+<style>
+.tab_l3{font-size:14px;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>出售列表</h1></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#b9c8d0" class="tab3" id="tb1">
+<tr>
+  <th width="12%"><span>会员编号</span></th>
+  <th width="18%" height="28"><span>出售时间</span></th>
+  <th width="12%"><span>总量</span></th>
+  <!-- <th width="12%"><span>已卖出</span></th> -->
+  <!-- <th width="11%"><span>剩余</span></th> -->
+  <th width="12%"><span>售出总额</span></th>
+  <th width="10%"><span>状态</span></th>
+  <th width="13%"><span>说明</span></th>
+  <th width="10%"><span></span></th>
+</tr>
+
+
+<volist name="list" id="vo">
+ 
+<tr align="center">
+  <td nowrap="nowrap"><input type="hidden" value="{$vo[id]}" name="id"><input type="hidden" value="{$vo.uid|user_id}" name="uid">{$vo.uid|user_id}</td>
+  <td height="25" nowrap="nowrap">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+  <td> {$vo.sNun}</td>
+  <!-- <td>{$vo.used_num}</td> -->
+  <!-- <td>{$vo.lnum}</td> -->
+  <td>{$vo.sell_g}</td>
+  <td>
+  <eq name="vo.is_cancel" value="1"><span style="color:#0F0">交易撤销</span></eq>
+  <eq name="vo.is_cancel" value="0">
+  <eq name="vo.ispay" value="1">交易完成<else /><span style="color:#F00">等待交易</span></eq>
+  </eq>
+  </td>
+  <td>
+  <eq name="vo.is_cancel" value="1">{$vo['bz']}</eq>
+  </td>
+  <td  nowrap="nowrap"><a onclick="if(confirm('确定购买吗?')) this.href='__URL__/auto_buyGP/id/{$vo.uid}/time/{$vo.eDate}/';else return false;">点击购买</a></td>
+</tr>
+
+</volist>
+
+</table>
+
+
+
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+       <tr>
+      <td align="center" colspan="2">
+    <img src="__PUBLIC__/Images/money_dol.png" align="absmiddle"/>&nbsp;&nbsp;&nbsp;
+    积分:&nbsp;<span class="hong">{$frs['agent_use']}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+  
+    </td></tr>
+</table>
+</div>
+</body>
+</html>

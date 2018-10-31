@@ -1,0 +1,24 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+    <div class="login" style="padding:100px 0px; background: none">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="200" align="center">
+        <form method='post' name="login" action="__URL__/codys/">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="100">二级密码：</td>
+            <td>
+            <input type="hidden" name="Urlsz" value="{$vo['c_id']}" />
+        	<input type="password" title="请输入二级密码" name="oldpassword"></td>
+            <td width="100"><input name="submit"  type="submit" value="确 认" alt="确认"  class="button_text" /></td>
+          </tr>
+        </table>
+        </form>
+        </td>
+      </tr>
+    </table>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{$System_namex}</title>
+<style type="text/css">
+.lflash{ margin-left:17px;border-left:#3A2717 1px solid; border-right:#3A2717 1px solid;}
+#login_wf{width:1003px; margin:0 auto; }
+.blogin img{ padding:2px; background-color:#FFF;}
+.txt{width:100px; height:18px; border:0px; line-height:18px;}
+.txt2{width:80px; height:18px; border:0px; line-height:18px;}
+.a1{width:1003px; height:89px; color: #e3ea10; text-align: center;}
+.a1 b{font-size: 50px;margin-top: 20px;display: block;}
+
+a{color:#FFF;}
+</style>
+
+
+<link href="__PUBLIC__/Css/login3.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/jquery-1.7.2.min.js\"></sc"+"ript>")</script>
+
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script>
+
+<script type="text/JavaScript" language="JavaScript" src="__PUBLIC__/Js/jquery.SuperSlide.2.1.1.source.js"> </script> 
+ 
+<script src="__PUBLIC__/Js/jquery.min.js"></script>
+<script type="text/javascript"> 
+jQuery.noConflict();
+jQuery(document).ready(function(){ 
+	jQuery(".input_0").focus(function(e){
+		jQuery(this).siblings(".input_hint").hide();
+	});
+	jQuery(".input_0").blur(function(e){
+		jQuery(this).val(jQuery.trim(jQuery(this).val()));
+		if((jQuery(this).val()).length == 0)
+			jQuery(this).siblings(".input_hint").show();
+	});
+	jQuery(".input_hint").click(function(e){
+		e.stopPropagation();
+		jQuery(this).siblings(".input_0").focus();
+	});
+});
+</script> 
+
+<script>
+jQuery(document).ready(function(){ 
+	var set=setInterval('fade()',1000);
+});
+	
+	 var i=0;
+	 function fade(){
+		//fadeOut(淡出花费的时间[,淡出后的操作])
+		/*
+		1、定时器调用轮播函数
+		2、先让当前的banner淡出，淡出完之后，获取下一张图片的src值，再替换到background
+		3、再让banner淡入
+		*/
+	jQuery('.banner').fadeOut(2000,function(){
+			i++;
+			if(i>3) i=0;
+			var src=jQuery('.banner ul li').eq(i).find('img').attr('src')
+			jQuery('.banner').css({"background":"url(" + src + ")","background-position":"center top"});
+		})
+		jQuery('.banner').fadeIn(2000);
+	}
+</script>
+
+</head>
+
+<body bgcolor="#221205">
+<div id="login_wf">
+
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr><td>
+		<div class="a1"><b>{$System_namex}</b></div>
+	</td></tr>
+</table>
+
+<table width="966" border="0" cellpadding="0" cellspacing="0" class="lflash">
+	<tr><td>
+   <!--  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="964" height="439">
+        <param name="movie" value="flash/index.swf" />
+        <param name="quality" value="high" />
+        <embed src="__PUBLIC__/login/flash/index.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="964" height="439"></embed>
+    </object> -->
+    <div class="banner" style="width:964px;height:443px;">
+    	<ul style=" display:none;">
+        	<li><img src="__PUBLIC__/Images/images3.jpg" alt="1" /></li>
+            <li><img src="__PUBLIC__/Images/images1.jpg" alt="2" /></li>
+            
+            <li><img src="__PUBLIC__/Images/images2.jpg" alt="3" /></li>
+           
+        </ul>
+    </div>
+	</td></tr>
+</table>
+
+	 	<form method='post' name="login" id="form1" onsubmit="return false">
+
+
+<table width="1200" border="0" cellpadding="0" cellspacing="0" height="72" class="blogin">
+	<tr>
+    	<td width="40"></td>
+        <td width="70" align="center">用户名：</td>
+        <td width="50"><input type="text"  name="account" id="username" class="txt" /></td>
+        <td width="70" align="center" class="a2">登陆密码：</td>
+        <td width="50"><input type="password" name="password" id="password" class="txt" /></td>
+        <td width="50" class="a2"> 验证码</td>
+        <td width="200">
+        	<input class="input_0 ipt_text" name="verify" id="verify" type="text" onKeyDown="keydown(event)" check="Require" value=""  maxlength="4" style="width:100px" />
+						&nbsp;&nbsp;
+						<img id="verifyImg" src="__URL__/verify/" width="55" onClick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer" align="absmiddle" />
+		</td>
+
+		<!-- <td width="70"> <input  name="button" type="submit"   id="btn_submit" class="button" value="忘记密码" onclick="location.href='__APP__/Reg/find_pw/'"></td> -->
+		<td width="60">
+        
+        	   <input  name="button" type="submit"   id="btn_submit"class="btn button" value="登录"
+                        onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')">
+                       <input type="hidden" name="ajax" value="1">
+        
+        </td>
+<!-- 		<eq name="i9" value="0">
+		<td width="150"><input  name="button" type="submit"   id="btn_submit" size="10"  class="btn" value="免费注册" onclick="location.href='__APP__/Reg/us_reg/'"></td>
+</eq> -->
+		<td width="100"><div class="error"><span id="result"></span></div></td>
+        <td width="100"><!--<a href="addUser.asp">股东申请</a>-->&nbsp;</td>
+    </tr>
+</table>
+ </form>
+
+
+</div>
+<script type="text/javascript">				
+jQuery(".focusBox").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",0.2) },function(){ jQuery(this).find(".prev,.next").fadeOut() });				
+jQuery(".focusBox").slide({ mainCell:".pic",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"});	
+</script> 
+</body>
+</html>
+
+
+<script language="JavaScript">
+<!--
+var PUBLIC	 =	 '__PUBLIC__';
+ThinkAjax.image = [	 '__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif','__PUBLIC__/Images/update.gif' ]
+ThinkAjax.updateTip	=	'登录中～';
+function loginHandle(data,status){
+if (status==1)
+{
+$('result').innerHTML	=	'<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+$('form1').reset();
+window.location = '__URL__';
+}
+}
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+	ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+function fleshVerify(type){
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+
+}
+function checkRadio(){
+	alert("您不是该地区的ID");
+	window.location = '__URL__/login';
+}
+
+//-->
+</script>

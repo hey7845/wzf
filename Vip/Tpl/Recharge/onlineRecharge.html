@@ -1,0 +1,199 @@
+<include file="Public:xyHead" />
+<script language='javascript'>
+function CheckForm(){
+	if(document.form1.ePoints.value==""){
+		alert("请输入充值额度！");
+		document.form1.ePoints.focus();
+		return false;
+	}
+}
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>在线充值 </h1></div>
+  <form name="form1" method="post" action="__URL__/onlineRechargeAC" onSubmit="{return CheckForm();}">
+  <table width="100%" border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td width="20%" height="30" align="right">种子币余额：</td>
+      <td><span class="hong">{$frs['agent_kt']}</span></td>
+    </tr>
+    
+    <tr>
+	  <td height="30" align="right">充值额度：</td>
+	  <td><input name="ePoints" type="text" id="ePoints" maxlength="9" class="ipt" onblur="change_mon();"/></td>
+	</tr>
+    <tr>
+	  <td height="30" align="right">实付金额：</td>
+	  <td><input name="inmoney" type="text" id="inmoney" maxlength="9" class="ipt" readonly="readonly"/></td>
+	</tr>
+    <tr style="display:none">
+	  <td height="30" align="right">选择银行：</td>
+	  <td>
+		<table width="600" border="0"  cellpadding="2" cellspacing="0" style="left:0;" id="banklist" >
+		<tr>
+			<td valign="middle" height="40" width="150">
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="ICBC" checked>
+			<img src="__PUBLIC__/Images/bank/gongshang.gif" title="工商银行" alt="工商银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td valign="middle" height="40" width="150">
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="ABC">
+			<img src="__PUBLIC__/Images/bank/nongye.gif" title="中国农业银行"  alt="中国农业银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td valign="middle" height="40" width="150">
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="CCB">
+			<img src="__PUBLIC__/Images/bank/jianshe.gif" title="建设银行" alt="建设银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="CMB"  />
+			<img src="__PUBLIC__/Images/bank/zhaohang.gif" title="招商银行" alt="招商银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+		</tr>
+		<tr>								     
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="BOC">
+			<img src="__PUBLIC__/Images/bank/zhongguo.gif" title="中国银行" alt="中国银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="BCOM">
+			<img src="__PUBLIC__/Images/bank/jiaotong.gif" title="交通银行" alt="交通银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="CEBB">
+			<img src="__PUBLIC__/Images/bank/guangda.gif" title="光大银行" alt="光大银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="CMBC">
+			<img src="__PUBLIC__/Images/bank/minsheng.gif" title="中国民生银行" alt="中国民生银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="SPDB">
+			<img src="__PUBLIC__/Images/bank/shangpufa.gif"  title="上海浦东发展银行" alt="上海浦东发展银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="CIB">
+			<img src="__PUBLIC__/Images/bank/xingye.gif" title="兴业银行" alt="兴业银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="PSBC">
+			<img src="__PUBLIC__/Images/bank/youzheng.gif" title="中国邮政" alt="中国邮政" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="GDB">
+			<img src="__PUBLIC__/Images/bank/guangfa.gif" title="广发银行" alt="广发银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="ECITIC">
+			<img src="__PUBLIC__/Images/bank/zhongxin.gif" title="中信银行" alt="中信银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="BEA">
+			<img src="__PUBLIC__/Images/bank/dongya.gif" title="东亚银行" alt="东亚银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="HXB">
+			<img src="__PUBLIC__/Images/bank/huaxia.gif" title="华夏银行" alt="华夏银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+			<td>
+			<div class="banklogo">
+			<input name="bank_code" type="radio" value="SPABANK">
+			<img src="__PUBLIC__/Images/bank/pingan.gif" title="平安银行" alt="平安银行" width="93" height="20" border="0" style="border:1px solid #CCCCCC;" />
+			</div>
+			</td>
+		</tr>
+		</table>
+		</td>
+	</tr>
+    <tr>
+      <td height="30">&nbsp;<input id="inout" name="inout" type="hidden" value="{$str4}" /></td>
+      <td><input type="submit" name="Submit" value="确定" class="bt_tj" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" style=" height:5px;"><hr></td>
+    </tr>
+</table></form>
+<br>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>充值额度</span></th>
+			<th><span>订单号</span></th>
+			<th><span>订单时间</span></th>
+            <th><span>处理时间</span></th>
+            <th><span>充值状态</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+        <td>{$vo['user_id']}</td>
+        <td>{$vo['amount']}</td>
+        <td>{$vo['orderid']}</td>
+        <td>{$vo.or_time|date='Y-m-d H:i:s',###}</td>
+        <td><gt name="vo.ok_time" value="0">{$vo.ok_time|date='Y-m-d H:i:s',###}</gt></td>
+        <td><eq name="vo['is_pay']" value="0">未支付</eq><eq name="vo['is_pay']" value="1"><font color="#3366FF">支付成功</font></eq></td>
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+<tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+<div class="bottom"></div>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>
+<script>
+function change_mon(){
+	var mm = document.getElementById("ePoints").value;
+	mm = parseInt(mm);
+	var inout = document.getElementById("inout").value;
+	inout = formatNumberUnitsDivd(parseFloat(inout)); 
+	if (isNaN(mm)){
+		document.getElementById("ePoints").value = "0.00";
+	}else{
+		RMB_m = mm*inout;
+		RMB_m = formatNumberUnitsDivd(parseFloat(RMB_m)); 
+		document.getElementById("inmoney").value = RMB_m;
+		monn = formatNumberUnitsDivd(parseFloat(mm)); 
+		document.getElementById("ePoints").value = monn;
+	}
+}
+function formatNumberUnitsDivd(num) {
+	return num.toFixed(2);
+}
+</script>

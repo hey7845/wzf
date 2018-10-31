@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0048)http://www.ekegp.be:1204/Member1/StockView1.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+</title>
+<!--<load href='__PUBLIC__/Images/gp_trace/acmanager.css' />-->
+<load href='__PUBLIC__/Images/gp_trace/css711.css' />
+<!-- <load href='__PUBLIC__/Images/gp_trace/tooltip-generic.css' /> -->
+</head>
+<body>
+    <!--左边主菜单,end-->
+    <div class="con_right">
+        
+<table class="con_tb111" border="0" cellspacing="0" cellpadding="0"  bgcolor="#FFCC99">
+    <tr class="con_tb_titletr1">
+        <!--给TR背景，解决IPAN加载图片时，2个图片间有黑色条条问题-->
+        <td class="con_tb_titletd1">&nbsp;
+            
+        </td>
+        <td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="con_tb_titletd2111"  style="background:#FFFFDD;height:30px;">
+						
+                    </td>
+                    <td align="center" class="bai12b1"  style="background:#FFFFDD;height:30px;">
+                        <span id="lblSitemap2" style="color:red;font-weight:bold;">CQ币交易图</span>
+              </td>
+                </tr>
+            </table>
+        </td>
+        <td class="con_tb_titletd31111">&nbsp;
+            
+        </td>
+    </tr>
+    <tr style="width: 100%">
+        <td width="20" style="">
+        </td>
+        <td>
+            <table width="850px" class="con_list_tb1111" border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                                <td width="100%" align="left">&nbsp;
+                                    <span style="color:#FF0000">达人信息：</span>游戏币：{$game_cash}，当前的CQ币价格：{$op_price}，CQ币：{$live_gp}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                <td style="padding: 0; margin: 0;" align="center" colspan="2" >
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                        <tr align="center" >
+                            <th >
+                                发行量
+                            </th>
+                            <th>
+                                开盘价
+                            </th>
+                            <th>
+                                最高价
+                            </th>
+                            <th>
+                                最低价
+                            </th>
+                            <th>
+                                现价
+                            </th>
+                            <th>
+                                涨幅
+                            </th>
+                            <th>
+                                今日成交
+                            </th>
+                            <th>
+                                总成交量
+                            </th>
+                        </tr>
+                        <tr align="center">
+                            <td>
+                                {$sNun}
+                            </td>
+                            <td>
+                                {$op_price}
+                            </td>
+                            <td>
+                                <span id="sp_max">{$max_price}</span>
+                            </td>
+                            <td>
+                                <span id="sp_lower">{$min_price}</span>
+                            </td>
+                            <td>
+                                <span id="sp_now">{$op_price}</span>
+                            </td>
+                            <td style="color: Red;">
+                                <span id="sp_change">{$up_price}</span> %
+                            </td>
+                            <td>
+                                <span id="sp_todaytotal">{$tall_sNun|default='0'}</span>
+                            </td>
+                            <td>
+                                <span id="sp_total">{$all_sNun|default='0'}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="width: 620px;">
+                    <!--<iframe src="./EKE理财 - 游戏大厅_files/stockswf.htm" width="604" height="436" scrolling="no" frameborder="0"></iframe>-->
+					<SCRIPT language=javascript type=text/javascript src="__PUBLIC__/Images/FusionCharts.js"></SCRIPT>
+						<table border=0 cellSpacing=0 cellPadding=0 width="100%" height="436">
+						  <tr>
+							<td bgcolor="#FFFFFF">
+							  <div id=chart5Div></div>
+							</td>
+							<td bgcolor="#FFFFFF"><DIV id=chart6Div></DIV></td>
+						  </tr>
+						 <tr>
+						<td colspan="2">
+						 <SCRIPT type=text/javascript>
+								var chart2 = new FusionCharts
+						
+						 ("__PUBLIC__/Images/FCF_MSLine.swf", "ChId1", "604", "436");
+								chart2.setDataURL("__PUBLIC__/Images/ChartsPrice.xml");
+								chart2.render("chart5Div");
+						 
+									//var chart2 = new FusionCharts
+							//
+							//("__PUBLIC__/Images/FCF_MSLine.swf", "ChId2", "500", "400");
+							//        chart2.setDataURL("__PUBLIC__/Images/ChartsVolume.xml");
+							//        chart2.render("chart6Div");
+					</SCRIPT>
+					</td>
+				  </tr>
+				</table>  
+                </td>
+                <td align="center" valign="top">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ej_bd_tb2">
+                        <tr>
+                            <td valign="top" style="height:115px;">
+                                <table width="150" border="1" cellspacing="0" cellpadding="0" id="tr_buy"><tr align="center"> <td width="50%" ><span style="color:#360;">购买价 </span></td> <td width="50%"><span style="color:#360;"> 量 </span></td> </tr><tr><td><span style="color:#f60;">{$op_price}</span></td><td><span style="color:#f60;">{$b_sNun|default='0'}</span></td></tr></table>
+		                    </td>
+		                    <td valign="top">
+                                <table width="150" border="1" cellspacing="0" cellpadding="0" id="tr_sale"><tr align="center"> <td width="50%"><span style="color:#360;"> 销售价</span> </td> <td width="50%"><span style="color:#360;"> 量 </span></td> </tr><tr><td><span style="color:#f60;">{$op_price}</span></td><td><span style="color:#f60;">{$s_sNun|default='0'}</span></td></tr></table>
+                             </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2">
+                                <div style="clear: both; width: 284px; margin-top:16px; border:1px solid #999;">
+                                <div class="Sliding_tab">
+                                    <ul>
+                                        <li style="font-size:14px; font-weight:bold"><a class="tabs" id="set_div011" onmouseover="Hovertab('set_div01','set_div02');">立即购买</a> </li>
+                                        <li style="font-size:14px; font-weight:bold"><a class="tabs_act" id="set_div021" onmouseover="Hovertab('set_div02','set_div01');"> 立即出售</a> </li>
+                                    </ul>
+                                </div>
+                                <div class="tablist" id="set_div01">
+									 <form name="form1" method="post" action="__URL__/buyGP">
+                                    <table cellspacing="0" cellpadding="0" border="1" width="100%" align="left">
+                                        
+                                            <tr>
+                                                <td align="right"> 购买价格： </td>
+                                                <td align="left">
+												<input name="one_price" type="text" id="one_price"  maxlength="20" value="{$op_price}" readonly="readonly"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right"> 购买数量： </td>
+                                                <td align="left"><input name="sNun" type="text" id="sNun"  maxlength="20" onBlur="tot_price();"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right"> 三级密码： </td>
+                                                <td align="left"><input name="gp_pwd" type="password" id="one_price" value="" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td align="left">
+												<input type="submit" name="button2" id="button2" value="立即购买">
+                                                    <br>
+                                                    <span id="ctl00_mainindex_mmsg1"></span></td>
+                                            </tr>
+                                        
+                                    </table>
+									</form>
+                                </div>
+                                <div class="tablist" id="set_div02" style="display: none">
+									 <form name="form1" method="post" action="__URL__/sellGP">
+                                    <table cellspacing="0" cellpadding="0" border="1" width="100%" align="center">
+                                        
+                                            <tr>
+                                                <td align="right"> 销售价格： </td>
+                                                <td align="left">
+													<input name="one_price" type="text" id="one_price"  maxlength="20" value="{$op_price}" readonly="readonly">
+												</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right"> 销售数量： </td>
+                                                <td align="left"><input name="sNun" type="text" id="sNun"  maxlength="20" onBlur="tot_price();"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right"> 三级密码： </td>
+                                                <td align="left">	<input name="gp_pwd" type="password" id="one_price" value="" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td align="left"><input type="submit" name="button2" id="button2" value="立即出售">
+                                                    <br>
+                                                    <span id="ctl00_mainindex_mmsg"></span></td>
+                                            </tr>
+                                        
+                                    </table>
+									</form>
+                                </div>
+                            </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" align="left">
+                    <div>
+						<table cellspacing="0" cellpadding="4" border="0" id="ctl00_mainindex_GridView1" style="color:#333333;border-collapse:collapse;">
+							<tr style="color:White;background-color:#507CD1;font-weight:bold;" align="center">
+								<th scope="col" width="20%"><span style="color:#360">时间</span></th>
+								<th scope="col"  width="20%"><span style="color:#360">CQ币</span></th>
+								<th scope="col"  width="20%"><span style="color:#360">单价</span></th>
+								<th scope="col"  width="20%"><span style="color:#360">金额</span></th>
+								<th scope="col"  width="20%"><span style="color:#360">说明</span></th>
+							</tr>
+							
+							<volist name="list" id="vo">
+							<tr  style="background-color:#EFF3FB;">
+							  <td height="25" align="center">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+							  <td align="center">{$vo.sNun}</td>
+							   <td align="center">{$vo.one_price}</td>
+							   <td align="center">{$vo.price}</td>
+							<!--  <td align="center"><span style="color:#0000FF">交易成功</span></td>-->
+							  <td align="center">
+								<empty name="vo.type">成功求购的CQ币<else />成功售出的CQ币</empty></td>
+							  <!--<td align="center"><a href="__URL__/dell/uid/{$vo.id}">删除</a></td>-->
+							</tr>
+						  </volist>
+							
+						</table>
+					</div>
+                    <div class="nextpage cBlack">
+                        <ul>
+                            <li style="float:left">{$page}</li>
+                            <li style="float:right">
+                        </li>
+                        </ul>
+					</div>
+                </td>
+            </tr>
+        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="26" background="./EKE理财 - 游戏大厅_files/bg_35_jpg.jpg">
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;
+            
+        </td>
+        <td style="background-image: url(__PUBLIC__/Images/con_z_41.jpg); background-repeat: repeat-x;">
+        </td>
+        <td>&nbsp;
+            
+        </td>
+    </tr>
+</table>
+</div>
+</div>
+<div id="BOX_overlay" style="background: #000; position: absolute; z-index:100; filter:alpha(opacity=30);-moz-opacity: 0.6;opacity: 0.6;"></div>
+<div id="setting"></div>
+<!--提示层部分开始-->
+
+<!--提示层部分结束-->
+<div id="qTip">
+</div>
+</form>
+
+
+</body></html>
+
+<script type="text/javascript">
+	function Hovertab(id1,id2){
+		document.getElementById(id1).style.display = "block";
+		document.getElementById(id1+'1').style.background = "#FFFF00";
+		document.getElementById(id2).style.display = "none";
+		document.getElementById(id2+'1').style.background = "#FFFFFF";
+    }
+</script>

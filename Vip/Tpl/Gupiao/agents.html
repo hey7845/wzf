@@ -1,0 +1,63 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>购买投资配股 </h1></div>
+   <!--  <div class="c_p5"><div class="tips">首次申请报单中心，请填写申请备注。 </div></div> -->
+	<table width="100%" border="0" cellpadding="3" cellspacing="0">
+		<form name="form1" method='post' id="form1" action="__URL__/agentsAC">
+        <tr>
+            <td width="25%" height="30" align="right">积分：</td>
+            <td width="75%">{$fck_rs['agent_use']}</td>
+        </tr>
+		<tr>
+			<td width="25%" height="30" align="right">投资配股：</td>
+			<td width="75%">{$s6}</td>
+		</tr>
+
+        <tr>
+            <td width="25%" height="30" align="right">购买方式：</td>
+            <td width="75%"> 
+                <select name="select" id="select" >
+              <option value="1"> 向公司购买 </option>
+              <option value="2">积分购买</option>
+            
+        </tr>
+
+
+
+
+        <tr>
+            <td width="25%" height="30" align="right">购买数量：</td>
+            <td width="75%"><input type="text" name="nums"></td>
+        </tr>
+		<tr>
+			<td width="25%" height="30" align="right">购买状态：</td>
+			<td class="hong">{$agent_status}</td>
+		</tr>
+        <tr>
+            <td width="25%" height="30" align="right">本周已购买：</td>
+            <td class="hong">{$fck_rs['pg_nums']}</td>
+        </tr>
+        <script language = JavaScript>
+        var s=["s1","s2"];
+        var opt0 = ["请选择","请选择"];
+        function setup()
+        {
+            for(i=0;i<s.length-1;i++)
+            document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");
+            change(0);
+        }
+        setup();
+      </script>
+       
+	
+		<tr>
+			<td height="30">&nbsp;</td>
+		  <td><input name="submit" type="submit"  class="button_text" value="购  买" /></td>
+		</tr>
+		
+		</form>
+	</table>
+</div>
+</body>
+</html>

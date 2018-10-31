@@ -1,0 +1,67 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>财务明细&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th <empty name="User_namex">style="display:none"</empty>><span>{$User_namex}</span></th>
+			<!--<th><span>名称</span></th>-->
+			<th><span>金额</span></th>
+			<th><span>时间</span></th>
+			<th><span>备注</span></th>
+		</tr>
+	</thead>
+	<volist name="list" id="vo">
+	<tr align="center" class="content_td">
+		<td <empty name="User_namex">style="display:none"</empty>>{$vo['user_id']}</td>
+		<!--<td>{$vo['action_type']}</td>-->
+		<td class="hong">{$vo['epoints']}</td>
+		<td>
+        <if condition="($vo['action_type'] eq 3)">
+        <gt name="vo['act_pdt']" value="0">
+        {$vo.act_pdt|date='Y-m-d H:i:s',###}
+        <else/>
+        {$vo.pdt|date='Y-m-d H:i:s',###}
+        </gt>
+        <else/>
+        {$vo.pdt|date='Y-m-d H:i:s',###}
+        </if></td>
+		<td>
+        &nbsp;
+         <eq name="vo['action_type']" value="$vo.bz">
+         <eq name="vo['action_type']" value="100">{$s18['0']}</eq>
+         <eq name="vo['action_type']" value="1">{$fee_s7[0]}</eq>
+         <eq name="vo['action_type']" value="2">{$fee_s7[1]}</eq>
+         <eq name="vo['action_type']" value="3">{$fee_s7[2]}</eq>
+         <eq name="vo['action_type']" value="4">{$fee_s7[3]}</eq>
+         <eq name="vo['action_type']" value="5">{$fee_s7[4]}</eq>
+         <eq name="vo['action_type']" value="6">{$fee_s7[5]}</eq>
+         <eq name="vo['action_type']" value="7">{$fee_s7[6]}</eq>
+         <eq name="vo['action_type']" value="8">{$fee_s7[7]}</eq>
+         <eq name="vo['action_type']" value="9">{$fee_s7[8]}</eq>
+          <eq name="vo['action_type']" value="10">{$fee_s7[9]}</eq>
+         <!--<eq name="vo['action_type']" value="8">税收</eq>
+         <eq name="vo['action_type']" value="9">报单奖</eq>-->
+         <eq name="vo['action_type']" value="18">奖金提现</eq>
+         <eq name="vo['action_type']" value="19">开通会员</eq>
+         <eq name="vo['action_type']" value="20">货币转账</eq>
+         <eq name="vo['action_type']" value="21">充值电子积分</eq>
+         <eq name="vo['action_type']" value="23">充值消费积分</eq>
+         <eq name="vo['action_type']" value="30">充值激活积分</eq>
+         <eq name="vo['action_type']" value="24">复投积分复投</eq>
+         <eq name="vo['action_type']" value="25">消费积分复投</eq>
+         <eq name="vo['action_type']" value="29">电子积分复投</eq>
+         <else/>{$vo.bz}</eq>
+        </td>
+	</tr>
+	</volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

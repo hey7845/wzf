@@ -1,0 +1,98 @@
+<tagLib name="html" />
+<include file="Public:header" />
+<div class="bav">
+<div class="sub_bav">
+<div class="sub_bav_bt"><h1>认购原始股票</h1></div>
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="tab" >
+
+        <tr>
+          <td height="28" colspan="8" align="center"><table width="420" border="0" align="center" cellpadding="5" cellspacing="0" class="tab3">
+            <tr>
+              <td align="left"><fieldset>
+                <legend>股票账户</legend>
+                注册币账户余额：<span style="color:#F00;">{$game_m}</span><br />
+                持原始股数量：<span style="color:#F00;">{$live_gp}</span> 个
+              </fieldset></td>
+              </tr>
+          </table>
+            <br />
+          <table width="400" border="0" align="center" cellpadding="4" cellspacing="1" class="tab3" style="border:1px solid #CCC">
+            <form name="form1" method="post" action="__URL__/buyyuansAC" onsubmit="return checkf();">
+            <tr>
+              <td height="24" colspan="2" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="40%" height="30" align="right">认购数量：</td>
+              <td align="left"><input name="sNun" type="text" id="sNun"  maxlength="20" onBlur="value=value.replace(/[^0-9]/g,'');tot_price();">
+                个</td>
+            </tr>
+            <tr>
+              <td height="30" align="right" style="border-right:none;">原始股票单价：</td>
+           	    <td align="left"><input name="one_price" type="text" id="one_price"  maxlength="20" value="{$one_price}"  onBlur="value=value.replace(/[^0-9.]/g,'');tot_price();" readonly="readonly" style="background-color:#ddd;">
+                /个</td>
+            </tr>
+             <tr>
+              <td height="30" align="right" style="border-right:none;">总售价：</td>
+            	  <td align="left">
+				  	<span style="color:#960" id="tot_price">0</span>
+               </td>
+            </tr>
+            <tr>
+              <td height="30" align="right" style="border-right:none;">三级密码：</td>
+            	  <td align="left">
+				  	<input name="gp_pwd" type="password" id="gp_pwd" value="" />
+               	</td>
+            </tr>
+            <tr>
+              <td height="30" align="right">&nbsp;</td>
+              <td align="left">
+              <input type="submit" name="button2" id="button2" value="确认求购" class="btn1">
+                <input name="cPP" type="hidden" id="cPP" value="122">
+                <input name="PID" type="hidden" id="PID" ></td>
+            </tr>
+             </form>
+            <tr>
+              <td height="24" colspan="2" align="center"><span style="color:#F00; font-weight:bold;"><!--记录只能发布三天--></span></td>
+            </tr>
+          </table>
+          <br /></td>
+        </tr>
+      </table>
+      </div>
+</div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+function tot_price(){
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//数量
+	var t_price = formatNumberUnitsDivd(parseFloat(sNun * one_price));
+	document.getElementById('tot_price').innerHTML = t_price+'';
+}
+function formatNumberUnitsDivd(num) {
+	return num.toFixed(4);
+}
+function checkf(){
+	if(document.form1.one_price.value==""){
+		alert("请输入价格");
+		document.form1.one_price.focus();
+		return false;
+	}
+	if(document.form1.sNun.value==""){
+		alert("请输入购买股票数量");
+		document.form1.sNun.focus();
+		return false;
+	}
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//数量
+	var t_price = formatNumberUnitsDivd(parseFloat(sNun * one_price)); 
+	if(confirm("您确定要购买 "+document.form1.sNun.value+" 个 原始股票吗？\n\n每股单价："+document.form1.one_price.value+"\n\n购买总额："+t_price)){
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>
+<script>new TableSorter("tb1");</script>

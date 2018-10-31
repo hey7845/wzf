@@ -1,0 +1,78 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+    <table width="100%" border="0" cellspacing="10" cellpadding="0">
+              <tr>
+                <td width="18%" align="right">账户名称：</td>
+                <td width="82%" align="left">{$rs['user_id']}</td>
+              </tr>
+			    <tr>
+                <td width="18%" align="right">报单中心：</td>
+                <td width="82%" align="left"><eq name="rs['is_agent']" value="2">是<else/>否</eq></td>
+              </tr>
+			  <tr>
+                <td width="18%" align="right">推荐人数：</td>
+                <td width="82%" align="left">{$rs['re_nums']}人</td>
+              </tr>
+              <tr>
+                <td align="right">会员级别：</td>
+                <td align="left">{$u_level}</td>
+              </tr>
+             
+            <!--    <tr>
+                <td align="right">省：</td>
+                <td align="left">{$rs['s_province']}</td>
+              </tr>
+               <tr>
+                <td align="right">市：</td>
+                <td align="left">{$rs['s_city']}</td>
+              </tr>
+               <tr>
+                <td align="right">区：</td>
+                <td align="left">{$rs['s_county']}</td>
+              </tr> -->
+
+
+              <tr>
+                <td align="right">消费积分：</td>
+                <td align="left">{$rs['agent_use']}</td>
+              </tr>
+         <!--      <tr>
+                <td align="right">M币：</td>
+                <td align="left">{$rs['agent_cash']}</td>
+              </tr> -->
+           
+              <tr>
+                <td align="right">A网复投积分：</td>
+                <td align="left">{$rs['agent_xf']}</td>
+              </tr>
+              <eq name = "rs['net_status']" value ="b">
+	              <tr>
+	                <td align="right">B网复投积分：</td>
+	                <td align="left">{$netb_rs['agent_futou']}</td>
+	              </tr>
+              </eq>
+	       		<tr>
+                <td align="right">公益基金：</td>
+                <td align="left">{$rs['agent_cf']}</td>
+              </tr>
+         <!--    <tr>
+                <td align="right">车房基金：</td>
+                <td align="left">{$rs['agent_kt']}</td>
+              </tr>
+              <tr>
+                <td align="right">爱心基金：</td>
+                <td align="left">{$rs['agent_xf']}</td>
+              </tr>
+              <tr> -->
+                <td align="right">直推人数：</td>
+                <td align="left">{$rs['re_nums']}</td>
+              </tr>
+			<!--<tr>
+                <td align="right">重复消费月累计：</td>
+                <td align="left">$ {$rs['re_money']}</td>
+              </tr>-->
+			  
+            </table>
+</div>
+</body>
+</html>

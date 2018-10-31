@@ -1,0 +1,46 @@
+<include file="Public:header" />
+<SCRIPT language=JavaScript>
+function checklogin() {
+	if (document.myform.UserID.value=="") {
+		alert("请输入收件人!");
+		myform.UserID.focus();
+		return false;
+	}
+	if (document.myform.Title.value=="") {
+		alert("请输入邮件标题!");
+		myform.Title.focus();
+		return false;
+	}
+	return true;
+}
+</SCRIPT>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>写邮件 </h1></div>
+    <form method='post' id="form1" name="myform" onSubmit="return checklogin()" action="__URL__/messagesAC">
+    <table width="100%" border="0" cellpadding="5" cellspacing="5">
+      <tr>
+        <td width="28%" align="right">收件人编号：</td>
+        <td width="72%"><input name="UserID" type="text"  id="UserID" value="公司"/>
+        <input name="level" type="radio" value="1" checked="checked" onclick="UserID.value='公司';"> 给公司留言
+        <eq name="mrs.id" value="1">
+        <input name="level" type="radio" value="0" onclick="UserID.value='';"> 给会员留言
+        </eq>
+        </td>
+      </tr>
+      <tr>
+        <td align="right">邮件标题：</td>
+        <td><input name="Title" type="text"  id="Title" size="35" maxlength="200" /></td>
+      </tr>
+      <tr>
+        <td align="right">邮件内容：</td>
+        <td><textarea name="Msg" cols="45" rows="7" id="Msg"></textarea></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input name="submit" type="submit"  class="button_text" value="发 送" /></td>
+      </tr>
+    </table>
+    </form>
+</div>
+</body>
+</html>

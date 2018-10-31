@@ -1,0 +1,73 @@
+<include file="Public:header" />
+<style>
+.Sliding_tab {
+	HEIGHT: 27px
+}
+.Sliding_tab LI {
+	FLOAT: left
+}
+.Sliding_tab LI.table_li {
+	WIDTH: 132px; LINE-HEIGHT: 26px;  HEIGHT: 26px
+}
+.tablist {
+	CLEAR: both; OVERFLOW: hidden;  WIDTH: 260px; HEIGHT: 220px;
+}
+.Sliding_tab LI a{color:#333;}
+.tabs {
+	DISPLAY: block; FLOAT: left; WIDTH: 138px; LINE-HEIGHT: 25px;  HEIGHT: 25px; BACKGROUND-COLOR: #FFFF00; TEXT-ALIGN: center
+}
+.tabs_act {
+	DISPLAY: block; FLOAT: left; WIDTH: 138px; LINE-HEIGHT: 25px; HEIGHT: 25px; BACKGROUND-COLOR: #ececec; TEXT-ALIGN: center
+}
+.tabs_act {
+	FONT-WEIGHT: bold; COLOR: #000000; 
+}
+#tr_buy th{ background:#CDB5CD}
+#tr_sale th{ background:#CDB5CD}
+.td2 {	line-height:28px;
+	font-size:12px;
+}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>走势图&nbsp;&nbsp; [<a href="javascript:document.location.reload();">刷新行情</a>]</h1></div>
+<!--左边主菜单,end-->
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+	
+  <tr>
+  	<td width="50%" valign="top">
+    <!--<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+        <table width="550" border="0" align="center" cellpadding="5" cellspacing="1" style="background:#ffd501">
+          <tr align="center" >
+            <td height="24" align="center" bgcolor="#FFFFFF"> 现价 </td>
+            <td align="center" bgcolor="#FFFFFF">累计交易量</td>
+            <td align="center" bgcolor="#FFFFFF">昨日交易量</td>
+            <td align="center" bgcolor="#FFFFFF">今日成交量</td>
+          </tr>
+          <tr align="center">
+            <td height="24" bgcolor="#FFFFFF"><span id="sp_now">{$op_price}</span></td>
+            <td bgcolor="#FFFFFF"><span id="sp_now">{$all_num|default='0'}</span></td>
+            <td bgcolor="#FFFFFF"><span id="sp_now">{$yt_sellnum|default='0'}</span></td>
+            <td bgcolor="#FFFFFF"><span id="sp_todaytotal">{$tall_sNun|default='0'}</span></td>
+          </tr>
+        </table>-->
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+        <iframe src="__URL__/amstock/" width="504" height="366" scrolling="No" frameborder="0"></iframe>
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+<br />
+</div>
+</body></html>
+<script type="text/javascript">
+function document.oncontextmenu(){
+	return false;
+}
+</script>

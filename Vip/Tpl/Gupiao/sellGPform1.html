@@ -1,0 +1,105 @@
+<include file="Public:header" />
+<style>
+.tab_l3{font-size:14px;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>CQ币出售记录</h1></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#b9c8d0" class="tab3" id="tb2">
+<tr>
+  <th width="10%"><span>序号</span></th>
+  <th width="15%" height="28"><span>总量</span></th>
+  <th width="15%"><span>买入价格</span></th>
+  <th width="25%"><span>买入时间</span></th>
+  <th width="25%"><span>出售时间</span></th>
+  <th width="10%"><span>状态</span></th>
+  </tr>
+<volist name="list_t" id="vo">
+  <tr>
+    <td align="center">{$key+1}</td>
+    <td height="25" align="center">{$vo.sNun}</td>
+    <td align="center">{$vo.sell_mm}</td>
+    <td align="center">{$vo.eDate|date="Y-m-d H:i:s",###}</td>
+    <td align="center"><gt name="vo.sell_date" value="0">{$vo.sell_date|date="Y-m-d H:i:s",###}</gt></td>
+    <td align="center"><gt name="vo.sell_date" value="0"><span style="color:#F00">已售出</span><else/>未出售</gt></td>
+    </tr>
+</volist>
+  <tr>
+    <td height="25" colspan="6" align="center">{$page_t}</td>
+  </tr>
+</table>
+<br />
+<table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#b9c8d0" class="tab3" id="tb">
+<tr>
+  <th width="14%" height="28"><span>出售时间</span></th>
+  <th width="12%"><span>总量</span></th>
+  <th width="12%"><span>已卖出</span></th>
+  <th width="12%"><span>剩余</span></th>
+  <th width="12%"><span>原单价</span></th>
+  <th width="12%"><span>原总额</span></th>
+  <th width="14%"><span>售出总额</span></th>
+  <th width="14%"><span>状态</span></th>
+  </tr>
+<volist name="list" id="vo">
+  <tr>
+    <td height="25" align="center">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+    <td align="center">{$vo.sNun}</td>
+    <td align="center">{$vo.used_num}</td>
+    <td align="center">{$vo.lnum}</td>
+    <td align="center">{$vo.one_price}</td>
+    <td align="center">{$vo['sNun']*$vo['one_price']}</td>
+    <td align="center">{$vo.sell_g}</td>
+    <td align="center">
+    <eq name="vo.is_cancel" value="1"><span style="color:#0F0">交易撤销</span></eq>
+    <eq name="vo.is_cancel" value="0">
+        <eq name="vo.ispay" value="0">
+        <span style="color:#F00">等待交易</span><!-- |
+        [<a href="__URL__/us_delsellgpAC/id/{$vo.id}/" onclick="{if(confirm('您确定要撤销此条交易吗？')){return true;}return false;}">撤销</a>]-->
+        <else />
+        交易完成
+        </eq>
+    </eq>
+    </td>
+  </tr>
+</volist>
+<tr>
+    <td height="25" colspan="8" align="center">{$page}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function tot_price(){
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//数量
+	one_price = parseInt(one_price*100);
+	sNun = parseInt(sNun*100);
+	var t_price = formatNumberUnitsDivd(parseFloat(sNun * one_price)); 
+	document.getElementById('tot_price').innerHTML = t_price+'';
+}
+function formatNumberUnitsDivd(num) {
+	return num.toFixed(2);
+}
+function checkf(){
+	if(document.form1.one_price.value==""){
+		alert("请输入价格");
+		document.form1.one_price.focus();
+		return false;
+	}
+	if(document.form1.sNun.value==""){
+		alert("请输入出售股票数量");
+		document.form1.sNun.focus();
+		return false;
+	}
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//数量
+	one_price = parseInt(one_price*100);
+	sNun = parseInt(sNun*100);
+	var t_price = formatNumberUnitsDivd(parseFloat(sNun * one_price)); 
+	if(confirm("您确定要出售 "+document.form1.sNun.value+" 个 股票吗？\n\n售出单价："+document.form1.one_price.value+"\n\n售出总额："+t_price)){
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>

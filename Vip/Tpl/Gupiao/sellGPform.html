@@ -1,0 +1,159 @@
+<tagLib name="html" />
+<include file="Public:header" />
+<style>
+.tab_l3{font-size:14px;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>股票售出 </h1></div>
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="tab" >
+
+        <tr>
+          <td height="28" colspan="8" align="center">
+          <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <td width="40%"><table width="70%" border="0" align="center" cellpadding="5" cellspacing="0" class="tab_l3" id="noborder">
+                <tr>
+                  <td align="left">
+                   账户积分：<span style="color:#F00;">{$fck_rs['agent_use']}</span>    <br />
+                   内部认购：<span style="color:#F00;">{$fck_rs['in_gupiao']}</span>  股<br />
+                   投资配股：<span style="color:#F00;">{$fck_rs['out_gupiao']}</span> 股<br />
+                   买入股票：<span style="color:#F00;">{$fck_rs['buy_gupiao']}</span> 股<br />
+                   平仓配股：<span style="color:#F00;">{$fck_rs['flat_gupiao']}</span> 股<br />
+                   赠送股票：<span style="color:#F00;">{$fck_rs['give_gupiao']}</span> 股<br />
+                  </td>
+                </tr>
+              </table></td>
+              <td width="60%"><table width="400" border="0" cellpadding="5" cellspacing="0" class="tab3" style="border:1px solid #CCC" id="noborder">
+                <form action="__URL__/sellGP" method="post" name="form1" id="form1" onsubmit="return checkf();">
+                  <tr>
+                    <td width="30%" align="right">类型：</td>
+                    <td align="left">
+                      <select name="TPL" id="TPL">
+                      <option value="5" > 内部认购 </option>
+                      <option value="1" > 投资配股 </option>
+                      <option value="2" > 买入股票 </option>
+                      <option value="3" > 平仓配股 </option>
+                      <option value="4" > 赠送股票 </option>
+                    
+                    </select>
+                    </td>
+                      </td>
+                  </tr>
+
+                  <tr>
+                    <td width="30%" align="right">出售数量：</td>
+                    <td align="left"><input name="sNun" type="text" id="sNun"  maxlength="20" onblur="value=value.replace(/[^0-9]/g,'');tot_price();" />
+                      股</td>
+                  </tr>
+                  <tr>
+                    <td height="30" align="right" style="border-right:none;">当前价格：</td>
+                    <td align="left"><input name="ttone_price" type="text" id="ttone_price"  maxlength="20" value="{$one_price}" readonly="readonly" style="background-color:#ddd;" />
+                      /股</td>
+                  </tr>
+                  <tr>
+                    <td align="right" style="border-right:none;">沽出价格：</td>
+                    <td align="left"><input name="one_price" type="text" id="one_price"  maxlength="20" value="{$one_price}" onblur="value=value.replace(/[^0-9.]/g,'');tot_price();" />
+                      /股</td>
+                  </tr>
+                  <tr>
+                    <td align="right" style="border-right:none;">总售价：</td>
+                    <td align="left"><span style="color:#960" id="tot_price">0</span></td>
+                  </tr>
+                  <tr>
+                    <td align="right" style="border-right:none;">二级密码：</td>
+                    <td align="left"><input name="gp_pwd" type="password" id="gp_pwd" value="" /></td>
+                  </tr>
+                  <tr>
+                    <td align="right">&nbsp;</td>
+                    <td align="left"><eq name="close_gp" value="0">
+                      <input type="submit" name="button2" id="button2" value="确认出售" class="btn1" />
+                      <else />
+                      <span style="color:#F00">股市交易已关闭</span> </eq>
+                      <input name="cPP" type="hidden" id="cPP" value="122" />
+                      <input name="PID" type="hidden" id="PID" /></td>
+                  </tr>
+                </form>
+              </table></td>
+            </tr>
+          </table>
+          <br />
+          <br />
+          <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#b9c8d0" class="tab3" id="tb1">
+          <tr>
+          <th width="14%" height="28"><span>出售时间</span></th>
+          <th width="10%"><span>总量</span></th>
+  		    <th width="10%"><span>已卖出</span></th>
+  		    <th width="10%"><span>剩余</span></th>
+  		    <th width="10%"><span>单价</span></th>
+          <th width="10%"><span>金额</span></th>
+          <th width="10%"><span>类型</span></th>
+		  <th width="14%"><span>状态</span></th>
+          <th width="12%">功能 </th>
+        </tr>
+<volist name="list" id="vo">
+        <tr  align="center">
+          <td height="25">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+          <td>{$vo.sNun}</td>
+		   <td>{$vo.used_num}</td>
+		   <td>{$vo.lnum}</td>
+		    <td>{$vo.one_price}</td>
+          <td>{$vo.price}</td>
+
+           <td>
+            <eq name="vo.tpl" value="5">内部认购</eq>
+            <eq name="vo.tpl" value="1">投资配股</eq>
+            <eq name="vo.tpl" value="2">买入股票</eq>
+            <eq name="vo.tpl" value="3">平仓配股</eq>
+            <eq name="vo.tpl" value="4">赠送股票</eq>
+          </td>
+		  <td>
+		  	<eq name="vo.ispay" value="1"><span style="color:#F00">交易成功</span><else />正在上架</eq>
+          </td>
+          <td><eq name="vo.ispay" value="1"><a href="__URL__/delsellGP/id/{$vo.id}">删除</a><else/><a href="__URL__/delsellGP/id/{$vo.id}/ctype/1">撤销</a></eq></td>
+        </tr>
+        </volist>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="5" class="tab3">
+          <tr>
+            <td>{$page}</td>
+          </tr>
+        </table>
+          </td>
+        </tr>
+      </table>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+function tot_price(){
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//数量
+	var t_price = formatNumberUnitsDivd(parseFloat(sNun * one_price)); 
+	document.getElementById('tot_price').innerHTML = t_price+'';
+}
+function formatNumberUnitsDivd(num) {
+	return num.toFixed(4);
+}
+function checkf(){
+	if(document.form1.one_price.value==""){
+		alert("请输入价格");
+		document.form1.one_price.focus();
+		return false;
+	}
+	if(document.form1.sNun.value==""){
+		alert("请输入出售股票数量");
+		document.form1.sNun.focus();
+		return false;
+	}
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//数量
+	var t_price = formatNumberUnitsDivd(parseFloat(sNun * one_price)); 
+	if(confirm("您确定要出售 "+document.form1.sNun.value+" 股 股票吗？\n\n售出单价："+document.form1.one_price.value+"\n\n售出总额："+t_price)){
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>
+<script>new TableSorter("tb1");</script>

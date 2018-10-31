@@ -1,0 +1,18 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>新闻公告 </h1></div>
+        <table width="100%" border="0" cellspacing="3" cellpadding="0" class="tab5">
+          <volist name='list' id='vo'>
+          <tr>
+            <td height="28">&nbsp;&nbsp;<img src="__PUBLIC__/Images/news_li.gif">&nbsp;&nbsp;<a href="__URL__/News_show/NewID/{$vo.id}"><eq name="vo.baile" value="1"><font color=red>[置顶] </font></eq>{$vo['title']}</a></td>
+          </tr>
+          </volist>
+          <tr>
+            <td height="28" align="center">{$page}</td>
+          </tr>
+        </table>
+</div>
+
+<include file="../Public/inbox" />
+</body>
+</html>

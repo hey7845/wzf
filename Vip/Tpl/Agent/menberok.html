@@ -1,0 +1,45 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>已开通会员 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th><span>会员编号</span></th>
+        <th><span>联系电话</span></th>
+        <th><span>注册时间</span></th>
+        <th><span>开通时间</span></th>
+        <th><span>当前级别</span></th>
+        <th><span>投资金额</span></th>
+        <th><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr align="center">
+        <td>{$vo['user_id']}</a></td>
+        <td>{$vo['user_tel']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$voo[$vo['u_level']]}</td>
+        <td>{$vo['cpzj']}</td>
+        <td><eq name="vo['is_pay']" value='0'><span style="color: #FF0000;">未开通</span><else />已开通</eq></td>
+    </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/menberok/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="bt_tj"/>
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

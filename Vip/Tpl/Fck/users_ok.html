@@ -1,0 +1,27 @@
+<include file="Public:xyHead" />
+<div class="login">
+<div class="ncenter_box">
+<div class="accounttitle"><h1>注册成功 </h1></div>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td class="zc_hong" style="line-height:30px;" align="center" colspan="2">{$alert_msg}</td>
+              </tr>
+              <tr>
+                <td class="zc_hong" style="line-height:30px;" align="center" colspan="2">{$s17}</td>
+              </tr>
+              <tr>
+                <td width="20%" style="line-height:30px;" align="right">会员编号：</td>
+                <td width="80%" class="zc_hong" style="line-height:30px;">{$myrs['user_id']}</td>
+              </tr>
+              <tr>
+                <td style="line-height:30px;" align="right">注册费用：</td>
+                <td class="zc_hong" style="line-height:30px;">{$myrs['cpzj']}</td>
+              </tr>
+              <tr >
+                <td height="30" align="center" colspan="2"><input name="提交" type="submit" class="button_text" onclick="location.href='{$gourl}'" value="完成注册"></td>
+              </tr>
+            </table>
+</div>
+</div>
+</body>
+</html>

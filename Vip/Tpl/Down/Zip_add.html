@@ -1,0 +1,63 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>添加&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>]</h1></div>
+<form method='post' id="form1" name="form1" action="__URL__/Zip_add_save">
+        <table width="100%" border="0" cellpadding="5" cellspacing="0" class="tab">
+            
+            <tr>
+              <td colspan="2" style="height:10px"></td>
+            </tr>
+
+            <tr>
+                <td width="15%" align="right">标题：</td>
+                <td width="85%"><input  name="title" type="text" size="50" maxlength="200"></td>
+            </tr>
+            <tr style="display:none">
+              <td align="right">分类：</td>
+              <td>
+              <select name="stype" id="stype">
+                <option value="0">文档下载</option>
+                <option value="1">资料下载</option>
+              </select></td>
+            </tr>
+            <tr>
+				<td align="right">附件下载名：</td>
+				<td class="center"><input name="imagetitle" type="text" id="imagetitle" value="" size="50" maxlength="500" readonly="readonly"/> <span>使用本地上传</span></td>
+			</tr>
+            <tr>
+				<td align="right">附件地址：</td>
+				<td class="center"><input name="image" type="text" id="image" value="" size="50" maxlength="500" readonly="readonly"/> <span>使用本地上传</span></td>
+			</tr>
+			<tr>
+				<td align="right">本地上传：</td>
+				<td class="center"><iframe src="__URL__/upload_add" width="350" height="35" scrolling="no" frameborder="0"></iframe>上传格式：ZIP，RAR，DOC</td>
+			</tr>
+            <tr>
+                <td align="right">附件大小：</td>
+                <td><input name="fsize" type="text"> KB</td>
+            </tr>
+            <tr> 
+                <td align="right">内容：</td>
+                <td>{$html}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="center">
+                <input type="hidden" name="status" value="1">
+                <input type="hidden" name="user_id" value="1">
+                <input type="submit" value="保存" class="btn1">
+                　
+                <input type="reset" name="button" id="button" value="重置" class="btn1" />
+                　
+                <input type="button" name="button2" id="button2" value="返回" class="btn1" onclick="location.href='__URL__/zip_index'"/>
+                </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="height:10px"></td>
+            </tr>
+           
+     </table>
+</form>
+</div>
+</body>
+</html>

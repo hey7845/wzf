@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+<!--
+function uErrorHandler() {
+   return true;
+}
+window.onerror = uErrorHandler;
+
+function WriteFlash(rtitle,ntitle,vtitle,total,data,gtypes)
+{
+        var xdata = '';
+        if (data==null || total==null) retrun;
+        for (var ii=0;ii<data.length;ii++)
+        {
+                xdata += data[ii]['t']+"\\t"+data[ii]['n']+"\\n";
+        }
+        var str = '<center>'
+                  +'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="800" height="375" id="myexpend" align="middle">'
+                          +'<param name="allowScriptAccess" value="sameDomain" />'
+                          +'<param name="movie" value="__PUBLIC__/Flash/myexpend.swf" />'
+                          +'<param name="quality" value="high" />'
+                          +'<param name="bgcolor" value="#ffffff" />'
+                          +'<param name="wmode" value="transparent" />'
+                          +'<param name="FlashVars" value="ntitle='+ntitle+'&toggle=全部显示|全部隐藏&vtitle='+vtitle+'&cnames=&datatype=20&rtitle='+rtitle+'&fsize=1&gtypes='+gtypes+'&uloc=cn|$|1|2&total='+total+'&xdata='+xdata+'" />'
+                          +'<embed src="__PUBLIC__/Flash/myexpend.swf" quality="high" bgcolor="#ffffff" width="800" height="375" name="myexpend" align="middle" wmode="transparent"allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"  />'
+                          +'</object>'
+                          +'</center>';
+        document.getElementById('iframeshow').innerHTML = str+"<br /><br />";
+}
+
+function nload()
+{
+
+		var data = new Array();
+        <?php
+		$k = 4;
+        foreach ($list as $lvo){
+
+        ?>
+        data[<?php echo $k?>] = new Array();
+		data[<?php echo $k?>]['t'] = <?php echo $lvo['t'];?>;
+		data[<?php echo $k?>]['n'] = <?php echo $lvo['n'];?>;
+		<?php $k--;}?>
+		var total=0;
+
+        for (i=0; i<data.length; i++)
+        {
+                total += data[i]['n'];
+        }
+
+        WriteFlash('CQ币交易图     时间:<?php echo date('Y-m-d')?>','交易金额','CQ币数',total,data,'line|bar|hbar');
+
+}
+-->
+</script>
+</head>
+<body onLoad="nload()"  style="background-color:#FFF; margin:0px;">
+<div id="iframeshow"></div>
+</body style="background-color:#FFF9E6;">
+</html>

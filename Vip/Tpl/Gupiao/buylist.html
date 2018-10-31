@@ -1,0 +1,100 @@
+<include file="Public:header" />
+<style>
+.tab_l3{font-size:14px;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>买卖列表</h1></div>
+
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td align="center"><span style="font-size:14px; line-height:30px; font-weight:bold">已卖出</span></td>
+  </tr>
+  <tr><td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#b9c8d0" class="tab3" id="tb1">
+        
+          <tr>
+          <th width="14%" height="28"><span>出售时间</span></th>
+          <th width="10%"><span>总量</span></th>
+          <th width="10%"><span>已卖出</span></th>
+          <th width="10%"><span>剩余</span></th>
+          <th width="10%"><span>单价</span></th>
+          <th width="10%"><span>金额</span></th>
+          <th width="10%"><span>类型</span></th>
+          <th width="10%"><span>状态</span></th>
+          
+        </tr>
+<volist name="list" id="vo">
+        <tr  align="center">
+          <td height="25">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+          <td>{$vo.sNun}</td>
+          <td>{$vo.used_num}</td>
+          <td>{$vo.lnum}</td>
+          <td>{$vo.one_price}</td>
+          <td>{$vo.price}</td>
+          <td>
+            <eq name="vo.tpl" value="5">内部认购</eq>
+            <eq name="vo.tpl" value="1">投资配股</eq>
+            <eq name="vo.tpl" value="2">买入股票</eq>
+            <eq name="vo.tpl" value="3">平仓配股</eq>
+            <eq name="vo.tpl" value="4">赠送股票</eq>
+          </td>
+      <td>
+        <eq name="vo.status" value="1"><span style="color:#F00">该交易无效</span><else />该交易正常</eq>
+          </td>
+        
+        </tr>
+        </volist>
+        </table></td>
+  </tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+<br>
+
+
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td align="center"><span style="font-size:14px; line-height:30px; font-weight:bold">已购买</span></td>
+  </tr>
+  <tr><td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#b9c8d0" class="tab3" id="tb1">
+
+      
+          <tr>
+          <th width="14%" height="28"><span>出售时间</span></th>
+          <th width="12%"><span>总量</span></th>
+      <th width="12%"><span>已卖出</span></th>
+      <th width="12%"><span>剩余</span></th>
+      <th width="12%"><span>单价</span></th>
+          <th width="12%"><span>金额</span></th>
+      <th width="14%"><span>状态</span></th>
+          
+        </tr>
+<volist name="list2" id="vo">
+        <tr  align="center">
+          <td height="25">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+          <td>{$vo.sNun}</td>
+       <td>{$vo.used_num}</td>
+       <td>{$vo.lnum}</td>
+        <td>{$vo.one_price}</td>
+          <td>{$vo.price}</td>
+      <td>
+        <eq name="vo.status" value="1"><span style="color:#F00">该交易无效</span><else />该交易正常</eq>
+          </td>
+        
+        </tr>
+        </volist>
+        </table></td>
+  </tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page2}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

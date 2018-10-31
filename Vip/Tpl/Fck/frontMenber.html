@@ -1,0 +1,48 @@
+<include file="Public:xyHead" />
+<div id="main_top"><font>您现在的位置是：</font>推荐列表</div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+    <tr align="center">
+        <th nowrap><span>会员编号</span></th>
+        <th nowrap><span>会员名</span></th>
+        <th nowrap><span>开户银行</span></th>
+        <th nowrap><span>银行卡号</span></th>
+        <th nowrap><span>开户姓名</span></th>
+        <th nowrap><span>联系地址</span></th>
+        <th nowrap><span>联系电话</span></th>
+        <th nowrap><span>注册时间</span></th>
+        <th nowrap><span>开通时间</span></th>
+        <th nowrap><span>会员级别</span></th>
+        <th nowrap><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr align="center"> 
+        <td>{$vo['user_id']}</td>
+        <td>{$vo['nickname']}</td>
+        <td>{$vo['bank_name']|bank_name}</td>
+        <td>{$vo['bank_card']}</td>
+        <td>{$vo['user_name']}</td>
+        <td>{$vo['user_address']}</td>
+        <td>{$vo['user_tel']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$voo[$vo['u_level']]}</td>
+        <td><eq name="vo['is_pay']" value='0'><span style="color: #FF0000;">未开通</span><else />已开通</eq></td>
+    </tr>
+    </volist>
+</table>
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/frontMenber/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="btn1"/></span>
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

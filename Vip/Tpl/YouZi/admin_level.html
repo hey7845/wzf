@@ -1,0 +1,57 @@
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+<tagLib name="html" />
+<include file="Public:xyHead" />
+<div class="sub_bav">
+<!-- 列表显示区域  -->
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+<tr class="tabletd">
+  <td colspan="20">
+		<form method="post" action="__URL__/auditMenber">
+		<div class="fLeft"><span id="key">会员编号：<input type="text" name="UserID" title="帐号查询"></span>
+		  <input type="submit" name="Submit" value="查询"  class="btn1"/>
+		</div>
+		<!-- 高级查询区域 -->
+		<div  id="searchM" class=" none search cBoth" >
+		</div>
+		</form>
+  
+  </td>
+</tr>
+<form name="form3" method="post" action="__URL__/auditMenberAC">
+
+<tr class="content_td" align="center">
+	<td ><div align="center"><input type="checkbox" name="chkall" value="checkbox" onClick="CheckAll(this.form)"  class="btn2" id="chkall"></div></td>
+	<td nowrap >会员编号</td>
+	<td nowrap >会员名</td>
+	<td nowrap >会员级别</td>
+	<td nowrap >申请升级级别</td>
+</tr>
+<volist name="list" id="vo">
+<tr class="content_td" align="center"> 
+	<td><div align="center">
+	  <input type="checkbox" name=tabledb[] value="{$vo['id']}" class="btn2">
+	  </div></td>
+	<td>{$vo['user_id']}</td>
+	<td>{$vo['nickname']}</td>
+	<td>{$vo['u_level']|level_name}</td>
+	<td><font color="red">{$vo['sel_level']|level_name}</font></td>
+</tr>
+</volist>
+<tr class="content_td">
+	<td  colspan=14 >&nbsp;
+      <input name="全选" type="button" class="btn1" id="全选" onClick="CheckAll(this.form)" value="全选">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="申请通过" onclick="{if(confirm('确定开通会员吗?')){return true;}return false;}" class="btn1">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="拒绝通过" onclick="{if(confirm('确定删除会员吗?')){return true;}return false;}" class="btn1"></td>
+</tr>
+<tr class="content_td" align="center">
+	<td colspan=14 >{$page}&nbsp;</td>
+</tr>
+</form>
+</table>
+</div>
+</body>
+</html>

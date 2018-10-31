@@ -1,0 +1,240 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>注册会员确认 </h1></div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tab1">
+  <tr>
+    <td>
+    <form method='post' id="form1" name="form1" action="__URL__/usersAdd"/>
+    <table width="100%" border="0" cellpadding="3" cellspacing="0" class="tab4">
+    <!--
+      <tr>
+        <td width="25%" height="30" align="right"><span class="zc_hong">*</span> 所属服务中心：</td>
+        <td>{$shopid}</td>
+        </tr>
+        -->
+      <tr>
+        <td width="25%" height="30" align="right"> 推荐人：</td>
+        <td>{$RID}</td>
+        </tr>
+        <tr>
+        <td height="30" align="right"> 姓名：</td>
+        <td>{$UserName}</td>
+        </tr>
+        <tr>
+        <td height="30" align="right">联系电话：</td>
+        <td>{$UserTel}</td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span>身份证号：</td>
+        <td>{$UserCode}</td>
+        </tr>
+        <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span>微信：</td>
+        <td>{$qq}</td>
+        </tr>
+      <!--  <tr style="display:none">
+        <td height="30" align="right"><span class="zc_hong">*</span> 接点人：</td>
+        <td>{$FID}</td>
+        </tr>
+        -->
+      <!--<tr>
+        <td height="30" align="right"><span class="zc_hong">*</span> {$User_namex}：</td>
+        <td>{$UserID}</td>
+        </tr>
+        -->
+<!--         <tr> -->
+<!--         <td height="30" align="right"> 昵称：</td> -->
+<!--         <td>{$nickname}</td> -->
+<!--         </tr> -->
+   <!-- <tr>
+        <td height="30" align="right">省份：</td>
+        <td>{$s_province}</td>
+        </tr>
+      <tr>
+        <td height="30" align="right">城市：</td>
+        <td>{$s_city}</td>
+        </tr>
+      <tr>
+        <td height="30" align="right">区县：</td>
+        <td>{$s_county}</td>
+        </tr>
+      <tr>
+ -->
+      <tr>
+        <td height="30" colspan="2" style="height:5px;"><hr></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"> 一级密码：</td>
+        <!-- <td>{$Password}</td> -->
+        <td>******</td>
+        </tr>
+      <tr>
+        <td height="30" colspan="2" style="height:5px;"><hr></td>
+      </tr>
+	   <!-- <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span> 语言：</td>
+        <td>{$lang}</td>
+        </tr>
+		  <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span> 国家：</td>
+        <td>{$countrys}</td>
+        </tr>
+	  -->
+  <!--   <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span> 油卡类别：</td>
+        <td>{$youkakName}</td>
+        
+        </tr>
+      <tr>
+        <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span> 油卡卡号：</td>
+        <td>{$YouCard}</td>
+        </tr>
+      <tr>
+	   -->
+      <tr>
+        <td height="30" align="right"> 开户银行：</td>
+        <td>{$BankName}</td>
+        </tr>
+      <tr>
+        <td height="30" align="right">银行卡号：</td>
+        <td>{$BankCard}</td>
+        </tr>
+<!--       <tr> -->
+<!--         <td height="30" align="right">开户省份：</td> -->
+<!--         <td>{$BankProvince}</td> -->
+<!--         </tr> -->
+<!--       <tr> -->
+<!--         <td height="30" align="right">开户城市：</td> -->
+<!--         <td>{$BankCity}</td> -->
+<!--         </tr> -->
+<!--       <tr> -->
+<!--         <td height="30" align="right">详细开户地址：</td> -->
+<!--         <td>{$BankAddress}</td> -->
+<!--         </tr> -->
+<!--       <tr> -->
+        <td height="30" colspan="2" style="height:5px;"><hr></td>
+      </tr>
+        <!--<td height="30" align="right">联系地址：</td>
+        <td>{$UserAddress}</td>
+        </tr>-->
+      <tr>
+            <td height="30" align="right">申请级别：</td>
+            <td>{$uarray[$u_level]}</td>
+      </tr>
+
+       <tr>
+            <td height="30" align="right">注册金额：</td>
+            <td>{$money}</td>
+      </tr>
+      <tr>
+            <td height="30" align="right">单数：</td>
+            <td>{$f4}</td>
+      </tr>
+
+   <!--    <tr>
+            <td height="30" align="right">折算金额：</td>
+            <td>{$money_j}</td>
+      </tr> -->
+<!-- 
+	   <tr>
+        <td height="30" colspan="2" style="height:5px;"><hr></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span>收货人姓名：</td>
+        <td>{$us_name}</td>
+        </tr>
+      <tr>
+        <td height="30" align="right">收货地址：</td>
+        <td>{$us_address}</td>
+        </tr>
+      <tr>
+        <td height="30" align="right"><span class="zc_hong">*</span>收货人电话：</td>
+        <td>{$us_tel}</td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+        <table width="90%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+          <tr align="center" class="size14">
+            <th width="25%" nowrap height="25">产品名称</th>
+            <th width="25%" nowrap>产品价格</th>
+            <th width="25%" nowrap>数量</th>
+            <th width="25%" nowrap>总金额</th>
+          </tr>
+          <volist name="cparray" id="vo">
+          <tr align="center">
+            <td nowrap height="22">{$vo.name}<input type="hidden" name="uid[]" value="{$vo.id}"/></td>
+            <td nowrap>{$vo.a_money}</td>
+            <td nowrap>{$vo.buynub}<input name="shu{$vo.id}" type="hidden" value="{$vo.buynub}"/></td>
+            <td nowrap>{$vo['buynub']*$vo['a_money']}</td>
+          </tr>
+          </volist>
+          <tr align="center">
+            <td nowrap height="22" colspan="3" align="right">合计：</td>
+            <td nowrap>{$cpmoney}</td>
+          </tr>
+        </table>
+        </td>
+      </tr> -->
+	  
+      <tr>
+        <td height="30" align="right">
+        <input name="shopid" type="hidden" id="shopid" value="{$shopid}" class="ipt"/>
+        <input name="RID" id="RID" type="hidden" value="{$RID}" class="ipt"/>
+        <input name="FID" id="FID" type="hidden"  value="{$FID}" class="ipt"/>
+        <input name="f4" id="f4" type="hidden"  value="{$f4}" class="ipt"/>
+        <input name="UserID" id="UserID" type="hidden"  value="{$UserID}" class="ipt"/>
+        <input name="TPL" id="TPL" type="hidden"  value="{$TPL}" class="ipt"/>
+        <input name="Password" type="hidden" class="ipt"  id="Password" value="{$Password}"/>
+        <input name="PassOpen" type="hidden" class="ipt"  id="PassOpen" value="{$PassOpen}"/>
+        <input name="wenti" type="hidden" class="ipt"  id="wenti" value="{$wenti}"/>
+        <input name="wenti_dan" type="hidden" class="ipt"  id="wenti_dan" value="{$wenti_dan}"/>
+		
+		<input name="lang" type="hidden" class="ipt"  id="lang" value="{$lang}"/>
+        <input name="countrys" type="hidden" class="ipt"  id="countrys" value="{$countrys}"/>
+		
+		
+        
+        <input name="nickname" type="hidden" class="ipt"  id="nickname" value="{$nickname}"/>
+        <input name="BankName" type="hidden" class="ipt"  id="BankName" value="{$BankName}"/>
+        <input name="BankCard" type="hidden" class="ipt"  id="BankCard" value="{$BankCard}"/>
+        <input name="UserName" type="hidden" class="ipt"  id="UserName" value="{$UserName}"/>
+        
+        <input name="BankProvince" type="hidden" class="ipt"  id="BankProvince" value="{$BankProvince}"/>
+        <input name="BankCity" type="hidden" class="ipt"  id="BankCity" value="{$BankCity}"/>
+        <input name="BankAddress" type="hidden" class="ipt"  id="BankAddress" value="{$BankAddress}"/>
+        
+        <input name="UserCode" type="hidden" class="ipt"  id="UserCode" value="{$UserCode}"/>
+        <input name="UserAddress" type="hidden" class="ipt"  id="UserAddress" value="{$UserAddress}"/>
+        <input name="UserEmail" type="hidden" class="ipt"  id="UserEmail" value="{$UserEmail}"/>
+        <input name="qq" type="hidden" class="ipt"  id="qq" value="{$qq}"/>
+        <input name="UserTel" type="hidden" class="ipt"  id="UserTel" value="{$UserTel}"/>
+
+        <input name="s_province" type="hidden" class="ipt"  id="s_province" value="{$s_province}"/>
+        <input name="s_city" type="hidden" class="ipt"  id="s_city" value="{$s_city}"/>
+        <input name="s_county" type="hidden" class="ipt"  id="s_county" value="{$s_county}"/>
+        
+        <input name="u_level" type="hidden" class="ipt"  id="u_level" value="{$u_level}"/>
+
+        <input name="youkakName" type="hidden" class="ipt"  id="youkakName" value="{$youkakName}"/>
+        <input name="YouCard" type="hidden" class="ipt"  id="YouCard" value="{$YouCard}"/>
+		
+		<input name="us_name" type="hidden" class="ipt"  id="us_name" value="{$us_name}"/>
+        <input name="us_address" type="hidden" class="ipt"  id="us_address" value="{$us_address}"/>
+        <input name="us_tel" type="hidden" class="ipt"  id="us_tel" value="{$us_tel}"/>
+		
+        </td>
+        <td><span class="center">
+          <input name="submit1" id="Access" type="submit" class="bt_tj" value="注册" />
+          &nbsp;&nbsp;
+          <input name="back" type="button" class="bt_tj" value="返回上一页" id="back" onclick="history.back(-1);" />
+        </span></td>
+        </tr>
+    </table>
+    </form>
+    </td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

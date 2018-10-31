@@ -1,0 +1,29 @@
+<tagLib name="html" />
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle">
+  <h1>奖金结算</h1>
+</div>
+<table width="100%" cellpadding=0 cellspacing=1 border="0" >
+<form method='post' id="form1" action="__URL__/adminClearingSave">
+<tr align="center">
+  <td class="tabletd"><br><span style="color:#FF3300;">结算这一期奖金</span><br>
+  上期结算时间：{$trs.benqi|date='Y-m-d H:i:s',###}<br></td>
+</tr>
+<tr class="content_td" align="center">
+  <td><input name="qf" type="checkbox" id="qf" value="1" class="btn1" /></td>
+</tr>
+<tr class="content_td" align="center">
+	<td>
+	  <eq name="is_pay" value="0">
+      <input type="submit" value="马上结算" onclick="{if(confirm('确定结算奖金吗?')){this.document.form1.submit();return true;}return false;}" class="btn1" />	
+      <else/>
+      <input type="submit" value="今天结算未发放" class="btn1" disabled="disabled" />
+      </eq>
+	</td>
+</tr>
+</form>
+</table>
+</div>
+</body>
+</html>

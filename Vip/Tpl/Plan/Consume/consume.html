@@ -1,0 +1,56 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>申请封顶 </h1></div>
+<form name="form1" method="post" action="__URL__/consumeAC">
+  <table width="100%" border="0" cellpadding="5" cellspacing="10" class="">
+      <tr>
+        <td width="25%" align="right">会员账号：</td>
+        <td><span class="hong">{$rs['user_id']}</span></td>
+      </tr>
+      <tr>
+        <td align="right">总奖金：</td>
+        <td><span class="hong">{$rs['zjj']}</span></td>
+      </tr>
+      <tr>
+        <td align="right">当前封顶额：</td>
+        <td><span class="hong">{$s7[$rs['get_level']]}</span></td>
+      </tr>
+      <lt name="rs.get_level" value="2">
+      <tr>
+        <td align="right"><input name="uplevel" type="hidden" value="{$rs['get_level']+1}" /></td>
+        <td><input type="submit" name="Submit" value="确定" class="button_text" /></td>
+      </tr>
+	  </lt>
+  </table>
+</form>
+<br />
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>申请封顶</span></th>
+			<th><span>申请时间</span></th>
+			<th><span>确认时间</span></th>
+            <th><span>状态</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$rs['user_id']}</td>
+        <td>{$vo['money']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td><gt name="vo.pdt" value="0">{$vo.pdt|date='Y-m-d H:i:s',###}</gt></td>
+        <td>
+        <eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq>
+        <eq name="vo['is_pay']" value="1">已确认</eq></td>
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+<tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

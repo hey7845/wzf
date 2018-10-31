@@ -1,0 +1,70 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>奖金明细  [<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th><span>结算时间</span></th>
+		
+			<th {$c_b[3]}><span>{$fee_s7[2]}</span></th>
+			<th {$c_b[4]}><span>{$fee_s7[3]}</span></th>
+			<th {$c_b[5]}><span>{$fee_s7[4]}</span></th>
+			<th {$c_b[6]}><span>{$fee_s7[5]}</span></th>
+			<th><span>{$fee_s7[6]}</span></th>
+			<th {$c_b[8]}><span>{$fee_s7[7]}</span></th>
+			<th {$c_b[9]}><span>{$fee_s7[8]}</span></th>
+			<th {$c_b[10]}><span>{$b_b[10]}</span></th>
+			<th {$c_b[11]}><span>{$b_b[11]}</span></th>
+			<th {$c_b[0]}><span>{$b_b[0]}</span></th>
+			<th {$c_b[12]}><span>{$b_b[12]}</span></th>
+
+		</tr>
+	</thead>
+	<volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$vo['e_date']|date='Y-m-d',###}</td>
+		
+		<td {$c_b[2]}>{$vo['b2']}</td>
+		<td {$c_b[3]}>{$vo['b3']}</td>
+		<td {$c_b[4]}>{$vo['b4']}</td>
+		<td {$c_b[5]}>{$vo['b5']}</td>
+		<td {$c_b[6]}>{$vo['b6']}</td>
+		<!-- <td {$c_b[7]}>{$vo['b7']}</td> -->
+		<!-- <td {$c_b[8]}>{$vo['b8']}</td> -->
+		<!-- <td {$c_b[9]}>{$vo['b9']}</td> -->
+		<!-- <td {$c_b[10]}>{$vo['b10']}</td> -->
+		<!-- <td {$c_b[11]}>{$vo['b2']+$vo['b3']+$vo['b4']+$vo['b5']+$vo['b6']}</td> -->
+		<td {$c_b[0]}>{$vo['b2']+$vo['b3']+$vo['b4']+$vo['b5']+$vo['b6']}</td>
+		<td {$c_b[12]}><a href="__URL__/financeShow1/RDT/{$vo['s_date']}/PDT/{$vo['e_date']}/UserID/{$user_id}" title="这一期明细">明细</a></td>
+	</tr>
+	</volist>
+	<tr align="center">
+		<td>总计：</td>
+	
+		<td {$c_b[2]}>{$count[2]}</td>
+		<td {$c_b[3]}>{$count[3]}</td>
+		<td {$c_b[4]}>{$count[4]}</td>
+		<td {$c_b[5]}>{$count[5]}</td>
+		<td {$c_b[6]}>{$count[6]}</td>
+		<!-- <td {$c_b[7]}>{$count[7]}</td> -->
+		<!-- <td {$c_b[8]}>{$count[8]}</td> -->
+		<!-- <td {$c_b[9]}>{$count[9]}</td> -->
+		<!-- <td {$c_b[10]}>{$count[10]}</td> -->
+		<!-- <td {$c_b[11]}>{$count[2]+$count[3]+$count[4]+$count[5]+$count[6]}</td> -->
+		<td {$c_b[0]}>{$count[2]+$count[3]+$count[4]+$count[5]+$count[6]}</td>
+		<td {$c_b[12]}>&nbsp;</td>
+	</tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+  
+    	<td width="50%"><form id="form1" name="form1" method="post" action="__URL__/financeTable">日期：<input name="FanNowDate" type="text" id="FanNowDate" onFocus="showCalendar(this)" readonly /> <input type="submit" name="Submit" value="查询" class="button_text" />
+          <input name="UserID" type="hidden" value="{$user_id}" /></form></td>
+        <td width="50%">{$page}</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

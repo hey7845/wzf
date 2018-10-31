@@ -1,0 +1,80 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>提现管理 </h1></div>
+<!-- 列表显示区域  -->
+<form name="form3" method="post" action="__URL__/adminCurrencyAC">
+<table width="100%" cellpadding=3 border=0 cellspacing="1" id="tb1" bgcolor="#b9c8d0" class="tab3">
+<thead>
+    <tr class="content_td" align="center">
+        <th >
+            <input type="checkbox" name="chkall" value="checkbox" onclick="CheckAll(this.form)"  class="btn2" id="chkall" />
+          </th>
+        <th nowrap ><span>会员编号</span></th>
+        <th nowrap ><span>开户名</span></th>
+        <th nowrap ><span>开户银行</span></th>
+        <th nowrap ><span>银行账号</span></th>
+        <th nowrap ><span>电话号码</span></th>
+        <th nowrap ><span>类型</span></th>
+        <th nowrap ><span>提现金额</span></th>
+        <th nowrap ><span>实发金额</span></th>
+        <th nowrap ><span>具体开户行地址</span></th>
+        <th nowrap ><span>提现时间</span></th>
+        <th nowrap ><span>状态</span></th>
+
+    </tr>
+</thead>
+<volist name="list" id="vo">
+<tr align="center">
+	<td><input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td>
+	<td>{$vo['user_id']}</td>
+	<td>{$vo['user_name']}</td>
+	<td>{$vo['bank_name']}</td>
+	<td>{$vo['bank_card']}</td>
+	<td>{$vo['user_tel']}</td>
+    <!-- <td></td>
+    <td>{$vo['qq']}</td> -->
+    <td>
+        <eq name="vo['type']" value="0">银行卡：{$vo['bank_card']}</eq>
+    </td>
+	<td><span style="color: #F00;">{$vo['money']}</span></td>
+	<td><span style="color: #F00;">{$vo['money_two']}</span></td>
+	<td>{$vo['bank_address']}</td>
+	<td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+	<td><eq name="vo['is_pay']" value="1"><span style="color: #F00;">已确认</span></eq><eq name="vo['is_pay']" value="0"><span style="color: #090;">未确认</span></eq></td>
+</tr>
+</volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+    	<td width="50%"><input name="全选" type="button" class="button_text" id="全选" onclick="CheckAll(this.form)" value="全选" />	  &nbsp; &nbsp;
+	  <input type="submit" name="action" value="确认" class="button_text" onclick="{if(confirm('确定吗?')){return true;}return false;}">
+	  &nbsp; &nbsp;
+	  <input type="submit" name="action" value="删除" class="button_text" onclick="{if(confirm('确定删除吗?')){return true;}return false;}"> &nbsp; &nbsp;
+	  <input name="button3" type="button" onclick="window.location.href='__URL__/DaoChu'" value="导出Excel" class="button_text" />
+    &nbsp;&nbsp;&nbsp;
+    <input name="button4" type="button" onclick="window.location.href='__URL__/DaoChu1'" value="导出WPS" class="button_text" />&nbsp;&nbsp;&nbsp;总提现金额(未确认)：{$alltiqumoney}
+    </td>
+    </tr>
+</table>
+</form>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+		<td align="center">{$page}</td>
+    </tr>
+</table>
+<table width="600" align="center">
+    <tr>
+    <td align="center">
+    <form method='post' action="__URL__/adminCurrency">
+		会员编号：
+		    <input name="UserID" type="text"id="UserID" title="帐号查询" maxlength="200" >
+		  <input type="submit" name="Submit" value="搜索"  class="button_text"/>
+		</form>
+    </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

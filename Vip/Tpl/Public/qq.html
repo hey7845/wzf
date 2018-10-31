@@ -1,0 +1,133 @@
+<!-- 导航over --> 
+<script language=javascript src="__PUBLIC__/Images/qq/ajax.js"></script>
+<style> 
+#rightfu table, #rightfu table td {
+	border:0;
+	padding:0;
+	margin:0;
+	background:none
+}
+.qqwid {
+	background:#FFFFFF;
+	WIDTH: 142px;
+	COLOR: #000000;
+	font-family:宋体
+}
+.qqwid .qqnei IMG {
+	MARGIN-LEFT: 3px;
+	VERTICAL-ALIGN: middle;
+	MARGIN-RIGHT: 5px
+}
+.qqwid A {
+	TEXT-DECORATION: none
+}
+.qqwid A:link {
+	COLOR: #000000
+}
+.qqwid A:visited {
+	COLOR: #000000
+}
+.qqwid A:hover {
+	COLOR: #ff0000
+}
+.qqwid A:active {
+	COLOR: #000000
+}
+.qqwid TD {
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 25px;
+	HEIGHT: 25px;
+}
+</style>
+<div class=tb>
+<!--qq浮动--><!--左漂浮-->
+<div id="rightfu" style="right: 10px; POSITION: absolute; TOP: 180px" name="rightfu">
+  <!--<table cellspacing=0 cellpadding=0 border=0>
+    <tbody>
+      <tr>
+        <td valign=top><div class="qqwid" id=showrightmenu_1 onmouseover=javascript:showrightmenuover(1); style="DISPLAY: none; Z-INDEX: 1; FILTER: alpha(opacity=90)" onmouseout=javascript:showrightmenuout(1); >
+            <div><img src="__PUBLIC__/Images/qq/qq_top.gif"></div>
+            <div class=qqnei>
+              <table style="FILTER: alpha(opacity=86)" cellspacing=0 cellpadding=0 
+      border=0>
+                <tbody>
+                  <tr>
+                      <td><img height=17 src="__PUBLIC__/Images/qq/pa1.gif" align=middle border=0> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2667094711&site=qq&menu=yes">客服专员</a></td>
+                    </tr>
+                  <tr>
+                      <td><img height=17 src="__PUBLIC__/Images/qq/pa1.gif" align=middle border=0> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2902792498&site=qq&menu=yes">客服专员</a></td>
+                    </tr>
+                  <tr>
+                      <td><img height=17 src="__PUBLIC__/Images/qq/pa1.gif" align=middle border=0> <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3097975046&site=qq&menu=yes">财务专员</a></td>
+                    </tr>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div><img height=6 src="__PUBLIC__/Images/qq/qq_bottom.gif" width=142></div>
+          </div>
+          </td>
+        <td valign=top><table id=rightmenu cellspacing=0 cellpadding=0 width=10 border=0>
+            <tbody>
+              <tr>
+                <td><a onmouseover=javascript:showrightmenuover(1); onmouseout=javascript:showrightmenuout(1); href="javascript:"><img src="__PUBLIC__/Images/qq/qq_Atuo.jpg" border=0></a></td>
+              </tr>
+              <tr>
+                <td align=left><a onClick="javascript:divclose('rightmenu');" href="javascript:"><img src="__PUBLIC__/Images/qq/close.jpg" border=0></a></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+    </tbody>
+  </table>-->
+</div>
+<!--右漂浮--> 
+<!--<script event="fscommand()" for="EccoolAd" type="text/javascript"></script> -->
+<script> 
+	//leftfu.style.visibility='hidden'; 
+	//sorollDiv1.style.visibility='hidden';
+//	var lastScrollY=0;
+//	var setup=0.02;
+//	function heartBeat(){ 
+//		var diffY=document.body.scrollTop || document.documentElement.scrollTop || 0; 
+//		percent=setup*(diffY-lastScrollY); 
+//		if(percent>0){
+//			percent=Math.ceil(percent); 
+//		}else{
+//			percent=Math.floor(percent);
+//		}
+//		//document.getElementById("leftfu").style.top=parseInt(document.getElementById("leftfu").style.top)+percent+"px";
+//		document.getElementById("rightfu").style.top=parseInt(document.getElementById("rightfu").style.top)+percent+"px";
+//		lastScrollY=lastScrollY+percent; 
+//	}
+//	window.setInterval("heartBeat()",1);
+	
+	function divclose(name){
+		document.getElementById(name).style.visibility='hidden';
+	}
+		
+	function showqqdivover(i){
+		document.getElementById("showqq"+i).style.display="block";
+	}
+	
+	function showqqdivout(i){
+	document.getElementById("showqq"+i).style.display="none";
+	}
+	
+	function showleftmenuover(id){
+		document.getElementById("showleftmenu_"+id).style.display="block";
+	}
+	
+	function showleftmenuout(id){
+		document.getElementById("showleftmenu_"+id).style.display="none";
+	}
+	
+	function showrightmenuover(id){
+		document.getElementById("showrightmenu_"+id).style.display="block";
+	}
+	
+	function showrightmenuout(id){
+		document.getElementById("showrightmenu_"+id).style.display="none";
+	}
+ 
+</script> 

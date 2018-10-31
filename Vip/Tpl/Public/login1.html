@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<load href='__PUBLIC__/Css/login.css' />
+<title>{$System_namex}</title>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/ie6png.js\"></sc"+"ript>")</script> 
+
+<script language="JavaScript">
+<!--
+var PUBLIC	 =	 '__PUBLIC__';
+ThinkAjax.image = [	 '__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif','__PUBLIC__/Images/update.gif' ]
+ThinkAjax.updateTip	=	'登录中～';
+function loginHandle(data,status){
+if (status==1)
+{
+$('result').innerHTML	=	'<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+$('form1').reset();
+window.location = '__URL__';
+}else{
+	fleshVerify();
+}
+}
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+	ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+function fleshVerify(type){
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+
+}
+//-->
+</script>
+</head>
+
+<body onLoad="document.login.account.focus()"   >
+
+<div id="main">
+  <div class="box">
+<form method='post' name="login" id="form1"  >
+  
+    <table width="340" border="0" cellspacing="0" cellpadding="0" style="position:relative">
+	    <tr>
+	      <td colspan="2" nowrap="nowrap" style="font-weight:normal; font-size:12px;">
+           </td>
+        </tr>
+	    <tr>
+	      <td width="22%" height="16" align="right" nowrap="nowrap">用户名：&nbsp;&nbsp;</td>
+	      <td width="78%"><label>
+	        <!-- 用户名 -->
+	        <input name="account" check="Require" type="text"  class="ipt" size="24" tabindex="1"/>
+	        </label>
+          <!-- 按钮 --></td>
+        </tr>
+	    <tr>
+	      <td align="right" nowrap="nowrap">密　码：&nbsp;&nbsp;</td>
+	      <!-- 密码 -->
+	      <td><input name="password" check="Require" type="password"  class="ipt" size="16" tabindex="2"/>&nbsp;&nbsp;<a href="__URL__/find_pw">忘记密码？</a></td>
+        </tr>
+	    <tr>
+	      <td align="right" nowrap="nowrap">验证码：&nbsp;&nbsp;</td>
+	      <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+	        <tr>
+	          <!-- 验证码 -->
+	          <td width="66" height="20"><input name="verify" type="text" onKeyDown="keydown(event)" check="Require" warning="请输入验证码" class="ipt2" size="4" maxlength="4" title="点击图片可刷新验证码" tabindex="3"></td>
+	          <td width="227" align="left">&nbsp;<img id="verifyImg" src="__URL__/verify/" width="55" onclick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer" align="absmiddle" />
+	          	<a href="#" onclick="fleshVerify()" title="点击刷新验证码"  style=" text-decoration:none; color:#8a8a8a; padding-left: 5px;">看不清？换一张</a>
+	          </td>
+	          </tr>
+          </table></td>
+        </tr>
+	    <tr>
+	      <td height="87" colspan="2" style="padding-left:75px"><input type="hidden" name="ajax" value="1">
+	<input type="button" class="btn_0"  onmouseover="this.className='btn_1';" onmouseout="this.className='btn_0';" onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')" tabindex="4"/>
+		
+	</td>
+	
+        </tr>
+  </table>
+  </form>
+  <div style="clear:both; height:40px"></div>
+  <div id="result"  style="width:250px;"></div>
+</div>
+</div>
+</body>
+</html>

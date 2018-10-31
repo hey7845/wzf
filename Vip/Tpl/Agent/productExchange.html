@@ -1,0 +1,72 @@
+<include file="Public:xyHead" />
+<script language='javascript'>
+	function CheckForm() {
+		if (confirm('您确定要兑换此产品吗？')) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+<div class="ncenter_box">
+	<div class="accounttitle">
+		<h4>产品兑换</h4>
+	</div>
+	<div class="c_p5"><div class="tips">分红包封顶时才可使用复投积分兑换产品，如分红包封顶，请及时兑换产品，再次切换回当前网络时复投积分将自动清零。 </div></div>
+	<BR>
+	<form name="form1" method="post" action="__URL__/productExchangeConfirm"
+		onSubmit="return CheckForm();">
+		<table width="100%" class="tab3" border="0" cellpadding="3"
+			cellspacing="0" id="tb1">
+			<tr>
+				<td align="right">会员编号：</td>
+				<td>{$frs['user_id']}<input name="UserID" type="hidden"
+					value="{$frs['user_id']}" /></td>
+			</tr>
+			<tr>
+				<td align="right">A网复投积分余额：</td>
+				<td>{$futoua}</td>
+			</tr>
+			<tr>
+				<td align="right">B网复投积分余额：</td>
+				<td>{$futoub}</td>
+			</tr>
+			<tr>
+			    <td align="right">选择兑换网络：</td>
+			    <td><select name="net">
+						<option value="a">A网兑换</option>
+						<option value="b">B网兑换</option>
+				</select></td>
+			  </tr>
+			<tr>
+				<td width="25%" height="30" align="right">产品选择：</td>
+				<td><select name="type">
+						<option value="1">每日畅益生元800元</option>
+						<!-- <option value="2">人体蛋白检测3000元</option> -->
+				</select></td>
+			</tr>
+			<tr>
+				<td align="right">兑换数量：</td>
+				<td><select name="nums">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" name="Submit" value="兑换" class="btn1"
+					width="100px" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>

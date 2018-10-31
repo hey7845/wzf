@@ -1,0 +1,44 @@
+<include file="Public:xyHead" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<div class="ncenter_box">
+<div class="accounttitle"><h4>复投 </h4></div>
+    <div class="c_p5"><div class="tips">每次复投金额为投资金额的30%，如投资金额10000元，那么复投金额就是3000元 </div></div>
+	<table width="100%" border="0" cellpadding="3" cellspacing="0">
+		<form name="form1" method='post' id="form1" action="__URL__/agentsAC1">
+     
+
+		<tr>
+			<td width="25%" height="30" align="right">会员编号：</td>
+			<td width="75%">{$fck_rs['user_id']}</td>
+		</tr>
+		<tr>
+			<td width="25%" height="30" align="right">消费积分：</td>
+			<td width="75%">{$fck_rs['agent_use']}</td>
+		</tr>
+		<tr>
+			<td width="25%" height="30" align="right">复投次数：</td>
+			<td width="75%">{$fck_rs['is_cc']}</td>
+		</tr>
+		<tr>
+			<td width="25%" height="30" align="right">当前分红月份：</td>
+			<td width="75%">{$fck_rs['month_tag']}</td>
+		</tr>
+		 <tr>
+			<td width="25%" height="30" align="right">复投类型：</td>
+			<td>
+            
+            <select name="futou" >
+              <option value="2">消费积分复投</option>
+            </select>
+           </td>
+		</tr>
+		<tr>
+			<td height="30">&nbsp;</td>
+		  <td><input name="submit" type="submit"  class="button_text" value="复投" /></td>
+		</tr>
+	
+		</form>
+	</table>
+</div>
+</body>
+</html>

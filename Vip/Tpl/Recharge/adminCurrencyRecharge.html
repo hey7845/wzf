@@ -1,0 +1,163 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>充值管理 </h1></div>
+<SCRIPT language=JavaScript>
+function checklogin() {
+	if (document.myform.UserID.value=="") {
+		alert("请输入会员编号!");
+		myform.UserID.focus();
+		return false;
+	}
+	if (document.myform.ePoints.value=="") {
+		alert("请输入充值金额!");
+		myform.ePoints.focus();
+		return false;
+	}
+
+	if(confirm('温馨提示：\n\n请确认以下货币充值信息正确性！ \n\n充入会员编号： '+ document.myform.UserID.value+' \n\n充值金额： '+document.myform.ePoints.value+' 元'))
+	{
+		this.document.myform.submit();
+		return true;
+	}else{
+		return false;
+	}
+
+}
+</SCRIPT>
+
+<script language="JavaScript">
+ifcheck = true;
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length-2;i++)
+	{
+		var e = form.elements[i];
+		e.checked = ifcheck;
+	}
+	ifcheck = ifcheck == true ? false : true;
+}
+</script>
+<!-- 列表显示区域  -->
+<form id="myform" name="myform" method="post"  action="__URL__/adminCurrencyRechargeAdd">
+<table width="100%" class="tab4" border="0" cellpadding="3" cellspacing="0">
+<tr>
+  <td width="37%" align="right">&nbsp;</td>
+  <td width="63%">为商户充值</td>
+</tr>
+<tr>
+  <td align="right">充值会员编号：</td>
+  <td><input name="UserID" type="text" id="UserID" maxlength="50" />
+    <span style="color: #FF3300;">*</span></td>
+</tr>
+<tr>
+  <td align="right">充值类型：</td>
+  <td><select name="stype">
+<!--       <option value="0">充值电子积分</option> -->
+      <option value="1">充值消费积分</option>
+      </select></td>
+</tr>
+<tr>
+  <td align="right">充值金额：</td>
+  <td><input name="ePoints" type="text" id="ePoints" size="10" maxlength="12" />
+    <span style="color: #FF3300;">*（要减少积分值，输入负金额即可！）</span></td>
+</tr>
+
+  <td align="right">&nbsp;</td>
+  <td><span class="fLeft">
+    <input type="button" name="Actions" id="Actions" value="确定充值" class="bt_tj" onclick="checklogin()"/>
+  </span></td>
+</tr>
+</table>
+</form>
+<form name="form3" method="post" action="__URL__/adminCurrencyRechargeAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0" >
+<tr class="content_td" align="center">
+    <th >
+        <input type="checkbox" name="chkall" value="checkbox" onclick="CheckAll(this.form)"  class="btn2" id="chkall" />
+      </th>
+    <th nowrap ><span>会员编号</span></th>
+    <th nowrap ><span>充值金额</span></th>
+    <th nowrap ><span>汇款金额</span></th>
+    <th nowrap ><span>充值类型</span></th>
+    <th nowrap ><span>充值时间</span></th>
+    <th nowrap ><span>确认时间</span></th>
+    <th nowrap ><span>账号</span></th>
+    <th nowrap ><span>状态</span></th>
+</tr>
+<volist name="list" id="vo">
+<tr class="content_td" align="center">
+	<td><div align="center">
+	  <input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" />
+	</div></td>
+	<td>{$vo['user_id']}</td>
+	<td><span class="STYLE1">{$vo['epoint']}</span></td>
+	<td><span class="STYLE1">{$vo['huikuan']}</span></td>
+	<td>
+		<eq name="vo.stype" value="0">充入电子积分</eq>
+		<eq name="vo.stype" value="1">充入现金积分</eq>
+		<eq name="vo.stype" value="2">充入激活积分</eq>
+	</td>
+	<td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+	<td><gt name="vo.pdt" value="0">{$vo.pdt|date='Y-m-d H:i:s',###}</gt></td>
+	<td>{$vo['zhuanghao']}</td>
+	<td><eq name="vo['is_pay']" value="1"><span style="color: #F00;">已确认</span></eq><eq name="vo['is_pay']" value="0"><span style="color: #090;">未确认</span></eq></td>
+</tr>
+</volist>
+
+<tr class="tab3_bottom">
+<td>&nbsp;</td>
+<td align="center">总计：</td>
+<td align="center">{$m_count}</td>
+
+<td align="center">{$m_count}</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+</tr>
+<tr>
+    	<td colspan="9">
+<input name="全选" type="button" class="bt_tj" id="全选" onclick="CheckAll(this.form)" value="全选" />	  &nbsp; &nbsp;
+	  <input type="submit" name="action" value="确认" class="bt_tj" onclick="{if(confirm('确定吗?')){return true;}return false;}">
+	  &nbsp; &nbsp;
+	  <input type="submit" name="action" value="删除" class="bt_tj" onclick="{if(confirm('确定删除吗?')){return true;}return false;}"></td>
+        </td>
+        
+    </tr>
+
+</table>
+</form>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+    	<td width="50%">
+</td>
+        </td>
+        <td width="50%">{$page}</td>
+    </tr>
+</table>
+
+<table width="100%" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center">
+    <form method='post' action="__URL__/adminCurrencyRecharge">
+    开始日期：<input name="sNowDate" type="text" id="sNowDate" onFocus="showCalendar(this)" readonly /> 
+     &nbsp;结束日期：  <input name="endNowDate" type="text" id="endNowDate" onFocus="showCalendar(this)" readonly />
+    
+		会员编号：
+		    <input name="UserID" type="text"id="UserID" title="帐号查询" maxlength="200" >
+		  <input type="submit" name="Submit" value="搜索" class="bt_tj"/>
+		</form>
+    </td>
+    </tr>
+</table>
+<div class="bottom"></div>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

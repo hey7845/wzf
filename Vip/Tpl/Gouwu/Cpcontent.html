@@ -1,0 +1,145 @@
+<include file="Public:xyHead" />
+<link href="__PUBLIC__/Css/goumaisd.css" rel="stylesheet" media="all" type="text/css" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>商家备注说明&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<div class="about_connent">
+<div class="wrap clearfix mt">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="0">
+    <tr>
+      <td width="36%">
+      <div id=preview>
+	<div class=jqzoom id=spec-n1 onClick="window.open('{$prs['img']}')" title="查看原图" style="cursor:hand;"><img src="{$prs['img']}"  height="300" width="350"/>
+	</div>
+	
+</div>
+<SCRIPT src="__PUBLIC__/wz/js/lib.js" type=text/javascript></SCRIPT>
+<SCRIPT src="__PUBLIC__/wz/js/163css.js" type=text/javascript></SCRIPT></td>
+        <td width="64%" valign="top">
+		
+		<div style="width: 450px; float:left">
+          <div class="pro_title">
+            <h2> {$rs.n_title}</h2>
+            <font style="padding-right: 20px; float: left"></font><span></span></div>
+          <div class="pro_1"> <font style="padding-right: 20px;"></font><br />
+          <font style="padding-right: 20px; font-size:16px;">会员价 :</font><font color="#CC0000" size="5">¥ </font><span id="lblmember" style="color: #CC0000; font-size: 27px; font-weight: 700;">{$prs.a_money|default=0}</span><br />
+            
+            <font style="padding-right: 20px;"></font><span id="Label2"></span><br />
+          <!--   <font style="padding-right: 20px;">市 场 价：</font><span style="color:#999; font-size: 18px; text-decoration:line-through">¥ {$prs.money|default=0}</span><br /> -->
+			<font style="padding-right: 20px;">商家编号：</font>{$prs.cid}<br />
+            <UL id=ulproductproperty>
+
+</UL><br />
+            <div class="GoodsInfoWrap">
+              <div class="hightline">
+                <div class="hightbox">
+                  <div id="goods-spec" class="goods-spec">
+                    <table id='goods-spec' style='width:100%;' class='goods-spec' isstorage='1'  >
+                      <tr>
+                        <td width="17%" id='Td_10397' style='width:15%;text-align:left' >&nbsp;</td>
+                        <td width="83%" colspan='2' style='width:85%;'><span id="gwresult">&nbsp;</span></td>
+                      </tr>
+                    </table>
+                    <div class="buyinfo">
+                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                          <tr>
+                            <td width="18%" align="right"><span style=" font-size:16px;">数量 :</span></td>
+                            <td width="82%" align="left" ><div class="Numinput">
+                              <input class="inptot" id="ProductNumber" name="ProductNumber" type="text" value="1" maxlength="4" />
+                              <font style="padding-left: 15px">库 存:</font> <span class="store" id="storageId">9999 </span>件 </div></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="goods-products-list" class="goods-products-list" style="width: 424px; top: 357px;
+                left: 481px; display: none;">
+                <div class="goods-products-list-box">
+                </div>
+              </div>
+            </div>
+            <div  style="height:20px;"></div>
+            <div class="pro2_input">
+			<input type="hidden" name="pid" id="pid" value="{$rs.id}" />
+			 <img id="imgbuy" style="cursor: pointer" src="__PUBLIC__/Images/pro-3.gif" border="0" name="btnbuy"  msid="57160" onclick="ajaxfunction({$prs.id},1);"/> 
+			<img id="imgcart" style="cursor: pointer" src="__PUBLIC__/Images/addcart.gif" border="0" onclick="ajaxfunction({$prs.id},0);" name="btncart" syspath="/" msid="57160" /> </div>
+            <div  style="height:20px; border-top:1px solid #efefef; margin-top:20px;"></div>
+            <div class="pro2_1">
+              <!-- JiaThis Button BEGIN -->
+              <script type="text/javascript" id="bdshare_js" data="type=button&amp;mini=1" ></script>
+              <script type="text/javascript" id="bdshell_js"></script>
+              <!-- JiaThis Button END -->
+              <input id="hidtext" type="hidden" value="0" name="hidtext" />
+              <input id="hdfpercount" type="hidden" value="0" name="hdfpercount" />
+              <input id="hdffitcount" type="hidden" value="0" name="hdffitcount" />
+            </div>
+          </div>
+        </div>
+        </td>
+    </tr>
+    <tr></tr>
+  </table>
+</div>
+ <div class="xianqxixn">
+  <div class="xinxtitlee"></div>
+   <div class="xinqnrong">
+   {$prs['content']}
+   </div></div>
+      <div class="tipon"><img src="__PUBLIC__/Images/pro_help_xuzhi.jpg" width="975" /></div>
+</div>
+</div>
+
+</body>
+</html>
+<script language="javascript">
+    function ajaxfunction(oid,tpp){
+		var bid = "ProductNumber";
+		var bnum = document.getElementById(bid).value;
+		parseInt(bnum);
+		if(bnum<1){
+			alert("请填写正确数字！");
+			return false;
+		}
+        var xmlHttp;
+        try{
+            //FF Opear 8.0+ Safair
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch(e){
+            try{
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch(e){
+                alert("您的浏览器不支持AJAX");
+                return false;    
+            }
+        }
+        xmlHttp.onreadystatechange=function(){
+            if(xmlHttp.readyState==4){
+				if(tpp==1){
+					document.getElementById("gwresult").innerHTML = "加入购物车成功！";
+					document.getElementById("gwresult").style.display="block";
+					window.location='__URL__/shopcar/';
+				}else{
+					document.getElementById("gwresult").innerHTML = "加入购物车成功！";
+					document.getElementById("gwresult").style.display="block";
+					window.setTimeout(jsddm_close,1500);
+					window.clearTimeout();
+				}
+            }
+        }
+        var url="__APP__/Fck/gTotle/GID/"+oid+"/bnum/"+bnum;
+		url+="/sid/"+Math.random();
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+            
+    }
+	function jsddm_close(){
+		document.getElementById("gwresult").style.display="none";
+	}
+	function jsddm_open(){
+		document.getElementById("gwresult").style.display="block";
+	}
+</script>

@@ -1,0 +1,94 @@
+<include file="Public:header" />
+<style>
+h4{ margin-left:18%;}
+.Agreement{width:90%; height:100px; overflow:auto; border:1px solid #7F9DB9; padding:2px; font-size:12px; line-height:24px; margin:10px 0px;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>锁定购买 </h1></div>
+<form action="__URL__/eb_list_AC" method="post" name="form1" id="form1">
+<table width="100%" class="list" border="0" cellpadding="3" cellspacing="0">
+	<tr>
+	  <td width="20%" height="30" align="right" class="tabr">卖家开户银行：</td>
+	  <td width="80%">{$bn['bank_name']}</td>
+	  </tr>
+	<tr>
+	  <td height="30" align="right" class="tabr">卖家开户姓名：</td>
+	  <td>{$rs['user_name']}</td>
+	  </tr>
+	<tr>
+	  <td height="30" align="right" class="tabr">卖家银行卡号：</td>
+	  <td>{$bn['bank_card']}</td>
+	  </tr>
+	<tr>
+	  <td height="30" align="right" class="tabr">卖家开户地址：</td>
+	  <td>{$bn['bank_address']}</td>
+	</tr>
+    <tr style="display:none">
+	  <td height="30" align="right" class="tabr">卖家财付通号：</td>
+	  <td>{$bn['qq']}</td>
+	</tr>
+    <tr>
+	  <td height="30" align="right" class="tabr">卖家联系电话：</td>
+	  <td>{$bn['user_tel']}</td>
+	</tr>
+	<tr>
+	  <td height="30" align="right" class="tabr">汇款金额：</td>
+	  <td>{$rs['money_two']}</td>
+	  </tr>
+	<tr>
+	  <td height="30" class="tabr">&nbsp;</td>
+	  <td><label>
+	    <input name="agree" type="checkbox" id="agree" value="1" checked="checked" onpropertychange="change_fc()"/>
+	    我已经完成汇款，通知卖家确认。</label></td>
+	  </tr>
+<!-- 	<tr>
+	  <td height="30" align="right" class="tabr">图片：</td>
+	  <td><label><input name="image" type="text" id="image" value="{$crs.sellbz}" size="50" maxlength="500" />
+    外部地址请填写“http://”为开头的地址</label></td>
+	  </tr>
+    <tr>
+        <td height="30" align="right" class="tabr">本地上传：</td>
+        <td class="center"><iframe src="__URL__/upload_add" width="350" height="30" scrolling="no" frameborder="0"></iframe>上传格式：jpg, gif, png, jpeg</td>
+    </tr>
+    <tr>
+        <td height="30" align="right" class="tabr">凭证预览：</td>
+        <td class="center"><img style="height:225px;width:330px;" id="imageShow" alt="商品图像" src="{$crs['sellbz']}"></td>
+    </tr> -->
+    <tr>
+	  <td height="30" align="right" class="tabr">验证码：</td>
+	  <td><input name="verify" id="verify" type="text" size="8" maxlength="4" />
+      <img src="__APP__/Public/verify/" border="0" alt="点击刷新验证码" id="verifyImg" onclick="fleshVerify()" style="cursor:pointer" align="absmiddle" />&nbsp;</td>
+	</tr>
+	<tr>
+	  <td height="30" align="right" class="tabr">二级密码：</td>
+	  <td><input name="uspass" type="password" class="ipt" id="uspass" value="" maxlength="20"/></td>
+	</tr>
+    <tr>
+	  <td height="30"><input name="cid" type="hidden" id="cid" value="{$rs['id']}" /></td>
+	  <td>
+      <input type="submit" name="Submit1" value="锁定" class="button" id="Submit1" />
+      <input name="backb" type="button" class="button3" value="返回" id="backb" onclick="history.back();"/>
+      </td>
+	</tr>
+</table>
+</form>
+</div></div>
+</body>
+</html>
+<script language="JavaScript">
+function change_fc(){
+	if(document.form1.agree.checked==true){
+		document.form1.Submit1.disabled=false;
+	}else{
+		document.form1.Submit1.disabled=true;
+	}
+}
+
+<!--
+function fleshVerify(){
+//重载验证码
+var timenow = new Date().getTime();
+$('verifyImg').src= '__APP__/Public/verify/'+timenow;
+}	
+//-->
+</script>

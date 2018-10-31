@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://dyj168.com.cn/login.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	
+	<title>{$System_namex}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="__PUBLIC__/new0525/js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new0525/css/cloud-admin.css">
+	
+	<link href="__PUBLIC__/new0525/css/font-awesome.min.css" rel="stylesheet">
+	<!-- DATE RANGE PICKER -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new0525/css/daterangepicker-bs3.css">
+	<!-- UNIFORM -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new0525/css/uniform.default.min.css">
+	<!-- ANIMATE -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/new0525/css/animate.min.css">
+	<!-- FONTS -->
+    <!--
+	<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    -->
+</head>
+<body class="login">	
+	<!-- PAGE -->
+	<section id="page">
+			<!-- HEADER -->
+			<!--<header>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<div id="logo" style="background-color: #fff;border-radius:4px;">
+								<img src="logmod/kaisalogo1.jpg" width="100%" alt="logo name">
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>-->
+			<!--/HEADER -->
+            
+			<!-- LOGIN -->
+			<section id="login_bg" class="visible">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<div class="login-box">
+								<h2 class="bigintro" style="color: #000">{$System_namex}</h2>
+								<div class="divide-40"></div>
+								<form name="form1" id="form1" onsubmit="return false" action="" method="post">
+								  <div class="form-group">
+									<label for="exampleInputEmail1">用户名</label>
+									<i class="fa fa-user"></i>
+									<input type="text" class="form-control" id="exampleInputEmail1" name="account">
+								  </div>
+								  <div class="form-group"> 
+									<label for="exampleInputPassword1">密码</label>
+									<i class="fa fa-lock"></i>
+									<input type="password" class="form-control" id="exampleInputPassword1" name="password">
+								  </div>
+								  <div class="form-group"> 
+									<label for="exampleInputPassword1">验证码</label>
+									<i class="fa fa-picture-o"></i>
+                                                                        
+									<img id="verifyImg" src="__URL__/verify/" width="76" onClick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer;right: 31px;;margin-top: 24px; position: absolute;" align="absmiddle" />
+									<input type="text" style="width:100%px;" maxlength="4" class="form-control" id="yzm" name="verify">
+								  </div>
+								  <div>
+                                                                        <input type="hidden" name="ajax" value="1">
+									<button type="submit" class="btn btn-danger" onClick="console.log(ThinkAjax);ThinkAjax.sendForm('form1', '__URL__/checkLogin/', loginHandle, 'result')">登录</button>
+									<!--<button type="submit" class="btn btn-danger">登录</button>-->
+								  </div>
+								</form>
+                                                        <div class="checkbox">
+                                                            <div class="error"><span id="result"></span></div>
+                                                        </div>
+								<!-- SOCIAL LOGIN -->
+								<div class="divide-20"></div>
+								<div class="center">
+									<strong>在公共场所请小心登录您的帐号</strong>
+								</div>
+								<div class="divide-20"></div>
+								<!-- /SOCIAL LOGIN -->
+								<div class="login-helpers">
+<!--								<a href="http://dyj168.com.cn/reg.php">立即注册</a> <br>
+								<br>
+									<a href="http://dyj168.com.cn/forget.php">找回密码?</a> <br>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--/LOGIN -->
+	</section>
+	<!--/PAGE -->
+	<!-- JAVASCRIPTS -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- JQUERY -->
+	<!--<script src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>-->
+	<!-- JQUERY UI-->
+                        <script type="text/javascript">document.write("<scr" + "ipt src=\"__PUBLIC__/Js/jquery-1.7.2.min.js\"></sc" + "ript>")</script>
+                        <script type="text/javascript">document.write("<scr" + "ipt src=\"__PUBLIC__/Js/Base.js\"></sc" + "ript>")</script>
+                        <script type="text/javascript">document.write("<scr" + "ipt src=\"__PUBLIC__/Js/prototype.js\"></sc" + "ript>")</script>
+                        <script type="text/javascript">document.write("<scr" + "ipt src=\"__PUBLIC__/Js/mootools.js\"></sc" + "ript>")</script>
+                        <script type="text/javascript">document.write("<scr" + "ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc" + "ript>")</script>
+                        <script type="text/javascript">document.write("<scr" + "ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc" + "ript>")</script>
+                        <script type="text/javascript">document.write("<scr" + "ipt src=\"__PUBLIC__/Js/common.js\"></sc" + "ript>")</script>
+	<script src="__PUBLIC__/new0525/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<!-- UNIFORM -->
+	<script type="text/javascript" src="__PUBLIC__/new0525/js/jquery.uniform.min.js"></script>
+	<!-- BACKSTRETCH -->
+	<script type="text/javascript" src="__PUBLIC__/new0525/js/jquery.backstretch.min.js"></script>
+<script src="__PUBLIC__/new0525/js/script.js"></script>
+
+
+
+	<!-- CUSTOM SCRIPT -->
+    <!--
+	<script src="/hs/__PUBLIC__/new0525/js/script.js"></script>
+    -->
+    <div class="bg-bg"></div>
+    <div class="bg-bg2"></div>
+    <style>
+        .bg-bg{
+            position:fixed;
+            left: 0;
+            top: 0;
+            width:100%;
+            height: 100%;
+            z-index: -100;
+            background: url(__PUBLIC__/new0525/images/bg22.jpg)
+        }
+        .bg-bg2{
+            display: none;
+            position:fixed;
+            left: 0;
+            top: 0;
+            width:100%;
+            height: 100%;
+            z-index: -100;
+            opacity:0.5;
+            background: url(__PUBLIC__/new0525/images/2.jpg)
+        }
+    </style>
+<!-- 	<script>
+	var XT={
+	'ROOT':'__ROOT__'
+	}
+        var IMG={
+            0:'__PUBLIC__/new0525/images/1.jpg',
+            1:'__PUBLIC__/new0525/images/2.jpg',
+            2:'__PUBLIC__/new0525/images/3.jpg',
+            3:'__PUBLIC__/new0525/images/4.jpg'
+        }
+        changeimg2()
+        var _i=1;
+            changeimg2(IMG[_i]);
+            _i++;
+        setInterval(function(){
+            if(_i>=4){
+                _i=0;
+            }
+            changeimg2(IMG[_i]);
+            _i++;
+        },4000)
+        function changeimg2(img){
+//            setTimeout(function(){
+//                jQuery('.bg-bg').animate({opacity:0.5},1000)
+//                setTimeout(function(){
+//                    jQuery('.bg-bg2').css('display','inline-block').animate({opacity:1},1000)
+//                },1000)
+//            },1000)
+            setTimeout(function(){
+                jQuery('.bg-bg').animate({opacity:0.5},1000)
+                setTimeout(function(){
+                    jQuery('.bg-bg').css('background','url('+img+')').animate({opacity:1},1000)
+                },1000)
+            },1000)
+        }
+        function changeimg(url){
+            jQuery('body').css('background-image','url('+url+')');
+            jQuery('body').css('background-position-x','0');
+            setTimeout(function(){
+                jQuery('body').animate({
+                    "background-position-x":"-200px"
+                  },500);
+            },1000)
+            
+//            jQuery("body").animate({'background-image':'url('+url+')'},1000);
+        }
+        
+		jQuery(document).ready(function() {
+			App.setPage("login_bg");  //Set current page
+			App.init(); //Initialise plugins and elements
+
+		});
+                $(document).ready(function() {
+			jQuery('button').click(function(){
+                            alert(123)
+                        })
+
+		});
+                
+	</script>
+	<script type="text/javascript">
+		function swapScreen(id) {
+			jQuery('.visible').removeClass('visible animated fadeInUp');
+			jQuery('#'+id).addClass('visible animated fadeInUp');
+		}
+	</script> -->
+<!--OSS切换-->
+	<!-- /JAVASCRIPTS -->
+
+<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 911px; width: 1920px; z-index: -999999; position: fixed;"><img src="__PUBLIC__/new0525/css/3.jpg" class="deleteable" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1920px; height: 1227px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -158px;"><img src="__PUBLIC__/new0525/css/4.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1920px; height: 1214px; max-height: none; max-width: none; z-index: -999999; opacity: 0.771441; left: 0px; top: -151.5px;"></div>
+</body></html>
+                        <script language="JavaScript">
+
+                                            var PUBLIC = '__PUBLIC__';
+                                            ThinkAjax.image = ['__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif', '__PUBLIC__/Images/update.gif']
+                                            ThinkAjax.updateTip = '登录中～';
+                                            function loginHandle(data, status) {
+                                                if (status == 1)
+                                                {
+                                                    $('result').innerHTML = '<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+                                                    $('form1').reset();
+                                                    window.location = '__URL__';
+                                                }
+                                            }
+                                            function keydown(e) {
+                                                var e = e || event;
+                                                if (e.keyCode == 13)
+                                                {
+                                                    ThinkAjax.sendForm('form1', '__URL__/checkLogin/', loginHandle, 'result');
+                                                }
+                                            }
+                                            function fleshVerify(type) {
+//重载验证码
+                                                var timenow = new Date().getTime();
+                                                if (type)
+                                                {
+                                                    $('verifyImg').src = '__URL__/verify/adv/1/' + timenow;
+                                                } else {
+                                                    $('verifyImg').src = '__URL__/verify/' + timenow;
+                                                }
+
+                                            }
+                                            function checkRadio() {
+                                                alert("您不是该地区的ID");
+                                                window.location = '__URL__/login';
+                                            }
+
+
+</script>

@@ -1,0 +1,90 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>会员晋级管理 </h1></div>
+<table width="600" align="center">
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminmemberJJ/">搜索会员：<input type="text" name="UserID" title="帐号查询">&nbsp;&nbsp;
+    <select name="ulevel">
+    <option value="0">全部</option>
+    <volist name="voo" id="ulv">
+    <option value="{$key}">{$level[$key-1]}</option>
+    </volist>
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="Submit" value="查询"  class="btn1"/>
+    </form></td>
+    </tr>
+</table>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+    <tr align="center">
+        <th nowrap><span>序号</span></th>
+        <th nowrap><span>会员编号</span></th>
+        <th nowrap><span>姓名</span></th>
+        <th nowrap><span>联系电话</span></th>
+        <th nowrap><span>开通时间</span></th>
+        <th nowrap><span>会员级别</span></th>
+        <th nowrap><span>总奖金</span></th>
+        <th nowrap><span>升级</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center"> 
+        <td>{$vo['id']}</td>
+        <td nowrap>{$vo['user_id']}</td>
+        <td nowrap>{$vo['user_name']}</td>
+        <td nowrap>{$vo['user_tel']}</td>
+        <td nowrap>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        <td nowrap>{$voo[$vo['u_level']]}</td>
+        <td nowrap>{$vo['zjj']}</td>
+        <td><a href="__URL__/adminMenberJinji/uid/{$vo['id']}/">升级</a></td>
+    </tr>
+    </volist>
+    
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+	<tr>
+    	<td align="center">{$page}</td>
+    </tr>
+</table>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+  <tr>
+    <td colspan="2" class="tabletd"><strong>待确认升级记录</strong></td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb2">
+      <tr>
+        <th><span>会员编号</span></th>
+        <th><span>晋级前</span></th>
+        <th><span>晋级后</span></th>
+        <th><span>补充差额</span></th>
+        <th><span>申请时间</span></th>
+        <th><span>确认时间</span></th>
+        <th><span>备注</span></th>
+        <th><span>状态</span></th>
+      </tr>
+	<volist name="list1" id="vo1">
+      <tr>
+        <td><div align="center">{$vo1['user_id']}</div></td>
+        <td><div align="center"><span  class="STYLE1">{$vo1['u_level']}</span></div></td>
+        <td><div align="center"><span  class="STYLE1">{$vo1['up_level']}</span></div></td>
+        <td><div align="center"><span  class="STYLE1">{$vo1['money']}</span></div></td>
+        <td><div align="center">{$vo1.create_time|date='Y-m-d H:i:s',###}</div></td>
+        <td><div align="center"><gt name="vo1.pdt" value="0" >{$vo1.pdt|date='Y-m-d H:i:s',###}<else />&nbsp;</gt></div></td>
+        <td><div align="center"><a href="__URL__/MenberJinjishow/Sid/{$vo1['id']}/">点击查看</a></div></td>
+        <td><div align="center"><eq name="vo1['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq>
+        				<eq name="vo1['is_pay']" value="1">已确认</eq></div></td>
+      </tr>
+	</volist>
+    </table></td>
+    </tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+	<tr>
+    	<td align="center">{$pagePro}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

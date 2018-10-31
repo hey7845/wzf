@@ -1,0 +1,44 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>视频上传 </h1></div>
+<form method='post' id="myform" action="__URL__/setParameterSave_B" >
+<table width="100%" cellpadding=3 cellspacing=0 border=0 id="tb1" class="tab4">
+<tr  class="content_td">
+                <td width="15%" >&nbsp;</td>
+                <td width="85%">&nbsp;</td>
+</tr>
+<tr>
+				<td align="right">登录页视频：</td>
+				<td class="center"><input name="str21" type="text" id="str21" value="{$fee_str21}" size="40" maxlength="80" /></td>
+</tr>
+<tr>
+				<td align="right">上传视频：</td>
+				<td class="center"><iframe src="__URL__/upload_add_a" width="350" height="30" scrolling="no" frameborder="0"></iframe>上传格式：flv</td>
+</tr>
+<tr style="display:none">
+				<td align="right">首页图片2：</td>
+				<td class="center"><input name="str22" type="text" id="str22" value="{$fee_str22}" size="40" maxlength="80" /></td>
+</tr>
+<tr style="display:none">
+				<td align="right">上传图片2：</td>
+				<td class="center"><iframe src="__URL__/upload_add_b" width="350" height="30" scrolling="no" frameborder="0"></iframe>上传格式：jpg,png,gif</td>
+</tr>
+<tr style="display:none">
+				<td align="right">首页图片3：</td>
+				<td class="center"><input name="str23" type="text" id="str23" value="{$fee_str23}" size="40" maxlength="80" /></td>
+</tr>
+<tr style="display:none">
+				<td align="right">上传图片3：</td>
+				<td class="center"><iframe src="__URL__/upload_add_c" width="350" height="30" scrolling="no" frameborder="0"></iframe>上传格式：jpg,png,gif</td>
+</tr>
+<tr>
+  <td></td>
+  <td class="center">
+    <input type="submit" value="修改" class="button_text">
+    <input type="reset" value="还原" class="button_text"></td>
+</tr>
+</table>
+</form>
+</div>
+</body>
+</html>

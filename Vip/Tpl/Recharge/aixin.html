@@ -1,0 +1,89 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+function CheckForm(){
+	if(document.form1.ePoints.value==""){
+		alert("请输入金额！");
+		document.form1.ePoints.focus();
+		return false;
+	}
+	if(confirm('您确定充值金额 '+document.form1.ePoints.value+' 吗？'))
+	{
+		var Null_Name = document.form1._hour.value;
+		if (Null_Name)
+		{
+			str = Null_Name.replace(/^\s+|\s+$/g,"");
+			if (!str == "")//判断是否为空
+			{
+				if (!isNaN(Null_Name))
+				{
+					if(Null_Name >= 0 && Null_Name <=24){
+						return true;
+					}else{ alert('小时输入有误'); return false; }
+				}else{ alert('请输入数字'); return false; }
+
+			}
+		}
+	}else{
+	alert('您取消了本次操作');
+       return false;
+    }
+}
+
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>爱心捐献 </h1></div>
+    
+  <table width="100%" border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td colspan="4" style=" height:5px;"><hr></td>
+      </tr>
+    <tr>
+      <td height="30" align="right">功德箱：</td>
+      <td colspan="2"><span class="hong">{$one['tz_nums']}</span></td>
+      </tr>
+	   <tr>
+      <td height="30" align="right">账户余额：</td>
+      <td colspan="2"><span class="hong">{$rs['agent_use']}</span></td>
+      </tr>
+    <form name="form1" method="post" action="__URL__/aixinAC" onSubmit="{return CheckForm();}">
+    <tr>
+	  <td height="30" align="right">捐献金额：</td>
+	  <td width="40%"><input name="ePoints" type="text" id="ePoints" maxlength="9" class="ipt" onkeyup="javascript:Null_Int(this.name)"/></td>
+	  <td width="40%"><div id="ePoints1" class="info"><div id="0" class="focus_r"><div class="msg_tip">请输入你要捐献金额。</div></div></div></td>
+    </tr>
+    <tr>
+      <td height="30">&nbsp;</td>
+      <td><input type="submit" name="Submit" value="确定捐献" class="bt_tj" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    
+	</form>
+</table>
+<br>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>捐献金额</span></th>
+			
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+        <td>{$vo['user_id']}</td>
+        <td>{$vo['epoint']}</td>
+      
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+<div class="bottom"></div>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

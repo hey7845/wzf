@@ -1,0 +1,118 @@
+<include file="Public:header" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>会员管理 </h1></div>
+<form name="form3" method="post" action="__URL__/adminMenberAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th></th>
+        <th><span>会员编号</span></th>
+		<th><span>推荐人</span></th>
+        <th><span>姓名</span></th>
+        <th><span>会员级别</span></th>
+        <th><span>联系电话</span></th>
+        <th><span>报单中心</span></th>
+       
+     
+        <th><span>总积分</span></th>
+        <th><span>总投资</span></th>
+		<th><span>新增积分</span></th>
+		
+		<th><span>新增投资</span></th>
+		<th><span>平仓配股</span></th>
+        
+
+    
+        </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center">
+        <td><input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td>
+        <td><a href="__URL__/adminuserData/PT_id/{$vo['id']}">{$vo['user_id']}</a></td>
+		<td>{$vo['re_name']}</td>
+        <td>{$vo['user_name']}</td>
+        <td>{$voo[$vo['u_level']]}</td>
+        <td>{$vo['user_tel']}</td>
+        <td><eq name="vo['is_agent']" value='2'><span style="color:BLUE;">是</span><else/>否</eq></td>
+      
+        
+        <td>{$vo['agent_use']}</td>
+        <td>{$vo['tz_nums']+$vo['cpzj']}</td>
+		
+		<td>{$vo['agent_use']-$vo['shangqi_use']}</td>
+		<td>{$vo['tz_nums']+$vo['cpzj']-$vo['shangqi_tz']}</td>
+		<td>{$vo['flat_gupiao']}</td>
+      
+        </tr>
+    </volist>
+
+
+<!--<tr style="display:none">
+<td colspan="13" align="center"><font color="#FF0000">总业绩： {$f4_count}</font></td>
+</tr>-->
+</table>
+
+
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+   	  <td width="60%">
+      <input name="全选" type="button" class="button_text" id="全选" onclick="CheckAll(this.form)" value="全选" />	  &nbsp;&nbsp;
+	  <input type="submit" name="action" value="结算" class="button_text" onclick="{if(confirm('确定要结算吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <!-- <input type="submit" name="action" value="锁定会员" class="button_text" onclick="{if(confirm('确定要锁定会员吗?')){return true;}return false;}">&nbsp;&nbsp; -->
+      <!--<input type="submit" name="action" value="删除会员" class="button_text" onclick="{if(confirm('确定要删除会员吗?')){return true;}return false;}">&nbsp;&nbsp;-->
+	  <!-- <input type="submit" name="action" value="开启奖金" class="button_text" onclick="{if(confirm('确定要开启奖金吗?')){return true;}return false;}">&nbsp;&nbsp; -->
+	  <!-- <input type="submit" name="action" value="关闭奖金" class="button_text" onclick="{if(confirm('确定要关闭奖金吗?')){return true;}return false;}">&nbsp;&nbsp; -->
+      <!--<input type="submit" name="action" value="开启打卡奖" class="button_text" onclick="{if(confirm('确定要开启打卡奖吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="关闭打卡奖" class="button_text" onclick="{if(confirm('确定要关闭打卡奖吗?')){return true;}return false;}">&nbsp;&nbsp;-->
+    <!--  <input type="submit" name="action" value="开启分红奖" class="button_text" onclick="{if(confirm('确定要开启会员分红奖吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="关闭分红奖" class="button_text" onclick="{if(confirm('确定要关闭会员分红奖吗?')){return true;}return false;}">&nbsp;&nbsp;
+      <input type="submit" name="action" value="设为代理商" class="button_text" onclick="{if(confirm('确定要将选中的会员设为代理商吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="取消代理商" class="button_text" onclick="{if(confirm('确定要将选中的会员取消代理商资格吗?')){return true;}return false;}">&nbsp;&nbsp;-->
+	  <!--<input type="submit" name="action" value="设为财务管理" class="button_text" onclick="{if(confirm('确定要将选中的会员设为财务管理吗?')){return true;}return false;}">&nbsp;&nbsp;
+      <input type="submit" name="action" value="设为物流管理" class="button_text" onclick="{if(confirm('确定要将选中的会员设为物流管理吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="取消管理员" class="button_text" onclick="{if(confirm('确定要将选中的会员取消管理员资格吗?')){return true;}return false;}">&nbsp;&nbsp;-->
+      <!-- <input type="submit" name="action" value="设为报单中心" class="button_text" onclick="{if(confirm('确定要将选中会员设为报单中心吗?')){return true;}return false;}">&nbsp;&nbsp; -->
+	  <!--<input type="submit" name="action" value="奖金转注册币" class="button_text" onclick="{if(confirm('确定要将此会员的K币账户全部转为注册币吗?')){return true;}return false;}">--></td>
+    </tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+</form>
+<table width="100%" align="center">
+    <tr>
+    <td align="center">
+    <form method='post' action="__URL__/adminMenber/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    &nbsp;&nbsp;
+    <select name="ulevel">
+    <option value="0">全部</option>
+    <volist name="voo" id="ulv">
+    <option value="{$key}">{$level[$key-1]}</option>
+    </volist>
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="Submit" value="查询"  class="button_text"/>
+    &nbsp;
+   
+    </form></td>
+    </tr>
+</table>
+<table width="100%" align="center" style="display:none">
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminMenber/">搜索会员业绩：
+    开始日期：<input name="sNowDate" type="text" id="sNowDate" onFocus="showCalendar(this)" readonly /> 
+     &nbsp;结束日期：  <input name="endNowDate" type="text" id="endNowDate" onFocus="showCalendar(this)" readonly />
+    
+    会员编号 ： <input type="text" name="RID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="button_text"/>
+    &nbsp;
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

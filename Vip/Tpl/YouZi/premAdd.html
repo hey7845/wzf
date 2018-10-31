@@ -1,0 +1,162 @@
+<include file="Public:xyHead" />
+<div id="main_top"><font>您现在的位置是：</font> {$title}</div>
+<div class="bar m10">
+<div class="bar_header"> <div class="bar_header_span">{$title}</div> </div>
+    <div class="bar_cont a_p5">
+<table width="100%" class="tab3" border="0" cellpadding="5" cellspacing="0" id="tb1">
+<form name="form3" method="post" action="__URL__/premAddSave">
+<tr>
+				<td align="right" >会员编号</td>
+				<td >{$rs.user_id}</td>
+</tr>
+<tr>
+				<td align="right" >权限：</td>
+				<td >
+                <select name="isBoss" size="1" id="isBoss">
+				    <option value="0" <eq name="rs['is_boss']" value="0">selected="selected"</eq> >无权限</option>
+				    <option value="2" <eq name="rs['is_boss']" value="2">selected="selected"</eq> >有权限</option>
+			    </select>
+                </td>
+</tr>
+<tr>
+				<td width="39%" align="right" ><strong>后台管理</strong></td>
+				<td width="61%" ><input name="全选" type="button" class="button_text" id="全选" onclick="CheckAll(this.form)" value="全选" /></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="15" {$ars[15]} />
+				每周结算</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="16" {$ars[16]} />
+				每周释放</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="6" {$ars[6]} />
+				物流管理</span></td>
+</tr>
+
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="1" {$ars[1]} />
+				</span>当期出纳</td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="2" {$ars[2]} />
+				奖金查询</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="9" {$ars[9]} />
+				报单中心管理</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="3" {$ars[3]} />
+				会员审核</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="4" {$ars[4]} />
+				会员管理</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="21" {$ars[21]} />
+				晋级管理</span></td>
+</tr>
+<!-- <tr >
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="16" {$ars[16]} />
+				赠送股票</span></td>
+</tr> -->
+<!-- <tr >
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="17" {$ars[17]} />
+				平仓配股管理</span></td>
+</tr> -->
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="5" {$ars[5]} />
+				产品管理</span></td>
+</tr>
+<tr >
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="14" {$ars[14]} />
+				提现管理</span></td>
+</tr>
+
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="7" {$ars[7]} />
+				货币流向</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="8" {$ars[8]} />
+				充值管理</span></td>
+</tr>
+<tr style="display:none">
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="15" {$ars[15]} />
+				重复消费清单</span></td>
+</tr>
+
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="10" {$ars[10]} />
+				新闻公告管理</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="11" {$ars[11]} />
+				数据库备份</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="12" {$ars[12]} />
+				参数设置</span></td>
+</tr>
+<tr>
+				<td align="right" >&nbsp;</td>
+				<td ><span class="center">
+								<input name="is_boss[]" type="checkbox" id="is_boss[]" value="13" {$ars[13]} />
+				清空数据</span></td>
+</tr>
+<tr>
+				<td align="right" ><input name="id" type="hidden" id="id" value="{$rs['id']}" /></td>
+				<td ><input type="submit" name="button" id="button" value="提交" class="button_text" />&nbsp;
+                <input type="button" name="button" id="button" value="返回" class="button_text" onclick="history.back();"/></td>
+</tr>
+<tr align="center">
+	<td colspan="2">&nbsp;</td>
+</tr>
+</form>
+</table>
+    </div>
+    <div class="bar_foot"></div>
+</div>
+</body>
+</html>

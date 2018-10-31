@@ -1,0 +1,36 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>查看互助会员 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+  <tr>
+    <th><div align="center">序号</div></th>
+    <th><div align="center">会员编号</div></th>
+    <th><div align="center">联系电话</div></th>
+    <th><div align="center">QQ号码</div></th>
+    <th><div align="center">开通时间</div></th>
+    </tr>
+	<volist name="alist" id="vo" key="tt">
+    <tr>
+      <td><div align="center">{$tt}</div></td>
+      <td><div align="center">{$vo['user_id']}</div></td>
+      <td><div align="center">{$vo['user_tel']}</div></td>
+      <td><div align="center">{$vo['qq']}</div></td>
+      <td><div align="center">{$vo.pdt|date='Y-m-d',###}</div></td>
+    </tr>
+	</volist>
+    <volist name="blist" id="vo" key="yy">
+    <tr>
+      <td><div align="center">{$yy+$tt}</div></td>
+      <td><div align="center">{$vo['user_id']}</div></td>
+       <td><div align="center">{$vo['user_tel']}</div></td>
+      <td><div align="center">{$vo['qq']}</div></td>
+      <td><div align="center">{$vo.pdt|date='Y-m-d',###}</div></td>
+    </tr>
+	</volist>
+<tr>
+<td colspan="3"><div align="center">{$page}</div></td>
+</tr>
+</table>
+</div>
+</body>
+</html>

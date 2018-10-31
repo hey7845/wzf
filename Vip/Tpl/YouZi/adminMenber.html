@@ -1,0 +1,72 @@
+<include file="Public:xyHead" />
+
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>会员管理 </h1></div>
+<div><h4>&nbsp;&nbsp;&nbsp;&nbsp;总业绩：{$f4_count22} </h4></div>
+<form name="form3" method="post" action="__URL__/adminMenberAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th></th>
+        <th><span>会员编号</span></th>
+		<th><span>密码</span></th>
+		<th><span>推荐人</span></th>
+		<th><span>消费积分</span></th>
+        <th><span>开通时间</span></th>
+        <th><span>注册金额</span></th>
+         <th><span>复投次数</span></th>
+        <th><span>提现总额</span></th>
+        <th><span>会员状态</span></th>
+        <th><span>是否开启分红</span></th>
+        <th><span>是否锁定现金积分</span></th>
+        </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center">
+        <td><input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td>
+        <td><a href="__URL__/adminuserData/PT_id/{$vo['id']}">{$vo['user_id']}</a></td>
+		<td>{$vo['pwd1']}</td>
+		<td>{$vo['re_name']}</td>
+		<td>{$vo['agent_use']}</td>
+        <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo['cpzj']}</td>
+        <td>{$vo['is_cc']}</td>
+        <td>{$vo['shang_ach']}</td>
+        <td><eq name="vo['is_lock']" value='0'><span style="color: #FF0000;">未锁定</span><else />已锁定</eq><eq name="vo['is_pay']" value='2'>[空单]</eq></td>
+        <td><eq name="vo['is_day_active']" value='0'><span style="color: #FF0000;">已开启</span><else />已关闭</eq></td>
+        <td><eq name="vo['is_lock_use']" value='0'><span style="color: #FF0000;">已开启</span><else />已锁定</eq></td>
+        </tr>
+    </volist>
+
+
+<!--<tr style="display:none">
+<td colspan="13" align="center"><font color="#FF0000">总业绩： {$f4_count}</font></td>
+</tr>-->
+</table>
+
+
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+   	  <td width="60%">
+      <input name="全选" type="button" class="btn-xs btn-default" id="全选" onclick="CheckAll(this.form)" value="全选" />	  &nbsp;&nbsp;
+	  <input type="submit" name="action" value="开启会员" class="btn-xs btn-success" onclick="{if(confirm('确定要开启会员吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="锁定会员" class="btn-xs btn-default" onclick="{if(confirm('确定要锁定会员吗?')){return true;}return false;}">&nbsp;&nbsp;
+      <input type="submit" name="action" value="删除会员" class="btn-xs btn-danger" onclick="{if(confirm('确定要删除会员吗?')){return true;}return false;}">&nbsp;&nbsp;
+<!-- 	  <input type="submit" name="action" value="开启奖金" class="btn-xs btn-success" onclick="{if(confirm('确定要开启奖金吗?')){return true;}return false;}">&nbsp;&nbsp; -->
+<!-- 	  <input type="submit" name="action" value="关闭奖金" class="btn-xs btn-default" onclick="{if(confirm('确定要关闭奖金吗?')){return true;}return false;}">&nbsp;&nbsp; -->
+	  <input type="submit" name="action" value="开启分红" class="btn-xs btn-success" onclick="{if(confirm('确定要开启分红吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="关闭分红" class="btn-xs btn-default" onclick="{if(confirm('确定要关闭分红吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="开启现金积分" class="btn-xs btn-success" onclick="{if(confirm('确定要开启现金积分吗?')){return true;}return false;}">&nbsp;&nbsp;
+	  <input type="submit" name="action" value="锁定现金积分" class="btn-xs btn-default" onclick="{if(confirm('确定要锁定现金积分吗?')){return true;}return false;}">&nbsp;&nbsp;
+    </tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+</form>
+</div>
+</body>
+</html>

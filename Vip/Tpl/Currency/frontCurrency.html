@@ -1,0 +1,118 @@
+<include file="Public:xyHead" />
+<load href="__PUBLIC__/Js/Ajax/ThinkAjax-1.js" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+ function CheckForm(){
+	if(confirm('您确定提现金额 '+document.form1.ePoints.value+' 吗？'))
+	{
+	  return true;
+	}else{
+       return false;
+    }
+}
+function yhServer(Ful){
+	str = $F(Ful).replace(/^\s+|\s+$/g,"");
+	ThinkAjax.send('__URL__/check_CCuser/','ajax=1&userid='+str,'',Ful+'1');
+}
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h4>提现申请 </h4></div>
+<form name="form1" method="post" action="__URL__/frontCurrencyConfirm" onSubmit="{return CheckForm();}">
+  <table width="100%" border="0" cellpadding="3" cellspacing="0">
+    
+      <tr>
+        <td>&nbsp;</td>
+        <td width="45%">&nbsp;</td>
+        <td width="30%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="30" align="right">消费积分：</td>
+        <td colspan="2"><span class="hong">{$rs['agent_use']}</span></td></tr>
+		
+	 <!-- <tr>
+        <td height="30" align="right">提现账户：</td>
+        <td colspan="2"><span class="hong">{$rs['agent_xf']}</span></td></tr>
+		
+      <tr> -->
+        <td width="25%" height="30">&nbsp;</td>
+        <td colspan="2"><span style="color:red;"><!--提现手续费 {$menber} %，-->最低提现金额为 {$minn},并且提现金额必须是{$minn}的倍数。</span></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">{$User_namex}：</td>
+        <td><input name="UserID" type="text" readonly="readonly" value="{$rs['user_id']}"/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">提现类型：</td>
+        <td>
+        <select name="ttype">
+        <option value="0">提取现金账户</option>
+		<!-- <option value="1">提取现金账户</option> -->
+        </select>
+        </td>
+        <td></td>
+      </tr>
+       <tr>
+        <td height="30" align="right">提现平台：</td>
+        <td>
+        <select name="type">
+        <option value="0">银行卡</option>
+        </select>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">提现金额：</td>
+        <td><input name="ePoints" type="text" id="ePoints" value=""/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">&nbsp;</td>
+        <td><input type="submit" name="Submit" value="确定提现" class="button_text" /></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+  </table></form>
+<br />
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>提现金额</span></th>
+			<th><span>扣手续费</span></th>
+			<th><span>实发金额</span></th>
+			<th><span>提现时间</span></th>
+			<th><span>提现类型</span></th>
+			<th><span>银行卡号</span></th>
+            <th><span>提现状态</span></th>
+        </tr>
+	</thead>
+	<volist name='list' id='vo'>
+  <tr align="center">
+    <td>{$rs['user_id']}</td>
+    <td><span style="color: #F00;">{$vo['money']}</span></td>
+    <td>{$vo['x1']} %</span></td>
+    <td><span style="color: #F00;">{$vo['money_two']}</td>
+    <!-- <td>{$vo['money_two']|cx_cname}</span></td> -->
+    <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+    <td><eq name="vo['t_type']" value="0">提取消费积分<else/>提取钛宝提现账户</eq></td>
+    <td>{$rs['bank_card']}</td>
+    <td><eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span>
+          <!-- |<a id="aa" href="__URL__/frontCurrencyDel/id/{$vo['id']}"><span style="color: #0000FF;">删除</span></a> -->
+        </eq>  
+          <eq name="vo['is_pay']" value="1">已确认</eq></td>
+  </tr>
+  </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+		<td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>产品分类管理 </h1></div>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr align="left">
+	<td><input type="button" name="action" value="管理产品" onClick="window.location='__URL__/pro_index/'" class="btn1"></td>
+</tr>
+</table>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+<form action="__URL__/cptype_zz" method="post" name="form3" id="form3">
+<tr align="center">
+	<th width="10%" ></th>
+	<th width="10%" nowrap >序号</th>
+	<th width="60%" nowrap align="left">&nbsp; 分类名</th>
+	<th width="20%" nowrap >操作</th>
+	</tr>
+<volist name="list" id="vo">
+<tr align="center"> 
+	<td><div align="center">
+	  <input type="checkbox" name="checkbox[]" value="{$vo['id']}" class="">
+	  </div></td>
+	<td>{$vo['id']}</td>
+	<td nowrap align="left">{$vo['tpname']}</td>
+	<td><a href="__URL__/cptype_edit/EDid/{$vo['id']}">编辑</a></td>
+	</tr>
+</volist>
+<tr><input name="allcheckboxs" type="hidden" value="">
+	<td colspan=4>
+    <input name="全选" type="button" class="btn1" id="全选" onclick="CheckAll(this.form)" value="全选" />&nbsp; &nbsp;
+	  <input type="submit" name="action" value="添加" onClick="return allcheckbox();" class="btn1">&nbsp; &nbsp;
+	  <input type="submit" name="action" value="删除" onClick="return allcheckbox();" class="btn1"></td>
+</tr>
+</form>
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr align="center">
+	<td>{$page}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

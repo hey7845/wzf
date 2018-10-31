@@ -1,0 +1,45 @@
+<include file="Public:xyHead" />
+<style>
+td{ font-family:Verdana, Geneva, sans-serif;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>在线充值订单确认 </h1></div>
+<form name="form1" method="post" action="__URL__/onlineRechargeOK" target="_blank" onsubmit="document.form1.oksub.disabled=true;">
+  <table width="100%" border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td height="30" align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="25%" height="30" align="right">会员编号：</td>
+      <td>{$inUserID}</td>
+    </tr>
+    <tr>
+      <td width="25%" height="30" align="right">充值金额：</td>
+      <td><span class="hong">{$ePoints}</span></td>
+    </tr>
+	<tr>
+      <td width="25%" height="30" align="right">订单金额：</td>
+      <td><span class="hong">{$inmoney}</span></td>
+    </tr>
+    <tr>
+	  <td height="30" align="right">订单号：</td>
+	  <td>{$orderid}</td>
+	</tr>
+    <tr>
+      <td height="30">
+      <input name="ePoints" type="hidden" value="{$ePoints}" />
+      <input name="inmoney" type="hidden" value="{$inmoney}" />
+      <input name="orderid" type="hidden" value="{$orderid}" />
+      <input name="bank_code" type="hidden" value="{$bank_code}" /></td>
+      <td>
+      <input type="submit" name="oksub" value="确定，去支付" class="bt_tj"/>
+      &nbsp;&nbsp;
+      <input type="button" name="Submit" value="修改订单" class="bt_tj" onclick="window.location='__URL__/onlineRecharge/'" />
+      </td>
+    </tr>
+</table></form>
+<div class="bottom"></div>
+</div>
+</body>
+</html>

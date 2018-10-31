@@ -1,0 +1,26 @@
+<include file="Public:xyHead" />
+<load href="__PUBLIC__/Js/tree.js" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>推荐关系图 </h1></div>
+
+    <table width="100%" border="0" cellpadding="5" cellspacing="0" class="tab3">
+      <form method='post' action="__URL__/Tree">
+      <tr>
+        <td>{$User_namex}：
+            <input type="text" name="UserID" title="帐号查询"  >
+            <input type="submit" name="Submit" value="查询" class="button_text"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="MzTreeView.prototype.expandAll.call(tree);">展开全部节点</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="__URL__/Tree/UID/{$ID}">关闭全部节点</a>
+        </td>
+      </tr>
+      </form>
+      <tr>
+        <td><div id="thisTree" style="padding:15px;"></div></td>
+      </tr>
+      <tr>
+        <td>说明：<img src="__PUBLIC__/Images/tree/center.gif" width="18" height="18" /> 报单中心&nbsp;&nbsp; <img src="__PUBLIC__/Images/tree/Official.gif" width="18" height="18" /> 已开通&nbsp;&nbsp; <img src="__PUBLIC__/Images/tree/trial.gif" width="18" height="18" /> 未开通</td>
+      </tr>
+    </table>
+</div>
+</body>
+</html>
+{$rs['0']}

@@ -1,0 +1,68 @@
+<include file="Public:xyHead" />
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" />
+<div class="ncenter_box">
+<div class="accounttitle">
+		<h1>我的订单查询 </h1>
+	</div>
+<table width="100%" class="tab3" border="0" cellpadding="6"
+		cellspacing="0" id="tb1">
+  <tr align="center" class="size14">
+    <th nowrap="nowrap">会员编号</th>
+    <th height="24" nowrap="nowrap">收货人</th>
+    <th nowrap="nowrap">产品名</th>
+    <th nowrap="nowrap">购买时间</th>
+    <th nowrap="nowrap">单价</th>
+    <th nowrap="nowrap">数量</th>
+    <th nowrap="nowrap">电话</th>
+    <th nowrap="nowrap">地址</th>
+    <th nowrap="nowrap">总金额</th>
+    <th width="10%" nowrap="nowrap">状态</th>
+    </tr>
+  <form action="" method="post" name="form1">
+  <volist name="list" id="vo">
+			<tr align="center">
+			  <td nowrap="nowrap">{$vo.user_id}</td>
+			  <td height="24" nowrap="nowrap">{$vo.us_name}&nbsp;</td>
+			  <td nowrap="nowrap">{$vo.name}&nbsp;</td>
+			  <td nowrap="nowrap">{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+			  <td nowrap="nowrap">{$vo.money}</td>
+			  <td nowrap="nowrap">{$vo.shu}</td>
+			 <!-- <td nowrap="nowrap" >{$vo.cpeice}</td> -->
+			   <td nowrap="nowrap">{$vo.us_tel}</td>
+			  <td nowrap="nowrap">{$vo.us_address}</td>
+			  <td nowrap="nowrap">{$vo.cprice}</td>
+			  <td nowrap="nowrap">
+			    <eq name="vo.isfh" value="0">
+			      未发
+			      <else />
+			      <span style="color:#F00">已发货</span>
+		        </eq>		      </td>
+		    </tr>
+			</volist>
+		<tr align="center">
+		  <td>&nbsp;</td>
+		  <td height="24">&nbsp;</td>
+		  <td height="25">&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td height="25">&nbsp;</td>
+		  <td height="25">&nbsp;</td>
+		  <td height="25">&nbsp;</td>
+		  <td height="20">合计金额</td>
+		  <td height="20">{$count}</td>
+		  <td height="20">&nbsp;</td>
+	    </tr>
+        <tr align="center">
+           <td colspan="10">
+           	<table width="100%">
+              <tr>
+                <td align="center">{$page}</td>
+             
+            </tr>
+            </table>
+				</td>
+        </tr>
+  </form>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>电话卡管理 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+<form action="__URL__/card_zz" method="post" name="form3" id="form3">
+<tr align="center">
+	<th width="4%"></th>
+	<th nowrap width="6%">ID</th>
+	<th nowrap width="13%">电话卡号</th>
+	<th nowrap width="11%">电话卡密码</th>
+	<th nowrap width="10%">面值</th>
+	<th nowrap width="19%">生产时间</th>
+    <th nowrap width="9%">持有会员</th>
+	<th nowrap width="19%">发放时间</th>
+	<th nowrap width="9%">操作</th>
+	</tr>
+<volist name="list" id="vo">
+<tr align="center"> 
+	<td><div align="center">
+	  <input type="checkbox" name="checkbox[]" value="{$vo['id']}" class="btn2">
+	  </div></td>
+	<td>{$vo['id']}</td>
+	<td nowrap >{$vo['card_no']}</td>
+	<td nowrap >{$vo['card_pw']}</td>
+	<td nowrap >{$vo['money']}</td>
+	<td nowrap >{$vo.f_time|date='Y-m-d H:i:s',###}</td>
+	<td nowrap ><gt name="vo.is_sell" value="0"><span style="color:red">{$vo.buser_id}</span></gt></td>
+	<td nowrap ><gt name="vo.is_sell" value="0"><span style="color:red">{$vo.b_time|date='Y-m-d H:i:s',###}</span></gt></td>
+	<td nowrap ><a href="__URL__/card_edit/EDid/{$vo['id']}">编辑</a></td>
+	</tr>
+</volist>
+<tr>
+	<td colspan=8>
+    <input name="全选" type="button" class="btn1" id="全选" onclick="CheckAll(this.form)" value="全选" />
+    &nbsp; &nbsp;
+    <input type="submit" name="action" value="添加" class="btn1">
+    &nbsp; &nbsp;
+    <input type="submit" name="action" value="删除" onclick="{if(confirm('确定要删除吗?')){return true;}return false;}" class="btn1">
+    &nbsp; &nbsp;
+    <input type="submit" name="action" value="补发给会员" class="btn1">
+    </td>
+</tr>
+</form>
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr align="center">
+	<td>{$page}</td>
+</tr>
+</table>
+<table width="100%" align="center" style="padding-top:10px; padding-bottom:10px;">
+    <tr>
+    <td align="center">
+    <form method='post' action="__URL__/card_index/">电话卡号：
+	<input name="stitle" type="text" id="stitle" title="查询"></span>
+	<input type="submit" name="Submit" value="查询" class="btn1"/>
+	</form>
+    </td>
+    </tr>
+</table>
+<table width="100%" align="center" style="padding-top:10px; padding-bottom:10px;">
+    <tr>
+    <td align="left">
+    <form method='post' action="__URL__/upload_add/">导入Exelc：
+
+	<input type="submit" name="Submit" value="导入" class="btn1"/>
+	</form>
+    </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

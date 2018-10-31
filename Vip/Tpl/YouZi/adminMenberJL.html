@@ -1,0 +1,72 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>奖励会员 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th><span>会员编号</span></th>
+        <th><span>姓名</span></th>
+        <th><span>联系电话</span></th>
+        <th><span>开通时间</span></th>
+        <th><span>总奖金</span></th>
+        <th><span>会员级别</span></th>
+        <th><span>左区荣誉董事</span></th>
+        <th><span>右区荣誉董事</span></th>
+        <th><span>状态</span></th>
+        <th><span>分红</span></th>
+        <th><span>是否奖金</span></th>
+      </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center">
+        <td>{$vo['user_id']}</td>
+        <td>{$vo['user_name']}</td>
+        <td>{$vo['user_tel']}</td>
+        <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo['zjj']}</td>
+        <td>{$voo[$vo['u_level']]}</td>
+        <td>{$vo['re_nums_l']}</td>
+        <td>{$vo['re_nums_r']}</td>
+        <td><eq name="vo['is_lock']" value='0'><span style="color: #FF0000;">未锁定</span><else />已锁定</eq><eq name="vo['is_pay']" value='2'>[空单]</eq></td>
+        <td><eq name="vo['is_lockfh']" value='0'><span style="color: #FF0000;">开启</span><else />关闭</eq></td>
+        <td><eq name="vo['is_fenh']" value='0'><span style="color: #FF0000;">开启奖金</span><else />关闭奖金</eq></td>
+      </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+<table width="100%" align="center">
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminMenberJL/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    &nbsp;&nbsp;
+    <select name="ulevel">
+    <option value="0">全部</option>
+    <volist name="voo" id="ulv">
+    <option value="{$key}">{$level[$key-1]}</option>
+    </volist>
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="Submit" value="查询"  class="button_text"/>
+    </form></td>
+    </tr>
+</table>
+<table width="100%" align="center" style="display:none">
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminMenber/">搜索会员业绩：
+    开始日期：<input name="sNowDate" type="text" id="sNowDate" onFocus="showCalendar(this)" readonly /> 
+     &nbsp;结束日期：  <input name="endNowDate" type="text" id="endNowDate" onFocus="showCalendar(this)" readonly />
+    
+    会员编号 ： <input type="text" name="RID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="button_text"/>
+    &nbsp;
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

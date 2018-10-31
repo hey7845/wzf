@@ -1,0 +1,55 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>编辑公告 &nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<table width="100%" border="0" cellpadding="5" cellspacing="0" class="tab4">
+<form method='post' id="form1" name="form1" action="__URL__/News_editAc"  enctype="multipart/form-data">
+<tr> 
+	<td width="15%" align="right">标题：</td>
+	<td width="85%"><input type="text" class="huge bLeftRequire" name="title" value="{$vo.title}"></td>
+</tr>
+<tr>
+    <td align="right">类型：</td>
+    <td><select name="type" id="type">
+        <option value="1" <eq name="vo.type" value="1" >selected</eq>>新闻资讯</option>
+        <option value="2" <eq name="vo.type" value="2" >selected</eq>>常见问题</option>
+        </select></td>
+</tr>
+<tr class="content_td"> 
+	<td align="right">内容：</td>
+	<td>
+    {$html}
+	</td>
+</tr>
+<tr>
+                <td align="right">发布时间：</td>
+                <td ><input  name="addtime" type="text" id="addtime" value="{$vo.create_time|date='Y-m-d H:i:s',###}" size="20" maxlength="50"></td>
+</tr>
+<!--<tr>
+    <td align="right">语言</td>
+    <td>
+    <eq name='l_type' value='1'>
+    <input type="radio" name="l_type" value="0" onclick="ch_lng(0);"/>中文&nbsp;<input type="radio" name="l_type" value="1" checked="checked" onclick="ch_lng(1);">英文&nbsp;
+    <else />
+    <input type="radio" name="l_type" value="0" checked="checked" onclick="ch_lng(0);"/>中文&nbsp;<input type="radio" name="l_type" value="1" onclick="ch_lng(1);">英文&nbsp;
+    </eq>
+    </td>
+</tr>-->
+<tr class="content_td"> 
+	<td></td>
+	<td class="center"><div style="width:85%;margin:5px">
+	<input type="hidden" class="huge bLeftRequire" name="ID" id="ID" value="{$vo['id']}">
+	<input type="submit" value="更新" class="button_text">
+	</div></td>
+</tr>
+</form>
+</table>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function ch_lng(val){
+	var ddid = document.getElementById('ID').value;
+	var url = "__URL__/News_edit/EDid/"+ddid+'/l_type/'+val;
+	window.location = url;
+}
+</script>

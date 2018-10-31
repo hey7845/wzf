@@ -1,0 +1,67 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>会员审核 </h1></div>
+<form name="form3" method="post" action="__URL__/auditMenberAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th nowrap></th>
+        <th nowrap><span>会员编号</span></th>
+		<th nowrap><span>推荐人</span></th>
+        <th nowrap><span>会员名</span></th>
+        <th nowrap><span>开户银行</span></th>
+        <th nowrap><span>银行卡号</span></th>
+
+        <th nowrap><span>联系地址</span></th>
+        <th nowrap><span>联系电话</span></th>
+        <th nowrap><span>注册时间</span></th>
+        <th nowrap><span>注册金额</span></th>
+        <!--<th nowrap><span>会员级别</span></th>-->
+        <th nowrap><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr align="center">
+        <td><input type="checkbox" name=tabledb[] value="{$vo['id']}" class="btn2"></td>
+        <td><a href="__URL__/adminuserData/PT_id/{$vo['id']}">{$vo['user_id']}</a></td>
+		 <td>{$vo['re_name']}</td>
+        <td>{$vo['user_name']}</td>
+        <td>{$vo['bank_name']}</td>
+        <td>{$vo['bank_card']}</td>
+        <!--<td>{$vo['user_name']}</td>-->
+        <td>{$vo['user_address']}</td>
+        <td>{$vo['user_tel']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo['cpzj']}</td>
+        <!--<td>{$voo[$vo['u_level']]}</td>-->
+        <td><eq name="vo['is_pay']" value='0'><span style="color: #FF0000;">未开通</span><else />已开通</eq></td>
+    </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+    	<td width="50%"><input name="全选" type="button" class="button_text" id="全选" onClick="CheckAll(this.form)" value="全选">
+      &nbsp;&nbsp;
+	  <input type="submit" name="action" value="开通会员" onclick="{if(confirm('确定开通会员吗?')){return true;}return false;}" class="button_text">
+	  &nbsp;&nbsp;
+	  <!--<input type="submit" name="action" value="设为空单" onclick="{if(confirm('确定将会员设为空单吗?')){return true;}return false;}" class="button_text">
+	  &nbsp;&nbsp;-->
+	  <input type="submit" name="action" value="删除会员" onclick="{if(confirm('确定删除会员吗?')){return true;}return false;}" class="button_text"></td>
+        <td width="50%">{$page}</td>
+    </tr>
+</table>
+</form>
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/auditMenber/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="button_text"/>
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

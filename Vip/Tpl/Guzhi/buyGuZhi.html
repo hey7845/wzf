@@ -1,0 +1,93 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/Ajax/ThinkAjax-1.js" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+ function CheckForm(){
+ 	if(document.getElementById('nums').value == ""){
+		alert("请输入购买数量");
+		return false;
+	}
+
+	if(confirm('您确定购买 '+document.form1.nums.value+'（手） 吗？'))
+	{
+	  return true;
+	}else{
+       return false;
+    }
+}
+
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>购买股指（手） </h1></div>
+<form name="form1" method="post" action="__URL__/buyGuZhiAc" onSubmit="{return CheckForm();}">
+<table width="700" align="center">
+    
+    <tr>
+    <td align="center"> <span style="color:#FF0000; font-weight:bold">注：您目前股指（手）共有：{$t_totle}，最多还能购买（手）：{$have_buy}，回购账户{$rs['agent_gp']}，您可以用回购账户购买股指（手）。</span></td>
+    </tr>
+</table>
+
+  <table width="100%" border="0" cellpadding="3" cellspacing="0">
+    
+      <tr>
+        <td>&nbsp;</td>
+        <td width="45%">&nbsp;</td>
+        <td width="30%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="30" align="right">股指（手）单价：</td>
+        <td colspan="2"><span class="hong"><input name="one_price" id="one_price" type="text" readonly="readonly" value="{$per}"/></span></td>
+     
+      <tr>
+        <td height="30" align="right">购买数量：</td>
+        <td><input name="nums" id="nums" type="text"  value="" onblur="this.value=this.value.replace(/[^0-9]/g,'');getMoney();" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'');getMoney();"/>  <span style="color:red;">最多还能购买{$have_buy} （手）</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">总价：</td>
+        <td><input name="prices" id="prices" type="text"  value=""  readonly="readonly"/></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">购买日期：</td>
+        <td><input name="ePoints" type="text" id="ePoints" value="{$tt|date='Y-m-d H:i:s',###}" readonly="readonly"/></td>
+        <td></td>
+      </tr>
+	    <tr>
+        <td height="30" align="right">备注：</td>
+        <td><textarea name="bz" cols="" rows=""></textarea></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">&nbsp;</td>
+        <td><input type="submit" name="Submit" value="购买" class="button_text" /></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+  </table></form>
+
+</div>
+</body>
+</html>
+
+
+
+<script>
+function getMoney(){
+
+	var per = document.getElementById('one_price').value;
+	var nums =  document.getElementById('nums').value;
+	
+	var sNun = parseInt(nums*per);
+	
+	document.getElementById('prices').value = sNun;
+
+}
+
+
+
+</script>

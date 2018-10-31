@@ -1,0 +1,49 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>财务明细&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+    <thead>
+        <tr>
+            <th <empty name="User_namex">style="display:none"</empty>><span>{$User_namex}</span></th>
+            <!--<th><span>名称</span></th>-->
+            <th><span>金额</span></th>
+            <th><span>时间</span></th>
+            <th><span>备注</span></th>
+        </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr align="center" class="content_td">
+        <td <empty name="User_namex">style="display:none"</empty>>{$vo['user_id']}</td>
+        <!--<td>{$vo['action_type']}</td>-->
+        <td class="hong">{$vo['epoints']}</td>
+        <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        <td>
+        &nbsp;
+         <eq name="vo['action_type']" value="100">{$s18['0']}</eq>
+          <eq name="vo['action_type']" value="8">{$fee_s7[12]}</eq>
+         <eq name="vo['action_type']" value="9">{$fee_s7[0]}</eq>
+         <eq name="vo['action_type']" value="10">{$fee_s7[1]}</eq>
+         <eq name="vo['action_type']" value="11">{$fee_s7[2]}</eq>
+         <eq name="vo['action_type']" value="12">{$fee_s7[3]}</eq>
+         <eq name="vo['action_type']" value="13">{$fee_s7[4]}</eq>
+         <eq name="vo['action_type']" value="14">{$fee_s7[5]}</eq>
+         <eq name="vo['action_type']" value="15">{$fee_s7[6]}</eq>
+         <eq name="vo['action_type']" value="16">{$fee_s7[7]}</eq>
+         <eq name="vo['action_type']" value="17">{$fee_s7[8]}</eq>
+         <eq name="vo['action_type']" value="18">{$fee_s7[9]}</eq>
+         <eq name="vo['action_type']" value="19">{$fee_s7[10]}</eq>
+         <eq name="vo['action_type']" value="20">{$fee_s7[11]}</eq>
+         
+        </td>
+    </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

@@ -1,0 +1,378 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$System_namex}</title>
+<script type=text/javascript src="__PUBLIC__/Js/jquery-1.11.3.min.js"></script>
+<script type=text/javascript src="__PUBLIC__/Js/nav.js"></script>
+<link href="__PUBLIC__/Css/css.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+function turnHeight(iframe)
+{
+    var frm = document.getElementById(iframe);
+	frm.height = 600;
+    var subWeb = document.frames ? document.frames[iframe].document : frm.contentDocument;
+    if(frm != null && subWeb != null)
+    {
+	if (subWeb.body.scrollHeight<600){
+	frm.height = 600;
+	}else{
+	frm.height = subWeb.body.scrollHeight + 10;
+	}
+	}
+}
+</script>
+<script type="text/javascript">
+function reinitIframe(){
+	var iframe = document.getElementById("main");
+	try{
+		var bHeight = iframe.contentWindow.document.body.scrollHeight;
+		var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+		var height = Math.max(bHeight, dHeight);
+		iframe.height =  height;
+	}catch (ex){}
+}
+</script>
+<script>
+	/*jQuery("#frame_content").load(function (){
+		var mainheight = jQuery(this).contents().find("body").height() + 0;
+		jQuery(this).height(mainheight);
+	});*/
+</script>
+<script type="text/javascript">
+	jQuery(function(){
+		jQuery('#aa').click(function(){
+			jQuery('#aa').removeClass('current');
+			jQuery(this).addClass('current');
+		});
+		
+	});
+	</script>
+<style></style>
+</head>
+
+<body onload="new Accordian('basic-accordian',5,'header_highlight');">
+<div id="top">
+  <div class="color-line"></div>
+  <div class="logo"><!--<img src="__PUBLIC__/Images/logo.png">--><span><a href="#" target="_blank">官方网站</a></span></div>
+  <div class="menu_bg" id="MenuSwitch">☰</div>
+  <div class="menu_bg1" id="MenuSwitch">金象国际数字游戏</div>
+  <div class="dk"> <img src="__PUBLIC__/Images/name.png"> <span>欢迎您：{$fck_rs['user_id']} </span> <img src="__PUBLIC__/Images/out.png"> <a href="__APP__/Public/LogOut/"  onclick="if(confirm('确定安全退出吗?')) return true; else return false;" target="_top">退出</a       > </div>
+</div>
+<div class="main">
+  <div class="nav" id="MenuBoard">
+    <div class="infor_box"> <a><img class="head_por" src="__PUBLIC__/Images/logo.png"/></a>
+      <h3>{$fck_rs['user_id']}</h3>
+      <small >欢迎登录金象国际数字游戏</small> <img style="margin:14px 0 10px 0;" src="__PUBLIC__/Images/green.png" ><br>
+      <!--<h2 style="margin:0px 0 8px 0;">{$fck_rs['agent_use']}</h2>--> </div>
+    <div id="basic-accordian" ><!--菜单开始-->
+      <div class="accordion_headings" style=" background:;"><a id="aa" href="__APP__" target="_top"><img src="__PUBLIC__/Images/nav1.png"><span>首页</span></a></div>
+      <div id="test1-header" class="accordion_headings" ><a id="aa"><img src="__PUBLIC__/Images/nav2.png"><span>会员管理</span><small>></small></a></div>
+      <div id="test1-content">
+        <div class="accordion_child">
+          <ul>
+            <!--<li><a href="__APP__/Plan/planFive')" target="main">常见问题</a></li>-->
+            <li><a href="__APP__/News/News" target="main">最新资讯</a></li>
+            <li><a href="__APP__/Msg/inmsg/" target="main">收件箱</a></li>
+            <li><a href="__APP__/Msg/outmsg/" target="main">发件箱</a></li>
+            <li><a href="__APP__/Msg/writemsg/" target="main">联系我们</a></li>
+            <li><a href="__APP__/Change/cody/c_id/1" target="main">修改资料</a></li>
+            <li><a href="__APP__/Change/cody/c_id/2" target="main">修改密码</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="test2-header" class="accordion_headings" ><a id="aa"><img src="__PUBLIC__/Images/nav3.png"><span>财务管理</span></a></div>
+      <div id="test2-content">
+        <div class="accordion_child">
+          <ul>
+          <li><a href="__APP__/Change/cody/c_id/3" target="main">财务统计</a></li>
+        <li><a href="__APP__/Bonus/cody/c_id/1" target="main">财务明细</a></li>
+        <li><a href="__APP__/Transfer/cody/c_id/1" target="main">账户转账</a></li>
+        <li><a href="__APP__/Currency/cody/c_id/1" target="main">货币提现</a></li>
+        <li><a href="__APP__/Recharge/cody/c_id/1" target="main">充值申请</a></li>
+        <!--<li><a href="__APP__/Recharge/cody/c_id/3" target="main">在线充值</a></li>-->
+        <li><a href="__APP__/Uplevel/cody/c_id/1" target="main">会员升级</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="test3-header" class="accordion_headings" ><a id="aa"><img src="__PUBLIC__/Images/nav4.png"><span>市场管理</span><small>></small></a></div>
+      <div id="test3-content">
+        <div class="accordion_child">
+          <ul>
+            <li><a href="__APP__/Reg/users" target="main">注册会员</a></li>
+        <!--<li><a href="__APP__/Network/cody/c_id/1')" target="main">自我消费</a></li>-->
+        <li><a href="__APP__/Tree/cody/c_id/4" target="main">网络架构图</a></li>
+        <li><a href="__APP__/Tree/cody/c_id/6" target="main">推荐关系图</a></li>
+        <li><a href="__APP__/Fck/cody/c_id/3" target="main">查看直推体系</a></li>
+        <!--<li><a href="__APP__/Agent/cody/c_id/2" target="main">未开通会员</a></li>
+        <li><a href="__APP__/Agent/cody/c_id/3" target="main">已开通会员</a></li>-->
+        <!--<li><a href="__APP__/Network/cody/c_id/2">我的分红点</a></li>-->
+          </ul>
+        </div>
+      </div>
+      
+      <div id="test4-header" class="accordion_headings" ><a id="aa"><img src="__PUBLIC__/Images/nav5.png"><span>报单中心</span><small>></small></a></div>
+      <div id="test4-content">
+          <div class="accordion_child">
+              <ul>
+              <lt name="fck_rs['is_agent']" value='2'>
+        	<li><a href="__APP__/Agent/cody/c_id/1" target="main">申请报单中心</a></li>
+        </lt>
+        <li><a href="__APP__/Agent/cody/c_id/2" target="main">未开通会员</a></li>
+        <li><a href="__APP__/Agent/cody/c_id/3" target="main">已开通会员</a></li>
+              </ul>
+          </div>
+      </div>
+      
+         <!-- <div id="test8-header" class="accordion_headings" >&nbsp;货物管理</div>
+            <div id="test8-content">
+            <div class="accordion_child">
+            <ul>
+            <li><a href="__APP__/Gouwu/Cpcontent/id/10" target="main">货物购买</a></li>
+            <li><a href="__APP__/Gouwu/cody/c_id/5" target="main">货物提取</a></li>
+            <li><a href="__APP__/Gouwu/cody/c_id/6" target="main">提货管理</a></li>
+            <li><a href="__APP__/Gouwu/cody/c_id/3" target="main">商城购物</a></li>
+            <li><a href="__APP__/Gouwu/shopCar" target="main">购物车</a></li>
+            <li><a href="__APP__/Gouwu/cody/c_id/4" target="main">我的订单</a></li>
+            </ul>
+            </div>
+            </div> -->
+      
+      <div id="test5-header" class="accordion_headings" ><a id="aa"><img src="__PUBLIC__/Images/nav6.png"><span>交易大厅</span><small>></small></a></div>
+      <div id="test5-content">
+        <div class="accordion_child">
+          <ul>
+            <li><a href="__APP__/Gupiao/trade" target="main">实时走势</a></li>
+    	<li><a href="__APP__/Gupiao/cody/c_id/1" target="main">CQ币买入</a></li>
+    	<li><a href="__APP__/Gupiao/cody/c_id/2" target="main">CQ币卖出</a></li>
+    	<li><a href="__APP__/Gupiao/cody/c_id/4" target="main">CQ币行情</a></li>
+    	<egt name="fck_rs['is_boss']" value='1'>
+        <li><a href="__APP__/Gupiao/cody/c_id/3" target="main">公司卖出CQ币</a></li>
+        <li><a href="__APP__/Gupiao/cody/c_id/5" target="main">CQ币参数设置</a></li>
+        <li><a href="__APP__/Gupiao/cody/c_id/7" target="main">购买列表</a></li>
+        <li><a href="__APP__/Gupiao/cody/c_id/8" target="main">出售列表</a></li>
+    	</egt>
+          </ul>
+        </div>
+      </div>
+      <!--<div id="test6-header" class="accordion_headings" ><a id="aa" href="__APP__/News/News" target="main"><img src="__PUBLIC__/Images/nav7.png"><span style="margin-right:40px">新闻公告</span></a></div>
+      <div id="test6-content">
+        <div class="accordion_child">
+          <ul>
+            <li><a >新闻中心</a></li>
+                            <li><a href="__APP__/News/News_b" target="main">最新公告</a></li>
+                            <li><a href="__APP__/Plan/plan/" target="main">市场计划</a></li>
+          </ul>
+        </div>
+      </div>-->
+      
+        <!--<div id="test9-header" class="accordion_headings" ><img src="__PUBLIC__/Images/nav7.png"><span>代币交易</span></div>
+            <div id="test9-content">
+                <div class="accordion_child">
+                    <ul>
+                        <li><a href="__APP__/Gupiao/trade" target="main">实时走势</a></li>
+                        <li><a href="__APP__/Gupiao/cody/c_id/7" target="main">购买代币</a></li>
+                        <li><a href="__APP__/Gupiao/cody/c_id/3" target="main">公司卖出代币</a></li>
+                            <li><a href="__APP__/Gupiao/cody/c_id/5" target="main">代币参数设置</a></li>                                            </ul>
+                </div>
+            </div>-->  
+      <!--  <div id="test9-header" class="accordion_headings" ><img src="__PUBLIC__/Images/nav7.png"><span>EP交易</span></div>
+            <div id="test9-content">
+                <div class="accordion_child">
+                    <ul>
+                        <ul>
+                        <li><a href="__APP__/Cash/eb_sell/" target="main">卖出银币</a></li>
+                        <li><a href="__APP__/Cash/eb_buy/" target="main">买入银币</a></li>
+                        <li><a href="__APP__/Cash/cody/c_id/3/" target="main">买入记录</a></li>
+                        <li><a href="__APP__/Cash/cody/c_id/4/" target="main">卖出记录</a></li>
+                        <li><a href="__APP__/Cash/cody/c_id/5/" target="main">历史查询</a></li>
+                     </ul>
+                </div>
+            </div> -->
+      <egt name="fck_rs['is_boss']" value='1'>
+      <div id="test7-header" class="accordion_headings" ><a id="aa"><img src="__PUBLIC__/Images/nav8.png"><span>后台管理</span><small>></small></a></div>
+      <div id="test7-content">
+        <div class="accordion_child">
+          <ul>
+            <li><a href="__APP__/Bonus/cody/c_id/3" target="main">当期出纳</a></li>
+            <li><a href="__APP__/Bonus/cody/c_id/4" target="main">奖金查询</a></li>
+            <li><a href="__APP__/YouZi/cody/c_id/1" target="main">会员审核</a></li>
+            <li><a href="__APP__/YouZi/cody/c_id/2" target="main">会员管理</a></li>
+            <li><a href="__APP__/Uplevel/cody/c_id/2" target="main">晋级管理</a></li>
+            <!--<li><a href="__APP__/YouZi/cody/c_id/19" target="main">奖励会员</a></li>-->
+            <!--<li><a href="__APP__/Gouwu/cody/c_id/1/" target="main">产品管理</a></li>
+            <li><a href="__APP__/Gouwu/cody/c_id/2/" target="main">物流管理</a></li>-->
+            <li><a href="__APP__/Agent/cody/c_id/4" target="main">报单中心管理</a></li>
+            <li><a href="__APP__/YouZi/cody/c_id/11" target="main">结算分红</a></li>
+            <!--<li><a href="__APP__/YouZi/cody/c_id/30" target="main">分红查看</a></li>-->
+            <li><a href="__APP__/YouZi/cody/c_id/18" target="main">货币流向</a></li>
+            <li><a href="__APP__/Currency/cody/c_id/2" target="main">提现管理</a></li>
+            <li><a href="__APP__/Recharge/cody/c_id/2" target="main">充值管理</a></li>
+            <!--<li><a href="__APP__/Phonecard/cody/c_id/1" target="main">电话卡管理</a></li>-->
+            <!--<li><a href="__APP__/Consume/cody/c_id/2" target="main">封顶申请管理</a></li>-->
+            <!--<li><a href="__APP__/Recharge/cody/c_id/4" target="main">在线充值管理</a></li>-->
+            <!--<li><a href="__APP__/YouZi/cody/c_id/28" target="main">重复消费清单</a></li>-->
+            <li><a href="__APP__/News/cody/c_id/1/" target="main">新闻公告管理</a></li>
+            <!--<li><a href="__APP__/Plan/cody/c_id/5/" target="main">常见问题设置</a></li>-->
+            <!--<li><a href="__APP__/Plan/cody/c_id/2/" target="main">注册协议设置</a></li>--> 
+            <!--<li><a href="__APP__/Plan/cody/c_id/4/" target="main">视频宣传设置</a></li> -->
+            <!--<li><a href="__APP__/Imag/cody/c_id/1" target="main">宣传图片管理</a></li> -->
+            <li><a href="__APP__/YouZi/cody/c_id/7" target="main">数据库备份</a></li>
+            <li><a href="__APP__/YouZi/cody/c_id/3" target="main">参数设置</a></li>
+            <li><a href="__APP__/YouZi/cody/c_id/9" target="main">清空数据</a></li>
+          </ul>
+        </div>
+      </div>
+      </egt>
+      <div class="accordion_headings"><a id="aa" href="__APP__/Public/LogOut/" target="_top"  onclick="if(confirm('确定退出吗?')) return true; else return false;"><img src="__PUBLIC__/Images/out1.png">退出</a></div>
+    </div>
+  </div>
+  <div class="content" id="ContentBoard"> 
+    
+    <!-- <div style="height:23px;"></div>
+        <div class="default_shadow">
+                        <ul class="breadcrumb ">
+                                <li class="cha_eng">
+                    <a><img src="__PUBLIC__/Images/zw.jpg">中文</a>
+                    <a> <img src="__PUBLIC__/Images/yg.jpg">  English</a>
+                </li>
+            </ul>
+        </div>
+      
+        <div class="fast_way">
+
+            <ul class="infor">
+                <li style=" background:#008fcb; background:rgba(0,143,203,1); ">
+                	<a href="__APP__/Change/cody/c_id/3" target="main">
+                        <div class="icon_1"><img src="__PUBLIC__/Images/vip.png"></div>
+                        <p><span id="values" style="text-shadow:0 1px 0px #0e5dab">会员名称</span><b id="in12">等&nbsp;&nbsp;级</b></p>
+                    </a>
+                </li>
+                <li style=" background:#24cbd1; background:rgba(36,203,209,1);">
+                	<a href="__APP__/Change/cody/c_id/3" target="main">
+                        <div class="icon_1"><img src="__PUBLIC__/Images/money1.png"></div>
+                        <p><span id="values">1100.00$</span><b id="in12">奖&nbsp;金&nbsp;币</b></p>
+                    </a>
+                </li>
+                <li style=" background:#efc553; background:rgba(239,197,83,1);">
+                	<a href="__APP__/Change/cody/c_id/3" target="main">
+                   		 <div class="icon_1"><img src="__PUBLIC__/Images/money2.png"></div>
+                   		 <p><span id="values">0.00</span><b id="in12">电&nbsp;子&nbsp;币</b></p>
+                    </a>
+                </li>
+                
+                 <li style=" background:#74b749;background:rgba(116,183,73,1);">
+                 	<a href="__APP__/Change/cody/c_id/3" target="main">
+                   		 <div class="icon_1"><img src="__PUBLIC__/Images/money4.png"></div>
+                   		 <p><span id="values">0.00</span><b id="in12">股&nbsp;　&nbsp;点</b></p>
+                    </a>
+                </li>
+                <li style=" background:#ee8caa;background:rgba(238,140,170,1); margin-right:0;">
+                	<a href="__APP__/Change/cody/c_id/3" target="main">
+                    	<div class="icon_1"><img src="__PUBLIC__/Images/money3.png"></div>
+                   		 <p><span id="values">0.00</span><b id="in12">云&nbsp;顿&nbsp;币</b></p>
+                         </a>
+                </li>
+                
+                              <li style=" background:#008fcb; background:rgba(0,143,203,1); ">
+                	<a href="__APP__/Reg/users" target="main">
+                        <div class="icon_1"><img src="__PUBLIC__/Images/addvip.png"></div>
+                        <p><span id="values" style="text-shadow:0 1px 0px #0e5dab"> </span><b id="in12">注册会员</b></p>
+                    </a>
+                </li>
+                <li style=" background:#24cbd1; background:rgba(36,203,209,1);">
+                	<a href="__APP__/Recharge/cody/c_id/1" target="main">
+                        <div class="icon_1"><img src="__PUBLIC__/Images/money5.png"></div>
+                        <p><span id="values"> </span><b id="in12">充值申请</b></p>
+                    </a>
+                </li>
+                <li style=" background:#efc553; background:rgba(239,197,83,1);">
+                	<a href="__APP__/Currency/cody/c_id/1" target="main">
+                   		 <div class="icon_1"><img src="__PUBLIC__/Images/tixian.png"></div>
+                   		 <p><span id="values"> </span><b id="in12">提现申请</b></p>
+                    </a>
+                </li>
+                
+                 <li style=" background:#74b749;background:rgba(116,183,73,1);">
+                 	<a href="__APP__/Bonus/cody/c_id/1" target="main">
+                   		 <div class="icon_1"><img src="__PUBLIC__/Images/jiangjin.png"></div>
+                   		 <p><span id="values"> </span><b id="in12">奖金明细</b></p>
+                    </a>
+                </li>
+                <li style=" background:#ee8caa;background:rgba(238,140,170,1); margin-right:0;">
+                	<a href="__APP__/Transfer/cody/c_id/1" target="main">
+                    	<div class="icon_1"><img src="__PUBLIC__/Images/zhuanzhang.png"></div>
+                   		 <p><span id="values"> </span><b id="in12">账户转账</b></p>
+                         </a>
+                </li>
+            </ul>
+            
+        </div>-->
+    <div class="main_box">
+      <iframe src="__APP__/Public/main" onload="turnHeight('main');" id="main"  name="main" height="100%" width="100%" frameborder="0"></iframe>
+    </div>
+  </div>
+  <div style="clear:both; overflow:hidden;"></div>
+</div>
+</body>
+</html>
+<script language="javascript">
+	function SetUrl(url)
+	{
+		window.parent.main.location.href = url;
+	}
+	function qiehuan(num){
+		for(var id = 1;id<=7;id++)
+		{
+			if(id==num)
+			{
+				document.getElementById("qh_con"+id).style.display="block";
+				document.getElementById("mynav"+id).className="nav_on";
+			}
+			else
+			{
+				document.getElementById("qh_con"+id).style.display="none";
+				document.getElementById("mynav"+id).className="nav_off";
+			}
+		}
+	}
+	function SetCwinHeight(iframename){
+		var cwin=iframename;
+		if (document.getElementById)
+		{
+			if (cwin && !window.opera)
+			{
+				var helt = document.body.clientHeight-120;
+				cwin.height = helt;
+			}
+		}
+	}
+	function settime()
+		{
+		var myyear,mymonth,myweek,myday,mytime,mymin,myhour,mysec;
+		function initArray(){
+			this.length=initArray.arguments.length;
+			for(var i=0;i<this.length;i++){
+				this[i+1]=initArray.arguments[i];
+			}
+		}
+		var d=new initArray(" 星期日"," 星期一"," 星期二"," 星期三"," 星期四"," 星期五"," 星期六");
+	    var mydate=new Date();
+		myyear=mydate.getFullYear();
+		mymonth=mydate.getMonth()+1;
+		myday=mydate.getDate();
+		myhour=mydate.getHours();
+		mymin=mydate.getMinutes();
+		mysec=mydate.getSeconds();
+		mytime = d[mydate.getDay()+1] + " " + myyear+"-"+mymonth+"-"+myday+" "+myhour+":"+mymin+":"+mysec;
+		if(mytime.length<25){
+			for(var i=mytime.length;i<=25;i++){
+				mytime += "&nbsp;";
+			}
+		}
+		document.getElementById("nihao").innerHTML = "今天是：" + mytime;
+		setTimeout('settime()',1000);
+	} 
+	settime();
+	
+</script> 

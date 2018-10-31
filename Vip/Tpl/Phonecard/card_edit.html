@@ -1,0 +1,24 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>电话卡编辑&nbsp;[ <a href="javascript:history.go(-1);">返回列表</a> ] </h1></div>
+<form method='post' id="form1" name="form1" action="__URL__/card_edit_save">
+<table cellpadding=3 cellspacing=0 width=100% >
+<tr>
+	<td width="15%" align="right">电话卡号：</td>
+	<td><input name="card_no" type="text" id="card_no" value="{$rs.card_no}" size="40" maxlength="50"></td>
+</tr>
+<tr>
+	<td height="22" align="right">电话卡密码：</td>
+	<td><input  name="card_pw" type="text" id="card_pw" value="{$rs.card_pw}" size="40" maxlength="50"></td>
+</tr>
+<tr>
+  <td></td>
+  <td class="center">
+    <input type="hidden" name="id" value="{$rs['id']}">
+    <input type="submit" value="更新" class="btn1">
+    </td>
+</tr>
+</table></form>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<include file="Public:header" />
+<style>
+.tab_l3{font-size:14px;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>CQ币购买</h1></div>
+      <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="tab" >
+
+        <tr>
+          <td height="28" colspan="8" align="center">
+          <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            <tr>
+              <td width="40%">
+              <table width="70%" border="0" align="center" cellpadding="5" cellspacing="0" class="tab_l3" id="noborder">
+                <tr>
+                  <td align="left">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr class="bor">
+                    <th width="35%" height="30" align="left">电子币账户余额：<span style="color:#F00;">$ {$game_m}</span></th>
+                    </tr>
+                  <tr class="bor">
+                    <th height="30" align="left">CQ币持有数量：<span style="color:#F00;">{$live_gp}</span> 个</th>
+                  </tr>
+                  <tr class="bor">
+                    <th height="30" align="left">CQ币求购数量：<span style="color:#F00;">{$gping_num}</span> 个</th>
+                  </tr>
+                  <tr class="bor">
+                    <th height="30" align="left">距离下一次涨价差：<span style="color:#F00;">{$gp_upnum}</span> 个</th>
+                  </tr>
+                  <tr class="bor">
+                    <th height="30" align="left">折合电子币：<span style="color:#F00;">{$gp_uppri}</span> </th>
+                  </tr>
+                </table></td>
+                </tr>
+              </table></td>
+              <td width="60%">
+              <form action="__URL__/buyGP" method="post" name="form1" id="form1" onsubmit="return checkf();">
+              <table width="400" border="0" cellpadding="0" cellspacing="0" class="tab3">
+                  <tr>
+                    <td width="40%" height="40" align="right">求购总价格额度：</td>
+                    <td width="60%" align="left" style="padding-left:10px;"><input name="sNun" type="text" id="sNun"  maxlength="20" onblur="value=value.replace(/[^0-9.]/g,'');tot_price();" />
+                  </td>
+                  </tr>
+                  <tr>
+                    <td height="40" align="right">CQ币当前价格：</td>
+                    <td align="left" style="padding-left:10px;"><input name="ttone_price" type="text" id="ttone_price"  maxlength="20" value="{$one_price}" readonly="readonly"/>
+                      /个</td>
+                  </tr>
+                  <tr style="display:none">
+                    <td height="40" align="right">购买价格：</td>
+                    <td align="left" style="padding-left:10px;"><input name="one_price" type="text" id="one_price"  maxlength="20" value="{$one_price}"  onblur="value=value.replace(/[^0-9.]/g,'');tot_price();" readonly="readonly"/>
+                      /个</td>
+                  </tr>
+                  <tr>
+                    <td height="40" align="right">购买CQ币总数：</td>
+                    <td align="left" style="padding-left:10px;"><span style="color:#960" id="tot_price">0</span></td>
+                  </tr>
+                  <tr>
+                    <td height="40" align="right">二级密码：</td>
+                    <td align="left" style="padding-left:10px;"><input name="gp_pwd" type="password" id="gp_pwd" value="" /></td>
+                  </tr>
+                  <tr>
+                    <td height="40" align="right">&nbsp;</td>
+                    <td align="left" style="padding-left:10px;">
+                    <input type="submit" name="button2" id="button2" value="确认求购" class="btn1" />
+                    <!--<eq name="close_gp" value="0">
+                      
+                     <!-- <else />
+                      <span style="color:#F00">股市交易已关闭</span> </eq>- ->
+                      <input name="cPP" type="hidden" id="cPP" value="122" />
+                      <input name="PID" type="hidden" id="PID" /></td>
+                  </tr>
+              </table>
+              </form></td>
+            </tr>
+          </table>-->
+          <br />
+          <br />
+        <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="#b9c8d0" class="tab3" id="tb1">
+        <tr>
+          <th width="14%" height="28"><span>求购时间</span></th>
+          <th width="12%"><span>求购总额</span></th>
+		  <th width="12%"><span>剩余总额</span></th>
+		  <th width="12%"><span>购买单价</span></th>
+		  <th width="12%"><span>已成交量</span></th>
+          <th width="12%"><span>成交总额</span></th>
+		  <th width="14%"><span>状态</span></th>
+          <th width="12%"><span>功能/说明</span></th>
+        </tr>
+<volist name="list" id="vo">
+        <tr>
+          <td height="25" align="center">{$vo.eDate|date='Y-m-d H:i:s',###}</td>
+		  <td align="center">{$vo.price}</td>
+		  <td align="center">{$vo.buy_s}</td>
+          <td align="center">{$vo.one_price}</td>
+		  <td align="center">{$vo.buy_nn}</td>
+          <td align="center">{$vo.buy_a}</td>
+		  <td align="center">
+          <eq name="vo.is_cancel" value="1"><font color="#0000FF">已撤销</font></eq>
+          <eq name="vo.is_cancel" value="0">
+          <eq name="vo.ispay" value="0"><font color="#FF0000">未完成</font><else />已成交</eq>
+          </eq>
+          </td>
+          <td align="center">
+          <eq name="vo.ispay" value="1">返还 {$vo.buy_s}</eq>
+          <!--<eq name="vo.ispay" value="0"><a href="__URL__/delbuyGP/id/{$vo.id}/">撤销</a></eq>--></td>
+        </tr>
+        </volist>
+		<tr>
+        <td align="center" height="25" colspan="8">{$page}</td>
+        </tr>
+        </table>
+		</td>
+        </tr>
+      </table>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+function tot_price(){
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//总额
+	one_price = parseInt(one_price*100);
+	sNun = parseInt(sNun*100);
+	var mai_num = parseInt(sNun/one_price);
+	document.getElementById('tot_price').innerHTML = mai_num+'';
+}
+function formatNumberUnitsDivd(num) {
+	return num.toFixed(2);
+}
+function checkf(){
+	if(document.form1.one_price.value==""){
+		alert("请输入价格");
+		document.form1.one_price.focus();
+		return false;
+	}
+	if(document.form1.sNun.value==""){
+		alert("请输入GB总额");
+		document.form1.sNun.focus();
+		return false;
+	}
+	var one_price = document.getElementById('one_price').value;//单价
+	var sNun	= document.getElementById('sNun').value;//总额
+	one_price = parseInt(one_price*100);
+	sNun = parseInt(sNun*100);
+	var mai_num = parseInt(sNun/one_price);
+	if(confirm("您确定要购买总额为 "+document.form1.sNun.value+" 游戏币的CQ币吗？\n\n每颗CQ币单价："+document.form1.one_price.value+"\n\n当前购买力："+mai_num)){
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>

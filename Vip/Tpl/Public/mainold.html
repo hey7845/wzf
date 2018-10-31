@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>-</title>
+<!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+<link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" />
+<link href="__PUBLIC__/Css/font-awesome.min.css" rel="stylesheet" />
+<link href="__PUBLIC__/Css/animate.min.css" rel="stylesheet" />
+<link href="__PUBLIC__/Css/style.min.css" rel="stylesheet" />
+<style type="text/css">
+.nav > li.active > a {
+	color: #ffc729;
+}
+.nav > li > a {
+	color: #ffc729;
+	font-weight: 600;
+	padding: 14px 20px 14px 25px;
+}
+.ibox-title{background-color: #ffb749}
+.ibox-content{background-color: #ffb749}
+.ss{margin-left: 20px;}
+</style>
+</head>
+
+<body class="gray-bg">
+<div class="center_Box">
+        <div class="set">
+    <div class="bar_cont">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+   
+        <tr>
+          <th align="right" width="100">推广链接：</th>
+    <td colspan="3"><a href="http://{$server}/Reg/us_reg/rid/{$fck_rs['id']}/" target="_blank">http://{$server}/Reg/us_reg/rid/{$fck_rs['id']}/</a></td>
+          </tr>
+        </table>
+        </div>
+    </div>
+</div>    
+ <div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>总金现金币</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['agent_use']+$fck_rs['agent_xf']}</h1>
+        </div>
+      </div>
+    </div> 
+<!--   <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>复投币</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['agent_xf']}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>公益基金</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['agent_cf']}</h1>
+        </div>
+      </div>
+    </div> -->
+ <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>电子币</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['agent_cash']}</h1>
+        </div>
+      </div>
+    </div>
+ <!--    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>注册积分</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['agent_zc']}</h1>
+        </div>
+      </div>
+    </div> -->
+ <!--     <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>静态积分</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['agent_sfo']}</h1>
+        </div>
+      </div>
+    </div> -->
+  <!-- <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title"> <span class="label label-success pull-right">钛宝价 {$one_price}</span> 
+          <h5>购物积分</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins"> {$fck_rs['agent_cf']}</h1>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>会员级别</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$voo[$fck_rs['u_level']]}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>直推人数</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['re_nums']}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>团队人数</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$all_nn}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>注册金额</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['cpzj']}</h1>
+        </div>
+      </div>
+    </div>
+    
+<div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>合伙人级别</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">
+          <eq name="fck_rs['sh_level']" value='0'>否</eq>
+          <eq name="fck_rs['sh_level']" value='1'>合伙人</eq>
+          <eq name="fck_rs['sh_level']" value='2'>市场总监</eq>
+          <eq name="fck_rs['sh_level']" value='3'>常务理事</eq>
+          <eq name="fck_rs['sh_level']" value='4'>市场董事</eq>
+          <eq name="fck_rs['sh_level']" value='5'>全国董事</eq>
+          </h1>
+        </div>
+      </div>
+    </div>
+<div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>报单中心</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">
+          <eq name="fck_rs['is_agent']" value='2'>是<else/>否</eq>
+          </h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+   
+  <div class="row">
+<!--     <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>功德箱</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins"> {$tz_nums}</h1>
+        </div>
+      </div>
+    </div>
+   
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>会员级别</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$voo[$fck_rs['u_level']]}</h1>
+        </div>
+      </div>
+    </div> -->
+ <!--    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>直推人数</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$fck_rs['re_nums']}</h1>
+        </div>
+      </div>
+    </div> -->
+ <!--    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>团队人数</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$all_nn}</h1>
+        </div>
+      </div>
+    </div> -->
+<!--     <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>左区总业绩</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$zuo} </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>中区总业绩</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$zhong} </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>右区总业绩</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{$you} </h1>
+        </div>
+      </div>
+    </div>
+  </div>  --> 
+
+
+<!-- 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+<table border="0" cellspacing="0" cellpadding="0" align="left">
+  <tr>
+    <volist name="list" id="vo" key="kk">
+    <?php if($kk%5==1&&$kk!=1) echo "</tr><tr>";?>
+    <td>
+    <table align="left" cellpadding="0" cellspacing="0" width="150" class="ss">
+        <tbody><tr>
+          <td align="center" style="font-weight: bold">
+          <a href="__APP__/Gouwu/Cpcontent/id/{$vo.id}" style="cursor:hand;">
+          <img src="{$vo.img}" style="width:220px; height:150px; border:solid 2px #f8f8f8">
+          </a>
+          </td>
+        </tr>
+       <tr>
+          <td height="20" align="center"><span class="STYLE2 STYLE2">
+           <a href="__APP__/Gouwu/Cpcontent/id/{$vo.id}" style="cursor:hand;">{$vo.name}</a></span></td>
+       </tr>
+       <tr>
+          <td height="20" align="center">
+          会员价：<span class="pri_a">{$vo['a_money']}</span>  &nbsp; </span>
+          </td>
+       </tr>
+        <tr>
+          <td height="20" align="center">
+         市场价：<span class="pri_a">{$vo['b_money']}</span>  &nbsp; </span>
+          </td>
+       </tr> -->
+       <!--<tr>
+          <td height="20" align="center">数量：<input name="b_num{$vo.id}" type="text" id="b_num{$vo.id}" value="1" size="2" maxlength="5" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+          &nbsp;
+          <input name="" type="button" value="放入购物车" class="btn1" onclick="ajaxfunction('{$vo.id}')"/></td>
+       </tr>-->
+<!--     </tbody>
+  </table>
+    </td>
+    </volist>
+  </tr> -->
+  
+<!-- </table>
+  </td>
+  </tr>
+</table>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" height="30">{$page}</td>
+  </tr>
+</table>
+ -->
+<script language="javascript">
+    function ajaxfunction(oid){
+    var bid = "b_num"+oid;
+    var bnum = document.getElementById(bid).value;
+    parseInt(bnum);
+    if(bnum<1){
+      alert("请填写正确数字！");
+      return false;
+    }
+        var xmlHttp;
+        try{
+            //FF Opear 8.0+ Safair
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch(e){
+            try{
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch(e){
+                alert("您的浏览器不支持AJAX");
+                return false;    
+            }
+        }
+        xmlHttp.onreadystatechange=function(){
+            if(xmlHttp.readyState==4){
+        alert('添加成功');
+        //document.location.reload();
+        
+//                document.getElementById("memberNoLabel").innerHTML=xmlHttp.responseText;
+            }
+        }
+        var url="__APP__/Fck/gTotle/GID/"+oid+"/bnum/"+bnum;
+    url+="/sid/"+Math.random();
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+            
+    }
+   
+</script>
+  <div class="row">
+ <!--    <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>新闻公告</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div>
+              <table class="table table-hover margin bottom">
+                <thead>
+                  <tr>
+                    <th>标题</th>
+                    <th>日期</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <volist name='newslist' id='vo'>
+                  <tr>
+                    <td><a href="__APP__/News/News_show/NewID/{$vo.id}">{$vo['title']}</a></td>
+                    <td> {$vo.create_time|date='Y-m-d',###} </td>
+                  </tr>
+                  </volist>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+   <!--  <div class="col-sm-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>股票走势</h5>
+        </div>
+        <div class="ibox-content">
+          <div class="echarts" id="echarts-line-chart"><iframe src="__APP__/Gupiao/amstock/" width="100%" height="366" scrolling="No" frameborder="0"></iframe></div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+</body>
+</html>

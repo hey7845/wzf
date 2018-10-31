@@ -1,0 +1,101 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>股票参数设置</h1></div>
+<form method='post' id="myform" action="__URL__/setGPSave" >
+<table width="100%" cellpadding=5 cellspacing=0 border=0 class="list">
+<tr  class="content_td">
+		<td width="25%" height="30" class="tabr">&nbsp;</td>
+		<td width="75%">&nbsp;</td>
+</tr>
+<tr   style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">未配送电子币</span>：</td>
+		<td class="center">{$allagcash}</td>
+</tr>
+<tr>
+		<td height="30" align="right" class="tabr"><span style="color:#00C">股票价格</span>：</td>
+		<td class="center"><input name="gp_one" type="text" id="gp_one" value="{$fee_rs['gp_one']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        <input name="gpprice" type="hidden" id="gpprice" value="{$fee_rs['gp_one']}"/>
+        </td>
+</tr>
+<tr style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">今日开盘价</span>：</td>
+		<td class="center"><input name="gp_open" type="text" id="gp_open" value="{$fee_rs['gp_one']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        </td>
+</tr>
+<tr style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">今日关盘价</span>：</td>
+		<td class="center"><input name="gp_close" type="text" id="gp_close" value="{$fee_rs['gp_close']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        </td>
+</tr>
+<tr  style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">交易手续费</span>：</td>
+		<td class="center"><input name="gp_perc" type="text" id="gp_perc" value="{$fee_rs['gp_perc']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        %</td>
+</tr>
+<tr  style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">交易分账</span>：</td>
+		<td class="center"><input name="gp_inm" type="text" id="gp_inm" value="{$fee_rs['gp_inm']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        % (交易所得进入K币的比例)</td>
+</tr>
+<tr  style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">交易分账</span>：</td>
+		<td class="center"><input name="gp_inn" type="text" id="gp_inn" value="{$fee_rs['gp_inn']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        % (交易所得进入种子币的比例)</td>
+</tr>
+<tr  style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">每日封顶交易量</span>：</td>
+		<td class="center"><input name="str12" type="text" id="str12" value="{$fee_rs['str12']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        </td>
+</tr>
+<tr   style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">上涨数量</span>：</td>
+		<td class="center"><input name="gp_fxnum" type="text" id="gp_fxnum" value="{$fee_rs['gp_fxnum']}" size="8" maxlength="12" onkeyup="guolv(this.name);"/>
+        </td>
+</tr>
+<tr  style="display:none">
+		<td height="30" align="right" class="tabr"><span style="color:#00C">拆分股票（比率）</span>：</td>
+		<td class="center">
+        <input name="gp_cgbl" type="text" id="gp_cgbl" value="{$fee_rs['gp_cgbl']}" size="8" maxlength="12" onblur="cur_price();" onkeyup="value=value.replace(/[^0-9.:]/g,'');"/>
+        【拆分后的价格：<span style="color:#F00" id="cur_p"></span>，如果不拆分请填写<span style="color:#36f">1:1</span>】
+        {$btn}</td>
+</tr>
+<tr>
+		<td colspan="2" style="height:5px;"><hr></td>
+</tr>
+<tr>
+		<td height="30" align="right" class="tabr"><span style="color:#00C">股票开关</span>：</td>
+		<td class="center">
+    	<input type="radio" name="gp_kg" value="0" <eq name="fee_rs['gp_kg']" value="0">checked</eq> />开启&nbsp;
+    	<input type="radio" name="gp_kg" value="1" <eq name="fee_rs['gp_kg']" value="1">checked</eq> />关闭
+		&nbsp; <span>(关闭将无法进行交易)</span>
+		</td>
+</tr>
+<tr>
+		<td height="30">&nbsp;</td>
+		<td class="center">
+    	<input type="submit" value="修改" class="btn1">
+    	<input type="reset" value="还原" class="btn1">
+        </td>
+</tr>
+</table>
+</form>
+</div></div>
+</body>
+</html>
+<script type="text/javascript">
+function guolv(Ful){
+	var str = $F(Ful).replace(/^\s+|\s+$/g,"");
+	var re = /[^0-9.]/g;
+	str = str.replace(re,"");
+	document.getElementById(Ful).value = str;
+}
+function cur_price(){
+	var old_price = document.getElementById('gp_one').value;//之前的价格
+	var xtox =  document.getElementById('gp_cgbl').value;//拆分股票的比率
+	var x_arr = xtox.split(":");
+	var cur_p = old_price*x_arr[0]/x_arr[1];
+	cur_p = cur_p.toFixed(4);
+	document.getElementById('cur_p').innerHTML = cur_p+'';
+}
+cur_price();//页面加载完，先运行一次
+</script>

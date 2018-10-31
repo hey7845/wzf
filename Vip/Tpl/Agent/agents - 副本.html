@@ -1,0 +1,87 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>申请报单中心 </h1></div>
+    <div class="c_p5"><div class="tips">首次申请报单中心，请填写申请备注。 </div></div>
+	<table width="100%" border="0" cellpadding="3" cellspacing="0">
+		<form name="form1" method='post' id="form1" action="__URL__/agentsAC">
+		<tr>
+			<td width="25%" height="30" align="right">会员编号：</td>
+			<td width="75%">{$fck_rs['user_id']}</td>
+		</tr>
+		<tr>
+			<td width="25%" height="30" align="right">申请报单中心状态：</td>
+			<td class="hong">{$agent_status}</td>
+		</tr>
+		<tr>
+			<td width="25%" height="30" align="right">申请报单中心时间：</td>
+		  <td><eq name="fck_rs['idt']" value="0" ><else/>{$fck_rs['idt']|date='Y-m-d H:i:s',###}</eq></td>
+		</tr>
+		<tr>
+			<td width="25%" height="30" align="right">开通报单中心时间：</td>
+		  <td><eq name="fck_rs['adt']" value="0" ><else/>{$fck_rs['adt']|date='Y-m-d H:i:s',###}</eq></td>
+		</tr>
+        <tr style="display:none">
+			<td width="25%" height="30" align="right">报单中心类型：</td>
+			<td>
+            <eq name="fck_rs['shoplx']" value="0" >
+            <select name="shoplx" id="shoplx">
+              <option value="1">{$Aname[0]}</option>
+              <option value="2">{$Aname[1]}</option>
+            </select>
+            <else/>
+            	<eq name="fck_rs['shoplx']" value="1" >{$Aname[0]}</eq>
+                <eq name="fck_rs['shoplx']" value="2" >{$Aname[1]}</eq>
+                <eq name="fck_rs['shoplx']" value="3" >{$Aname[2]}</eq>
+            </eq></td>
+		</tr>
+        <tr style="display:none">
+			<td width="25%" height="30" align="right">省级区域：</td>
+			<td>
+            <eq name="fck_rs['shoplx']" value="0" >
+            <select name="shop_a" id="s1" >
+                <option></option>
+            </select>
+            <else/>
+            {$fck_rs['shop_a']}
+            </eq>
+            </td>
+		</tr>
+        <tr id="xian" style="display:none">
+			<td width="25%" height="30" align="right">县（市）级区域：</td>
+			<td>
+            <eq name="fck_rs['shoplx']" value="0" >
+            <select name="shop_b" id="s2" >
+                <option></option>
+            </select>
+            <else/>
+            {$fck_rs['shop_b']}
+            </eq>
+            </td>
+		</tr>
+        <script language = JavaScript>
+        var s=["s1","s2"];
+        var opt0 = ["请选择","请选择"];
+        function setup()
+        {
+            for(i=0;i<s.length-1;i++)
+            document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");
+            change(0);
+        }
+        setup();
+      </script>
+        <lt name="fck_rs.is_agent" value="1">
+		<tr>
+			<td align="right">备注：</td>
+		  <td><textarea name="content" id="content" cols="40" rows="8"></textarea></td>
+		</tr>
+		<tr>
+			<td height="30">&nbsp;</td>
+		  <td><input name="submit" type="submit"  class="button_text" value="申 请" /></td>
+		</tr>
+		</lt>
+		</form>
+	</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>奖金明细 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th><span>会员编号</span></th>
+			<th {$c_b[1]}><span>{$fee_s7[0]}</span></th>
+			<th {$c_b[2]}><span>{$fee_s7[1]}</span></th>
+			<th {$c_b[3]}><span>{$fee_s7[2]}</span></th>
+			<th {$c_b[4]}><span>{$fee_s7[3]}</span></th>
+			<th {$c_b[5]}><span>{$fee_s7[4]}</span></th>
+			<th {$c_b[6]}><span>{$fee_s7[5]}</span></th>
+			<th {$c_b[7]}><span>{$fee_s7[6]}</span></th>
+			<th {$c_b[8]}><span>{$fee_s7[7]}</span></th>
+			<th {$c_b[5]}><span>{$fee_s7[8]}</span></th>
+			<th {$c_b[6]}><span>{$fee_s7[9]}</span></th>
+			<th {$c_b[7]}><span>{$fee_s7[10]}</span></th>
+			<th {$c_b[8]}><span>{$fee_s7[11]}</span></th>
+			<th {$c_b[8]}><span>税收</span></th>
+			<th {$c_b[8]}><span>合计</span></th>
+			<th {$c_b[8]}><span>详细</span></th>
+		</tr>
+	</thead>
+	<volist name='list' id='vo'>
+
+	<tr align="center">
+		<td>{$vo['uid']|user_id}</td>
+		<td {$c_b[1]}>{$vo.b9}</gt></td>
+		<td {$c_b[2]}>{$vo.b10}</gt></td>
+		<td {$c_b[3]}>{$vo.b11}</gt></td>
+		<td {$c_b[4]}>{$vo.b12}</gt></td>
+		<td {$c_b[5]}>{$vo.b13}</gt></td>
+		<td {$c_b[6]}>{$vo.b14}</gt></td>
+		<td {$c_b[7]}>{$vo.b15}</gt></td>
+		<td {$c_b[8]}>{$vo.b16}</gt></td>
+		<td {$c_b[9]}>{$vo.b17}</gt></td>
+		<td {$c_b[10]}>{$vo.b18}</gt></td>
+		<td {$c_b[11]}>{$vo.b19}</gt></td>
+		<td {$c_b[0]}>{$vo.b20}</gt></td>
+		
+		<td {$c_b[0]}>{$vo.b8}</td>
+	
+		<td {$c_b[11]}>{$vo['b8']+$vo['b9']+$vo['b10']+$vo['b11']+$vo['b12']+$vo['b13']+$vo['b20']+$vo['b14']+$vo['b15']+$vo['b16']+$vo['b17']+$vo['b18']+$vo['b19']}</td>
+
+		<td {$c_b[12]}><a href="__URL__/adminFinanceTableList/did/{$vo['did']}/uid/{$vo['uid']}" title="查看会员得奖明细">明细</a></td>
+	</tr>
+
+
+
+
+
+
+
+	<!-- <tr align="center">
+		<td>{$vo['uid']|user_id}</td>
+		<td {$c_b[1]}>    <gt name="vo.b9" value="0">{$b9}</gt></td>
+		<td {$c_b[2]}><gt name="vo.b10" value="0">{$b10}</gt></td>
+		<td {$c_b[3]}><gt name="vo.b11" value="0">{$b11}</gt></td>
+		<td {$c_b[4]}><gt name="vo.b12" value="0">{$b12}</gt></td>
+		<td {$c_b[5]}><gt name="vo.b13" value="0">{$b13}</gt></td>
+		<td {$c_b[6]}><gt name="vo.b14" value="0">{$b14}</gt></td>
+		<td {$c_b[7]}><gt name="vo.b15" value="0">{$b15}</gt></td>
+		<td {$c_b[8]}><gt name="vo.b16" value="0">{$b16}</gt></td>
+		<td {$c_b[9]}><gt name="vo.b17" value="0">{$b17}</gt></td>
+		<td {$c_b[10]}><gt name="vo.b18" value="0">{$b18}</gt></td>
+		<td {$c_b[11]}><gt name="vo.b19" value="0">{$b19}</gt></td>
+		<td {$c_b[0]}><gt name="vo.b20" value="0">{$b20}</gt></td>
+		<!-- <td {$c_b[0]}>{$b8}</td> -->
+		<!-- <td {$c_b[0]}>{$vo.b8}</td> -->
+		<!-- <td {$c_b[11]}>{$b8+$b9+$b10+$b11+$b12+$b13+$b14+$b15+$b16+$b17+$b18+$b19+$b20}</td> -->
+		<!-- <td {$c_b[11]}>{$vo['b8']+$vo['b9']+$vo['b10']+$vo['b11']+$vo['b12']+$vo['b13']+$vo['b20']+$vo['b14']+$vo['b15']+$vo['b16']+$vo['b17']+$vo['b18']+$vo['b19']}</td> -->
+
+		<!-- <td {$c_b[12]}><a href="__URL__/adminFinanceTableList/did/{$vo['did']}/uid/{$vo['uid']}" title="查看会员得奖明细">明细</a></td> -->
+	<!-- </tr> -->
+	</volist>
+	<tr align="center">
+		<td>总计：</td>
+		<td {$c_b[1]}>{$count[9]}</td>
+		<td {$c_b[2]}>{$count[10]}</td>
+		<td {$c_b[3]}>{$count[11]}</td>
+		<td {$c_b[4]}>{$count[12]}</td>
+		<td {$c_b[5]}>{$count[13]}</td>
+		<td {$c_b[6]}>{$count[14]}</td>
+		<td {$c_b[7]}>{$count[15]}</td>
+		<td {$c_b[8]}>{$count[16]}</td>
+		<td {$c_b[9]}>{$count[17]}</td>
+		<td {$c_b[10]}>{$count[18]}</td>
+		<td {$c_b[11]}>{$count[19]}</td>
+		<td {$c_b[0]}>{$count[20]}</td>
+		<td {$c_b[0]}>{$count[8]}</td>
+		<td {$c_b[11]}>{$count[8]+$count[9]+$count[10]+$count[11]+$count[12]+$count[13]+$count[14]+$count[15]+$count[16]+$count[17]+$count[18]+$count[19]+$count[20]}</td>
+		<td {$c_b[12]}>&nbsp;</td>
+	</tr>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+    	<td width="50%"><form id="form1" name="form1" method="post" action="__URL__/financeTable">日期：<input name="FanNowDate" type="text" id="FanNowDate" onFocus="showCalendar(this)" readonly /> <input type="submit" name="Submit" value="查询" class="button_text" /></form></td>
+        <td width="50%">{$page}</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

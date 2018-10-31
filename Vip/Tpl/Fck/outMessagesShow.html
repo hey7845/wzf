@@ -1,0 +1,25 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>查看邮件内容&nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+
+  <table width="100%" class="tab4" border="0" cellpadding="3" cellspacing="0">
+  <tr>
+    <td width="22%" align="right">收件人编号：</td>
+    <td width="78%">{$vo['s_user_id']|conname}</td>
+  </tr>
+  <tr>
+    <td align="right">发送时间：</td>
+    <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+  </tr>
+  <tr>
+    <td align="right">邮件标题：</td>
+    <td>{$vo['title']}</td>
+  </tr>
+  <tr>
+    <td align="right" style="height:30px !important;">邮件内容：</td>
+    <td valign="top">{$vo['msg']}</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

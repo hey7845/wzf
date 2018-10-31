@@ -1,0 +1,42 @@
+﻿/*data 2011-10-25 12:00*/
+
+* { margin: 0; padding: 0; }
+body {background:#fffefd url(../Images/lbg.jpg) center center no-repeat;  font-size: 12px; font-family: Arial,simsun}
+img {border:0;}
+body,html {height:100%; }
+.pic-bg { background:url(../Images/lbg.jpg) no-repeat; position: absolute; top:0; height:100%; width:100%;}
+
+#login_layout {height: 520px; width:750px; left:20%; top:45%; position:absolute; margin-top:-300px;  margin-left:-373px; 
+ }
+ .zhangh{ position:absolute;left:450px;top:270px; z-index:999; width:70px;}
+.error { height: 24px; line-height:24px; text-indent:30px; position: relative; top:310px; left:300px; }
+#logo { height: 50px; clear: both;}
+.login_dl dt{  text-align: right; width:92px; color:#434343; font-size:12px; line-height:20px; }
+.login_dl dd{  float:right; clear:both; text-align:left; width:180px;}
+.img_type img{vertical-align:bottom}
+
+.submit_dl { width:200px; margin:0 0 0 100px;}
+.submit_dl dd{ float:right;}
+.btn_0 {background:url(../Images/btn_0.png) no-repeat; width:100px; height:40px; margin-top:0px;  border:0; font-size: 14px; color: #FFF; font-weight:bold; cursor: pointer;}
+.btn_1 {background:url(../Images/btn_1.png) no-repeat; width:100px; height:40px; margin-top:0px;  border:0; font-size: 14px; color: #FFF; font-weight:bold; cursor: pointer;}
+
+.ipt_text {border:1px solid #f2c400; color:#666; background:url(../Images/ipt_bg.png) repeat-x;
+ height:30px; text-indent:2px; font-family:arial; font-size:16px; box-shadow: 0 0 1px 0px #000;}
+.ipt_style { width: 230px;}
+.clear10 { clear: both; height: 12px; font-size: 0;}
+
+.l-logo {width:550px; margin-top: 180px;height:115px; margin:0 auto; font-size: 60px;font-family: 微软雅黑; color: #ffc729; line-height: 115px;}
+.l-logo span{ width:550px;  float: left;margin-left: 10px;}
+.lleft {background:url(../Images/lleft.png) no-repeat; width:100px; height:215px; float:left; margin:84px 0 0 0px; display:inline;}
+
+.lfoot {background-color:#2e2e2e; border-top:2px solid #262626; height:43px; width:100%; position: absolute; bottom:0;}
+.lfoot .rtx {float:right; line-height:43px; padding-right:10px; color:#a7a7a7}
+.lname { float: left; line-height:32px; text-align: center; font-size:14px; padding-right:8px; color:#ae271d; margin-top: 5px;margin-left: 20px;}
+#login_box {margin-top:-10px; width:500px; margin:0 auto; position:relative;}
+.ltable {width:1100px;  position:absolute;top:80px; left:60px;background:url(../Images/mask.png) ; height:50px;
+ margin-top: 550px; }
+.aa{ margin-top: 10px;}
+.ltable td{line-height:48px;}
+.fred {color:#ae271d; font-size:14px;}
+.dddda{ width:50px; height:10px;}
+.ipt_hover {background:#DFF19F; color:#1a6406; border:1px solid #f2c400; height:30px; text-indent:2px; font-family:arial; font-size:16px; line-height:30px; box-shadow: 0 0 1px 0px #000}

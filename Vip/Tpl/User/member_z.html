@@ -1,0 +1,42 @@
+<include file="Public:header" />
+<style>
+.bigf{ font-size:18px; line-height:40px; font-family:Verdana, Geneva, sans-serif; color:green;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>一线排网 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1">
+  <tr>
+  <td width="70%">
+	<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+      <tr>
+        <th><div align="center">序号</div></th>
+        <th><div align="center">会员编号</div></th>
+        <th><div align="center">联系电话</div></th>
+        <th><div align="center">QQ号码</div></th>
+        <th><div align="center">出局数</div></th>
+        <th><div align="center">状态</div></th>
+        </tr>
+        <volist name="list" id="vo" key="tt">
+        <tr>
+          <td><div align="center">{$tt}</div></td>
+          <td><div align="center">{$vo['user_id']}</div></td>
+          <td><div align="center">{$vo['user_tel']}</div></td>
+          <td><div align="center">{$vo['qq']}</div></td>
+          <td><div align="center">{$vo['x_num']}</div></td>
+          <td><div align="center"><eq name="vo.x_out" value="1"><span style="color:red">出局</span><else/>正常</eq></div></td>
+          </tr>
+        </volist>
+    <tr>
+    <td colspan="6"><div align="center">{$page}</div></td>
+    </tr>
+    </table>
+  </td>
+  <td>需要等待<br />
+  <span class="bigf">{$nn}</span><br />
+  人</td>
+  </tr>
+</table>
+
+</div>
+</body>
+</html>

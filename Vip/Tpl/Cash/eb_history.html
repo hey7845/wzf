@@ -1,0 +1,48 @@
+<include file="Public:header" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<style>
+.gank{ color:#CCC;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>历史查询 </h1></div>
+  <form id="form1" name="form1" method="post" action="__URL__/eb_history/">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="60">
+      查询日期：
+      <input name="Sdate" type="text" id="Sdate" onFocus="showCalendar(this)" readonly />
+      至
+      <input name="Edate" type="text" id="Edate" onFocus="showCalendar(this)" readonly />
+      <input type="submit" name="Submit" value=" 查询 " class="btn1" /></td>
+    </tr>
+  </table>
+  </form>
+  <table width="100%" class="tab3" border="0" cellpadding="0" cellspacing="0" id="tb1">
+  <thead>
+		<tr>
+			<th width="20%"><span>操作时间</span></th>
+			<th width="15%"><span>卖家</span></th>
+			<th width="15%"><span>买家</span></th>
+		  <th width="35%"><span>操作说明</span></th>
+			<th width="15%"><span>金额</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$vo.pdt|date='Y-m-d h:i:s A',###}</td>
+		<td>{$vo['user_id']}</td>
+        <td>{$vo['d_user_id']}&nbsp;</td>
+        <td>{$vo['bz']}</td>
+        <td>{$vo['epoints']}</td>
+        </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+<tr>
+        <td align="center">{$page}</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

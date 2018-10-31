@@ -1,0 +1,46 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>发布公告 &nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<form method='post' id="form1" name="form1" action="__URL__/News_add_save">
+<table width="100%" border="0" cellpadding="5" cellspacing="0" class="tab4">
+    <tr>
+        <td width="15%" align="right">标题：</td>
+        <td width="85%"><input  name="title" type="text" size="50" maxlength="200"></td>
+    </tr>
+    <tr>
+        <td align="right">类型：</td>
+        <td><select name="type" id="type">
+        <option value="1" selected="selected">新闻资讯</option>
+        <option value="2">常见问题</option>
+        </select></td>
+    </tr>
+    <tr> 
+        <td align="right">内容：</td>
+        <td>
+        {$html}
+        </td>
+    </tr>
+    <tr>
+        <td align="right">发布时间：</td>
+        <td ><input  name="addtime" type="text" id="addtime" value="{$nowtime}" size="20" maxlength="50"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="center">
+        <input type="hidden" name="status" value="1">
+        <input type="hidden" name="user_id" value="1">
+        <input type="submit" value="保存" class="button_text">
+        　
+        <input type="reset" name="button" id="button" value="重置" class="button_text" />
+        　
+        <input type="button" name="button2" id="button2" value="返回" class="button_text" onclick="location.href='__URL__/index'"/>
+        </td>
+    </tr>
+    <tr>
+    <td colspan="2" style="height:10px"></td>
+    </tr>
+</table>
+</form>
+</div>
+</body>
+</html>

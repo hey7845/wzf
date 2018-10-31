@@ -1,0 +1,155 @@
+<style>
+.lightbox_t{width:580px;background:#FFFFFF;border:10px solid #636363;line-height:20px;display:none; margin:0; height:240px; }
+.lightbox_t dt{background:#FFFFFF;padding:5px;}
+.lightbox_t dd{ padding:20px; margin:0;padding:15px 100px;}
+.showc{ display:block;}
+.hidec{ display:none;}
+#idBox_t b { font-size:14px;}
+</style>
+<input type="button" value="" id="idBoxOpen_t" style="display:none"/>
+<dl id="idBox_t" class="lightbox_t" style="top:10%;left:5%;">
+  <dt><input style="float:right; border:1px solid #CCC; background:#EEEEEE; width:24px; height:24px; cursor:pointer" type="button" value="X" id="idBoxClose_t" /> </dt>
+    <form id="formpassthree" name="formpassthree">
+    <div id="in_div_t">   
+    <dd id="in_top_t"><b>温馨提示</b></dd>
+	<dd id="in_txt_t">
+    <input type="password" style="height:22px; width:230px" value="" id="idBoxTxt_t" name="idBoxTxt_t">
+    <input type="hidden" name="old_url_t" id="old_url_t" value="" />
+    <input type="hidden" name="actt_t" id="actt_t" value="" />
+    <input type="hidden" name="ok_url_t" id="ok_url_t" value="" />
+    &nbsp;&nbsp;&nbsp;<input type="button" value="确定" class="button" onclick="ajaxckpass_t();"/>
+	</dd>
+    </div>
+    <div id="out_div_t">
+    <dd id="out_top_t"><b>密码验证</b></dd>
+	<dd id="out_txt_t">......</dd>
+    </div>
+    </form>
+<dd style="color:#bcbcbc; font-size: 14px">为了保护您的账号安全，请填写您的三级密码。<br/>
+  如有疑问，欢迎致电我们客服。</dd>
+</dl>
+<script src="__PUBLIC__/Js/pw/CJL.0.1.min.js"></script>
+<script src="__PUBLIC__/Js/pw/AlertBox.js"></script>
+<script>
+(function(){
+$("#out_div_t").hide();
+$("#out_top_t").hide();
+$("#out_txt_t").hide();
+var ab_t = new AlertBox("idBox_t"), lock_t = false;
+
+//锁定键盘
+function lockup(e){ e.preventDefault(); }
+//高亮层不锁定
+function lockout(e){ e.stopPropagation(); }
+
+ab_t.onShow = function(){
+	ck_again();
+	$$("idBoxTxt_t").select();
+	$$("ok_url_t").value="";
+	if ( lock_t ) {
+		$$E.addEvent( document, "keydown", lockup );
+		$$E.addEvent( this.box, "keydown", lockout );
+		OverLay.show();
+	}
+}
+ab_t.onClose = function(){
+	var ucody = $$("old_url_t").value;
+	var okurl = $$("ok_url_t").value;
+	var actname = $$("actt_t").value;
+	if(okurl==""){
+		gourl = "__APP__/Public/main/";
+	}else{
+		if(actname==""){
+			gourl = "__APP__/Public/twogourls/act/Public/c_id/"+ucody;
+		}else{
+			gourl = "__APP__/Public/twogourls/act/"+actname+"/c_id/"+ucody;
+		}
+		
+	}
+	$$E.removeEvent( document, "keydown", lockup );
+	$$E.removeEvent( this.box, "keydown", lockout );
+	$("#main").attr("src",gourl);
+	OverLay.close();
+}
+
+$$("idBoxClose_t").onclick = function(){ ab_t.close(); }
+
+ab_t.center = true;
+ab_t.fixed = true;
+lock_t = true;
+ab_t.show();
+})()
+</script>
+<script>
+function ck_againt(){
+	document.formpassthree.idBoxTxt_t.value="";
+	$("#in_div_t").show();
+	$("#in_top_t").show();
+	$("#in_txt_t").show();
+	$("#out_div_t").hide();
+	$("#out_top_t").hide();
+	$("#out_txt_t").hide();
+}
+function ck_Replacementtwo(){
+	$("#in_div_t").hide();
+	$("#in_top_t").hide();
+	$("#in_txt_t").hide();
+	$("#out_div_t").show();
+	$("#out_top_t").show();
+	$("#out_txt_t").show();
+}
+function ajaxckpass_t(){
+	var card_nn = document.formpassthree.idBoxTxt_t.value;
+	var i_div = document.getElementById("in_div_t");
+	var o_div = document.getElementById("out_div_t");
+	var o_top = document.getElementById("out_top_t");
+	var o_txt = document.getElementById("out_txt_t");
+	var bttn = document.getElementById("idBoxClose_t");
+	var backb = "<input type='button' value='重新输入' class='button' onclick='ck_againt();'/>";
+	
+	//i_div.className="hidec";
+	//o_div.className="showc";
+	
+	ck_Replacementtwo();
+	
+	card_nn = card_nn.replace(/[ ]/g,'');
+	
+	if(card_nn!=""){
+		var xmlHttp;
+        try{
+            //FF Opear 8.0+ Safair
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch(e){
+            try{
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch(e){
+                alert("您的浏览器不支持AJAX");
+                return false;    
+            }
+        }
+        xmlHttp.onreadystatechange=function(){
+            if(xmlHttp.readyState==4){
+				var valuet = xmlHttp.responseText;
+				if(valuet=="TRUE"){
+					o_txt.innerHTML="<span class='msg_ok'> </span>";
+					document.formpassthree.ok_url_t.value="OK";
+					bttn.click();
+				}else{
+					o_txt.innerHTML="<span class='hong'>"+valuet+"</span>"+backb;
+				}
+				
+            }
+        }
+        var url="__APP__/Public/ck_thpassword/";
+        url+="/opassw/"+card_nn+"/sid/"+Math.random();
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+		
+		o_txt.innerHTML="<img SRC='__PUBLIC__/Images/loading2.gif' BORDER='0' align='absmiddle' >";
+	}else{
+		o_txt.innerHTML="请输入三级密码！"+backb;;
+	}
+}
+</script>

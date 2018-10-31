@@ -1,0 +1,58 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>油卡卡管理 </h1></div>
+<form name="form3" method="post" action="__URL__/adminAgentsAC1">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr class="content_td" align="center">
+        <th nowrap></th>
+        <th nowrap><span>会员编号</span></th>
+        <th nowrap><span>会员名</span></th>
+        <th nowrap><span>申请时间</span></th>
+      
+        <!-- <th nowrap><span>备注</span></th> -->
+        <th nowrap><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo" key='k'>
+    <tr align="center">
+        <td><input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td>
+        <td>{$vo['user_id']}&nbsp;</td>
+        <td><span class="STYLE1">{$vo['user_name']}</span>&nbsp;</td>
+        <td>{$vo.idt|date='Y-m-d H:i:s',###}&nbsp;</td>
+     
+        <!-- <td><a href="__URL__/adminAgentsShow/Sid/{$vo['id']}/">点击查看</a></td> -->
+        <td><gt name="vo['is_cc']" value="1"><font color="#009900">已确认</font><else /><font color="#FF0000">未确认</font></gt>&nbsp;</td>
+    </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+    	<td>&nbsp;&nbsp;
+          <input name="全选" type="button" class="button_text" id="全选" onclick="CheckAll(this.form)" value="全选" />&nbsp;&nbsp;
+          <input type="submit" name="action" value="确认" class="button_text" onclick="{if(confirm('确定吗?')){return true;}return false;}">&nbsp;&nbsp;
+          <input type="submit" name="action" value="删除" class="button_text" onclick="{if(confirm('确定删除吗?')){return true;}return false;}">&nbsp;&nbsp;
+       <!--    <input name="button3" type="button" onclick="window.location.href='__URL__/financeDaoChu_BD/'" value="报单中心导出Excel表格" class="button_text" /> -->
+         </td>
+    </tr>
+</table>
+</form>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+	<tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminAgents1/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="button_text"/>
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

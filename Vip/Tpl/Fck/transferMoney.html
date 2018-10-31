@@ -1,0 +1,109 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/Js/Ajax/ThinkAjax-1.js" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+function CheckForm(){
+	if(document.form1.ePoints.value==""){
+		alert("金额不能为空！");
+		return false;
+	}
+	if(document.form1.select.value==1){
+		if(confirm('您确定把 '+document.form1.ePoints.value+' 转借给会员（'+document.form1.UserID.value+'）吗？'))
+		{
+			return true;
+		}else{
+			alert('您取消了本次操作');
+			return false;
+		}
+	}
+}
+
+function yhServer(Ful){
+	str = $F(Ful).replace(/^\s+|\s+$/g,"");
+	ThinkAjax.send('__URL__/check_CCuser/','ajax=1&userid='+str,'',Ful+'1');
+}
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>账户转账 </h1></div>
+    <form name="form1" method="post" action="__URL__/transferMoneyAC" onSubmit="{return CheckForm();}">
+      <table width="100%" border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td align="right">现金账户： </td>
+            <td colspan="2" width="80%"><span class="hong">{$rs.agent_use}</span></td>
+          </tr>
+		  <tr>
+            <td align="right">报单账户： </td>
+            <td colspan="2" width="80%"><span class="hong">{$rs.agent_cash}</span></td>
+          </tr>
+          <tr>
+            <td align="right">类型：</td>
+            <td colspan="2">
+            <select name="select" id="select" onchange="Selev(this.value)" onpropertychange="Selev(this.value)">
+              <option value="1"> 报单账户 转给 其它会员 </option>
+              <option value="2"> 现金账户 转 报单账户 </option>
+            </select>
+            </td>
+          </tr>
+          <tr id="Selev">
+            <td align="right">{$User_namex}：</td>
+            <td><input name="UserID" type="text" id="UserID" class="ipt" onblur="javascript:yhServer(this.name);" onfocus="notice('0','')" /></td>
+            <td><div id="UserID1" class="info"><div id="0" class="focus_r" style="display:none;"><div class="msg_tip">请输入你要转给会员的编号。</div></div></div></td>
+          </tr>
+          <tr>
+            <td align="right">金额：</td>
+            <td><input name="ePoints" type="text" id="ePoints" class="ipt" onkeyup="javascript:Null_Int(this.name)" onfocus="notice('1','')"  onblur="notice('1','none')"/></td>
+            <td><div id="ePoints1" class="info"><div id="1" class="focus_r" style="display:none;"><div class="msg_tip">请输入你要转入的金额。</div></div></div></td>
+          </tr>
+          <tr>
+            <td align="right">说明：</td>
+            <td colspan="2"><textarea name="content" cols="40" rows="4" id="content"></textarea></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td colspan="2"><input type="submit" name="Submit" value="确定转账" class="button_text" /></td>
+          </tr>
+         
+      </table>
+      </form>
+<br>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th><span>借方{$User_namex}</span></th>
+			<th><span>贷方{$User_namex}</span></th>
+			<th><span>时间</span></th>
+			<th><span>交易额</span></th>
+            <th><span>类型</span></th>
+            <th><span>说明</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$vo['out_userid']}</td>
+		<td>{$vo['in_userid']}</td>
+		<td>{$vo['rdt']|date='Y-m-d H:i:s',###}</td>
+		<td>{$vo['epoint']}</td>
+        <td><eq name="vo['type']" value="1">报单账户转给其它会员<else/></eq>
+        	<eq name="vo['type']" value="2">现金账户转报单账户<else/></eq>
+        	<eq name="vo['type']" value="3">K币账户购买CQ币<else/></eq>
+        	<eq name="vo['type']" value="4">注册币购买CQ币<else/></eq>
+        </td>
+        <td>{$vo['sm']}</td>
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script language="javascript">
+function Selev(o){
+	if(o==1){document.getElementById('Selev').style.display = '';}
+	if(o==2||o==3||o==4){document.getElementById('Selev').style.display = 'none';}
+}
+new TableSorter("tb1");
+</script>

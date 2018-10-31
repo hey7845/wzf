@@ -1,0 +1,64 @@
+<include file="Public:xyHead" />
+<load href="__PUBLIC__/Js/Ajax/ThinkAjax-1.js" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language="javascript">
+function yhServer(Ful,lx){
+  var str = $F(Ful).replace(/^\s+|\s+$/g,"");
+  var re = /[^(\w){6,20}$]/g;
+  str = str.replace(re,"");
+  document.getElementById(Ful).value = str;
+  if (str != ""){
+    if(lx==0){ThinkAjax.send('__APP__/Fck/check_shopid/','ajax=1&shopid='+str,'',Ful+'1');}
+    if(lx==1){ThinkAjax.send('__APP__/Fck/check_reid/','ajax=1&reid='+str,'',Ful+'1');}
+    if(lx==2){ThinkAjax.send('__APP__/Fck/check_fid/','ajax=1&fid='+str,'',Ful+'1');}
+    if(lx==3){ThinkAjax.send('__APP__/Fck/check_userid/','ajax=1&userid='+str,'',Ful+'1');}
+  }
+}
+function guolv(Ful){
+  var str = $F(Ful).replace(/^\s+|\s+$/g,"");
+  var re = /[^(\w){6,20}$]/g;
+  str = str.replace(re,"");
+  document.getElementById(Ful).value = str;
+}
+function ajaxagent(){
+  var divp = document.getElementById("showagent");
+  if(divp.style.display=="none"){
+    var xmlHttp;
+    try{
+      //FF Opear 8.0+ Safair
+      xmlHttp=new XMLHttpRequest();
+    }
+    catch(e){
+      try{
+        xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      catch(e){
+        alert("您的浏览器不支持AJAX");
+        return false;    
+      }
+    }
+    xmlHttp.onreadystatechange=function(){
+      if(xmlHttp.readyState==4){
+        var valuet = xmlHttp.responseText;
+        document.getElementById("agentall").innerHTML=valuet;
+        window.parent.turnHeight('main');
+      }
+    }
+    var url="__URL__/find_agent/";
+    url+="/sid/"+Math.random();
+    xmlHttp.open("GET",url,true);
+    xmlHttp.send(null);
+    divp.style.display="block";
+  }else{
+    divp.style.display="none";
+  }
+}
+</script>
+<style>
+b {font-size: 50px;}
+</style>
+<div class="ncenter_box">
+  <b>建设中。。。。。</b>
+</div>
+</body>
+</html>

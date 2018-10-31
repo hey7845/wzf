@@ -1,0 +1,32 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>公排网络图 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th><span>会员编号</span></th>
+        <th><span>姓名</span></th>
+        <th><span>会员级别</span></th>
+        <th><span>联系电话</span></th>
+        <th><span>QQ</span></th>
+        </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center">
+        <td><a href="__URL__/Tree_yx/fid/{$vo['id']}">{$vo['user_id']}</a></td>
+        <td>{$vo['user_name']}</td>
+        <td>{$voo[$vo['u_level']]}</td>
+        <td>{$vo['user_tel']}</td>
+        <td>{$vo['qq']}</td>
+        </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

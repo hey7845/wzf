@@ -1,0 +1,389 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title> {$System_namex} </title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link href="__PUBLIC__/Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/Css/font-awesome.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/Css/animate.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/Css/style.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .nav > li.active > a {
+            color: #ffc729;
+        }
+
+        .nav > li > a {
+            color: #ffc729;
+            font-weight: 600;
+            padding: 14px 20px 14px 25px;
+        }
+    </style>
+	<script src="__PUBLIC__/Js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Js/jquery.validate.min.js"></script>
+    <script src="__PUBLIC__/Js/messages_zh.min.js"></script>
+    <script type="text/javascript">
+        $.validator.setDefaults({
+            highlight: function (e) {
+                $(e).closest(".form-group").removeClass("has-success").addClass("has-error")
+            },
+            success: function (e) {
+                e.closest(".form-group").removeClass("has-error").addClass("has-success")
+            },
+            errorElement: "span",
+            errorPlacement: function (e, r) {
+                if (r.parent().hasClass("input-group")) {
+                    e.appendTo(r.parent().parent());
+                }
+                else {
+                    e.appendTo(r.is(":radio") || r.is(":checkbox") ? r.parent().parent().parent() : r.parent())
+                }
+            },
+            errorClass: "help-block m-b-none",
+            validClass: "help-block m-b-none"
+        }), $().ready(function () {
+            $(".bvform").validate();
+        });
+    </script>
+    <script src="__PUBLIC__/Js/jquery.metisMenu.js"></script>
+    <script src="__PUBLIC__/Js/jquery.slimscroll.min.js"></script>
+    <script src="__PUBLIC__/Js/layer.min.js"></script>
+    <script src="__PUBLIC__/Js/hplus.min.js?v=4.1.0"></script>
+    <script src="__PUBLIC__/Js/contabs.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/Js/pace.min.js"></script>    
+
+</head>
+<style>
+  .a1{border-bottom: 1px solid #ccc}
+
+
+</style>
+<body class="fixed-sidebar full-height-layout gray-bg  pace-done  " style="overflow:hidden">
+       
+    <div id="wrapper">
+    <!--  <div class="a1">
+            <img   src="__PUBLIC__/Images/b_g.jpg" width="100%" height="100%"/>
+        </div> -->
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                           <span><img alt="image" class="img-circle" src="__PUBLIC__/Images/114.png" /></span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs"><strong class="font-bold">{$fck_rs['user_id']}</strong></span>
+                                    <span class="text-muted text-xs block">{$fck_rs['user_name']}<b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li>
+                                    <a class="J_menuItem" href="__APP__/Change/cody/c_id/1">个人资料</a>
+                                </li>
+                                <li>
+                                    <a class="J_menuItem" href="__APP__/Msg/writemsg/">我的留言</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="__APP__/Public/LogOut/">安全退出</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            Y+
+                        </div>
+                    </li>
+                    <li  class="a1">  
+                       <a href="__APP__/">
+                        <i class="fa fa-home"></i>
+                            <span class="nav-label">首页</span>
+                            <span class="fa arrow"></span>
+                        </li>
+                             </a>
+                    <li  class="a1">
+                        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">个人中心</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Change/cody/c_id/1" data-index="0">个人资料</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Change/cody/c_id/2">修改密码</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                       <li  class="a1">
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">信息管理 </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="__APP__/News/News">新闻公告</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Msg/writemsg/">我要留言</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Msg/inmsg/">收件箱</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Msg/outmsg/">发件箱</a>
+                            </li>
+                        </ul>
+                        </li>
+
+
+                    <li  class="a1">
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">市场管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Reg/users">注册会员</a>
+                            </li>
+                           <!--  <li>
+                                <a class="J_menuItem" href="__APP__/Fck/cody/c_id/3">分享体系表</a>
+                            </li> -->
+                          
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Tree/cody/c_id/4">网络结构图</a>
+                            </li>
+                         
+                     
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Tree/cody/c_id/6">推荐关系图</a>
+                            </li>
+                      
+                        </ul>
+                    </li>
+                        
+                      <li  class="a1">
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">财务管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            
+                           <!--   <li>
+                                <a class="J_menuItem" href="__APP__/Recharge/cody/c_id/5">爱心捐赠</a>
+                            </li> -->
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Change/cody/c_id/3">财务统计</a>
+                            </li>
+
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Bonus/cody/c_id/1">账务明细</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Transfer/cody/c_id/1">账户转账</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Currency/cody/c_id/1">货币提现</a>
+                            </li>
+                        
+                            <li>
+                                <a class="J_menuItem" href="__APP__/Recharge/cody/c_id/1">充值申请</a>
+                            </li>
+                 
+                          <!--   <li>
+                                <a class="J_menuItem" href="__APP__/Uplevel/cody/c_id/1">会员升级</a>
+                            </li> -->
+                        </ul>
+                    </li>
+                     
+                        
+                        <li  class="a1">
+                            <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">服务中心</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                            	 <li>
+                                    <a class="J_menuItem" href="__APP__/Agent/cody/c_id/9">申请服务中心</a>
+                                </li>
+                               <!--  <li>
+                                    <a class="J_menuItem" href="__APP__/Agent/cody/c_id/1">申请商家</a>
+                                </li> -->
+
+                                 <li>
+                                    <a class="J_menuItem" href="__APP__/Agent/cody/c_id/5">我要复投</a>
+                                </li>
+                                <!--  <li>
+                                    <a class="J_menuItem" href="__APP__/Agent/cody/c_id/7">申请代理商</a>
+                                </li> -->
+                                <eq name="fck_rs['is_agent']" value='2'>
+                                <li>
+                                    <a class="J_menuItem" href="__APP__/Agent/cody/c_id/2">未开通会员</a>
+                                </li>
+                                <li>
+                                    <a class="J_menuItem" href="__APP__/Agent/cody/c_id/3">已开通会员</a>
+                                </li>
+                                </eq>
+                            </ul>
+                        </li>
+                    
+                    	<!-- <li>
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">股票交易 </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                        	
+                            <li><a class="J_menuItem" href="__APP__/Cash/eb_sell/" target="main">卖出股票</a></li>
+                            <li><a class="J_menuItem" href="__APP__/Cash/eb_buy/" target="main">买入股票</a></li>
+                            <li><a class="J_menuItem" href="__APP__/Cash/cody/c_id/3/" target="main">买入记录</a></li>
+                            <li><a class="J_menuItem" href="__APP__/Cash/cody/c_id/4/" target="main">卖出记录</a></li>
+                            <li><a class="J_menuItem" href="__APP__/Cash/cody/c_id/5/" target="main">历史查询</a></li>
+                            
+                        </ul>
+                    	</li> -->
+                        
+                 
+                    
+                      <li  class="a1">
+                        <a href="__APP__/Reg/add">
+                            <i class="fa fa fa-bar-chart-o "></i>
+                            <span class="nav-label">商城</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="__APP__/Gouwu/addadr" class="J_menuItem">新增地址</a></li>
+                            <li><a href="__APP__/Gouwu/cody/c_id/5" class="J_menuItem">地址管理</a></li>
+                             <!-- <li><a href="__APP__/Reg/add" class="J_menuItem">商城管理</a></li>  -->
+                           <!-- <li><a href="__APP__/Gouwu/cody/c_id/5" class="J_menuItem">商品提取</a></li>  -->
+                           <!-- <li><a href="__APP__/Gouwu/cody/c_id/6" class="J_menuItem">商品管理</a></li>  -->
+                           <li><a href="__APP__/Gouwu/cody/c_id/3" class="J_menuItem">商城购物</a></li>
+                           <li><a href="__APP__/Gouwu/shopCar" class="J_menuItem">购物车</a></li>
+                           <li><a href="__APP__/Gouwu/cody/c_id/4" class="J_menuItem">我的订单</a></li>
+                        </ul>
+                    </li>
+
+					<egt name="fck_rs['is_boss']" value='1'>
+                    <li class="a1">
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">后台管理 </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                             <?php if(in_array(15, $k)) {?>
+                            <li><a target="main"  class="J_menuItem" onclick="if(confirm('确定分红吗?')) this.href='__APP__/Fck/xxx';else return false;">每日分红</a></li>
+                               <?php } ?>
+                                  <?php if(in_array(16, $k)) {?>
+                      <!--       <li><a target="main"  class="J_menuItem" onclick="if(confirm('确定释放吗?')) this.href='__APP__/Fck/xxxx';else return false;">每周释放</a></li> -->
+                               <?php } ?>
+                                <?php if(in_array(1, $k)) {?>
+                            <li><a href="__APP__/Bonus/cody/c_id/3" class="J_menuItem">当期出纳</a></li>
+                              <?php } ?>
+                            
+                             <?php if(in_array(2, $k)) {?>
+                            <li><a href="__APP__/Bonus/cody/c_id/4" class="J_menuItem">奖金查询</a></li>
+                              <?php } ?>
+                            
+                             <?php if(in_array(3, $k)) {?>
+                            <li><a href="__APP__/YouZi/cody/c_id/1" class="J_menuItem">会员审核</a></li>
+                              <?php } ?>
+                            
+                             <?php if(in_array(4, $k)) {?>
+                            <li><a href="__APP__/YouZi/cody/c_id/2" class="J_menuItem">会员管理</a></li>
+                              <?php } ?>
+
+                               <?php if(in_array(5, $k)) {?>
+                            <li><a href="__APP__/Gouwu/cody/c_id/1/" class="J_menuItem">产品管理</a></li>
+                             <?php } ?>
+
+                             <?php if(in_array(6, $k)) {?>
+                            <li><a href="__APP__/Gouwu/cody/c_id/2/" class="J_menuItem">物流管理</a></li>
+                            <?php } ?>
+
+                             <?php if(in_array(9, $k)) {?>
+                             <li><a href="__APP__/Agent/cody/c_id/10" class="J_menuItem">服务中心管理</a></li>
+                            <?php } ?>
+
+                            <!-- <li><a href="__APP__/Agent/cody/c_id/4" class="J_menuItem">商家管理</a></li> -->
+                             
+                           <!-- <li><a href="__APP__/Agent/cody/c_id/6" class="J_menuItem">油卡管理</a></li> -->
+                           <!-- <li><a href="__APP__/Agent/cody/c_id/8" class="J_menuItem">代理管理</a></li> -->
+                            <!--<li><a href="__APP__/YouZi/cody/c_id/11" class="J_menuItem">结算分红</a></li>-->
+                            <!-- <li><a href="__APP__/Cash/cody/c_id/6" class="J_menuItem">K币交易管理</a></li> -->
+                             <?php if(in_array(7, $k)) {?>
+
+                            <li><a href="__APP__/YouZi/cody/c_id/18" class="J_menuItem">货币流向</a></li>
+                              <?php } ?>
+
+                            <?php if(in_array(14, $k)) {?>
+                            <li><a href="__APP__/Currency/cody/c_id/2" class="J_menuItem">提现管理</a></li>
+                      <?php } ?>
+
+                             <?php if(in_array(8, $k)) {?>
+
+                            <li><a href="__APP__/Recharge/cody/c_id/2" class="J_menuItem">充值管理</a></li>
+                              <?php } ?>
+                              
+                             <?php if(in_array(10, $k)) {?>
+
+                            <li><a href="__APP__/News/cody/c_id/1/" class="J_menuItem">新闻公告管理</a></li>
+                              <?php } ?>
+
+                            <!-- <li><a href="__APP__/Plan/cody/c_id/3/" class="J_menuItem">K币交易协议</a></li> -->
+                             <?php if(in_array(11, $k)) {?>
+                            <li><a href="__APP__/YouZi/cody/c_id/7" class="J_menuItem">数据库备份</a></li>
+                              <?php } ?>
+                             <?php if(in_array(12, $k)) {?>
+
+                            <li><a href="__APP__/YouZi/cody/c_id/3" class="J_menuItem">参数设置</a></li>
+                              <?php } ?>
+                             <?php if(in_array(13, $k)) {?>
+
+                            <li><a href="__APP__/YouZi/cody/c_id/9" target="main" class="J_menuItem" >清空数据</a></li>
+                              <?php } ?>
+                            
+                        </ul>
+                    </li>
+                    </egt>
+                    
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#" style="background-color:#ff7900;border-color:#ff7900"><i class="fa fa-bars"></i> </a>
+
+                    </div>
+
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                <nav >
+                    <div class="page-tabs-content">
+                        <a href="__APP__" class="active J_menuTab" data-id="__APP__">首页</a>
+                    </div>
+                </nav>
+            
+                <a href="__APP__/Public/LogOut/" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" src="__APP__/Public/main" onload="turnHeight('main');" id="main"  name="main" height="100%" width="100%" frameborder="0"></iframe>
+            </div>
+            <div class="footer">
+                <div class="pull-right">
+
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+        <!--右侧边栏开始-->
+        <!--右侧边栏结束-->
+    </div>
+</body>
+</html>

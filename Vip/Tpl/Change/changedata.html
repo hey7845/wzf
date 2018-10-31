@@ -1,0 +1,143 @@
+<include file="Public:xyHead" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<div class="ncenter_box">
+        <table width="100%" border="0" cellpadding="3" cellspacing="0">
+          <form method='post' id="form1" action="__URL__/changedataSave" >
+          <tr>
+            <td colspan="3" style="height:5px;"></td>
+            </tr>
+          <tr>
+            <td width="25%" height="30" align="right">推荐人：</td>
+            <td width="25%"><input name="UserID2" type="text" id="UserID2" value="{$vo['re_name']}" style="background-color:#ddd;" readonly="readonly" class="ipt" /></td>
+            <td width="50%">&nbsp;</td>
+            </tr>
+        <tr>
+        <td height="30" align="right">会员登录名：</td>
+          <td><input name="UserID" type="text" id="UserID" value="{$vo['user_id']}" style="background-color:#ddd;" readonly="readonly" class="ipt"/></td>
+          <td>&nbsp;</td>
+        </tr>
+          <tr>
+            <td height="30" colspan="3" style="height:5px;"><hr></td>
+            </tr>
+          <tr >
+            <td height="30" align="right">开户银行：</td>
+<!--         <td><select name="BankName" id="BankName"> -->
+<!--                   <volist name='bank' id='voo'> -->
+<!--                      <eq name='bank[$key]' value="$b_bank['bank_name']"> -->
+<!--                        <option value="{$bank[$key]}" selected="selected">{$bank[$key]}</option> -->
+<!--                      <else /> -->
+<!--                        <option value="{$bank[$key]}">{$bank[$key]}</option> -->
+<!--                      </eq> -->
+<!--                   </volist> -->
+<!--                 </select> -->
+<!--             </td> -->
+<td><input name="BankName" type="text" class="ipt"
+										id="UserTel" onKeyUp="javascript:Null_Full(this.name)"
+										value="{$b_bank['bank_name']}" /></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr >
+            <td height="30" align="right"><span id="bank_id">银行卡号</span>：</td>
+            <td><input name="BankCard" type="text" id="BankCard" value="{$vo['bank_card']}" class="ipt" maxlength="19"/></td>
+            <td></td>
+            </tr>
+          <tr>
+            <td height="30" align="right">开户姓名：</td>
+            <td><input name="UserName" type="text" id="UserName" value="{$vo['user_name']}" style="background-color:#ddd;" class="ipt" readonly/></td>
+            <td></td>
+            </tr>
+<!--           <tr> -->
+<!--             <td height="30" align="right">开户省份：</td> -->
+<!--             <td><input name="BankProvince" id="BankProvince" type="text" value="{$vo['bank_province']}" class="ipt" /></td> -->
+<!--             <td></td> -->
+<!--           </tr> -->
+<!--           <tr > -->
+<!--             <td height="30" align="right">开户城市：</td> -->
+<!--             <td><input name="BankCity" id="BankCity" type="text" value="{$vo['bank_city']}" class="ipt" /></td> -->
+<!--             <td></td> -->
+<!--           </tr> -->
+<!--           <tr> -->
+<!--             <td height="30" align="right">详细开户地址：</td> -->
+<!--             <td><input name="BankAddress" type="text" id="BankAddress" value="{$vo['bank_address']}" class="ipt" /></td> -->
+<!--             <td></td> -->
+<!--             </tr> -->
+          <tr>
+            <td height="30" colspan="3" style="height:5px;"><hr></td>
+            </tr>
+          <tr>
+            <td height="30" align="right">身份证号：</td>
+            <td><input name="UserCode" type="text" id="UserCode" value="{$vo['user_code']}" style="background-color:#ddd;" class="ipt" readonly/></td>
+            <td></td>
+            </tr>
+          <tr>
+            <td height="30" align="right">联系电话：</td>
+            <td><input name="UserTel" type="text" id="UserTel" value="{$vo['user_tel']}" class="ipt" onkeyup="javascript:Null_Full(this.name)" onfocus="notice('7','')"  onblur="notice('7','none')" /></td>
+            <td><div id="UserTel1" class="info"><div id="7" class="focus_r" style="display:none;"><div class="msg_tip">请输入联系电话。</div></div></div></td>
+            </tr>
+            <tr>
+            <td height="30" align="right">微信：</td>
+            <td><input name="qq" type="text" id="qq" value="{$vo['qq']}" class="ipt" onkeyup="javascript:Null_Full(this.name)" onfocus="notice('8','')"  onblur="notice('8','none')" /></td>
+            <td><div id="qq1" class="info"><div id="8" class="focus_r" style="display:none;"><div class="msg_tip">请输入微信。</div></div></div></td>
+            </tr>
+          <tr>
+            <td height="30" align="right">注册时间：</td>
+            <td><present name="vo['rdt']">{$vo['rdt']|date='Y-m-d H:i:s',###}
+                  <else />
+              无</present></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="30" align="right">开通时间：</td>
+            <td>
+            <eq name="vo['is_pay']" value='0'>
+            未开通
+            <else/>
+            {$vo['pdt']|date='Y-m-d H:i:s',###}
+            </eq></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="25" colspan="2" align="center">
+            <input type="hidden" name="ID" value="{$vo['id']}" >
+            <input type="submit" value="修改" class="button_text">&nbsp;&nbsp; 
+            <input name="重置" type="reset" class="button_text" value="重置"></td>
+          </tr>
+          </form>
+        </table>
+</div>
+</body>
+</html>
+<script>
+var i=document.getElementById("BankName").selectedIndex;
+function setDefault() {
+    document.getElementById("BankName").selectedIndex=i;
+}
+</script>
+<script>
+function addNetImg(){
+	var str = document.getElementById('image2').value;
+	document.getElementById('image').value = str;
+	document.getElementById('imageShow').src = str;
+	window.frames["frmPic"].document.getElementById('crop-preview-100').src=str;
+}
+function changeType(type){
+	
+	switch(type){
+		case 1:
+			document.getElementById('addImageURL').style.display='none';
+			document.getElementById('uploadImg').style.display='block';
+			window.frames["frmPic"].document.getElementById('selectImg').style.display='block';
+			window.frames["frmPic"].document.getElementById('saveImg').style.display='block';
+			window.frames["frmPic"].document.getElementById('cancelImg').style.display='block';
+			break;
+		case 2:
+			document.getElementById('addImageURL').style.display='block';
+			window.frames["frmPic"].document.getElementById('selectImg').style.display='none';
+			window.frames["frmPic"].document.getElementById('saveImg').style.display='none';
+			window.frames["frmPic"].document.getElementById('cancelImg').style.display='none';
+			break;
+		default:
+	}
+}
+
+</script>

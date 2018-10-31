@@ -1,0 +1,97 @@
+<include file="Public:header" />
+<style>
+.gank{ color:#CCC;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>卖出记录 </h1></div>
+  <table width="100%" class="tab3" border="0" cellpadding="0" cellspacing="0" id="tb1">
+  <thead>
+		<tr>
+			<th><span>卖出日期</span></th>
+			<th><span>买家</span></th>
+			<th><span>买家评分</span></th>
+			<th><span>买入日期</span></th>
+			<th><span>金额</span></th>
+			<th><span>获得金额</span></th>
+			<th>状态</th>
+			<th>倒计时</th>
+            <th><span>功能</span></th>
+		</tr>
+	</thead>
+    <volist name='list2' id='vo'>
+	<tr align="center">
+		<td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+		<td>{$vo['b_user_id']|default="<span class='gank'>未卖出</span>"}</td>
+        <td>{$vo['bid']|cx_usrate|default="<span class='gank'>未卖出</span>"}</td>
+        <td><gt name="vo.bdt" value="0">{$vo.bdt|date='Y-m-d',###}<else/><span class='gank'>未卖出</span></gt></td>
+        <td>{$vo['money']}</td>
+        <td>{$vo['money_two']}</td>
+        <td>
+          <eq name="vo.is_sh" value="0">
+            等待审核
+            <else/>
+            <eq name="vo.is_buy" value="0">
+              等待交易
+            </eq>
+            <eq name="vo.is_buy" value="1">
+              等待买家汇款
+            </eq>
+            <eq name="vo.is_buy" value="2">
+              等待卖家确认
+            </eq>
+          </eq>
+        </td>
+        <td><input type="hidden" name="dk{$i}" id="dk{$i}" value="{$vo['ldt']+10*60*60|date='Y/m/d H:i:s',###}" /><span id="t_d{$i}" style="color:#F00;"></span><span id="t_h{$i}" style="color:#F00;"></span><span id="t_m{$i}" style="color:#F00;"></span><span id="t_s{$i}" style="color:#F00;"></span></td>
+        <td>
+        <eq name="vo.is_buy" value="0">
+        <a href="__URL__/eb_listDelAC/cid/{$vo['id']}/">撤销</a>
+        </eq>
+        <eq name="vo.is_buy" value="1">
+        等待买家汇款 | <a href="__URL__/eb_listDelAC/cid/{$vo['id']}/">撤销</a>
+        </eq>
+        <eq name="vo.is_buy" value="2">
+        <a href="__URL__/lookpingzheng/cid/{$vo['id']}/">查看凭证</a> |
+        <a href="__URL__/eb_list_DAC/cid/{$vo['id']}/">确认收款</a> | <a href="__URL__/eb_list_NODAC/cid/{$vo['id']}/">未收到款</a>
+        </eq>
+        </td>
+	</tr>
+    </volist>
+    <script language="javascript">
+		function GetRTime(){
+			 for(var i=1;i<=10;i++){
+			   var end_time=document.getElementById("dk"+i).value;
+			  
+				 if(end_time){
+					 var EndTime= new Date(end_time);
+					 var NowTime = new Date();
+					 var t =EndTime.getTime() - NowTime.getTime();
+					 var d=Math.floor(t/1000/60/60/24);
+					 var h=Math.floor(t/1000/60/60%24);
+					 var m=Math.floor(t/1000/60%60);
+					 var s=Math.floor(t/1000%60);
+					 if(EndTime>NowTime){
+						 document.getElementById("t_d"+i).innerHTML = d + "天";
+						 document.getElementById("t_h"+i).innerHTML = h + "时";
+						 document.getElementById("t_m"+i).innerHTML = m + "分";
+						 document.getElementById("t_s"+i).innerHTML = s + "秒";	
+					 }else{
+						 document.getElementById("t_d"+i).innerHTML ="时间到期";
+						 document.getElementById("t_h"+i).innerHTML ="";
+						 document.getElementById("t_m"+i).innerHTML ="";
+						 document.getElementById("t_s"+i).innerHTML ="";
+					 }
+				}
+		   }
+		}
+		setInterval(GetRTime,1000);
+	</script> 
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+<tr>
+        <td align="center">{$page2}</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

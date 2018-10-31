@@ -1,0 +1,52 @@
+<style type="text/css">
+.STYLE1 {color: #FF0000}
+.STYLE3 {color: #99CC66}
+</style>
+<tagLib name="html" />
+<include file="Public:header" />
+<div class="sub_bav">
+<table width="100%" cellpadding=0 cellspacing=1 border=0>
+<tr >
+  <td colspan="20" class="tabletd">
+  
+		<form method='post' action="__URL__/OrdersList">
+		<div class="fLeft"><span id="key">产品名称：
+		    <input name="title" type="text"id="title" title="帐号查询" maxlength="200" ></span>
+		  <input type="submit" name="Submit" value="查 询" class="btn1"/>
+		</div>
+		<div  id="searchM" class=" none search cBoth" ></div>
+		</form>  </td>
+</tr>
+<form name="form3" method="post" action="__URL__/YeZi">
+
+<tr class="content_td" align="center">
+	<td nowrap >订单编号</td>
+	<td nowrap >产品名称</td>
+	<td nowrap >产品价格</td>
+	<td nowrap >订购数量</td>
+	<td nowrap >订单金额</td>
+	<td nowrap >订单时间</td>
+	<td nowrap >发货时间</td>
+	<td nowrap >状态</td>
+</tr>
+<volist name="list" id="vo">
+<tr class="content_td" align="center"> 
+	<td>{$vo['id']}</td>
+	<td>{$vo['pname']}</td>
+	<td>{$vo['pmoney']}</td>
+	<td>{$vo['pnum']}</td>
+	<td>{$vo['pnum']*$vo['pmoney']}</td>
+	<td>{$vo['create_time']|date='Y-m-d H:i:s',###}</td>
+	<td>{$vo['confirm_time']|date='Y-m-d H:i:s',###}</td>
+	<td style="color:red;"><switch name="vo['status']"><case value='0'>未发货</case><case value='1'>无货</case><case value='2'>已发货</case></switch></td>
+</tr>
+</volist>
+<tr class="content_td" align="center">
+	<td colspan="20">{$page}</td>
+</tr>
+</form>
+</table>
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

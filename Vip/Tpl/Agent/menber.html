@@ -1,0 +1,59 @@
+<include file="Public:xyHead" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>未开通会员 </h1></div>
+<form name="form3" method="post" action="__URL__/menberAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th></th>
+        <th><span>会员编号</span></th>
+		<th><span>开户姓名</span></th>
+        <th><span>联系电话</span></th>
+        <th><span>注册时间</span></th>
+        <th><span>开通时间</span></th>
+        <th><span>注册金额</span></th>
+        <th><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr align="center">
+        <td> <input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td>
+        <td><!--<a href="__URL__/menberData/bj_id/{$vo['id']}/eth/menber" title="详细资料">-->{$vo['user_id']}</a></td>
+		<td>{$vo['user_name']}</td>
+        <td>{$vo['user_tel']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td>&nbsp;</td>
+        <td>{$vo['cpzj']}</td>
+        <td><eq name="vo['is_pay']" value='0'><span style="color: #FF0000;">未开通</span><else />已开通</eq></td>
+    </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+    	<td>
+        <input name="全选" type="button" class="bt_tj" id="全选" onclick="CheckAll(this.form)" value="全选" />
+        <!--&nbsp;&nbsp;
+        <input type="submit" name="action" value="种子币开通会员" onclick="{if(confirm('您确定要使用种子币开通会员吗?')){return true;}return false;}" class="bt_tj">-->
+        &nbsp;&nbsp;
+        <input type="submit" name="action" value="开通会员" onclick="{if(confirm('您确定要开通会员吗?')){return true;}return false;}" class="bt_tj">
+        &nbsp;&nbsp;
+        <input type="submit" name="action" value="删除会员" onclick="{if(confirm('确定删除会员吗?')){return true;}return false;}" class="bt_tj">
+        </td>
+    </tr>
+</table>
+</form>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+<table width="600" align="center">
+    <tr>
+    <td align="left"><form method='post' action="__URL__/menber/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="bt_tj"/>
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

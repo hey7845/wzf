@@ -1,0 +1,150 @@
+<include file="Public:header" />
+<div class="ncenter_box0">
+<div class="ntr1_left">
+<table class="ccdd" cellspacing=0 cellpadding=0 border=0>
+        <tbody>
+        <tr>
+          <td align=right height=20>会员编号:</td>
+          <td align=left><span>{$fck_rs['user_id']}</span></td></tr>
+        <!-- <tr>
+          <td align=right height=20>重消账户:</td>
+          <td align=left><span>￥ {$fck_rs['agent_cf']}</span></td></tr>
+		   <tr>
+          <td align=right height=20>重消账户累计:</td>
+          <td align=left><span>￥ {$fck_rs['re_money']}</span></td></tr>
+		  -->
+        <tr>
+          <td align=right height=20>总K币:</td>
+          <td align=left><span>￥ {$fck_rs['zjj']}</span></td></tr>    
+        <tr>
+          <td align=right height=20>K币:</td>
+          <td align=left><span>￥ {$fck_rs['agent_use']}</span></td></tr>
+        <tr>
+          <td align=right height=20>注册币:</td>
+          <td align=left><span>￥ {$fck_rs['agent_cash']}</span></td></tr>
+        <tr>
+          <td align=right height=20>电子钱包:</td>
+          <td align=left><span>￥ {$fck_rs['agent_xf']}</span></td></tr>    
+		<tr style="display:none">
+          <td align=right height=20>购物币:</td>
+          <td align=left><span>￥ {$fck_rs['agent_xf']}</span></td></tr>
+        
+        
+    </tbody></table>
+
+
+</div>
+<div class="ntr1_right">   <!-- <iframe src="__APP__/Guzhi/amstock2/" width="680" height="260" scrolling="No" frameborder="0"></iframe> --></div>
+
+</div>
+<div class="ncenter_box1">
+<div class="ntr1_left1">
+ <div class="miandgengd1"><a href="__APP__/News/News/">更多...</a></div>
+<div class="bar_cont1">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <volist name='t_list' id='vo'>
+              <tr>
+                <td style="border-bottom:1px dotted #ccc!important;">&nbsp;&nbsp;<img src="__PUBLIC__/Images/li.gif">&nbsp;&nbsp;[<font color="#FF0000">新闻公告</font>]&nbsp;&nbsp;<a href="__APP__/News/News_show/NewID/{$vo.id}">{$vo['title']|noHTML|mysubstr="10"}</a></td>
+              </tr>
+              </volist>
+            </table>
+            </div>
+
+
+
+</div>
+<div class="ntr1_rigkj">
+ <ul>
+<li> <div class="utri1"></div><div class="titel2"><a href="__APP__/Change/cody/c_id/2">修改密码</a></div><div class="jeisd"></div></li>
+<li> <div class="utri1"></div><div class="titel2"><a href="__APP__/Tree/cody/c_id/6">推荐关系图</a></div><div class="jeisd"></div></li>
+
+
+<li> <div class="utri1"></div><div class="titel2"><a href="__APP__/Currency/cody/c_id/1">货币提现</a></div><div class="jeisd"></div></li>
+
+
+<li> <div class="utri1"></div><div class="titel2"><a href="__APP__/Change/cody/c_id/3">账户查询</a></div><div class="jeisd"></div></li>
+<li> <div class="utri1"></div><div class="titel2"><a href="__APP__/Recharge/cody/c_id/1">充值申请</a></div><div class="jeisd"></div></li>
+    
+ </ul>
+</div>
+
+
+</div>
+
+<div class="ncenter_box2">
+<div class="ntr1_left2">
+
+
+</div>
+<div class="ntr1_rigkj2">
+ <div class="miandgengd"><a href="__APP__/News/News/">更多...</a></div>
+<div class="bar_cont">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <volist name='f_list' id='vo'>
+              <tr>
+                <td style="border-bottom:1px dotted #ccc!important;">&nbsp;&nbsp;<img src="__PUBLIC__/Images/li.gif">&nbsp;&nbsp;[<font color="#FF0000">新闻公告</font>]&nbsp;&nbsp;<a href="__APP__/News/News_show/NewID/{$vo.id}">{$vo['title']}</a>&nbsp;&nbsp;<font color='#999999'>[{$vo.create_time|date='Y-m-d',###}]</font></td>
+              </tr>
+              </volist>
+            </table>
+            </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<!--<div class="ncenter_box">
+<div class="accounttitle"><h1>我的信息 </h1></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr class="bor">
+    <th width="20%" align="right">账户名称：</th>
+    <td width="30%" align="left">{$fck_rs['user_id']}</td>
+    <th width="10%" align="right">上次登录：</th>
+    <td width="40%" align="left">{$fck_rs['last_login_time']|date="Y-m-d H:i:s",###}</td>
+  </tr>
+  <tr class="bor">
+    <th align="right">推荐人数：</th>
+    <td align="left">{$fck_rs['re_nums']}人</td>
+    <th align="right">注册时间：</th>
+    <td align="left">{$fck_rs['rdt']|date="Y-m-d H:i:s",###}</td>
+  </tr>
+  <tr class="bor">
+    <th align="right">会员级别：</th>
+    <td align="left">{$voo[$fck_rs['u_level']]}</td>
+    <th align="right">开通时间：</th>
+    <td align="left">{$fck_rs['pdt']|date="Y-m-d H:i:s",###}</td>
+  </tr>
+  <tr class="bor">
+    <th align="right">现金账户余额：</th>
+    <td align="left">{$fck_rs['agent_use']}</td>
+    <th align="right">注册币余额：</th>
+    <td align="left">{$fck_rs['agent_cash']}</td>
+  </tr>
+  <tr class="bor">
+    <th align="right">创业基金账户：</th>
+    <td align="left">{$fck_rs['agent_xf']}</td>
+    <th align="right">分红奖金池：</th>
+    <td align="left">{$all_money}</td>
+  </tr>
+  <tr class="bor2">
+    <th align="right">推广链接：</th>
+    <td colspan="3"><a href="http://{$server}/Reg/us_reg/rid/{$fck_rs['id']}/" target="_blank"><span id="copyurl" style="cursor:hand;" title="打开">http://{$server}/Reg/us_reg/rid/{$fck_rs['id']}/</span></a></td>
+  </tr>
+</table>
+</div>
+<br />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>新闻公告 </h1></div>
+<table width="100%" border="0" cellspacing="3" cellpadding="0" class="tab5">
+  <volist name='f_list' id='vo'>
+  <tr>
+    <td height="28">&nbsp;&nbsp;<img src="__PUBLIC__/Images/news_li.gif">&nbsp;&nbsp;<a href="__APP__/News/News_show/NewID/{$vo.id}">{$vo['title']}</a>&nbsp;&nbsp; <span style="color:#999">[{$vo['create_time']|date="m/d/Y H A",###}]</span></td>
+  </tr>
+  </volist>
+</table>
+</div>-->
+</body></html>

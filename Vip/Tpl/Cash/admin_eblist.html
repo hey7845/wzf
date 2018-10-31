@@ -1,0 +1,152 @@
+<include file="Public:header" />
+<style type="text/css">
+<!--
+.apDiv1 {position:relative; width:100%; z-index:100; left: 20px; top: -1px; border:1px solid #CCC; text-align:left; background:#FAFAD2; padding:4PX;}
+-->
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>委托交易处理 </h1></div>
+<table border="0" cellpadding="3" cellspacing="8">
+  <tr>
+    <td><eq name="ry" value="0">
+      <span class="us_btn">查看全部</span>
+      <else/>
+      <input type="button" name="action" value="查看全部" class="btn1" onclick="window.location='__URL__/admin_eblist/ry/0/UserID/{$UserID}/'">
+      </eq>
+      <eq name="ry" value="1">
+        <span class="us_btn">等待交易</span>
+        <else/>
+        <input type="button" name="action" value="等待交易" class="btn1" onclick="window.location='__URL__/admin_eblist/ry/1/UserID/{$UserID}/'">
+        </eq>
+      <eq name="ry" value="2">
+        <span class="us_btn">等待汇款</span>
+        <else/>
+        <input type="button" name="action" value="等待汇款" class="btn1" onclick="window.location='__URL__/admin_eblist/ry/2/UserID/{$UserID}/'">
+      </eq>
+      <eq name="ry" value="3">
+        <span class="us_btn">等待确认</span>
+        <else/>
+        <input type="button" name="action" value="等待确认" class="btn1" onclick="window.location='__URL__/admin_eblist/ry/3/UserID/{$UserID}/'">
+      </eq>
+      <eq name="ry" value="4">
+        <span class="us_btn">交易完成</span>
+        <else/>
+        <input type="button" name="action" value="交易完成" class="btn1" onclick="window.location='__URL__/admin_eblist/ry/4/UserID/{$UserID}/'">
+      </eq>
+      <eq name="ry" value="5">
+        <span class="us_btn">等待处理</span>
+        <else/>
+        <input type="button" name="action" value="等待处理" class="btn1" onclick="window.location='__URL__/admin_eblist/ry/5/UserID/{$UserID}/'">
+      </eq>
+      <eq name="ry" value="6">
+        <span class="us_btn">处理完成</span>
+        <else/>
+        <input type="button" name="action" value="处理完成" class="btn1" onclick="window.location='__URL__/admin_eblist/ry/6/UserID/{$UserID}/'">
+      </eq>
+      </td>
+    </tr>
+</table>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" bgcolor="#b9c8d0" id="tb1">
+	<thead>
+    <tr align="center">
+        <th nowrap width="10%"><span>卖家编号</span></th>
+        <th nowrap><span>买家编号</span></th>
+        <th nowrap><span>卖出时间</span></th>
+        <th nowrap><span>买入时间</span></th>
+        <th nowrap><span>金额</span></th>
+        <th nowrap><span>汇款金额</span></th>
+        <th nowrap width="10%"><span>状态</span></th>
+        <th nowrap width="5%"><span>凭证</span></th>
+        <th nowrap width="10%"><span>处理</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center"> 
+        <td nowrap>
+        <span style="cursor:hand; color:blue" onclick="open_m('{$key}')" title="点击查看开户信息">{$vo['user_id']}</span>
+        <div style="position:absolute;">
+        <div class="apDiv1" id="menu_t{$key}" style="display:none">
+        <div align="right"><img src="__PUBLIC__/Images/close.gif" style="cursor:hand;" onclick="close_m('{$key}')" title="关闭"/></div>
+        <strong>卖家开户银行：</strong>{$vo['bank_name']}<br />
+        <strong>开户姓名：</strong>{$vo['user_name']}<br />
+        <strong>银行卡号：</strong>{$vo['bank_card']}<br />
+        <strong>开户地址：</strong>{$vo['x1']}</div>
+        </div>
+        </td>
+        <td nowrap>{$vo['b_user_id']}</td>
+        <td nowrap>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td nowrap>{$vo.bdt|date='Y-m-d H:i:s',###}</td>
+        <td nowrap>{$vo['money']}</td>
+        <td nowrap>{$vo['money']}</td><!--|cx_cname-->
+        <td>
+        <eq name="vo.is_sh" value="0">
+        等待审核
+        <else/>
+            <eq name="vo.is_pay" value="0">
+                <eq name="vo.is_buy" value="0">
+                <font color="#FF00FF">等待交易</font>
+                </eq>
+                <eq name="vo.is_buy" value="1">
+                <font color="#EE5C42">等待汇款</font>
+                </eq>
+                <eq name="vo.is_buy" value="2">
+                <font color="#8E388E">等待确认</font>
+                </eq>
+            </eq>
+            <eq name="vo.is_pay" value="1"><font color="#AAAAAA">交易完成</font></eq>
+            <eq name="vo.is_pay" value="2"><font color="#FF0000">等待处理</font></eq>
+            <eq name="vo.is_pay" value="3">{$vo['bz']}</eq>
+        </eq>
+        </td>
+        <td><a href="__URL__/lookpingzheng/cid/{$vo['id']}/">查看凭证</a></td>
+        <td style="padding-bottom:5px; padding-top:5px;">
+        <eq name="vo.is_pay" value="0">
+        <eq name="vo.is_buy" value="0">
+        <input name="btt1" type="button" id="btt1" value="撤销卖出交易" onclick="{if(confirm('您确定要撤销并删除此条交易信息吗？（金额返还卖家）')){window.location='__URL__/admin_eblist_del/cid/<?php echo $vo[id];?>/';return true;}return false;}" class="btn1"/>
+        </eq>
+        <eq name="vo.is_buy" value="1">
+        <input name="btt1" type="button" id="btt1" value="撤销卖出交易" onclick="{if(confirm('您确定要撤销并删除此条交易信息吗？（金额返还卖家）')){window.location='__URL__/admin_eblist_del/cid/<?php echo $vo[id];?>/';return true;}return false;}" class="btn1"/>
+        </eq>
+        <eq name="vo.is_buy" value="2">
+        <input name="btt1" type="button" id="btt1" value="金额返还给卖家" onclick="{if(confirm('经过审核，您确定要将交易的金额返还给卖家吗？')){window.location='__URL__/admin_eblistAC/cid/<?php echo $vo[id];?>/stype/1/';return true;}return false;}" class="btn1"/><br />
+        <input name="btt2" type="button" id="btt2" value="金额交易给买家" onclick="{if(confirm('经过审核，您确定要将交易的金额交易给买家吗？')){window.location='__URL__/admin_eblistAC/cid/<?php echo $vo[id];?>/stype/2/';return true;}return false;}" class="btn1"/>
+        </eq>
+        </eq>
+        <eq name="vo.is_pay" value="2">
+        <input name="btt1" type="button" id="btt1" value="金额返还给卖家" onclick="{if(confirm('经过审核，您确定要将交易的金额返还给卖家吗？')){window.location='__URL__/admin_eblistAC/cid/<?php echo $vo[id];?>/stype/1/';return true;}return false;}" class="btn1"/><br />
+        <input name="btt2" type="button" id="btt2" value="金额交易给买家" onclick="{if(confirm('经过审核，您确定要将交易的金额交易给买家吗？')){window.location='__URL__/admin_eblistAC/cid/<?php echo $vo[id];?>/stype/2/';return true;}return false;}" class="btn1"/>
+        </eq></td>
+    </tr>
+    </volist>
+    
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+  <tr>
+  <td width="50%">{$page}</td>
+  </tr>
+</table>
+<table width="100%" border="0" align="center" cellpadding="3" cellspacing="0">
+<TR>
+    <td align="right">
+    <form method='post' action="__URL__/admin_eblist/ry/{$ry}/">
+    搜索：
+      <input type="text" name="UserID" title="帐号查询">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" name="Submit" value="查询"  class="btn1"/>
+    </form>
+    </td>
+</TR>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>
+<script>
+function open_m(oid){
+	var ttt = "menu_t"+oid;
+	document.getElementById(ttt).style.display="";
+}
+function close_m(oid){
+	var ttt = "menu_t"+oid;
+	document.getElementById(ttt).style.display="none";
+}
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>找回密码</title>
+<style type="text/css">
+<!--
+body {
+	background-image: url();
+	background-color: #222;
+	font-family: Arial, Helvetica, sans-serif;
+}
+td {
+	font-size: 13px;
+	line-height: 24px;
+	color: #FFF;
+}
+.tit1 {
+	font-size: 15px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #96E403;
+}
+.botn1 {
+	width: 80px;
+	border: 1px solid #CCC;
+	font-size: 13px;
+	line-height: 22px;
+}
+input {
+	border: 1px solid #999;
+}
+-->
+</style>
+<script language="JavaScript">
+<!--
+function CheckForm()
+{
+	if (document.form1.us_name.value.length == 0)
+	{
+	alert("温馨提示您： 请输入您的账户编号！\n");
+	document.form1.us_name.focus();
+	return false;
+	}
+	if (document.form1.us_email.value.length == 0)
+	{
+	alert("温馨提示您： 请输入您的邮箱地址！\n");
+	document.form1.us_email.focus();
+	return false;
+	}
+	return true;
+}
+//-->
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+    <table width="450" border="0" align="center" cellpadding="20" cellspacing="1" style="margin-top:100px; background:#666">
+      <tr>
+        <td height="150" valign="top" bgcolor="#3D3D3D"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="tit1">找回密码</td>
+  </tr>
+</table>
+<form id="form1" name="form1" method="post" action="__URL__/find_pw_s" onsubmit="return CheckForm()">
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+    <td colspan="2">请输入您的账户编号：</td>
+  </tr>
+  <tr>
+    <td width="67%"><input name="us_name" type="text" id="us_name" size="30" maxlength="20" />
+    </td>
+    <td width="33%"></td>
+  </tr>
+  <tr>
+    <td colspan="2">请输入您的邮箱地址：</td>
+  </tr>
+  <tr>
+    <td width="67%"><input name="us_email" type="text" id="us_email" size="30" maxlength="50" />
+    </td>
+    <td width="33%"><input name="button" type="submit" class="botn1" id="button" value="提交" /></td>
+  </tr>
+</table>
+</form>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+    <td width="100%">{$errarry['err']}</td>
+  </tr>
+</table>
+
+</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

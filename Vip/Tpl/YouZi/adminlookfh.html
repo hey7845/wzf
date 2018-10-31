@@ -1,0 +1,29 @@
+<include file="Public:header" />
+<div id="main_top"><font>您现在的位置是：</font> 分红查看&nbsp;&nbsp;[<a href='javascript:history.back()'>返回</a>]</div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+    <tr align="center">
+        <th nowrap><span>会员编号</span></th>
+        <th nowrap><span>分红次数</span></th>
+        <th nowrap><span>分红金额</span></th>
+        <th nowrap><span>发放时间</span></th>
+        </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center">
+        <td nowrap>{$vo['user_id']}</td>
+        <td nowrap>第 {$vo['f_num']} 次</td>
+        <td nowrap>{$vo['f_money']}</td>
+        <td nowrap>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        </tr>
+    </volist>
+
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr>
+        <td>{$page}</td>
+    </tr>
+</table>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

@@ -1,0 +1,132 @@
+<include file="Public:xyHead" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+function CheckForm(){
+	if(document.form1.ePoints.value==""){
+		alert("请输入金额！");
+		document.form1.ePoints.focus();
+		return false;
+	}
+	if(confirm('您确定申请充值金额 '+document.form1.ePoints.value+' 吗？'))
+	{
+		var Null_Name = document.form1._hour.value;
+		if (Null_Name)
+		{
+			str = Null_Name.replace(/^\s+|\s+$/g,"");
+			if (!str == "")//判断是否为空
+			{
+				if (!isNaN(Null_Name))
+				{
+					if(Null_Name >= 0 && Null_Name <=24){
+						return true;
+					}else{ alert('小时输入有误'); return false; }
+				}else{ alert('请输入数字'); return false; }
+
+			}
+		}
+	}else{
+	alert('您取消了本次操作');
+       return false;
+    }
+}
+
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h4>积分充值申请 </h4></div>
+  <table width="100%" border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td colspan="4" style=" height:5px;"><hr></td>
+      </tr>
+    <tr>
+      <td height="30" align="right">消费积分：</td>
+      <td colspan="2"><span class="hong">{$frs['agent_use']}</span></td>
+      </tr>
+<!-- 	<tr> -->
+<!--       <td height="30" align="right">电子积分余额：</td> -->
+<!--       <td colspan="2"><span class="hong">{$frs['agent_cash']}</span></td> -->
+<!--       </tr> -->
+    <form name="form1" method="post" action="__URL__/currencyRechargeAC" onSubmit="{return CheckForm();}">
+    <tr>
+	  <td height="30" align="right">购买金额：</td>
+	  <td width="40%"><input name="ePoints" type="text" id="ePoints" maxlength="9" class="ipt" onkeyup="javascript:Null_Int(this.name)"/></td>
+	  <td width="40%"><div id="ePoints1" class="info"><div id="0" class="focus_r"><div class="msg_tip">请输入你要购买的数量。</div></div></div></td>
+    </tr>
+    <tr>
+	  <td height="30" align="right">购买类型：</td>
+	  <td>
+      <select name="stype">
+<!--       <option value="0">充值电子积分</option> -->
+      <option value="1">充值消费积分</option>
+      </select></td>
+	  <td></td>
+    </tr>
+    <tr style="display:none">
+      <td height="30" align="right">已汇款数额：</td>
+	  <td ><input name="_money" type="text" id="_money" class="ipt" onkeyup="javascript:Null_Int(this.name)" onfocus="notice('1','')"  onblur="notice('1','none')" />
+      </td><td><div id="_money1" class="info"><div id="1" class="focus_r" style="display:none;"><div class="msg_tip">请输入你汇款数额。</div></div></div></td>
+    </tr>
+<!--     <tr> -->
+<!--       <td height="30" align="right">充值账号：</td> -->
+<!-- 	  <td ><input name="_num" type="text" class="ipt" id="_num" value="{$str6}" size="30" readonly="readonly"/></td> -->
+<!--       <td></td> -->
+<!--     </tr> -->
+<!--       <td></td> -->
+<!--     </tr> -->
+<!--     <tr> -->
+<!--       <td width="20%" height="30" align="right">汇款时间：</td> -->
+<!-- 	  <td colspan="2" width="80%"> -->
+<!--       	  <input name="_year" size="5" type="text" id="_year" value={$nowdate['0']}  /> 年 -->
+<!--       	  <input name="_month" size="5" type="text" id="_month" value={$nowdate['1']} /> 月 -->
+<!--           <input name="_date" size="5" type="text" id="_date" value={$nowdate['2']}  /> 日 -->
+<!--           <input name="_hour" size="5" type="text" id="_hour" /> 时 -->
+<!-- 		  <input name="_minute" size="5" type="text" id="_minute" /> 分 -->
+<!-- 		  &nbsp;<span class="hong">(请输入汇款时间)</span> -->
+<!--       </td> -->
+<!--     </tr> -->
+    <tr>
+      <td height="30">&nbsp;</td>
+      <td><input type="submit" name="Submit" value="确定申请" class="bt_tj" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+	</form>
+</table>
+<br>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>购买数量</span></th>
+			<th><span>充值类型</span></th>
+			<th><span>购买时间</span></th>
+            <th><span>汇款数额</span></th>
+            <th><span>汇到账号</span></th>
+			<th><span>充值状态</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+        <td>{$vo['user_id']}</td>
+        <td>{$vo['epoint']}</td>
+        <td><eq name="vo.stype" value="0">充入电子积分<else/>充入消费积分</eq></td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+        <td>{$vo['huikuan']}</td>
+        <td>{$vo['zhuanghao']}</td>
+
+        <td><eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">未确认</span></eq><eq name="vo['is_pay']" value="1">已确认</eq></td>
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+  <tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+<div class="bottom"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$System_namex}</title>
+<link href="__PUBLIC__/Css/body.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="__PUBLIC__/Css/menu.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="__PUBLIC__/Css/css.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/Css/main.css" rel="stylesheet" media="all" type="text/css" />
+<link href="__PUBLIC__/Css/style_2.css" rel="stylesheet" media="all" type="text/css" />
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Util/ImageLoader.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/myfocus-1.0.4.min.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/all.js\"></sc"+"ript>")</script>
+<script type=text/javascript src="__PUBLIC__/Js/jquery-1.11.3.min.js"></script>
+
+<script language="JavaScript">
+jQuery.noConflict();
+ifcheck = true;
+function CheckAll(form)
+{
+	for (var i=0;i<form.elements.length-2;i++)
+	{
+		var e = form.elements[i];
+		e.checked = ifcheck;
+	}
+	ifcheck = ifcheck == true ? false : true;
+}
+</script>
+<style>
+body{background:#eff5fb;}
+</style>
+</head>
+<body onLoad="loadBar(0)">
+
+<style>
+.hidden{
+    display: none
+}
+</style>
+<style>
+.ab{
+    display: block
+}
+</style>
+
+<!--<script type="text/javascript">
+    jQuery(document).ready(function(e) {
+        jQuery("#trading .records tr td a").click(function(ex){
+		ex.stopPropagation();
+        ex.preventDefault();
+        var topBody = jQuery(window.parent.document).find("body");
+        if(topBody.length > 0)
+        {
+            var bodyClass = '#buyDetail-'+this.id.split('-')[1];
+            
+            var showBoard = jQuery(bodyClass).clone();
+            showBoard.css("display","none");
+            showBoard.attr("id",null);
+            showBoard.appendTo(topBody);
+            var contentBoard = showBoard.children("div");
+            if(contentBoard.length > 0)
+            {
+                contentBoard.click(function(es){
+                    es.stopPropagation();
+                });
+            }
+            showBoard.fadeIn(300);
+            showBoard.click(function(ex){
+                ex.stopPropagation();
+                ex.preventDefault();
+                jQuery(this).fadeOut(300,function(){
+                    jQuery(this).remove();
+                });
+            });
+        }
+        else
+            alert('not found top window body');
+        });
+    });
+</script>-->
+<!--<script type="text/javascript">
+    jQuery(document).ready(function(e) {
+        jQuery("#trading2 .records  tr td a").click(function(ex){
+        ex.stopPropagation();
+        ex.preventDefault();
+        var topBody = jQuery(window.parent.document).find("body");
+        if(topBody.length > 0)
+        {
+            var bodyClass = '#sellDetail-'+this.id.split('-')[1];
+            
+            var showBoard = jQuery(bodyClass).clone();
+            showBoard.css("display","none");
+            showBoard.attr("id",null);
+            showBoard.appendTo(topBody);
+            var contentBoard = showBoard.children("div");
+            if(contentBoard.length > 0)
+            {
+                contentBoard.click(function(es){
+                    es.stopPropagation();
+                });
+            }
+            showBoard.fadeIn(300);
+            showBoard.click(function(ex){
+                ex.stopPropagation();
+                ex.preventDefault();
+                jQuery(this).fadeOut(300,function(){
+                    jQuery(this).remove();
+                });
+            });
+        }
+        else
+            alert('not found top window body');
+        });
+    });
+</script>-->
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    jQuery(".show_board_btn").click(function(ex){
+		ex.stopPropagation();
+		ex.preventDefault();
+		var topBody = jQuery(window.parent.document).find("body");
+		if(topBody.length > 0)
+		{
+			var showBoard = jQuery("#show").clone();
+			showBoard.css("display","none");
+			showBoard.attr("id",null);
+			showBoard.appendTo(topBody);
+			var contentBoard = showBoard.children("div");
+			if(contentBoard.length > 0)
+			{
+				contentBoard.click(function(es){
+					es.stopPropagation();
+				});
+			}
+			showBoard.fadeIn(300);
+			showBoard.click(function(ex){
+				ex.stopPropagation();
+				ex.preventDefault();
+				jQuery(this).fadeOut(300,function(){
+					jQuery(this).remove();
+				});
+			});
+		}
+		else
+			alert('not found top window body');
+	});
+	
+});
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    jQuery(".show_board_btn2").click(function(ex){
+        ex.stopPropagation();
+        ex.preventDefault();
+        var topBody = jQuery(window.parent.document).find("body");
+        if(topBody.length > 0)
+        {
+            var showBoard = jQuery("#show2").clone();
+            showBoard.css("display","none");
+            showBoard.attr("id",null);
+            showBoard.appendTo(topBody);
+            var contentBoard = showBoard.children("div");
+            if(contentBoard.length > 0)
+            {
+                contentBoard.click(function(es){
+                    es.stopPropagation();
+                });
+            }
+            showBoard.fadeIn(300);
+            showBoard.click(function(ex){
+                ex.stopPropagation();
+                ex.preventDefault();
+                jQuery(this).fadeOut(300,function(){
+                    jQuery(this).remove();
+                });
+            });
+        }
+        else
+            alert('not found top window body');
+    });
+});
+</script>
+<!-- 理财金额的打款信息 -->
+<!--<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    jQuery("#midd a").click(function(ex){
+        ex.stopPropagation();
+        ex.preventDefault();
+        var topBody = jQuery(window.parent.document).find("body");
+        if(topBody.length > 0)
+        {
+            var showClassName = '#buyShow-'+this.id.split('-')[1];
+            var showBoard = jQuery(showClassName).clone();
+            
+            showBoard.css("display","none");
+            showBoard.attr("id",null);
+            showBoard.appendTo(topBody);
+            var contentBoard = showBoard.children("div");
+            // alert(contentBoard.length);
+            if(contentBoard.length > 0)
+            {
+                contentBoard.click(function(es){
+                    es.stopPropagation();
+                });
+            }
+            showBoard.fadeIn(300);
+            showBoard.click(function(ex){
+                ex.stopPropagation();
+                ex.preventDefault();
+                jQuery(this).fadeOut(300,function(){
+                    jQuery(this).remove();
+                });
+            });
+        }
+        else
+            alert('not found top window body');
+    });
+});
+</script>-->
+<!-- 理财金额的打款信息 -->
+<!-- 接收帮助的打款信息 -->
+<!--<script type="text/javascript">
+jQuery(document).ready(function(e) {
+    jQuery("#midd2 a").click(function(ex){
+        ex.stopPropagation();
+        ex.preventDefault();
+        var topBody = jQuery(window.parent.document).find("body");
+        if(topBody.length > 0)
+        {
+            var showClassName = '#sellShow-'+this.id.split('-')[1];
+            var showBoard = jQuery(showClassName).clone();
+            
+            showBoard.css("display","none");
+            showBoard.attr("id",null);
+            showBoard.appendTo(topBody);
+            var contentBoard = showBoard.children("div");
+            // alert(contentBoard.length);
+            if(contentBoard.length > 0)
+            {
+                contentBoard.click(function(es){
+                    es.stopPropagation();
+                });
+            }
+            showBoard.fadeIn(300);
+            showBoard.click(function(ex){
+                ex.stopPropagation();
+                ex.preventDefault();
+                jQuery(this).fadeOut(300,function(){
+                    jQuery(this).remove();
+                });
+            });
+        }
+        else
+            alert('not found top window body');
+    });
+});
+</script>-->
+<!-- 接收帮助的打款信息 -->
+<div  class="container_12">
+    
+    <div class="banner_box"><img src="__PUBLIC__/Images/banner.jpg"></div>
+    <div class="hpanel">
+    	<div class="offer">
+        	<p>我要帮助其他伙伴</p><br>
+            <a class="show_board_btn">理财金额</a>
+        </div>
+        <div class="req_b">
+        	<p>我需要其他伙伴的帮助</p><br>
+            <a class="show_board_btn2">理财收益</a>
+        </div>
+    </div>
+
+   <div class="midd" id="midd">
+    		<volist name='f_list' id='vo'>
+            <div class="hlpp">
+        	<h2>申请理财金额</h2>
+            <p> 
+                订单编号:{$vo['order_id']}<br>
+                金额：{$vo['money']}<br>
+                已匹配金额：{$vo['money']-$vo['money_two']}<br>
+                日期：{$vo['rdt']|date='Y-m-d H:i:s',###}<br>
+                状态：<eq name="vo['is_sh']" value='0'>审核中</eq>
+                	 <eq name="vo['is_sh']" value='1'>部分匹配</eq>
+                	 <eq name="vo['is_sh']" value='2'>已匹配成功</eq><br/>
+                <eq name="vo['is_pay']" value='1'>
+                确认状态：<span>已确认</span><br/>
+                确认时间：{$vo['okdt']|date='Y-m-d H:i:s',###}
+                <else />
+                确认状态：
+                	<egt name="vo['is_sh']" value='1'>
+                	<eq name="vo['is_buy']" value='2'><span style="color:#00b448">等待确认</span></eq>
+                	<eq name="vo['is_buy']" value='1'><span style="color:#017ce8">等待汇款</span></eq>
+                    <else /><span style="color:#ff0000">未匹配 <a href="__APP__/Cash/eb_list_del/cid/{$vo['id']}" style="color:#73450e; padding-left:60px; display:block;">删除订单</a></span>
+                    </egt>
+                </eq><br/></p>
+                    </div>
+            </volist>    	
+    		<a class="lefrg" style="top:45%; left:30px;"><img src="__PUBLIC__/Images/left.png"></a>
+            <a class="lefrg"><img src="__PUBLIC__/Images/right.png"></a>
+       
+   </div>
+     <div class="midd" id="midd2">
+     		<volist name='s_list' id='vo'>
+            <div class="hlpp">
+        	<h2>申请理财收益</h2>
+            <p> 
+                订单编号:{$vo['order_id']}<br>
+                金额：{$vo['money']}<br>
+                已匹配金额：{$vo['money']-$vo['money_two']}<br>
+                日期：{$vo['rdt']|date='Y-m-d H:i:s',###}<br>
+                状态：<eq name="vo['is_sh']" value='0'>审核中</eq>
+                	 <eq name="vo['is_sh']" value='1'>部分匹配</eq>
+                	 <eq name="vo['is_sh']" value='2'>已匹配成功</eq><br/>
+                <eq name="vo['is_pay']" value='1'>
+                确认状态：<span>已确认</span><br/>
+                确认时间：{$vo['okdt']|date='Y-m-d H:i:s',###}
+                <else />
+                确认状态：
+                	<egt name="vo['is_sh']" value='1'>
+                	<eq name="vo['is_buy']" value='2'><span style="color:#00b448">等待确认</span></eq>
+                	<eq name="vo['is_buy']" value='1'><span style="color:#017ce8">等待汇款</span></eq>
+                    <else /><span style="color:#ff0000">未匹配 <a href="__APP__/Cash/eb_list_del/cid/{$vo['id']}" style="color:#73450e; padding-left:60px; display:block;">删除订单</a></span>&nbsp;&nbsp;
+                    </egt>
+                </eq><br/></p>
+                    </div>
+            </volist> 
+            <a class="lefrg" style="top:45%; left:30px;"><img src="__PUBLIC__/Images/left.png"></a>
+            <a class="lefrg"><img src="__PUBLIC__/Images/right.png"></a>
+   </div>
+	<div class="center_Box">
+    	<div class="set">
+        	<form id="form2" name="form2" method="post" action="__URL__/main">
+        	<!--<select name="ppfg">
+            	<option value="1">审核中</option>
+                <option value="2">匹配成功</option>
+                <option value="3">确认完成</option>
+            </select>
+            <input type="submit" name="Submit" value="查询" class="button_text" />--><!--<span><strong>推广链接：</strong><a href="https://www.K币zg.com/index.php/Reg/us_reg/rid/{$fck_rs['id']}" target="_blank">https://www.K币zg.com/index.php/Reg/us_reg/rid/{$fck_rs['id']}</a>&nbsp;&nbsp;<strong>确认打款前请先联系收款人</strong></span>--></form>
+        </div>
+
+    	<div class="ncen">
+            <div id="trading" class="trading"  style='background-color:#ffffff'>
+            <volist name='elist' id='evo'>
+            <table class="records" width="100%"  >
+                    <tr align="center" >
+                        <td width="15%" id="acc">
+                            入场订单：{$evo['order_id']}
+                        </td>
+                        <td width="20%">
+                           理财金额<br><br>
+                           匹配时间：{$evo['bdt']|date='Y-m-d H:i:s',###}<br><br>
+                           过期时间：{$evo['bdt']+$s12*3600|date='Y-m-d H:i:s',###}</td>
+                        <td width="10%">{$evo['user_id']}</td>
+                        <td width="2%"> ></td>
+                        <td width="15%">收款银行:{$sk_frs[$evo['bid']]['bank_province']}{$sk_frs[$evo['bid']]['bank_city']}{$sk_frs[$evo['bid']]['bank_name']}<br>收款人姓名:{$sk_frs[$evo['bid']]['user_name']}<br>收款人帐号:{$sk_frs[$evo['bid']]['bank_card']}<br>收款人QQ:{$sk_frs[$evo['bid']]['qq']}<br>收款人电话:{$sk_frs[$evo['bid']]['user_tel']}</td>
+                        <td width="2%"> ></td>
+                        <td width="10%">匹配金额<br>{$evo['money']} 人民币</td>
+                         <td width="2%"> ></td>
+                        <td width="10%">{$evo['b_user_id']}</td>
+                        <td width="15%" style="color:#00b448;">
+                        <eq name="evo['is_pay']" value='1'>已确认
+                        <else />
+                            <eq name="evo['is_sh']" value='0'>
+                            <else />
+                                <eq name="evo['is_buy']" value='2'>等待确认<br><a href="__APP__/Cash/changepingzheng/cid/{$evo['id']}/">上传凭证</a></eq>
+                                <eq name="evo['is_buy']" value='1'><span style="color:#017ce8">等待汇款</span><br>
+                                <a href="__APP__/Cash/eb_buy_AC/t_id/{$evo['id']}" style="color:#73450e; padding:6px 0; display:block;" onclick="if(confirm('确定要打款吗?一但确定不能撤消!')) return true; else return false;">确认打款</a></eq>
+                            </eq>
+                        </eq></td>
+                    </tr>
+                </table>
+            </volist>
+            <table width="100%"  style="background:#f7f9fa; border-top:1px solid #f2f3f6;" >
+                <tr align='center' >
+                    <td></td>
+                </tr>
+            </table>   
+            </div>
+
+            <div id="trading2" class="trading" style='background-color:#ffffff'>
+            <volist name='flist' id='fvo'>
+            <table class="records" width="100%"  >
+                    <tr align="center" >
+                        <td width="15%" id="acc">
+                            出场订单：{$fvo['b_order_id']}
+                        </td>
+                        <td width="20%">
+                           理财收益<br>
+                           匹配时间：{$fvo['bdt']|date='Y-m-d H:i:s',###}<br><br>
+                           <eq name="fvo['is_buy']" value='2'>
+                           过期时间：{$fvo['bdt']+$str9*3600|date='Y-m-d H:i:s',###}</eq></td>
+                        <td width="10%">{$fvo['b_user_id']}</td>
+                        <td width="2%"> ></td>
+                        <td width="15%">汇款人姓名:{$hk_frs[$fvo['uid']]['user_name']}<br>汇款人QQ:{$hk_frs[$fvo['uid']]['qq']}<br>汇款人电话:{$hk_frs[$fvo['uid']]['user_tel']}</td>
+                        <td width="2%"> ></td>
+                        <td width="10%">匹配金额<br>{$fvo['money']} 人民币</td>
+                         <td width="2%"> ></td>
+                        <td width="10%">{$fvo['user_id']}</td>
+                        <td width="15%" style="color:#00b448;">
+                        <eq name="fvo['is_pay']" value='1'>已确认
+                        <else />
+                            <eq name="fvo['is_sh']" value='0'>
+                            <else />
+                                <eq name="fvo['is_buy']" value='2'>等待确认<br><a href="__APP__/Cash/lookpingzheng/cid/{$fvo['id']}/">查看凭证</a><br><a href="__APP__/Cash/eb_list_done/t_id/{$fvo['id']}" style="color:#73450e; padding:6px 0; display:block;" onclick="if(confirm('请保证收到款项后才确认收款?一但确定不能撤消!')) return true; else return false;">确认收款</a></eq>
+                                <eq name="fvo['is_buy']" value='1'><span style="color:#017ce8">等待汇款</span></eq>
+                            </eq>
+                        </eq></td>
+                    </tr>
+                </table>
+            </volist>
+            <table width="100%" style="background:#f7f9fa; border-top:1px solid #f2f3f6;">
+                <tr align='center'>
+                    <td></td>
+                </tr>
+            </table> 
+            </div>
+		</div>
+</div>
+
+<div id="show" class="help_Box">
+	<div class="del">
+    	<div class="color-line"></div>
+        <div class="modal-header">
+        	<h2>理财金额</h2>
+            <small>申请完成后，请等待系统7-10日随机分配受善需求</small>
+        </div>
+        <form name="form1" method="post" action="__APP__/Cash/buy_AC/">
+        <div class="modal-body">
+        	<!--<h4 class="mod">支付方式</h4>
+            <div align="left">
+            <label><input type="checkbox" value="0" name="pay_type[]" checked="checked">银行支付</label><label><input type="checkbox" value="1" name="pay_type[]" checked="checked" >支付宝支付</label><label><input type="checkbox" value="2" name="pay_type[]" checked="checked" >微信支付</label>
+             </div>-->
+            <h4>理财金额</h4>
+            
+            <div class="dat">
+            	<input type="text" value="0" name="money">
+            	<!--<select name="money">
+                	<volist name="s3" id="vvo" key="i">
+                    <option value="{$s3[$i-1]}">{$s3[$i-1]}</option>
+                    </volist></select>-->
+            </div>
+            
+            <p style=" text-align:left;">!警告，我已完全了解所有风险。我决定参与金象国际数字游戏,尊重金象国际数字游戏文化与传统。</p>
+           
+        </div>	
+        <div class="btns">
+            <button class="sure" type="submit"  onclick="if(confirm('确定要理财金额吗？')) return true; else return false;">理财金额 </button>
+        	<button class="cancel"  id="cancel" type="button" onclick="location.href='__APP__'">取消 </button>
+            
+        </div>
+       <input type="hidden" name="s_type" value="0" /></form></form>
+    </div>
+</div>
+
+<div id="show2" class="help_Box" >
+	<div class="del" style="margin-top:-380px;">
+    	<div class="color-line"></div>
+    	 <div class="modal-header">
+            <h2>理财收益</h2>
+        </div>
+        <form name="form1" method="post" action="__APP__/Cash/sell_AC/">
+        <div class="modal-body">
+        	<div class="dataa"><span>K币</span>&nbsp;<input type="text" value="{$fck_rs['agent_use']}" readonly></div>
+            <div class="dataa"><span style="float:left">可提现</span>&nbsp;{$fck_rs['agent_use']}            </div>
+            <div class="dataa"><span>最低提现</span>&nbsp;{$s3[0]}</div>
+            <div class="dataa"><span>结余</span>&nbsp;{$str1-$fck_rs['re_money']}</div>
+            <!--<h4 class="mod">理财收益支付方式</h4> 
+            <div align="left">
+            <label><input type="checkbox" value="0" name="pay_type[]" checked="checked">银行支付</label>
+            <label><input type="checkbox" value="1" name="pay_type[]" checked="checked" >支付宝支付</label>
+            <label><input type="checkbox" value="2" name="pay_type[]" checked="checked" >微信支付</label>
+             </div>-->
+            <h4>请输入提现金额 且数值为100的整数倍</h4>
+            <div class="dat">
+            	<input type="text" value="0" name="s_money">
+            	<!--<select name="s_money">
+                	<volist name="s3" id="vvo" key="i">
+                    <option value="{$s3[$i-1]}">{$s3[$i-1]}</option>
+                    </volist></select>-->
+            </div>
+        
+            <p style=" text-align:left;">!警告，我已完全了解所有风险。我决定参与金象国际数字游戏,尊重金象国际数字游戏文化与传统。</p>
+           
+        </div>
+         <div class="btns" style="padding-bottom:16px;">
+            <button class="sure" type="submit"  onclick="if(confirm('确定要申请求助吗？')) return true; else return false;">理财收益 </button>
+            <button class="cancel"  id="cancel" type="button" onclick="location.href='__APP__'">取消 </button>
+            
+        </div>
+       <input type="hidden" name="s_type" value="1" /></form>
+    </div>
+</div>
+
+<!-- 理财金额确认打款的弹出框 -->
+<volist name='f_list' id='vo'>
+<div id="buyShow-{$vo['id']}" class="help_Box" >
+    <div class="del2" style="margin-top:-350px;">
+        <div class="color-line"></div>
+         <div class="modal-header">
+            <h2>理财金额</h2>
+        </div>
+        
+        <form name="form1" method="post" action="__APP__/Cash/eb_buy_AC/">
+        <div class="mole">
+        	<p><strong>订单号码:<span id="order_id">{$vo['order_id']}</span></strong></p>
+            <table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+                        <tr>
+                            <th>收款人银行</th>
+                            <th>收款人姓名</th>
+                            <th>收款人账户号码</th>
+                            <th>收款人qq</th>
+                            <th>收款人电话 </th>
+                            <th>收款金额</th>
+                        </tr>
+            			<volist name="skrs[$vo['id']]" id='svo'>
+                        <tr>
+                        	<td>{$sk_frs[$svo['bid']]['bank_province']}{$sk_frs[$svo['bid']]['bank_city']}{$sk_frs[$svo['bid']]['bank_name']}<br/></td>
+                            <td>{$sk_frs[$svo['bid']]['user_name']}</td>
+                            <td>{$sk_frs[$svo['bid']]['bank_card']}</td>
+                            <td>{$sk_frs[$svo['bid']]['qq']}</td>
+                            <td>{$sk_frs[$svo['bid']]['user_tel']}</td>
+                            <td>{$svo['money']}</td>
+                        </tr>
+                        </volist></table>
+            <input type="hidden" name="t_id" value="{$vo['id']}"/>
+            <p>汇款前请先电话或者短信分别通知收款人 <font class="receiver_phone" color="#0000FF"> {$skmoblie}</font></p>
+                    <p><font color="#FF0000">警告!</font>在未汇款之前不要点击确认收款，因为确认了就不能撤销了，如果没有及时汇款，系统会自动封号！</p>
+          
+        </div>
+      <div class="foots">
+      	<div class="btns" style="padding-bottom:16px;">
+            <button class="sure" type="submit">确认打款 </button>
+            <button class="cancel"  id="cancel" type="button" onclick="location.href='__APP__'">取消 </button>
+            
+        </div></div></form>
+    </div>
+</div>
+</volist>
+<!-- 理财金额确认打款的弹出框 -->
+
+<!-- 理财收益确认打款的弹出框 -->
+<volist name='s_list' id='vo'>
+<div id="sellShow-{$vo['id']}" class="help_Box" >
+    <div class="del2" style="margin-top:-350px;">
+        <div class="color-line"></div>
+         <div class="modal-header">
+            <h2>理财收益</h2>
+        </div>
+        
+        <form name="form1" method="post" action="__APP__/Cash/eb_list_done/">
+        <div class="mole">
+        	<p><strong>订单号码:<span id="order_id">{$vo['order_id']}</span></strong></p>
+            <table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+                        <tr>
+                            <th>汇款款人银行</th>
+                            <th>汇款人姓名</th>
+                            <th>汇款人qq</th>
+                            <th>汇款人电话 </th>
+                            <th>汇款金额</th>
+                            <th>凭证</th>
+                        </tr>
+            			<volist name="hkrs[$vo['id']]" id='hvo'>
+                        <tr>
+                        	<td>{$hk_frs[$hvo['uid']]['bank_province']}{$hk_frs[$hvo['uid']]['bank_city']}{$hk_frs[$hvo['uid']]['bank_name']}<br/></td>
+                            <td>{$hk_frs[$hvo['uid']]['user_name']}</td>
+                            <td>{$hk_frs[$hvo['uid']]['qq']}</td>
+                            <td>{$hk_frs[$hvo['uid']]['user_tel']}</td>
+                            <td>{$hvo['money']}</td>
+                            <td><a href="__APP__/Cash/changepingzheng/cid/{$hvo['id']}/">查看</a></td>
+                        </tr>
+                        </volist></table>
+            <input type="hidden" name="t_id" value="{$vo['id']}"/>
+            <p>确认收款前请先查看凭证并确认已经收到款 <font class="receiver_phone" color="#0000FF"> {$skmoblie}</font></p>
+                    <p><font color="#FF0000">警告!</font>在未汇款之前不要点击确认收款，因为确认了就不能撤销了，收到款后请及时确认,如果没有及时确认，系统会自动封号！</p>
+          
+        </div>
+      <div class="foots">
+      	<div class="btns" style="padding-bottom:16px;">
+            <button class="sure" type="submit">确认收款 </button>
+            <button class="cancel"  id="cancel" type="button" onclick="location.href='__APP__'">取消 </button>
+            
+        </div></div></form>
+    </div>
+</div>
+</volist>
+<!-- 理财收益确认打款的弹出框 -->
+
+</body>
+</html>

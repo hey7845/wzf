@@ -1,0 +1,25 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>电话卡记录 </h1></div>
+
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+  <tr align="center" class="size14">
+    <th height="24" width="10%" nowrap="nowrap">序号</th>
+    <th width="20%" nowrap="nowrap">会员编号</th>
+    <th width="20%" nowrap="nowrap">电话卡号</th>
+    <th width="20%" nowrap="nowrap">电话卡密码</th>
+    <th width="30%" nowrap="nowrap">发放时间</th>
+    </tr>
+    <volist name="list" id="vo">
+    <tr align="center">
+    <td height="24" nowrap="nowrap">{$key+1}</td>
+    <td nowrap="nowrap">{$vo.buser_id}</td>
+    <td nowrap="nowrap">{$vo.card_no}&nbsp;</td>
+    <td nowrap="nowrap">{$vo.card_pw}&nbsp;</td>
+    <td nowrap="nowrap">{$vo.b_time|date='Y-m-d H:i:s',###}</td>
+    </tr>
+    </volist>
+</table>
+</div>
+</body>
+</html>

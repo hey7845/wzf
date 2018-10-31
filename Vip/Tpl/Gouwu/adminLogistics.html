@@ -1,0 +1,89 @@
+<include file="Public:xyHead" />
+<style>
+.STYLE1 {color:#F00;}
+.STYLE2 {color:#00F;}
+</style>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>{$title} </h1></div>
+
+<table width="100%" class="tab3" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+  <tr>
+    <td width="100%" class="tabletd">
+    <form method='post' action="__URL__/adminLogistics">
+	<div class="fLeft"><span id="key">查询：<input type="text" name="UserID" title="帐号查询">
+	<select name="type">
+    <option value="0">全部</option>
+    <option value="1">未发货</option>
+    <option value="2">已发货</option>
+    <option value="3">已确认收货</option>
+    </select>
+  <input type="submit" name="Submit" value="查 询"  class="btn1"/>
+</span></div>
+<div  id="searchM" class=" none search cBoth" ></div>
+</form>	 </td>
+    </tr>
+</table>
+<form name="form3" method="post" action="__URL__/adminLogisticsAC">
+<table width="100%" class="tab3" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0" id="tb1">
+        <tr align="center">
+          <th><input type="checkbox" name="chkall" value="checkbox" onclick="CheckAll(this.form)"  class="btn2" id="chkall" /></th>
+          <th><span>购货时间</span></th>
+          <th><span>发货时间</span></th>
+          <th><span>会员编号</span></th>
+          <th><span>收货人</span></th>
+          <th><span>收货地址</span></th>
+          <th><span>电话</span></th>
+          <th><span>产品名称</span></th>
+          <th><span>数量</span></th>
+          <th><span>总价</span></th>
+          <th><span>确认发货人</span></th>
+		  <th><span>确认收货人</span></th>
+          <th><span>状态</span></th>
+        </tr>
+		<volist name="list" id="vo">
+        <tr class="content_td lz" align="center">
+          <td><input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td>
+          <td>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+          <td><gt name="vo.fhdt" value="0">{$vo.fhdt|date='Y-m-d H:i:s',###}</gt></td>
+          <td>{$vo['user_id']}</td>
+          <td>{$vo['us_name']}</td>
+          <td>{$vo['us_address']}</td>
+          <td>{$vo['us_tel']}</td>
+          <td>{$voo[$vo['did']]}</td>
+          <td>{$vo['shu']}</td>
+          <td>{$vo['cprice']}</td>
+          <td>{$vo['guquan']}</td>
+		  <td>{$vo['ccxhbz']}</td>
+          <td>
+          <eq name="vo['ispay']" value="1">
+          已确认收货
+          <else/>
+          <eq name="vo['isfh']" value="0"><span class="STYLE1">未发货</span></eq>
+          <eq name="vo['isfh']" value="1"><span class="STYLE2">已发货</span></eq>
+          </eq></td>
+        </tr>
+		</volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+<tr>
+    <td>
+    <input name="全选" type="button" class="btn1" id="全选" onclick="CheckAll(this.form)" value="全选" />&nbsp;&nbsp;
+    <input type="submit" name="action" value="确认发货" onclick="{if(confirm('您确定要给会员发货吗?')){return true;}return false;}" class="btn1" id="action" />&nbsp;&nbsp;
+    <input type="submit" name="action" value="确定收货" onclick="{if(confirm('要确定已收到货吗?')){return true;}return false;}" class="btn1" id="action" />&nbsp;&nbsp;
+    <!--  <input type="submit" name="action" value="删除" onclick="{if(confirm('确定要删除选中的物流信息吗?')){return true;}return false;}" class="btn1" id="action" />-->
+     <input name="button3" type="button" onclick="window.location.href='__URL__/financeDaoChu_MM/'" value="导出Excel表格" class="button_text" />
+    </td>
+</tr>
+</table>
+</form>
+
+
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+    <tr>
+    	<td>{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

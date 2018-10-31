@@ -1,0 +1,57 @@
+<include file="Public:xyHead" />
+<script language=javascript src="__PUBLIC__/Js/wpCalendar.js"></script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>当期出纳 </h1></div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="1" id="tb1" bgcolor="#b9c8d0">
+<thead>
+    <tr class="tabletd" align="center">
+      <th nowrap ><span>序列号</span></th>
+      <th nowrap ><span>结算时间</span></th>
+      <th nowrap ><span>当期收入</span></th>
+      <th nowrap ><span>当期支出</span></th>
+      <th nowrap ><span>本期赢利</span></th>
+      <th nowrap ><span>拔出比率</span></th>
+    </tr>
+</thead>
+    <tr class="content_td"  align="center">
+      <td>-</td>
+      <td>本期</td>
+      <td><a href="__APP__/YouZi/adminFinanceList/sDate/{$list4}">{$list3['0']}</a></td>
+      <td>0</td>
+      <td>{$list3['0']}</td>
+      <td>-</td>
+    </tr>
+	<volist name="list" id="vo">
+    <tr class="content_td" align="center">
+      <td>{$vo['id']}</td>
+      <td>{$vo.benqi|date='Y-m-d H:i:s',###}</td>
+      <td><a href="__APP__/YouZi/adminFinanceList/sDate/{$vo['shangqi']}/eDate/{$vo['benqi']}">{$list1["$i"]['0']}</a></td>
+      <td><a href="__APP__/YouZi/adminFinanceTableShow/did/{$vo['id']}">{$list1["$i"]['1']}</a></td>
+      <td>{$list1["$i"]['2']}</td>
+      <td>{$list1["$i"]['3']}%</td>
+      </tr>
+	</volist>
+    <tr class="content_td" align="center" >
+      <td>合计</td>
+      <td>&nbsp;</td>
+      <td>{$list2['1']}</td>
+      <td>{$list2['2']}</td>
+      <td>{$list2['3']}</td>
+      <td>{$list2['4']}%</td>
+    </tr>
+    </table>
+    <table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr class="content_td" align="center" >
+      <td colspan="6" align="left"><input name="button3" type="button" onclick="window.location.href='__URL__/financeDaoChu_ChuN/p/{$PP}/'" value="导出Excel" class="button_text" /></td>
+      </tr>
+  </table>
+    <table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+    <tr class="content_td" align="center" >
+      <td colspan="6">{$page}</td>
+      </tr>
+
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

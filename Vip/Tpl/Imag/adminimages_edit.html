@@ -1,0 +1,32 @@
+<include file="Public:header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>编辑公告 &nbsp;&nbsp;[<a href='javascript:history.back()'>返回列表</a>] </h1></div>
+<form method='post' id="form1" name="form1" action="__URL__/adminImages_editAc"  enctype="multipart/form-data">
+<table width="100%" border="0" cellpadding="5" cellspacing="0" class="tab4">
+<tr>
+        <td width="15%" align="right">标题：</td>
+        <td width="85%"><input  name="title" type="text" size="30" maxlength="50" value="{$vo['title']}"></td>
+    </tr>
+    <tr>
+        <td align="right">小图地址：</td>
+        <td><input name="small_url" type="text" size="50" maxlength="250" value="{$vo['small_url']}"></td>
+    </tr>
+    <tr>
+        <td align="right">大图地址：</td>
+        <td><input name="img_url" type="text" size="50" maxlength="250" value="{$vo['img_url']}"></td>
+    </tr>
+    <tr>
+        <td align="right">本地上传：</td>
+        <td class="center"><iframe src="__URL__/upload_add" width="350" height="30" scrolling="no" frameborder="0"></iframe>上传格式：jpg, gif, png, jpeg</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="center">
+        <input name="ID" type="hidden" value="{$vo['id']}">
+        <input type="submit" value="保存" class="button_text">
+        </td>
+    </tr>
+</table></form>
+</div>
+</body>
+</html>

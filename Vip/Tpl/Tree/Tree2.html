@@ -1,0 +1,91 @@
+<include file="Public:xyHead" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/Css/jquery.cluetip.css" />
+<script src="__PUBLIC__/Js/jquery-1.7.2.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Js/jquery.cluetip.js" type="text/javascript"></script>
+<style>
+.tu_box{width:100px;background-color:#aaa;color:#000;}
+.tu_box td{text-align:center;line-height:24px; height:24px;}
+.tu_ko{ height:40px;line-height:40px !important;background-color:#FFF; }
+.tu_l{ width:40%;}
+.tu_z{ width:20%;}
+.tu_r{ width:40%;}
+</style>
+<script type="text/javascript">
+$(function() {
+	$('a.title').cluetip({splitTitle: '|'});
+});
+</script>
+<div class="ncenter_box">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <form method='post' action="__URL__/Tree2">
+      <tr>
+        <td>{$User_namex}：
+            <input type="text" name="UserID" title="帐号查询"  >
+            <input type="submit" name="Submit" value="查询" class="btn1"/>
+
+            <select name='level' onChange="window.location.href='__URL__/Tree2/ID/{$FatherID}/uLev/'+this.value;">
+            <option value="{$uLev}">第 {$uLev+1} 层</option>
+            <option value="2">第 3 层</option>
+            <option value="3">第 4 层</option>
+            <option value="4">第 5 层</option>
+            <option value="5">第 6 层</option>
+            <option value="6">第 7 层</option>
+            <option value="7">第 8 层</option>
+            <option value="8">第 9 层</option>
+            <option value="9">第 10 层</option>
+            </select>
+            　　<a href="__URL__/Tree2/uLev/{$uLev}">顶层</a>　　<a href="__URL__/Tree2/ID/{$FatherID}/uLev/{$uLev}">上一层</a></td>
+      </tr>
+      </form>
+      <tr>
+        <td>{$wop}</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="center">
+				<table border="0" cellspacing="1" cellpadding="0" bgcolor="#66CC99">
+             <tr align="center" style="color:#000;">
+                <td bgcolor="#FFFFFF" width="80" height="24">上层</td>
+                <volist name='ColorUA' id='vo'>
+				<td style="background:{$ColorUA[$key]};" width="110">{$AC_Color[$key]} ({$L_cpzj[$key-1]})</td>
+                </volist>
+              </tr>
+            </table>
+              <!--<table width="90%" border="0" cellspacing="1" cellpadding="0" bgcolor="#66CC99">
+              <tr align="center" style="color:#000;">
+                <td bgcolor="#FFFFFF">上层</td>
+                <volist name='Level' id='vo'>
+                <td style="background:{$ColorUA[$key+1]};">{$Level[$key]}</td>
+                </volist>
+              </tr>
+            </table>-->
+
+            </td>
+            </tr>
+            <tr>
+            <td align="center">
+
+            <table border="0" cellspacing="1" cellpadding="0" bgcolor="#66CC99">
+             <tr align="center" style="color:#000;">
+                <td bgcolor="#FFFFFF" width="80" height="24">下层</td>
+                <volist name='TU_MiCheng' id='vo'>
+                <td style="background:{$TU_Color[$key]};" width="100">{$TU_MiCheng[$key]}</td>
+                </volist>
+              </tr>
+            </table></td>
+          </tr>
+        </table>
+
+        </td>
+      </tr>
+    </table>
+
+</div>
+</body>
+</html>

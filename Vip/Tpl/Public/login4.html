@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{$System_namex}</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Css/bootstrap.min1.css" rel="stylesheet">
+   
+    <link href="__PUBLIC__/Css/font-awesome.css" rel="stylesheet">
+
+    <link href="__PUBLIC__/Css/animate.css" rel="stylesheet">
+    <link href="__PUBLIC__/Css/style11.css" rel="stylesheet">
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/jquery-1.7.2.min.js\"></sc"+"ript>")</script>
+
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script>
+
+<script type="text/JavaScript" language="JavaScript" src="__PUBLIC__/Js/jquery.SuperSlide.2.1.1.source.js"> </script> 
+ 
+<script src="__PUBLIC__/Js/jquery.min.js"></script>
+<script type="text/javascript"> 
+jQuery.noConflict();
+jQuery(document).ready(function(){ 
+    jQuery(".input_0").focus(function(e){
+        jQuery(this).siblings(".input_hint").hide();
+    });
+    jQuery(".input_0").blur(function(e){
+        jQuery(this).val(jQuery.trim(jQuery(this).val()));
+        if((jQuery(this).val()).length == 0)
+            jQuery(this).siblings(".input_hint").show();
+    });
+    jQuery(".input_hint").click(function(e){
+        e.stopPropagation();
+        jQuery(this).siblings(".input_0").focus();
+    });
+});
+</script> 
+
+<script>
+jQuery(document).ready(function(){ 
+    var set=setInterval('fade()',1000);
+});
+    
+     var i=0;
+     function fade(){
+        //fadeOut(淡出花费的时间[,淡出后的操作])
+        /*
+        1、定时器调用轮播函数
+        2、先让当前的banner淡出，淡出完之后，获取下一张图片的src值，再替换到background
+        3、再让banner淡入
+        */
+    jQuery('.banner').fadeOut(2000,function(){
+            i++;
+            if(i>3) i=0;
+            var src=jQuery('.banner ul li').eq(i).find('img').attr('src')
+            jQuery('.banner').css({"background":"url(" + src + ")","background-position":"center top"});
+        })
+        jQuery('.banner').fadeIn(2000);
+    }
+</script>
+</head>
+<style>
+.ww{width: 100%;height: 117px;display: block;}
+.ww h2{margin:0 auto;width: 350px;height: 117px;display: block;line-height: 117px; font-size: 40px;}
+</style>
+<body style="background-image: url('__PUBLIC__/Images/bg.jpg');">
+    <div class="ww"><h2>会员管理系统</h2></div>
+    <div class="middle-box text-center loginscreen  animated fadeInDown" >
+        <div>
+            <div>
+                
+                <!-- <h1 class="logo-name" style="height: 177px"></h1> -->
+
+            </div>
+                 <style>
+                    img{
+                        border: 0;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    input{
+                        height: 71px;
+                    }
+                </style>
+            
+
+           <form method='post' name="login" id="form1" onsubmit="return false">
+                <div class="form-group">
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-user"></i>&nbsp;账号</span>
+                        <input type="text" placeholder="请输入账号"  name="account" id="username" class="form-control" style="height: 48px"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group m-b">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i>&nbsp;密码</span>
+                        <input type="password" name="password"  placeholder="请输入密码" id="password" class="form-control" style="height: 48px" />
+                        <!-- <input type="password" placeholder="请输入密码" name="password" class="form-control" name="password" > -->
+                    
+                </div>
+
+                <div class="form-group">
+                 <div class="input-group m-b">
+                    <span class="input-group-addon"><i class="fa fa-key"></i>&nbsp;验证码</span>
+                    <input class="form-control" placeholder="请输入验证码" name="verify" id="verify" type="text" onKeyDown="keydown(event)" check="Require" value=""  maxlength="4" style="height: 48px;" />
+                      
+                        <span class="input-group-addon" >
+                        <img id="verifyImg" src="__URL__/verify/" width="55" onClick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer" align="absmiddle" />
+                        </span>
+
+                       <!--  <input type="text" placeholder="请输入验证码"  class="form-control"  name="verify" style="height: 48px">
+                        <span class="input-group-addon" style="padding: 0"><img id="yzm" src="picture/0d4b67f8bad748919ec69fa3a98b0d77.gif" alt="验证码"  style="display: block;"></span> -->
+                        </div>
+                  
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-6">
+                        <input  name="button" type="submit" style="height: 48px"  id="btn_submit" class="btn btn-primary block full-width m-b login" value="登录"
+                        onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')">
+                       <input type="hidden" name="ajax" value="1">
+                         <!-- <button type="button" class="btn btn-primary block full-width m-b login" style="font-size: 1.4rem">登 录</button> -->
+                    </div>
+                   
+                       
+                </div>
+                <div class="form-group"><div class="error"><span id="result"></span></div></div>
+            </form>
+        </div>
+    </div>
+
+<script type="text/javascript">             
+jQuery(".focusBox").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",0.2) },function(){ jQuery(this).find(".prev,.next").fadeOut() });              
+jQuery(".focusBox").slide({ mainCell:".pic",effect:"fold", autoPlay:true, delayTime:600, trigger:"click"}); 
+</script> 
+</body>
+</html>
+
+
+<script language="JavaScript">
+<!--
+var PUBLIC   =   '__PUBLIC__';
+ThinkAjax.image = [  '__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif','__PUBLIC__/Images/update.gif' ]
+ThinkAjax.updateTip =   '登录中～';
+function loginHandle(data,status){
+if (status==1)
+{
+$('result').innerHTML   =   '<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+$('form1').reset();
+window.location = '__URL__';
+}
+}
+function keydown(e){
+    var e = e || event;
+    if (e.keyCode==13)
+    {
+    ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+    }
+}
+function fleshVerify(type){
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+
+}
+function checkRadio(){
+    alert("您不是该地区的ID");
+    window.location = '__URL__/login';
+}
+
+//-->
+</script>
